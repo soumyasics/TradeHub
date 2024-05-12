@@ -1,5 +1,5 @@
 import styles from "./Growth.module.css";
-import { growth } from "../../constants/growth";
+import { growth } from "../../../constants/growth";
 import GrowthBox from "./GrowthBox";
 
 const imgURL1 =

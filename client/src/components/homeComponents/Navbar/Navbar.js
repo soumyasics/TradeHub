@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Navbar.module.css";
-import tradeHubLogo from "../../assets/images/trade-hub-logo.png";
+import tradeHubLogo from "../../../assets/images/trade-hub-logo.png";
+
 import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ hamActive, setHamActive }) => {

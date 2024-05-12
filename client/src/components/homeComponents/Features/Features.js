@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import styles from "./Features.module.css";
-import { features } from "../../constants/features";
+import { features } from "../../../constants/features";
 
 const Features = () => {
   return (

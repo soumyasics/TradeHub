@@ -1,14 +1,14 @@
 import {useState} from 'react';
-import Navbar from "../../components/Navbar/Navbar";
-import NavbarResponsive from "../../components/NavbarResponsive/NavbarResponsive";
-import Hero from "../../components/Hero/Hero";
-import Features from "../../components/Features/Features";
-import Growth from "../../components/Growth/Growth";
-import Questions from "../../components/Questions/Questions";
-import Programs from "../../components/Programs/Programs";
-import Footer from "../../components/Footer/Footer";
+import Navbar from "../../components/homeComponents/Navbar/Navbar";
+import NavbarResponsive from "../../components/homeComponents/NavbarResponsive/NavbarResponsive";
+import Hero from "../../components/homeComponents/Hero/Hero";
+import Features from "../../components/homeComponents/Features/Features";
+import Growth from "../../components/homeComponents/Growth/Growth";
+import Questions from "../../components/homeComponents/Questions/Questions";
+import Programs from "../../components/homeComponents/Programs/Programs";
+import Footer from "../../components/homeComponents/Footer/Footer";
 
-// Import data
+// Import dat/homeComponents/
 import { programs_user } from "../../constants/programs_user";
 import { programs_shopper } from "../../constants/programs_shopper";
 
