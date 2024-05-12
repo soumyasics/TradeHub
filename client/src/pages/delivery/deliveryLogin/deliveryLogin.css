@@ -1,0 +1,15 @@
+#delivery-signup-container {
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+#delivery-form {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px 5px;
+}
+
+#del-login-img-container {
+    background-color: #f7f7f7;
+}

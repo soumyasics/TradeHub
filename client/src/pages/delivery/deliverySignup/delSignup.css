@@ -1,0 +1,57 @@
+.user-signup-container {
+  background: linear-gradient(to right, #0083b09c, #db009e8a);
+  min-height: 100vh;
+}
+
+.user-signup-form-box {
+  width: 85%;
+  height: 90vh;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.user-signup-right-side {
+  height: 100%;
+  right: 0;
+  background-color: #c0dbea;
+}
+
+.signup-img-container {
+  height: 350px;
+  right: 75px;
+  top: 133px;
+  position: relative;
+  width: 30rem;
+  z-index: 10;
+}
+.typing-girl-img {
+  position: relative;
+}
+
+.cactus-img {
+  position: relative;
+  right: 100px;
+}
+.typing-girl-img {
+  position: relative;
+}
+
+.user-signup-form-box .welcome-text {
+  color: #000;
+  font-family: sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.poppins-semibold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.signup-caption {
+  display: none;
+}

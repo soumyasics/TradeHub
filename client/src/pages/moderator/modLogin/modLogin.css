@@ -1,0 +1,14 @@
+#mod-signup-container {
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbQyVhwN8-V-JCe2BOcmfyTsIrYrRLhWVs_Q&usqp=CAU'); */
+}
+/* https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbQyVhwN8-V-JCe2BOcmfyTsIrYrRLhWVs_Q&usqp=CAU
+https://images5.alphacoders.com/366/366327.jpg */
+#mod-form {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px 5px;
+}
