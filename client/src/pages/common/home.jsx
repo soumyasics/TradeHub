@@ -8,7 +8,6 @@ import Questions from "../../components/homeComponents/Questions/Questions";
 import Programs from "../../components/homeComponents/Programs/Programs";
 import Footer from "../../components/homeComponents/Footer/Footer";
 
-// Import dat/homeComponents/
 import { programs_user } from "../../constants/programs_user";
 import { programs_shopper } from "../../constants/programs_shopper";
 

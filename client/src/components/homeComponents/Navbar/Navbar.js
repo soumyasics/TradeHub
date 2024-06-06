@@ -34,15 +34,15 @@ const Navbar = ({ hamActive, setHamActive }) => {
         <div className={`${styles.navRight} center`}>
           <div className={styles.navLinksWrapper}>
             <div className={styles.verticalLine}> </div>
-            <a href="/" className={`${styles.nav} center`}>
+            <p className={`${styles.nav} center`}>
               Departments
-            </a>
-            <a href="/" className={`${styles.nav} center`}>
+            </p>
+            <p className={`${styles.nav} center`}>
               More ways to shop
-            </a>
-            <a href="/" className={`${styles.nav} center`}>
+            </p>
+            <p className={`${styles.nav} center`}>
               Help
-            </a>
+            </p>
           </div>
           <div>
             <a className={styles.login} onClick={redirectLogin}>
