@@ -1,0 +1,34 @@
+.landing-page-color{
+    background-color: #662C93B2;
+    height:90vh;
+    width: 100%;
+}
+.landingpage-img{
+    height: 600px;
+    width: 700px;
+}
+.landing-page-para{
+    font-size: 60px;
+    color: white;
+    text-align: left;
+    margin-top: 130px;
+    font-weight: bold;
+    word-spacing: 10px;
+}
+.landing-page-para1{
+    color: white;
+    margin-top: 20px;
+    font-size: 20px;
+}
+.landing-page-button{
+    background-color: white;
+    border-color: white;
+    height: 100px;
+    width: 400px;
+    margin-top: 80px;
+    margin-left: 170px;
+    font-size: 30px;
+    font-weight: 500px;
+    border-radius: 8px;
+    font-weight: 600;
+} 

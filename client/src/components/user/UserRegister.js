@@ -1,0 +1,207 @@
+import React, { useState } from 'react'
+import userreg from '../../assets/images/userreg.png'
+import userregimg from '../../assets/images/userregimg.png'
+function UserRegister() {
+
+  const[data,setData]=useState({
+    firstname:"",
+    lastname:"",
+    email:"",
+    phoneno:"",
+    password:"",
+    repassword:"",
+    checkbox:""
+  })
+  const[errors,setErrors]=useState({
+    firstname:"",
+    lastname:"",
+    email:"",
+    phoneno:"",
+    password:"",
+    repassword:"",
+    checkbox:""
+  })
+
+  const handleChange= (e) =>{
+    const {name,value}=e.target;
+    setData(prevData =>({
+      ...prevData,
+      [name]:value
+    }));
+    setErrors(prevErrors =>({
+      ...prevErrors,
+      [name]:''
+    }));
+  }
+
+  function validateField(fieldName,value){
+    if (!value.trim()){
+      return `${fieldName} is required`;
+    }
+    if(fieldName === "Email" && !value.endsWith("@gmail.com")){
+      return "Email must be a valid Gemail address"
+    }
+    return '';
+  }
+  function validateContact(fieldName, value) {
+    if (!value.trim()) {
+      return `${fieldName} is required`;
+    } else if (value.length !== 10) {
+      return 'Please enter a valid Contact Number';
+    }
+    return '';
+  }
+  function validateCheckbox(fieldName,value){
+    if(!value.trim()){
+      return `${fieldName} is required`;
+    }
+    else{
+      return "You must agree to the terms and conditions."
+    }
+  }
+
+  const handleSubmit= (e)=>{
+    e.preventDefault();
+
+    let errors={};
+    let formIsValid=true;
+
+    errors.firstname=validateField("FirstName",data.firstname);
+    errors.lastname=validateField("Lastname",data.lastname);
+    errors.email=validateField("Email",data.email);
+    errors.phoneno=validateContact("Phoneno",data.phoneno);
+    errors.password=validateField("Password",data.password);
+    errors.checkbox=validateCheckbox("Checkbox",data.checkbox);
+    // errors.repassword=validateField("RePassword",data.repassword);
+
+    const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z]).{6,}$/;
+      if (!data.password.trim()) {
+        formIsValid = false;
+        errors.password = "Password is required";
+      } else if (!passwordRegex.test(data.password)) { // Pass the password to the test method
+        errors.password =
+          "Password must contain at least one number, one special character, and one capital letter";
+      }
+    
+      if (!data.repassword.trim()) {
+        formIsValid = false;
+        errors.repassword = "Confirm Password is required";
+      } else if (data.repassword !== data.password) {
+        formIsValid = false;
+        errors.repassword = "Passwords do not match";
+      }
+
+    setErrors(errors);
+    if (formIsValid){
+      console.log("data",data);
+    }
+  }
+
+  return (
+    <div>
+      <div className='user-register-box container'>
+        <div className='row'>
+            <div className='col-4'>
+                <img className='user-register-img' src={userreg} alt="img"></img>
+            </div>
+            <div className='col-8'>
+              <form onSubmit={handleSubmit}>
+                <div className='row'>
+                  <div className='col container '>
+                    <div>
+                      <label className='user-register-label mt-3'>Name</label>
+                      <input type='text'
+                      placeholder='First Name' 
+                      className='user-register-textbox mt-2'
+                      value={data.firstname}
+                      name='firstname'
+                      onChange={handleChange}
+                      ></input>
+                      {errors.firstname && <span className='text-danger'>{errors.firstname}</span>}
+                      <input type='text' 
+                      placeholder='Last Name' 
+                      className='user-register-textbox mt-5'
+                      value={data.lastname}
+                      name='lastname'
+                      onChange={handleChange}
+                      ></input>
+                      {errors.lastname && <span className='text-danger'>{errors.lastname}</span>}
+                    </div>
+                    <label className='user-register-label mt-5'>Gender</label>
+                    <input type='radio' className='ms-5' id='user-register-radio' name='gender' checked></input><label className='user-register-label ms-2'>Male</label>
+                    <input type='radio' className='ms-5' id='user-register-radio' name='gender'></input><label className='user-register-label ms-2'>Female</label><br></br>
+                    <div>
+                      <label className='user-register-label mt-4'>Email</label>
+                      <input type='email' 
+                      placeholder='Email'  
+                      className='user-register-textbox mt-2'
+                      value={data.email}
+                      name='email'
+                      onChange={handleChange}
+                      ></input>
+                      {errors.email && <span className='text-danger'>{errors.email}</span>}
+                    </div>
+                    <div>
+                      <label className='user-register-label mt-4'>Phone no</label>
+                      <input type='text' 
+                      placeholder='Phone no' 
+                      className='user-register-textbox mt-2'
+                      value={data.phoneno}
+                      name='phoneno'
+                      onChange={handleChange}
+                      ></input>
+                      {errors.phoneno && <span className='text-danger'>{errors.phoneno}</span>}
+                    </div>
+                      <div class="form-check">
+                        <input class="form-check-input mt-5" 
+                        type="checkbox" 
+                        value={data.checkbox} 
+                        name='checkbox'
+                        onChange={handleChange}
+                        id="flexCheckChecked"  />
+                        <label class="form-check-label mt-5 label-user-register" for="flexCheckChecked">
+                          Agree to Terms and Condition
+                        </label>
+                      </div>
+                  </div>
+                  <div className='col'>
+                    <div>
+                      <img className='user-register-sideimg' src={userregimg}></img>
+                    </div>
+                    <div>
+                    <label className='user-register-label mt-3'>Password</label>
+                      <input type='password'
+                      placeholder='Password' 
+                      className='user-register-textbox mt-2'
+                      value={data.password}
+                      name='password'
+                      onChange={handleChange}
+                      ></input>
+                      {errors.password && <span className='text-danger'>{errors.password}</span>}
+                    </div>
+                    <div>
+                      <label className='user-register-label mt-4'>Re-enter Password</label>
+                      <input type='password'
+                      placeholder='Re-enter Password' 
+                      className='user-register-textbox mt-2'
+                      value={data.repassword}
+                      name='repassword'
+                      onChange={handleChange}
+                      ></input>
+                      {errors.password && <span className='text-danger'>{errors.password}</span>}
+                    </div> 
+                  </div>
+                  
+                  <div>
+                    <button type='submit' className='user-register-btn mt-4'>Register</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default UserRegister
