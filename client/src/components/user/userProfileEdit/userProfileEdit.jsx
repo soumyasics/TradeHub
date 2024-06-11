@@ -1,4 +1,4 @@
-import "./UserProfileEdit.css";
+import "./userProfileEdit.css";
 export const UserProfileEdit = () => {
     return (
         <div>
