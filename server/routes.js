@@ -3,7 +3,7 @@ const user=require('./User/userController')
 
 
 //user routes
-router.post('/registerUser', user.registerUser);
+router.post('/registerUser',user.upload,user.registerUser);
 router.post('/viewUserById/:id', user.viewUserById);
 router.post('/editUserById/:id', user.editUserById);
 router.post('/forgotPasswordUser', user.forgotPassword);
