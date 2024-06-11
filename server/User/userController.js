@@ -1,6 +1,29 @@
 const User = require('./userModel');
   const secret = 'User'; // Replace this with your own secret key
 const jwt=require('jsonwebtoken')
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: function (req, res, cb) {
+    cb(null, "./upload");
+  },
+
+  filename: function (req, file, cb) {
+    const uniquePrefix = "prefix-"; // Add your desired prefix here
+    const originalname = file.originalname;
+    const extension = originalname.split(".").pop();
+    const filename =
+      uniquePrefix +
+      originalname.substring(0, originalname.lastIndexOf(".")) +
+      "-" +
+      Date.now() +
+      "." +
+      extension;
+    cb(null, filename);
+  },
+});
+const upload = multer({ storage: storage }).single("file");
+
 const registerUser = async (req, res) => {
     try {
          const { firstname, lastname,  gender,contact, email, password } = req.body;
@@ -10,7 +33,7 @@ const registerUser = async (req, res) => {
             lastname,
             contact,
             email,
-            
+            profile:req.file,
            
             password,
            
@@ -318,5 +341,6 @@ module.exports = {
     forgotPassword,
     resetPassword,
     login,
-    requireAuth
+    requireAuth,
+    upload
 };

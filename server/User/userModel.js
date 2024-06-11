@@ -36,6 +36,9 @@ const userSchema=mongoose.Schema({
         type:String,
         required:true
 
+    },
+    profile:{
+        type:object
     }
 });
 module.exports=mongoose.model('users',userSchema)
