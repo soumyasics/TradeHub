@@ -42,7 +42,9 @@
 }
 .admin-sidebar-img{
     margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 30px;
+    height: 70px;
+    width: 70px;
 }
 .admin-sidebar-logotext{
     color: white;
@@ -51,6 +53,45 @@
 }
 .admin-sidebar-list li{
     color: white;
-    margin-top: 15px;
+    margin-top: 20px;
     font-size: 23px;
 }
+.admin-sidebar-dropdown{
+    background-color: #6D3698;
+    border: none;
+    color: white;
+    font-size: 23px;
+    margin-top: 5px;
+}
+.admin-sidebar-icon{
+    margin-bottom: 10px;
+}
+.admin-sidebar-dropdowns{
+    background-color: #6D3698;
+}
+
+/* Admin Dashboard */
+
+/* .revenue__box{
+    background: #98FF954F;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  
+  .order__box{
+    background: #00E2E24F;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  
+  .products__box{
+    background: #BDB7FF4F;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  
+  .user__box{
+    background: #FFF38B4F;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  } */
+
+  .admin-dash-div1{
+    margin-top: 50px;
+  }

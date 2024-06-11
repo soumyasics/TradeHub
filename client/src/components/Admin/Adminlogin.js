@@ -4,6 +4,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import adminlogin from '../../assets/images/adminlogin.png'
 import { useNavigate } from 'react-router-dom';
+import MainNav from '../homeComponents/Navbar/MainNav';
+import Footer from '../Footer/Footer';
 function Adminlogin() {
   const[data,setData]=useState({
     email:"",
@@ -67,6 +69,7 @@ function Adminlogin() {
 
   return (
     <div>
+      <MainNav/>
       <div className='container admin-login-box'>
         <div className=' admin-login-box1'>
             <Row>
@@ -104,6 +107,7 @@ function Adminlogin() {
             </Row>
         </div>
       </div>
+      <Footer/>
     </div>
   )
 }

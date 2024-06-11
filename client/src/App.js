@@ -17,6 +17,7 @@ import Userlogin from "./components/user/Userlogin";
 import Userforget from "./components/user/Userforget";
 import UserRegister from "./components/user/UserRegister";
 import AdminSidebar from "./components/Admin/AdminSidebar";
+import AdminDashboard from "./components/Admin/AdminDashboard";
 
 const App = () => {
   return (
@@ -25,14 +26,14 @@ const App = () => {
         <Routes>
           {/* common  */}
           {/* <Route path="/" element={<Home />} /> */}
-          <Route path="/" element={[<MainNav/>,<Landingpage/>]} />
+          <Route path="/" element={<Landingpage/>} />
           {/* users  */}
           <Route path="/user/signup" element={<UserSignup />} />
-          <Route path="/user/login" element={[<MainNav/>,<Userlogin />,<Footer/>]} />
+          <Route path="/user/login" element={<Userlogin />} />
           <Route path="/user/profile" element={<UserProfile />} />
           <Route path="/user/profile-edit" element={<UserProfileEdit />} />
-          <Route path="/user/forgetpswd" element={[<MainNav/>,<Userforget/>,<Footer/>]}/>
-          <Route path="/user/register" element={[<MainNav/>,<UserRegister/>,<Footer/>]}/>
+          <Route path="/user/forgetpswd" element={<Userforget/>}/>
+          <Route path="/user/register" element={<UserRegister/>}/>
           {/* moderators  */}
           <Route path="/mod/login" element={<ModLogin />} />
           <Route path="/mod/signup" element={<ModSignup />} />
@@ -42,8 +43,10 @@ const App = () => {
           <Route path="/delivery/login" element={<DeliveryLogin />} />
 
           {/* Admin */}
-          <Route path="/adminlogin" element={[<MainNav/>,<Adminlogin/>,<Footer/>]}/>
+          <Route path="/adminlogin" element={<Adminlogin/>}/>
           <Route path="/admin/sidebar" element={<AdminSidebar/>}/>
+          <Route path="/admin/dashboard" element={<AdminDashboard/>}/>
+
           <Route path="/*" element={<h1> 404 </h1>} />
         </Routes>
       </BrowserRouter>

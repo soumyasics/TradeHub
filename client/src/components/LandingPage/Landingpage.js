@@ -5,8 +5,12 @@ import Nav from "react-bootstrap/Nav";
 import logo from '../../assets/images/logo.png'
 import { Link } from 'react-router-dom';
 import landingpage from '../../assets/images/landingpage.png'
+import MainNav from '../homeComponents/Navbar/MainNav';
 function Landingpage() {
   return (
+     
+    <div>
+      <MainNav/>
     <div className='landing-page-color'>
       <div className='row'>
         <div className='col-5'>
@@ -25,7 +29,7 @@ function Landingpage() {
        
       </div>
     </div>
-    
+    </div>
   )
 }
 

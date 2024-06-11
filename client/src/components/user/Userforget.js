@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import userforget from '../../assets/images/userforget.png'
 import { useNavigate } from 'react-router-dom';
+import MainNav from '../homeComponents/Navbar/MainNav';
+import Footer from '../Footer/Footer';
 function Userforget() {
 
     const[data,setData]=useState({
@@ -57,6 +59,7 @@ function Userforget() {
 
   return (
     <div>
+      <MainNav/>
       <div className='user-forget-box container'>
         <div className='row'>
             <div className='col'>
@@ -108,6 +111,7 @@ function Userforget() {
             </div>
         </div>
       </div>
+      <Footer/>
     </div>
   )
 }

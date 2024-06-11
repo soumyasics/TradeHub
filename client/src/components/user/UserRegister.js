@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import userreg from '../../assets/images/userreg.png'
 import userregimg from '../../assets/images/userregimg.png'
+import MainNav from '../homeComponents/Navbar/MainNav'
+import Footer from '../Footer/Footer'
 function UserRegister() {
 
   const[data,setData]=useState({
@@ -99,6 +101,7 @@ function UserRegister() {
 
   return (
     <div>
+      <MainNav/>
       <div className='user-register-box container'>
         <div className='row'>
             <div className='col-4'>
@@ -200,6 +203,7 @@ function UserRegister() {
             </div>
         </div>
       </div>
+      <Footer/>
     </div>
   )
 }

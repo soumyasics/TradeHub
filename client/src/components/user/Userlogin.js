@@ -4,9 +4,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import adminlogin from '../../assets/images/adminlogin.png'
 import { Link } from 'react-router-dom';
+import MainNav from '../homeComponents/Navbar/MainNav';
+import Footer from '../Footer/Footer';
 function Userlogin() {
   return (
     <div>
+      <MainNav/>
       <div>
       <div className='container user-login-box'>
         <div className=' user-login-box1'>
@@ -57,6 +60,7 @@ function Userlogin() {
         </div>
       </div>
     </div>
+    <Footer/>
     </div>
   )
 }
