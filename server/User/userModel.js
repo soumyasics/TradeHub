@@ -38,7 +38,7 @@ const userSchema=mongoose.Schema({
 
     },
     profile:{
-        type:object
+        type:Object
     }
 });
 module.exports=mongoose.model('users',userSchema)

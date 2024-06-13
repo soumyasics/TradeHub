@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
     cb(null, filename);
   },
 });
-const upload = multer({ storage: storage }).single("file");
+const upload = multer({ storage: storage }).single("profile");
 
 const registerUser = async (req, res) => {
     try {
@@ -34,9 +34,7 @@ const registerUser = async (req, res) => {
             contact,
             email,
             profile:req.file,
-           
             password,
-           
             gender
         });
 
