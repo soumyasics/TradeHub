@@ -22,7 +22,7 @@ import AdminDashboard from "./components/Admin/AdminDashboard";
 const App = () => {
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename="tradehub">
         <Routes>
           {/* common  */}
           {/* <Route path="/" element={<Home />} /> */}

@@ -1,12 +1,93 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './User.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import adminlogin from '../../assets/images/adminlogin.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MainNav from '../homeComponents/Navbar/MainNav';
 import Footer from '../Footer/Footer';
+import axiosInstance from '../../apis/axiosInstance';
 function Userlogin() {
+
+  const[data,setData]=useState({
+    email:"",
+    password:""
+  });
+
+  const[errors,setErrors]=useState({
+    email:"",
+    password:""
+  })
+
+  const[formIsValid,setFormIsValid]=useState(true);
+
+  const navigate=useNavigate();
+
+  const handleChange = (e) =>{
+    const {name,value} = e.target;
+    setData({
+      ...data,[name]:value,
+    });
+    setErrors((prevErrors) => ({...prevErrors,[name]:""}));
+  };
+
+  const validateField = (fieldName, value) => {
+    if (!value.trim()) {
+        setFormIsValid(false);
+        return `${fieldName} is required`;
+    }
+    return '';
+};
+
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    let errors = {};
+    let formIsValid = true;
+
+    errors.email = validateField('Email', data.email);
+    if (errors.email) formIsValid = false;
+
+    errors.password = validateField('Password', data.password);
+    if (errors.password) formIsValid = false;
+
+    setErrors(errors);
+    setFormIsValid(formIsValid);
+
+    // if(formIsValid){
+    //   axiosInstance.post('/loginUser',data)
+    //   .then(res =>{
+    //     if (res.data.status === 200) {
+    //       console.log("Login Successful");
+    //       alert("Login Successful");
+    //       navigate('/adminlogin')
+    //     }
+    //     else{
+    //       console.log("Login Failed");
+    //       alert("Login Failed");
+    //     }
+    //   })
+    //   .catch(error =>{
+    //     console.error("There was an error!", error);
+    //     alert("Error");
+    //   })
+    // }
+
+    if(formIsValid){
+      axiosInstance.post('/loginUser',data)
+      .then((res)=>{
+        if(res.data.status === 200){
+          alert("Login Successfully")
+          navigate('/adminlogin')
+        }
+      })
+      .catch((err)=>{
+        alert("Error")
+      })
+    }
+
+
+  }
+
   return (
     <div>
       <MainNav/>
@@ -19,17 +100,17 @@ function Userlogin() {
               </Col>
               <Col>
                 <h2 className='user-login-h2'>User Login</h2>
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div>
                     <label className='user-login mt-5 ms-5'>Email</label>
                     <input  
                     className="user-login-textbox ms-5" 
                     type='email'
                     name='email'
-                    // value={data.email}
-                    // onChange={handleChange}
+                    value={data.email}
+                    onChange={handleChange}
                     ></input>
-                    {/* {errors.email && <div className='container ms-5 text-danger'>{errors.email}</div>} */}
+                    {errors.email && <div className='user-login-error mt-2  text-danger'>{errors.email}</div>}
                   </div>
                   <div>
                     <label className='user-login mt-5 ms-5'>Password</label>
@@ -37,10 +118,10 @@ function Userlogin() {
                     className="user-login-textbox ms-2" 
                     type='password'
                     name='password'
-                    // value={data.password}
-                    // onChange={handleChange}
+                    value={data.password}
+                    onChange={handleChange}
                     ></input>
-                    {/* {errors.password && <div className='container me-1 text-danger'>{errors.password}</div>} */}
+                    {errors.password && <div className='user-login-error mt-2 text-danger'>{errors.password}</div>}
                   </div>
                   <div className='mt-3'>
                     <Link to="/user/forgetpswd" className='user-login-forget'>Forget Password?</Link>

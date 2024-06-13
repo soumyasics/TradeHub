@@ -3,6 +3,7 @@ import userforget from '../../assets/images/userforget.png'
 import { useNavigate } from 'react-router-dom';
 import MainNav from '../homeComponents/Navbar/MainNav';
 import Footer from '../Footer/Footer';
+import axiosInstance from '../../apis/axiosInstance';
 function Userforget() {
 
     const[data,setData]=useState({
@@ -55,6 +56,19 @@ function Userforget() {
           }
 
           setErrors(errors);
+
+          if(formValid){
+            axiosInstance.post('/forgotPasswordUser',data)
+            .then((res)=>{
+              console.log(res);
+              alert(res.data.msg)
+              Navigate("/user/login")
+            })
+            .catch((err)=>{
+              console.log(err);
+              alert(err)
+            })
+          }
     }
 
   return (
