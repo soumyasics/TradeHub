@@ -41,7 +41,7 @@ function Adminlogin() {
   }
 
   const handleChange = (e) =>{
-    const {name,value} = e.taget;
+    const {name,value} = e.target;
     setData({
       ...data,[name]:value,
     });

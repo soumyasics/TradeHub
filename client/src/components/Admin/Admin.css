@@ -72,26 +72,46 @@
 
 /* Admin Dashboard */
 
-/* .revenue__box{
-    background: #98FF954F;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-  
-  .order__box{
-    background: #00E2E24F;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-  
-  .products__box{
-    background: #BDB7FF4F;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-  
-  .user__box{
-    background: #FFF38B4F;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  } */
-
-  .admin-dash-div1{
+.admin-dash-div1{
     margin-top: 50px;
-  }
+}
+.admin-dash-revenue-box{
+    background: #0BC2A4;
+    height: 170px;
+    width: 100%;
+    border-radius: 20px;
+}
+.admin-dash-order-box{
+    background-color: #6D6CE4;
+    height: 170px;
+    width: 100%;
+    border-radius: 20px;
+}
+.admin-dash-products-box{
+    background-color: #FAAA1D;
+    height: 170px;
+    width: 100%;
+    border-radius: 20px;
+}
+.admin-dash-user-box{
+    background-color: #FF6172;
+    height: 170px;
+    width: 100%;
+    border-radius: 20px;
+}
+.admin-dash-icon{
+    color: white;
+    margin-top: 40px;
+    margin-left: 20px;
+    height: 70px;
+    width: 70px;
+}
+.admin-dash-span{
+    font-size: 20px;
+    color: white;
+    margin-top: 30px;
+}
+.admin-dash-length{
+    color: white;
+    font-size: 40px;
+}

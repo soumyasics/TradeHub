@@ -76,11 +76,17 @@ function Userlogin() {
       axiosInstance.post('/loginUser',data)
       .then((res)=>{
         if(res.data.status === 200){
+          console.log("Login Successfully");
           alert("Login Successfully")
           navigate('/adminlogin')
         }
+        else{
+          alert("Error")
+          console.log("error");
+        }
       })
       .catch((err)=>{
+        console.log("Error",err);
         alert("Error")
       })
     }
