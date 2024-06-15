@@ -1,3 +1,5 @@
+/* Admin Login */
+
 .admin-login-box{
     width: 90%;
     height: 90vh;
@@ -114,4 +116,25 @@
 .admin-dash-length{
     color: white;
     font-size: 40px;
+} 
+
+/* AdminUserView */
+
+.table-container {
+    padding: 20px;
 }
+  
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.admin-view-user-btn{
+    background-color: #D8C1EB;
+    border-radius: 7px;
+    height: 4vh;
+    width: 10%;
+}
+
+ 
+  
+    
