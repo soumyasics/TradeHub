@@ -39,6 +39,10 @@ const userSchema=mongoose.Schema({
     },
     profile:{
         type:Object
+    },
+    isActive:{
+        type:Boolean,
+        default:true
     }
 });
 module.exports=mongoose.model('users',userSchema)
