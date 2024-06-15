@@ -174,15 +174,33 @@ const viewUserById = (req, res) => {
             });
         });
 };
-
-// Delete User by ID
-const deleteUserById = (req, res) => {
-    User.findByIdAndDelete({ _id: req.params.id })
+// View User by ID
+const activateUserById = (req, res) => {
+    User.findById({ _id: req.params.id },{isActive:true})
         .exec()
         .then(data => {
             res.json({
                 status: 200,
-                msg: "Data removed successfully",
+                msg: "Data obtained successfully",
+                data: data
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                status: 500,
+                msg: "No Data obtained",
+                Error: err
+            });
+        });
+};
+// Delete User by ID
+const deActivateUserById = (req, res) => {
+    User.findByIdAndUpdate({ _id: req.params.id },{isActive:false})
+        .exec()
+        .then(data => {
+            res.json({
+                status: 200,
+                msg: "Data updated successfully",
                 data: data
             });
         })
@@ -335,7 +353,8 @@ module.exports = {
     viewUsers,
     editUserById,
     viewUserById,
-    deleteUserById,
+    deActivateUserById,
+    activateUserById,
     forgotPassword,
     resetPassword,
     login,
