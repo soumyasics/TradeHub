@@ -132,7 +132,7 @@ function Userlogin() {
                   <div className='mt-3'>
                     <Link to="/user/forgetpswd" className='user-login-forget'>Forget Password?</Link>
                   </div>
-                  <button type='submit' className='admin-login-btn mt-5' >Login</button>
+                  <button type='submit' className='user-login-btn mt-5' >Login</button>
                     <div className="mt-4 ms-5">
                         <h6 className="text-center">
                        New to TradeHub?{" "}

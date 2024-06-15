@@ -244,7 +244,6 @@ function UserRegister() {
                       ) : (
                         <BiImageAdd size={190} color='grey' className='rounded-circle p-3'
                         />
-                        // <FaRegUser size={80} color='white' className='p-3'/>
                       )}
                       <label className='upload-icon'>
                       <FiEdit2 className='' color='grey'/>
