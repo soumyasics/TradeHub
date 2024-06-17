@@ -76,9 +76,10 @@ function Userlogin() {
       axiosInstance.post('/loginUser',data)
       .then((res)=>{
         if(res.data.status === 200){
-          console.log("Login Successfully");
+          console.log("Login Successfully",res);
           alert("Login Successfully")
-          navigate('/adminlogin')
+          localStorage.setItem('userId',res.data.data._id)
+          navigate('/user/home')
         }
         else{
           alert("Error")
@@ -132,8 +133,8 @@ function Userlogin() {
                   <div className='mt-3'>
                     <Link to="/user/forgetpswd" className='user-login-forget'>Forget Password?</Link>
                   </div>
-                  <button type='submit' className='user-login-btn mt-5' >Login</button>
-                    <div className="mt-4 ms-5">
+                    <button type='submit' className='user-login-btn mt-5' >Login</button>
+                  <div className="mt-4 ms-5">
                         <h6 className="text-center">
                        New to TradeHub?{" "}
                         <Link to="/user/register" className="">

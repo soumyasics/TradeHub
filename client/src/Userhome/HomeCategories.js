@@ -30,6 +30,9 @@ function HomeCategories() {
             <div className='col'>
               <img className='home-category-electronics mt-3' src={furniture} alt='img'></img>
             </div> 
+            <div className='userhome-category'>
+
+            </div>
         </div>
       </div>
     </div>
