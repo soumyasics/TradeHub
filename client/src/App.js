@@ -19,7 +19,7 @@ import UserRegister from "./components/user/UserRegister";
 import AdminSidebar from "./components/admin/AdminSidebar";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminViewallUser from "./components/admin/AdminViewallUser";
-import HomeCategories from "./Userhome/HomeCategories";
+import UserHome from "./Userhome/UserHome";
 
 const App = () => {
   return (
@@ -36,7 +36,7 @@ const App = () => {
           <Route path="/user/profile-edit" element={<UserProfileEdit />} />
           <Route path="/user/forgetpswd" element={<Userforget/>}/>
           <Route path="/user/register" element={<UserRegister/>}/>
-          <Route path="/user/homecategory" element={<HomeCategories/>} />
+          <Route path="/user/home" element={<UserHome/>} />
           
           {/* moderators  */}
           <Route path="/mod/login" element={<ModLogin />} />

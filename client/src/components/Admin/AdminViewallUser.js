@@ -6,6 +6,52 @@ function AdminViewallUser() {
 
   const [data, setData] = useState([])
 
+  const handleActive = (id) => {
+    console.log(id);
+    axiosInstance.post(`/activateUserById/${id}`)
+    .then((res)=>{
+      if(res.data.status === 200){
+        const updatedData = data.map((users) => {
+          if (users._id === id){
+            users.isActive = true;
+          }
+          return users;
+        });
+        setData(updatedData)
+      }
+    })
+    .catch((err) => {
+      console.log("Error",err);
+    })
+  }
+
+  const handleDeactive = (id) => {
+    axiosInstance.post(`/deActivateUserById/${id}`)
+    .then((res) => {
+      if(res.data.status === 200){
+        const updatedData = data.map((users) => {
+          if(users._id === id){
+            users.isActive = false;
+          }
+          return users;
+        })
+        setData(updatedData);
+      }
+    })
+    .catch((err) => {
+      console.log("Error",err);
+    })
+  }
+
+  const toggleUserActiveState = (users) => {
+    if(users.isActive){
+      handleDeactive(users._id)
+    }
+    else{
+      handleActive(users._id)
+    }
+  }
+
   useEffect(() => {
     axiosInstance.post("/viewUsers")
       .then((res) => {
@@ -52,20 +98,21 @@ function AdminViewallUser() {
               </tr>
             </thead>
             <tbody>
-              {data.map((item, index) => (
-                <tr key={item.id}>
+              {data.map((users, index) => (
+                <tr key={users.id}>
                   <td>{index + 1}</td>
-                  <td>{item.firstname} {item.lastname}</td>
-                  <td>{item.gender}</td>
-                  <td>{item.email}</td>
-                  <td>{item.contact}</td>
+                  <td>{users.firstname} {users.lastname}</td>
+                  <td>{users.gender}</td>
+                  <td>{users.email}</td>
+                  <td>{users.contact}</td>
                   <td>
-                    <div>
-                    <label  className="toggle-label">
-                    {item.status ? 'Active' : 'Inactive'}
-                  </label>
-
-                    </div>
+                    <button
+                     className={`toggle-button ${users.isActive ? 'active' : 'inactive'}`} 
+                    onClick={()=>{toggleUserActiveState(users)}}
+                    >
+                      {users.isActive ? 'Active' : 'Inactive'}
+                    </button>
+                    
                   </td>
                 </tr>
               ))}
@@ -77,12 +124,8 @@ function AdminViewallUser() {
           <h1>No data found</h1>
         </div>
       )}
-      <div className="pagination">
-        <span>1 - 10</span>
-        <button>&lt;</button>
-        <button>&gt;</button>
-      </div>
 
+      
     </div>
   )
 }
