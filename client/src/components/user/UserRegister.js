@@ -171,7 +171,7 @@ function UserRegister() {
         console.error('There was an error!', error);
         alert('Error');
       } 
-    }  
+    }   
   }
 
   const handleFileChange = (e) => {

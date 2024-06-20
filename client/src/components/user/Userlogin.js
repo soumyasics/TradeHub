@@ -52,26 +52,7 @@ function Userlogin() {
 
     setErrors(errors);
     setFormIsValid(formIsValid);
-
-    // if(formIsValid){
-    //   axiosInstance.post('/loginUser',data)
-    //   .then(res =>{
-    //     if (res.data.status === 200) {
-    //       console.log("Login Successful");
-    //       alert("Login Successful");
-    //       navigate('/adminlogin')
-    //     }
-    //     else{
-    //       console.log("Login Failed");
-    //       alert("Login Failed");
-    //     }
-    //   })
-    //   .catch(error =>{
-    //     console.error("There was an error!", error);
-    //     alert("Error");
-    //   })
-    // }
-
+    
     if(formIsValid){
       axiosInstance.post('/loginUser',data)
       .then((res)=>{

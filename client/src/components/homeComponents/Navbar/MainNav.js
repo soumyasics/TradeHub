@@ -3,6 +3,9 @@ import './MainNav.css'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from "react-bootstrap/Nav";
 import logos from '../../././../assets/images/logo.png'
+import { Link } from 'react-router-dom';
+import { FaCaretDown } from "react-icons/fa";
+import Dropdown from 'react-bootstrap/Dropdown';
 // import { Link } from 'react-router-dom';
 
 function MainNav() {
@@ -26,18 +29,59 @@ function MainNav() {
               <a href="#about " className="navlink ms-5 me-5 text-decoration-none">
                 <h6 className="nav-about">About</h6>
               </a>
-              
-              <div class="dropdown" style={{ marginRight: "50px" }}>
+                <Dropdown>
+                  <Dropdown.Toggle id='nav-button' className=''>
+                    Login
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Link class="dropdown-item" to="/adminlogin" id="landing-drop-link">
+                      Admin
+                    </Link>
+                    <Link class="dropdown-item" to="/mod/login" id="landing-drop-link">
+                      Moderator
+                    </Link>
+                    <Link class="dropdown-item" to="/user/login" id="landing-drop-link">
+                     User
+                    </Link>
+                    <Link class="dropdown-item" to="/delivery/login" id="landing-drop-link">
+                      Delivery Agent
+                    </Link>
+                  </Dropdown.Menu>
+              </Dropdown>
+              {/* <div class="dropdown" >
                 <button
                   // class="btn btn-outline-success dropdown-toggle rounded-4"
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  id="nav-button"
+                  id=""
                 >
-                  Login
+                  Login <FaCaretDown/>
                 </button>
-              </div>
+                <ul class="dropdown-menu" id="landing-dropdown">
+                  <li>
+                    <Link class="dropdown-item" to="/adminlogin" id="landing-drop-link">
+                      Admin
+                    </Link>
+                  </li>
+                  <li>
+                    <Link class="dropdown-item" to="/mod/login" id="landing-drop-link">
+                      Moderator
+                    </Link>
+                  </li>
+                  <li>
+                    <Link class="dropdown-item" to="/user/login" id="landing-drop-link">
+                     User
+                    </Link>
+                  </li>
+                  <li>
+                    <Link class="dropdown-item" to="/delivery/login" id="landing-drop-link">
+                      Delivery Agent
+                    </Link>
+                  </li>
+                </ul>
+              </div> */}
             </Nav>
           </Navbar.Collapse>
         </div>
