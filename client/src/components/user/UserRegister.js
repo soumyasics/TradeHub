@@ -77,7 +77,7 @@ function UserRegister() {
       return `${fieldName} is required`;
     }
     if(fieldName === "Email" && !value.endsWith("@gmail.com")){
-      return "Email must be a valid Gemail address"
+      return "Email must be a valid Gmail address"
     }
     return '';
   }

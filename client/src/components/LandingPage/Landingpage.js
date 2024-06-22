@@ -23,8 +23,8 @@ function Landingpage() {
             </p>
             <p className='landing-page-para1'>Where perference meets needs, brought right your door</p>
             <div>
-            <button type='button' className='landing-page-button'>Explore Now</button>
-        </div>
+              <button type='button' className='landing-page-button'>Explore Now</button>
+            </div>
         </div>
        
       </div>

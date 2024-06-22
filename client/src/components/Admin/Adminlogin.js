@@ -22,24 +22,6 @@ function Adminlogin() {
 
   const Navigate=useNavigate();
 
-  // const formValidating=(fieldName, value)=>{
-  //   if(!value.trim()){
-  //     return `${fieldName} is required`;
-  //   }
-
-  //   if(fieldName === "Email" && !value.endsWith("@gmail.com")){
-  //     return "Email must be a valid Gmail address";
-  //   }
-
-  //   if(fieldName === "Password"){
-  //     const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z]).{6,}$/;
-  //     if(!passwordRegex.test(value)){
-  //       return "Password must contain at least one number,  one special character, and one capital letter";
-  //     }
-  //   }
-  //   return "";
-  // }
-
   const handleChange = (e) =>{
     const {name,value} = e.target;
     setData({
@@ -51,8 +33,6 @@ function Adminlogin() {
   const handleSubmit = (e) =>{
     e.preventDefault();
     let errors={};
-    // errors.email=formValidating("Email",data.email)
-    // errors.password=formValidating("Password",data.password);
     setErrors(errors);
 
     if(!errors.email && !errors.password ){

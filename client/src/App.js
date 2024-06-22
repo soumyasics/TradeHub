@@ -20,6 +20,8 @@ import AdminSidebar from "./components/admin/AdminSidebar";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminViewallUser from "./components/admin/AdminViewallUser";
 import UserHome from "./Userhome/UserHome";
+import UserNavbar from "./components/homeComponents/Navbar/UserNavbar";
+import Userlanding from "./components/user/Userlanding";
 
 const App = () => {
   return (
@@ -30,13 +32,14 @@ const App = () => {
           {/* <Route path="/" element={<Home />} /> */}
           <Route path="/" element={<Landingpage/>} />
           {/* users  */}
-          <Route path="/user/signup" element={<UserSignup />} />
+
           <Route path="/user/login" element={<Userlogin />} />
           <Route path="/user/profile" element={<UserProfile />} />
           <Route path="/user/profile-edit" element={<UserProfileEdit />} />
           <Route path="/user/forgetpswd" element={<Userforget/>}/>
           <Route path="/user/register" element={<UserRegister/>}/>
           <Route path="/user/home" element={<UserHome/>} />
+          <Route path="/user-landing" element={<Userlanding/>} />
           
           {/* moderators  */}
           <Route path="/mod/login" element={<ModLogin />} />
