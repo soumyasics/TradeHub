@@ -7,7 +7,7 @@ const PORT = 4033;
 const app = express();
 app.use(express.json());
 app.use(cors());
-
+app.use(express.static(`${__dirname}/upload`))
 app.get("/", (req, res) => {
   res.json({ message: "Trade hub home route is working." });
 });

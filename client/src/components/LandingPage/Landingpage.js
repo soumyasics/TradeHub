@@ -10,7 +10,7 @@ function Landingpage() {
   return (
      
     <div>
-      <MainNav/>
+      {/* <MainNav/> */}
     <div className='landing-page-color'>
       <div className='row'>
         <div className='col-5'>

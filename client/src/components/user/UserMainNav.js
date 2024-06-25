@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './User.css'
 import { Link } from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar';
@@ -11,7 +11,13 @@ import { IoMdContact } from "react-icons/io";
 import { ImLoop } from "react-icons/im";
 import { BsChatText } from "react-icons/bs";
 import { IoIosSearch } from "react-icons/io";
+import { Dropdown } from 'react-bootstrap';
 function UserMainNav() {
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
   return (
     <div>
       <div className='usermainnav-page-color'>
@@ -38,7 +44,25 @@ function UserMainNav() {
             <Nav.Link href="" className='me-5'><p className='usermain-navbar-chat mt-3 pt-1'>+Sell</p></Nav.Link>
             <Nav.Link href="" className='me-5'><p className='usermain-navbar-chat mt-3 pt-1'>Points</p></Nav.Link>
             <Nav.Link href="" className='me-5'><ImLoop className='usermain-navbar-iconloop'/></Nav.Link>
-            <Nav.Link href="" className='me-5'><IoMdContact className='usermain-navbar-iconloop'/></Nav.Link>
+            <Dropdown show={showDropdown} onToggle={toggleDropdown}>
+              <Dropdown.Toggle  as="div" onClick={toggleDropdown} className='custom-dropdown-toggle'>
+                <Nav.Link href="" className='me-5 '><IoMdContact className='usermain-navbar-iconloop mt-3'/></Nav.Link>
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Link class="dropdown-item" to="/user/user-profile" id="">
+                  View Profile
+                </Link>
+                <Link class="dropdown-item" to="" id="">
+                  Whishlist
+                </Link>
+                <Link class="dropdown-item" to="" id="">
+                  My Orders
+                </Link>
+                <Link class="dropdown-item" to="" id="">
+                  Logout
+                </Link>
+              </Dropdown.Menu>
+            </Dropdown>
       </Navbar>
       </div>
     </div>

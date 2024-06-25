@@ -22,6 +22,9 @@ import UserNavbar from "./components/homeComponents/Navbar/UserNavbar";
 import Userlanding from "./components/user/Userlanding";
 import UserMainNav from "./components/user/UserMainNav";
 import UserProfile from "./components/user/UserProfile";
+import UserEditProfile from "./components/user/UserEditProfile";
+import UserAddItemToSell from "./components/user/UserAddItemToSell";
+
 
 const App = () => {
   return (
@@ -30,18 +33,16 @@ const App = () => {
         <Routes>
           {/* common  */}
           {/* <Route path="/" element={<Home />} /> */}
-          <Route path="/" element={<Landingpage/>} />
+          <Route path="/" element={<Userlanding/>} />
           {/* users  */}
 
           <Route path="/user/login" element={<Userlogin />} />
-          {/* <Route path="/user/profile" element={<UserProfile />} /> */}
-          {/* <Route path="/user/profile-edit" element={<UserProfileEdit />} /> */}
           <Route path="/user/forgetpswd" element={<Userforget/>}/>
           <Route path="/user/register" element={<UserRegister/>}/>
           <Route path="/user/home" element={<UserHome/>} />
-          <Route path="/user-landing" element={<Userlanding/>} />
-          <Route path="/user-mainnavbar" element={<UserMainNav/>}/>
           <Route path="/user/user-profile" element={<UserProfile/>} />
+          <Route path="/user/user-editprofile/:id" element={<UserEditProfile/>} />
+          <Route path="/user/additemtosell" element={<UserAddItemToSell/>} />
           
           {/* moderators  */}
           <Route path="/mod/login" element={<ModLogin />} />
