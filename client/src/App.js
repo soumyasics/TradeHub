@@ -7,8 +7,6 @@ import ModLogin from "./pages/moderator/modLogin/modLogin";
 import DeliveryLogin from "./pages/delivery/deliveryLogin/deliveryLogin";
 import ModSignup from "./pages/moderator/modSignup/modSignup";
 import DelSignup from "./pages/delivery/deliverySignup/delSignup";
-import { UserProfile } from "./components/user/userProile/userProfile";
-import { UserProfileEdit } from "./components/user/userProfileEdit/userProfileEdit";
 import Landingpage from "./components/LandingPage/Landingpage";
 import Adminlogin from "./components/admin/Adminlogin";
 import MainNav from "./components/homeComponents/Navbar/MainNav";
@@ -20,6 +18,13 @@ import AdminSidebar from "./components/admin/AdminSidebar";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminViewallUser from "./components/admin/AdminViewallUser";
 import UserHome from "./Userhome/UserHome";
+import UserNavbar from "./components/homeComponents/Navbar/UserNavbar";
+import Userlanding from "./components/user/Userlanding";
+import UserMainNav from "./components/user/UserMainNav";
+import UserProfile from "./components/user/UserProfile";
+import UserEditProfile from "./components/user/UserEditProfile";
+import UserAddItemToSell from "./components/user/UserAddItemToSell";
+
 
 const App = () => {
   return (
@@ -28,15 +33,16 @@ const App = () => {
         <Routes>
           {/* common  */}
           {/* <Route path="/" element={<Home />} /> */}
-          <Route path="/" element={<Landingpage/>} />
+          <Route path="/" element={<Userlanding/>} />
           {/* users  */}
-          <Route path="/user/signup" element={<UserSignup />} />
+
           <Route path="/user/login" element={<Userlogin />} />
-          <Route path="/user/profile" element={<UserProfile />} />
-          <Route path="/user/profile-edit" element={<UserProfileEdit />} />
           <Route path="/user/forgetpswd" element={<Userforget/>}/>
           <Route path="/user/register" element={<UserRegister/>}/>
           <Route path="/user/home" element={<UserHome/>} />
+          <Route path="/user/user-profile" element={<UserProfile/>} />
+          <Route path="/user/user-editprofile/:id" element={<UserEditProfile/>} />
+          <Route path="/user/additemtosell" element={<UserAddItemToSell/>} />
           
           {/* moderators  */}
           <Route path="/mod/login" element={<ModLogin />} />
