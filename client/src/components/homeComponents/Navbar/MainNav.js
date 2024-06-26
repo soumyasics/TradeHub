@@ -3,6 +3,7 @@ import './MainNav.css'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from "react-bootstrap/Nav";
 import logos from '../../././../assets/images/logo.png'
+import { Link } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 function MainNav() {
@@ -35,7 +36,7 @@ function MainNav() {
                   aria-expanded="false"
                   id="nav-button"
                 >
-                  Login
+                 <Link to='/user/login'> Login</Link>
                 </button>
               </div>
             </Nav>
