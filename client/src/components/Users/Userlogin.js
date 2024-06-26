@@ -52,33 +52,15 @@ function Userlogin() {
 
     setErrors(errors);
     setFormIsValid(formIsValid);
-
-    // if(formIsValid){
-    //   axiosInstance.post('/loginUser',data)
-    //   .then(res =>{
-    //     if (res.data.status === 200) {
-    //       console.log("Login Successful");
-    //       alert("Login Successful");
-    //       navigate('/adminlogin')
-    //     }
-    //     else{
-    //       console.log("Login Failed");
-    //       alert("Login Failed");
-    //     }
-    //   })
-    //   .catch(error =>{
-    //     console.error("There was an error!", error);
-    //     alert("Error");
-    //   })
-    // }
-
+    
     if(formIsValid){
       axiosInstance.post('/loginUser',data)
       .then((res)=>{
         if(res.data.status === 200){
-          console.log("Login Successfully");
+          console.log("Login Successfully",res);
           alert("Login Successfully")
-          navigate('/adminlogin')
+          localStorage.setItem('userId',res.data.data._id)
+          navigate('/user/home')
         }
         else{
           alert("Error")
@@ -94,7 +76,7 @@ function Userlogin() {
 
   }
 
-  return (
+  return (   
     <div>
       <MainNav/>
       <div>
@@ -132,17 +114,17 @@ function Userlogin() {
                   <div className='mt-3'>
                     <Link to="/user/forgetpswd" className='user-login-forget'>Forget Password?</Link>
                   </div>
-                  <button type='submit' className='user-login-btn mt-5' >Login</button>
-                    <div className="mt-4 ms-5">
+                    <button type='submit' className='user-login-btn mt-5' >Login</button>
+                  <div className="mt-4 ms-5">
                         <h6 className="text-center">
                        New to TradeHub?{" "}
                         <Link to="/user/register" className="">
                             Register Now
                         </Link>
                     </h6>
-              </div>
+                  </div>
                 </form>
-              </Col>
+              </Col> 
             </Row>
         </div>
       </div>

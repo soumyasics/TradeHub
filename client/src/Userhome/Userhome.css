@@ -2,6 +2,9 @@
     width: 186px;
     height: 255px;
     gap: 0px;
-    border-radius: 20px 0px 0px 0px;
+    border-radius: 20px;
     opacity: 0px;
+}
+.userhome-category{
+    margin-bottom: 30px;
 }

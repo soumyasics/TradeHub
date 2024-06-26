@@ -1,5 +1,5 @@
 .nav-page-color{
-    background-color:#6D3698;
+    background: linear-gradient(109.33deg, #662C93 1.13%, rgba(102, 44, 147, 0.7) 99.15%);
     height:10vh;
     width: 100%;
 }
@@ -24,8 +24,8 @@
     margin-left: 15px;
     background-color: white;
     border-color: bl;
-    color: black;
-    height: 30px;
+    color: #6D3698;
+    height: 35px;
     width: 100px;
     font-size: 20px;
     border: 16px;
@@ -46,3 +46,56 @@
     height: 40px;
     width: 50px;
 }
+
+/* UserNav Bar */
+
+.usernav-page-color{
+    background: linear-gradient(109.33deg, #662C93 1.13%, rgba(102, 44, 147, 0.7) 99.15%);
+    height:10vh;
+    width: 100%;
+}
+.usernav-page-trade{
+    color:#E959C1 ;
+    font-size: 30px;
+    margin-left: 10px;
+}
+.usernav-page-hub{
+    color: #16A72D;
+    font-size: 30px;
+}
+.usernav-about{
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 20px;
+    padding: 15px;
+}
+#usernav-button{
+    text-align: center;
+    margin-left: 15px;
+    background-color: white;
+    border-color: bl;
+    color: #6D3698;
+    height: 35px;
+    width: 100px;
+    font-size: 20px;
+    border: 16px;
+    margin-top: 10px;
+    font-weight: 500;
+    border-radius: 20px;
+}
+.usernav-page-trade{
+    color:#E959C1 ;
+    font-size: 30px;
+    margin-left: 10px;
+}
+.usernav-page-hub{
+    color: #16A72D;
+    font-size: 30px;
+}
+.userlogoimg{
+    height: 40px;
+    width: 50px;
+}
+
+
