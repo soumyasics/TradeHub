@@ -1,29 +1,26 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/common/home";
-import UserSignup from "./pages/user/userSignup/userSignup";
-import UserLogin from "./pages/user/userLogin/userLogin";
 import ModLogin from "./pages/moderator/modLogin/modLogin";
 import DeliveryLogin from "./pages/delivery/deliveryLogin/deliveryLogin";
 import ModSignup from "./pages/moderator/modSignup/modSignup";
 import DelSignup from "./pages/delivery/deliverySignup/delSignup";
-import Landingpage from "./components/LandingPage/Landingpage";
 import Adminlogin from "./components/admin/Adminlogin";
-import MainNav from "./components/homeComponents/Navbar/MainNav";
-import Footer from "./components/Footer/Footer";
-import Userlogin from "./components/user/Userlogin";
-import Userforget from "./components/user/Userforget";
-import UserRegister from "./components/user/UserRegister";
+
 import AdminSidebar from "./components/admin/AdminSidebar";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminViewallUser from "./components/admin/AdminViewallUser";
+import Userlanding from "./components/Users/Userlanding";
+import Userforget from "./components/Users/Userforget";
+import UserRegister from "./components/Users/UserRegister";
 import UserHome from "./Userhome/UserHome";
-import UserNavbar from "./components/homeComponents/Navbar/UserNavbar";
-import Userlanding from "./components/user/Userlanding";
-import UserMainNav from "./components/user/UserMainNav";
-import UserProfile from "./components/user/UserProfile";
-import UserEditProfile from "./components/user/UserEditProfile";
-import UserAddItemToSell from "./components/user/UserAddItemToSell";
+import UserProfile from "./components/Users/UserProfile";
+import UserEditProfile from "./components/Users/UserEditProfile";
+import UserAddItemToSell from "./components/Users/UserAddItemToSell";
+import UserViewItemToBuy from "./components/Users/UserViewItemToBuy";
+import Userlogin from "./components/Users/Userlogin";
+import ModeratorRegister from "./components/Moderator/ModeratorRegister";
+import Moderatorlogin from "./components/Moderator/Moderatorlogin";
+import Moderatorforget from "./components/Moderator/Moderatorforget";
 
 
 const App = () => {
@@ -32,21 +29,25 @@ const App = () => {
       <BrowserRouter basename="tradehub">
         <Routes>
           {/* common  */}
-          {/* <Route path="/" element={<Home />} /> */}
-          <Route path="/" element={<Userlanding/>} />
-          {/* users  */}
+          <Route path="/" element={<Userlanding/>}/>
 
-          <Route path="/user/login" element={<Userlogin />} />
+          {/* users  */}
+          <Route path="/user/login" element={<Userlogin/>}/>
           <Route path="/user/forgetpswd" element={<Userforget/>}/>
           <Route path="/user/register" element={<UserRegister/>}/>
-          <Route path="/user/home" element={<UserHome/>} />
-          <Route path="/user/user-profile" element={<UserProfile/>} />
-          <Route path="/user/user-editprofile/:id" element={<UserEditProfile/>} />
-          <Route path="/user/additemtosell" element={<UserAddItemToSell/>} />
+          <Route path="/user/home" element={<UserHome/>}/>
+          <Route path="/user/user-profile" element={<UserProfile/>}/>
+          <Route path="/user/user-editprofile/:id" element={<UserEditProfile/>}/>
+          <Route path="/user/additemtosell" element={<UserAddItemToSell/>}/>
+          <Route path="/user/viewitemtobuy" element={<UserViewItemToBuy/>}/>
+          
           
           {/* moderators  */}
-          <Route path="/mod/login" element={<ModLogin />} />
-          <Route path="/mod/signup" element={<ModSignup />} />
+          {/* <Route path="/mod/login" element={<ModLogin />} />
+          <Route path="/mod/signup" element={<ModSignup />} /> */}
+          <Route path="/moderator/register" element={<ModeratorRegister/>} />
+          <Route path="/moderator/login" element={<Moderatorlogin/>}/>
+          <Route path="/moderator/forgetpassword" element={<Moderatorforget/>}/>
 
           {/* delivery  */}
           <Route path="/delivery/signup" element={<DelSignup />} />

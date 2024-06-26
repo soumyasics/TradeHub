@@ -3,7 +3,8 @@ import MainNav from '../components/homeComponents/Navbar/MainNav'
 import Landingpage from '../components/LandingPage/Landingpage'
 import HomeCategories from './HomeCategories'
 import Footer from '../components/Footer/Footer'
-import UserMainNav from '../components/user/UserMainNav'
+import UserMainNav from '../components/Users/UserMainNav'
+
 
 function UserHome() {
   return (
@@ -14,8 +15,8 @@ function UserHome() {
         <HomeCategories/>
         <Footer/>
       </div>
-    </div>
-  )
+    </div>   
+  )  
 }
 
 export default UserHome

@@ -7,6 +7,7 @@ import { FiEdit2} from "react-icons/fi";
 import { BiImageAdd } from "react-icons/bi";
 import { FaPlus } from "react-icons/fa6";
 import dp from '../../assets/images/dp.jpg'
+import Footer from '../Footer/Footer';
 
 function UserAddItemToSell() {
 
@@ -45,26 +46,6 @@ function UserAddItemToSell() {
     location:""
   })
   let formIsValid=false
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-    // // if (type === 'file') {
-    // //   const file = files[0];
-    // //   setData((prevData) => ({
-    // //     ...prevData,
-    // //     [name]: file,
-    // //   }));
-    // // }else {
-    //   setData((prevData) => ({
-    //     ...prevData,
-    //     [name]: value,
-    //   }));
-    // // }
-  //   setData({
-  //     ...data,[name]:value,
-  //   });
-  //   setErrors((prevErrors) => ({...prevErrors,[name]:""}));
-  // }
 
   const handleChange = (e) =>{
     const { name, value } = e.target;
@@ -114,8 +95,8 @@ function UserAddItemToSell() {
     e.preventDefault();
     console.log(data);
 
-    // let errors={};
-    // let formIsValid=true;
+    let errors={};
+    let formIsValid=true;
 
     errors.category=validateField("Category",data.category)
     errors.image=validateImageField("Image",data.image)
@@ -125,13 +106,13 @@ function UserAddItemToSell() {
     errors.pincode=validatePincode("Pincode",data.pincode)
     errors.district=validateField("District",data.district)
     errors.location=validateField("Location",data.location)
-    // setErrors(errors);
+    setErrors(errors);
 console.log(errors);
 for (let key in errors) {
   if (errors[key]) {
     formIsValid = false;
     break;
-  }
+  }    
 }
   }
 
@@ -154,7 +135,7 @@ for (let key in errors) {
                         
                         <select className='ms-5 useradd-itemtosell-select'
                         name='category'
-                        // value={data.category}
+                        value={data.category}
                         onChange={handleChange}>
                           <option>Select</option>
                           <option>Books</option>
@@ -359,7 +340,7 @@ for (let key in errors) {
                               name='address'
                               value={data.address}
                               onChange={handleChange}></input>
-                              {errors.address && <span  className='text-danger'>{errors.address}</span>}
+                              {errors.address && <span  className='text-danger text-center'>{errors.address}</span>}
                             </div>
                             <div className='container mt-5  '>
                               <input type='text' 
@@ -368,7 +349,7 @@ for (let key in errors) {
                               name='pincode'
                               value={data.pincode}
                               onChange={handleChange}></input>  
-                              {errors.pincode && <span  className='text-danger'>{errors.pincode}</span>}                       
+                              {errors.pincode && <span  className='text-danger text-center'>{errors.pincode}</span>}                       
                             </div>
                             <div className='container mt-5  '>
                               <input type='text' 
@@ -399,6 +380,7 @@ for (let key in errors) {
             </form>
         </div>
       </div>
+      <Footer/>
     </div>
   )
 }

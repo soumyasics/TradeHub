@@ -76,7 +76,7 @@ function Userlogin() {
 
   }
 
-  return (
+  return (   
     <div>
       <MainNav/>
       <div>
@@ -122,9 +122,9 @@ function Userlogin() {
                             Register Now
                         </Link>
                     </h6>
-              </div>
+                  </div>
                 </form>
-              </Col>
+              </Col> 
             </Row>
         </div>
       </div>

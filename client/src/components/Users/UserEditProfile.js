@@ -56,7 +56,7 @@ function UserEditProfile() {
         formData.append('contact', data.contact);
         if (profileImage) {
             formData.append('profile', profileImage);
-        }
+        }  
 
         try {
             const res = await axiosMultipartInstance.post(`/editUserById/${id}`, formData);
