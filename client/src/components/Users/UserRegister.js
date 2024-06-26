@@ -155,7 +155,7 @@ function UserRegister() {
       formData.append('file',data.profile);
       formData.append('password',data.password)
       formData.append('gender',data.gender)
-
+    
       try{
         const res = await axiosMultipartInstance.post('/registerUser',data);
         console.log(res);
@@ -292,7 +292,7 @@ function UserRegister() {
                         {errors.checkbox && <span className='text-danger'>{errors.checkbox}</span>}
                       </div>
                       
-                  <div>
+                  <div className='text-center'>
                     <button type='submit' className='user-register-btn mt-4'>Register</button>
                   </div>
                 </div>

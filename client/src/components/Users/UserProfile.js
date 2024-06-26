@@ -71,10 +71,10 @@ function UserProfile() {
                 </div>
                 <div className='col-2'></div>
             </div>
-        
+          
       </div>
     </div>  
-  )
+  )  
 }
 
 export default UserProfile
