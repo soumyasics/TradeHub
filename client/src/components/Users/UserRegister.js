@@ -182,12 +182,12 @@ function UserRegister() {
   return (
     <div>
       <MainNav/>
-      <div className='user-register-box container'>
+      <div className='user-register-box container mb-5 mt-4 pb-5'>
         <div className='row'>
-            <div className='col-4'>
+            <div className='col-5'>
                 <img className='user-register-img' src={userreg} alt="img"></img>
             </div>
-            <div className='col-8'>
+            <div className='col-7'>
               <form onSubmit={handleSubmit}>
                 <div className='row'>
                   <div className='col container '>

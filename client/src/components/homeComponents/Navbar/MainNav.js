@@ -38,7 +38,7 @@ function MainNav() {
                     <Link class="dropdown-item" to="/adminlogin" id="landing-drop-link">
                       Admin
                     </Link>
-                    <Link class="dropdown-item" to="/mod/login" id="landing-drop-link">
+                    <Link class="dropdown-item" to="/moderator/login" id="landing-drop-link">
                       Moderator
                     </Link>
                     <Link class="dropdown-item" to="/user/login" id="landing-drop-link">
