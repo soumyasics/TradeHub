@@ -126,7 +126,7 @@ for (let key in errors) {
         <div className='text-center useradd-itemtosell-div'>
             ADD ITEM TO SELL
         </div>
-        <div className='useradd-itemtosell-box container'>
+        <div className='useradd-itemtosell-box container mt-4'>
             <form  onSubmit={handleSubmit}>
                 <div className='row'>
                     <div className='col mt-5 ' style={{position:'relative'}}>

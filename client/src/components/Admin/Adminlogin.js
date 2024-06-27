@@ -40,6 +40,7 @@ function Adminlogin() {
       console.log(values);
       if(mail== data.email && pass==data.password){
         alert("Loggedin Successfully");
+        Navigate("/admin/dashboard")
       }
       else{
         alert("Username or password is incorrect")
@@ -50,11 +51,11 @@ function Adminlogin() {
   return (
     <div>
       <MainNav/>
-      <div className='container admin-login-box'>
-        <div className=' admin-login-box1'>
+      <div className='container admin-login-box mb-5 mt-5'>
+        <div className=' admin-login-box1 '>
             <Row>
               <Col className='container'>
-                <img className="admin-login-img mt-5" src={adminlogin} alt='img'></img>
+                <img className="admin-login-img" src={adminlogin} alt='img'></img>
               </Col>
               <Col>
                 <h2 className='admin-login-h2'>Admin Login</h2>
@@ -62,7 +63,7 @@ function Adminlogin() {
                   <div>
                     <label className='admin-login mt-5 ms-5'>Email</label>
                     <input  
-                    className="admin-login-textbox ms-5" 
+                    className="admin-login-textbox ms-5 ps-3" 
                     type='email'
                     name='email'
                     value={data.email}
@@ -74,7 +75,7 @@ function Adminlogin() {
                   <div>
                     <label className='admin-login mt-5 ms-5'>Password</label>
                     <input  
-                    className="admin-login-textbox ms-2" 
+                    className="admin-login-textbox ms-2 ps-3" 
                     type='password'
                     name='password'
                     value={data.password}
