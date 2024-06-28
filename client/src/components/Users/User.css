@@ -1,15 +1,24 @@
 /* UserLogin */
+
 .user-login-box{
-    width: 90%;
-    height: 90vh;
+    width: 100%;
+    height: 606px;
+    top: 166px;
+    left: 132px;
+    gap: 0px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+    border: 1px solid #6D3698;
+    box-shadow: 0px 4px 4px 0px #00000040;
+
 }
 .user-login-box1{
     border-color: black;
 }
 .user-login-img{
-    height:75vh;
+    height: 604px;
     width: 100%;
-    border-color: black;
+    margin-left: -12px;
 }
 .user-login-h2{
     text-align: center;
@@ -31,7 +40,6 @@
     width: 150px;
     border-radius: 20px;
     border: none;
-    margin-left: 290px;
 }
 .user-login-forget{
     color: #6D3698;
@@ -45,13 +53,20 @@
 /* User Forget Password */
 
 .user-forget-img{
-    height:75vh;
+    height: 604px;
     width: 100%;
+    margin-left: -12px;
 }
 .user-forget-box{
-    margin-top: 75px;
-    width: 90%;
-    height: 90vh;
+    width: 1161px;
+    height: 606px;
+    top: 149px;
+    left: 130px;
+    gap: 0px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    border: 1px solid #6D3698;    
 }
 .user-forget-textbox{
     height: 50px;
@@ -66,7 +81,6 @@
     background-color: #6D3698;
     height: 50px;
     width: 30%;
-    margin-left: 200px;
     border: none;
     color: white;
     border-radius: 26px;
@@ -79,13 +93,20 @@
 /* User Register */
 
 .user-register-img{
-    height:90vh;
+    height: 788px;
     width: 100%;
+    margin-left: -12px;
 }
 .user-register-box{
-    margin-top: 75px;
-    width: 90%;
-    height: 100vh;
+    width: 100%;
+    height: 790px;
+    top: 166px;
+    left: 132px;
+    gap: 0px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+    border: 1px solid #6D3698;
+    box-shadow: 0px 4px 4px 0px #00000040;
 }
 .user-register-textbox{
     height: 50px;
@@ -426,6 +447,17 @@
     border-radius: 20px;
     font-size: 30px;
     box-shadow: 0px 3.42px 3.42px 0px #00000040;
+}
+.useradd-itemtosell-box{
+    width: 100%;
+    height: 120vh;
+    top: 262px;
+    left: 147px;
+    gap: 0px;
+    border: 0.86px 0px 0px 0px;
+    opacity: 0px;
+    border: 0.86px solid #6D3698;
+    box-shadow: 3.42px 0px 3.42px 0px #00000040;
 }
 
 /* UserView ItemToBuy */
