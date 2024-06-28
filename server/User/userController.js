@@ -106,7 +106,7 @@ const viewUsers = (req, res) => {
 // Update User by ID
 const editUserById =async (req, res) => {
     let flag=0
-    const { firstname, lastname,  gender,contact, email } = req.body;
+    const { firstname, lastname,  gender,contact, email} = req.body;
     let existingUser = await User.find({ contact });
     let UserData = await User.findById({  _id: req.params.id  });
 await existingUser.map(x=>{
@@ -123,13 +123,8 @@ if(flag==0){
         lastname,
         contact,
         email,
-        dob,
         gender,
-        housename,
-        street,
-        state,
-        nationality,
-        pincode
+        profile:req.file
     })
         .exec()
         .then(data => {

@@ -76,15 +76,15 @@ function Userlogin() {
 
   }
 
-  return (
+  return (   
     <div>
       <MainNav/>
       <div>
-      <div className='container user-login-box'>
+      <div className='container user-login-box mb-5 mt-5'>
         <div className=' user-login-box1'>
             <Row>
               <Col className='container'>
-                <img className="user-login-img mt-5" src={adminlogin} alt='img'></img>
+                <img className="user-login-img" src={adminlogin} alt='img'></img>
               </Col>
               <Col>
                 <h2 className='user-login-h2'>User Login</h2>
@@ -92,7 +92,8 @@ function Userlogin() {
                   <div>
                     <label className='user-login mt-5 ms-5'>Email</label>
                     <input  
-                    className="user-login-textbox ms-5" 
+                    className="user-login-textbox ms-5 ps-3" 
+                    placeholder='Email'
                     type='email'
                     name='email'
                     value={data.email}
@@ -103,7 +104,8 @@ function Userlogin() {
                   <div>
                     <label className='user-login mt-5 ms-5'>Password</label>
                     <input  
-                    className="user-login-textbox ms-2" 
+                    className="user-login-textbox ms-2 ps-3" 
+                    placeholder='Password'
                     type='password'
                     name='password'
                     value={data.password}
@@ -114,7 +116,9 @@ function Userlogin() {
                   <div className='mt-3'>
                     <Link to="/user/forgetpswd" className='user-login-forget'>Forget Password?</Link>
                   </div>
+                  <div className='text-center'>
                     <button type='submit' className='user-login-btn mt-5' >Login</button>
+                  </div>
                   <div className="mt-4 ms-5">
                         <h6 className="text-center">
                        New to TradeHub?{" "}
@@ -122,9 +126,9 @@ function Userlogin() {
                             Register Now
                         </Link>
                     </h6>
-              </div>
+                  </div>
                 </form>
-              </Col>
+              </Col> 
             </Row>
         </div>
       </div>

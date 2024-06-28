@@ -77,7 +77,7 @@ function UserRegister() {
       return `${fieldName} is required`;
     }
     if(fieldName === "Email" && !value.endsWith("@gmail.com")){
-      return "Email must be a valid Gemail address"
+      return "Email must be a valid Gmail address"
     }
     return '';
   }
@@ -155,7 +155,7 @@ function UserRegister() {
       formData.append('file',data.profile);
       formData.append('password',data.password)
       formData.append('gender',data.gender)
-
+    
       try{
         const res = await axiosMultipartInstance.post('/registerUser',data);
         console.log(res);
@@ -164,7 +164,7 @@ function UserRegister() {
             navigate('/user/login')
         }
         else{
-          alert("Registeration is failed")
+          alert(`Registeration is failed : ${res.data.msg}`)
         }
       }
       catch(error){
@@ -182,12 +182,12 @@ function UserRegister() {
   return (
     <div>
       <MainNav/>
-      <div className='user-register-box container'>
+      <div className='user-register-box container mb-5 mt-4 pb-5'>
         <div className='row'>
-            <div className='col-4'>
+            <div className='col-5'>
                 <img className='user-register-img' src={userreg} alt="img"></img>
             </div>
-            <div className='col-8'>
+            <div className='col-7'>
               <form onSubmit={handleSubmit}>
                 <div className='row'>
                   <div className='col container '>
@@ -225,9 +225,9 @@ function UserRegister() {
                       {errors.email && <span className='text-danger'>{errors.email}</span>}
                     </div>
                     <div>
-                      <label className='user-register-label mt-4'>Phone no</label>
+                      <label className='user-register-label mt-4'>Phone number</label>
                       <input type='text' 
-                      placeholder='contact' 
+                      placeholder='Phone number' 
                       className='user-register-textbox mt-2'
                       value={data.contact}
                       name='contact'
@@ -292,7 +292,7 @@ function UserRegister() {
                         {errors.checkbox && <span className='text-danger'>{errors.checkbox}</span>}
                       </div>
                       
-                  <div>
+                  <div className='text-center'>
                     <button type='submit' className='user-register-btn mt-4'>Register</button>
                   </div>
                 </div>

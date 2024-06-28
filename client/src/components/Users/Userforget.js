@@ -54,7 +54,7 @@ function Userforget() {
             formValid = false;
             errors.confirmpassword = "Passwords do not match";
           }
-
+   
           setErrors(errors);
 
           if(formValid){
@@ -74,7 +74,7 @@ function Userforget() {
   return (
     <div>
       <MainNav/>
-      <div className='user-forget-box container'>
+      <div className='user-forget-box container mb-5 mt-5'>
         <div className='row'>
             <div className='col'>
                 <img className='user-forget-img' src={userforget} alt='img'></img>
@@ -116,7 +116,7 @@ function Userforget() {
                             {errors.confirmpassword && <div className='user-forget-div text-danger'>{errors.confirmpassword}</div>}
                         </div>
                     </div>
-                    <div>
+                    <div className='text-center'>
                         <button type='submit' className='user-forget-btn mt-5'>
                             Submit
                         </button>
