@@ -26,7 +26,7 @@ function UserMainNav() {
   }
   return (
     <div>
-      <div className="usermainnav-page-color">
+      <div className="usermainnav-page-color ">
         <Navbar collapseOnSelect expand="lg" className="d-flex justify-content-between pe-5" id="navfixed">
           <div className="col-2">
             <Navbar.Brand href="/" className="toggleimg">
@@ -44,12 +44,8 @@ function UserMainNav() {
             />
           </Form> */}
           
-          <Nav.Link href="" className="me-5 ">
-            <p className="usermain-navbar-home mt-3 ">Home</p>
-          </Nav.Link>
-          <Nav.Link href="" className="me-5">
             <p className="usermain-navbar-home mt-3 ">About</p>
-          </Nav.Link>
+            <p className="usermain-navbar-home mt-3 ">Home</p>
           {/* <Nav.Link href="" className='me-5'><p className='usermain-navbar-home mt-3 '>My Items</p></Nav.Link> */}
           {/* <Nav.Link href="" className="me-5">
             <p className="usermain-navbar-chat mt-3 pt-1">
@@ -85,7 +81,7 @@ function UserMainNav() {
               <Link className="dropdown-item" to="" id="">
                 My Orders
               </Link>
-              <h6 className="dropdown-item bg-danger text-light" to="" id="" onClick={handleUserLogout} >
+              <h6 className="dropdown-item  text-light" to="" id="" onClick={handleUserLogout} >
                 Logout
               </h6>
             </Dropdown.Menu>
