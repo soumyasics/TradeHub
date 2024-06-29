@@ -10,9 +10,9 @@ function UserNavbar() {
     <div>
       <div className='usernav-page-color'>
       <Navbar collapseOnSelect expand="lg" className="" id="navfixed">
-        <div className="col-7">
+        <div className="col-6">
           <Navbar.Brand href="/" className="toggleimg">
-            <img src={logos} className="logoimg ms-3" alt="img"></img>
+            <img src={logos} style={{width: "30px", height: "30px"}} className="logoimg ms-3" alt="img"></img>
             <span  className='usernav-page-trade'>trade</span> <span className='usernav-page-hub'>hub</span>
           </Navbar.Brand>
         </div>
