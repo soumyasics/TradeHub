@@ -44,7 +44,7 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
             <li>
               <TbTrolley /> Delivery Agent
             </li>
-            <li>
+            <li onClick={() => changeSelectedPage("view-moderators")}>
               <MdAddModerator /> Moderator
             </li>
             <li>
