@@ -21,6 +21,7 @@ import Moderatorlogin from "./components/moderator/Moderatorlogin";
 import Moderatorforget from "./components/moderator/Moderatorforget";
 import { AdminDashboard } from "./components/admin/AdminDashboard";
 import {Toaster} from 'react-hot-toast'
+import { ModeratorHome } from "./pages/common/home";
 const App = () => {
   return (
     <div className="App">
@@ -44,10 +45,10 @@ const App = () => {
           <Route path="/user/viewitemtobuy" element={<UserViewItemToBuy />} />
 
           {/* moderators  */}
-          {/* <Route path="/mod/login" element={<ModLogin />} />
-          <Route path="/mod/signup" element={<ModSignup />} /> */}
+
           <Route path="/moderator/register" element={<ModeratorRegister />} />
           <Route path="/moderator/login" element={<Moderatorlogin />} />
+          <Route path="/moderator/home" element={<ModeratorHome />} />
           <Route
             path="/moderator/forgetpassword"
             element={<Moderatorforget />}

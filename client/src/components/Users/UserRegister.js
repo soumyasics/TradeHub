@@ -3,7 +3,7 @@ import userreg from "../../assets/images/userreg.png";
 import userregimg from "../../assets/images/userregimg.png";
 import MainNav from "../homeComponents/Navbar/MainNav";
 import Footer from "../Footer/Footer";
-import axiosMultipartInstance from "../../apis/axiosMultipartInstance";
+import {axiosMultipartInstance} from "../../apis/axiosMultipartInstance";
 import { Navigate, useNavigate } from "react-router-dom";
 import { BiImageAdd } from "react-icons/bi";
 import { FiEdit2 } from "react-icons/fi";
@@ -172,10 +172,10 @@ function UserRegister() {
       const res = await axiosMultipartInstance.post("/registerUser", data);
       console.log("user regsit", res);
       if (res.data.status === 200) {
-        alert("Register SuccessFully");
+        toast.success("Registration Successfull");
         navigate("/user/login");
       } else {
-        alert(`Registeration is failed : ${res.data.msg}`);
+        toast.error(`Registeration is failed : ${res.data.msg}`);
       }
     } catch (error) {
       console.error("There was an error!", error);

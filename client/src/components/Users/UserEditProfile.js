@@ -6,7 +6,7 @@ import dp from '../../assets/images/dp.jpg';
 import { Link } from 'react-router-dom';
 import axiosInstance from '../../apis/axiosInstance';
 import { BASE_URL } from '../../apis/baseURL';
-import axiosMultipartInstance from '../../apis/axiosMultipartInstance';
+import {axiosMultipartInstance} from '../../apis/axiosMultipartInstance';
 
 function UserEditProfile() {
     const [data, setData] = useState({

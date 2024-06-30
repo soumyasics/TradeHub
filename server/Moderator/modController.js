@@ -314,11 +314,11 @@ const login = (req, res) => {
   Moderator.findOne({ email })
     .then(user => {
       if (!user) {
-        return res.json({ status: 405, msg: 'User not found' });
+        return res.json({ status: 405, msg: 'Please check your email and password' });
       }
 
       if (user.password !== password) {
-        return res.json({ status: 405, msg: 'Password mismatch!' });
+        return res.json({ status: 405, msg: 'Please check your email and password!' });
       }
 
       const token = createToken(user);
@@ -326,7 +326,8 @@ const login = (req, res) => {
       res.json({
         status: 200,
         data: user,
-        token,
+        msg: 'Login successful',
+        token
       });
     })
     .catch(err => {

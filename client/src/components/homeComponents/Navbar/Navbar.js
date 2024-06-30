@@ -3,6 +3,7 @@ import styles from "./Navbar.module.css";
 import tradeHubLogo from "../../../assets/images/trade-hub-logo.png";
 
 import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const Navbar = ({ hamActive, setHamActive }) => {
   const navigate = useNavigate();
@@ -12,8 +13,8 @@ const Navbar = ({ hamActive, setHamActive }) => {
     setHamActive(!hamActive);
   };
 
-  const redirectSignup = () => {
-    navigate("/user/signup");
+  const redirectModLogin = () => {
+    navigate("/moderator/login");
   };
 
   const redirectLogin = () => {
@@ -44,13 +45,9 @@ const Navbar = ({ hamActive, setHamActive }) => {
               Help
             </p>
           </div>
+
           <div>
-            <a className={styles.login} onClick={redirectLogin}>
-              Log in
-            </a>
-            <button className={styles.signup} onClick={redirectSignup}>
-              Sign Up
-            </button>
+            <Button onClick={redirectModLogin} variant="danger">Logout</Button>
           </div>
         </div>
       </div>

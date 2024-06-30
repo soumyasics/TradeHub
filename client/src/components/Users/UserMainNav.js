@@ -21,13 +21,18 @@ function UserMainNav() {
   };
 
   const handleUserLogout = () => {
-    console.log('work')
-    navigate('/user/login')
-  }
+    console.log("work");
+    navigate("/user/login");
+  };
   return (
     <div>
       <div className="usermainnav-page-color ">
-        <Navbar collapseOnSelect expand="lg" className="d-flex justify-content-between pe-5" id="navfixed">
+        <Navbar
+          collapseOnSelect
+          expand="lg"
+          className="d-flex justify-content-between pe-5"
+          id="navfixed"
+        >
           <div className="col-2">
             <Navbar.Brand href="/" className="toggleimg">
               <img src={logos} className="usermainlogoimg ms-3" alt="img"></img>
@@ -43,9 +48,9 @@ function UserMainNav() {
               aria-label="Search"
             />
           </Form> */}
-          
-            <p className="usermain-navbar-home mt-3 ">About</p>
-            <p className="usermain-navbar-home mt-3 ">Home</p>
+
+          <p className="usermain-navbar-home mt-3 ">About</p>
+          <p className="usermain-navbar-home mt-3 ">Home</p>
           {/* <Nav.Link href="" className='me-5'><p className='usermain-navbar-home mt-3 '>My Items</p></Nav.Link> */}
           {/* <Nav.Link href="" className="me-5">
             <p className="usermain-navbar-chat mt-3 pt-1">
@@ -81,7 +86,11 @@ function UserMainNav() {
               <Link className="dropdown-item" to="" id="">
                 My Orders
               </Link>
-              <h6 className="dropdown-item  text-light" to="" id="" onClick={handleUserLogout} >
+              <h6
+                className="dropdown-item text-danger fw-bold"
+                style={{ cursor: "pointer" }}
+                onClick={handleUserLogout}
+              >
                 Logout
               </h6>
             </Dropdown.Menu>
