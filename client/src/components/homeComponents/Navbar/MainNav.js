@@ -40,7 +40,7 @@ function MainNav() {
                   <Dropdown.Menu>
                     <Link
                       class="dropdown-item"
-                      to="/adminlogin"
+                      to="/admin/login"
                       id="landing-drop-link"
                     >
                       Admin
