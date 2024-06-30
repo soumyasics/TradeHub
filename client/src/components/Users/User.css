@@ -255,8 +255,8 @@
     width: 100%;
 }
 .usermainlogoimg{
-    height: 40px;
-    width: 50px;
+    height: 30px;
+    width: 30px;
 }
 .usermainnav-page-trade{
     color:#E959C1 ;
@@ -274,12 +274,15 @@
 .usermain-navbar-chat{
     background-color: white;
     color: #6D3698;
-    font-size: 18px;
+    font-size: 16px;
     height: 35px;
+    display: flex;
+    justify-content: center;
     width: 85px;
     text-align: center;
     border-radius: 16px;
     box-shadow: 3px 3px 15px 3px #00000040;
+    align-items: center;
 }
 .usermain-navbar-iconloop{
     color: #6D3698;

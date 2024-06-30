@@ -13,6 +13,7 @@ import { BsChatText } from "react-icons/bs";
 import { IoIosSearch } from "react-icons/io";
 import { Dropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+
 function UserMainNav() {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
@@ -23,6 +24,9 @@ function UserMainNav() {
   const handleUserLogout = () => {
     console.log("work");
     navigate("/user/login");
+  };
+  const navigateUserHome = () => {
+    navigate("/user/home");
   };
   return (
     <div>
@@ -49,19 +53,19 @@ function UserMainNav() {
             />
           </Form> */}
 
-          <p className="usermain-navbar-home mt-3 ">About</p>
-          <p className="usermain-navbar-home mt-3 ">Home</p>
+          <p className="usermain-navbar-home " onClick={navigateUserHome} >Home</p>
+          {/* <p className="usermain-navbar-home mt-3 ">About</p> */}
           {/* <Nav.Link href="" className='me-5'><p className='usermain-navbar-home mt-3 '>My Items</p></Nav.Link> */}
           {/* <Nav.Link href="" className="me-5">
             <p className="usermain-navbar-chat mt-3 pt-1">
               <BsChatText /> Chat
             </p>
           </Nav.Link> */}
-          <Nav.Link href="" className="me-5">
-            <p className="usermain-navbar-chat mt-3 pt-1">+Sell</p>
+          <Nav.Link href="" className="">
+            <p className="usermain-navbar-chat pt-1">+Sell</p>
           </Nav.Link>
-          <Nav.Link href="" className="me-5">
-            <p className="usermain-navbar-  chat mt-3 pt-1">Points</p>
+          <Nav.Link href="" className="">
+            <p className="usermain-navbar-chat pt-1">Points</p>
           </Nav.Link>
           {/* <Nav.Link href="" className="me-5">
             <ImLoop className="usermain-navbar-iconloop" />
