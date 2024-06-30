@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import userreg from "../../assets/images/userreg.png";
 import userregimg from "../../assets/images/userregimg.png";
 import MainNav from "../homeComponents/Navbar/MainNav";
@@ -7,6 +7,7 @@ import axiosMultipartInstance from "../../apis/axiosMultipartInstance";
 import { Navigate, useNavigate } from "react-router-dom";
 import { BiImageAdd } from "react-icons/bi";
 import { FiEdit2 } from "react-icons/fi";
+import { toast } from "react-hot-toast";
 
 function UserRegister() {
   const navigate = useNavigate();
@@ -22,18 +23,6 @@ function UserRegister() {
     repassword: "",
     checkbox: false,
   });
-  const [errors, setErrors] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    contact: "",
-    password: "",
-    gender: "",
-    profile: null,
-    repassword: "",
-    checkbox: false,
-  });
-  let formIsValid = false;
 
   const [profileImage, setProfileImage] = useState(null);
 
@@ -57,115 +46,144 @@ function UserRegister() {
       }));
     }
   };
-  console.log(data);
+
+  useEffect(() => {
+    console.log("data => ", data);
+  }, [data]);
 
   const handleChangeChecked = (e) => {
     data.checkbox = e.target.checked;
-    console.log(e.target.checked);
-    console.log(data);
+
     validateCheckbox(data);
   };
   const handleImageUpload = (e) => {
     setProfileImage(URL.createObjectURL(e.target.files[0]));
   };
 
-  function validateField(fieldName, value) {
-    if (!value.trim()) {
-      return `${fieldName} is required`;
-    }
-    if (fieldName === "Email" && !value.endsWith("@gmail.com")) {
-      return "Email must be a valid Gmail address";
-    }
-    return "";
-  }
-  function validateContact(fieldName, value) {
-    if (!value.trim()) {
-      return `${fieldName} is required`;
-    } else if (value.length !== 10) {
-      return "Please enter a valid Contact Number";
-    }
-    return "";
-  }
-
-  function validateImageField(files, value) {
-    if (!value) {
-      return `${files} is required.`;
-    }
-  }
   function validateCheckbox(value) {
-    console.log(data.checkbox);
-    if (!data.checkbox) {
-      return "You must agree to the terms and conditions.";
-      formIsValid = false;
-    }
+    return true;
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const checkValidity = () => {
+    const {
+      firstname,
+      lastname,
+      email,
+      contact,
+      password,
+      gender,
+      profile,
+      checkbox,
+      repassword,
+    } = data;
 
-    let errors = {};
-    let formIsValid = true;
+    if (!firstname) {
+      toast.error("Firstname is required");
+      return false;
+    }
+    if (!lastname) {
+      toast.error("Lastname is required");
+      return false;
+    }
 
-    errors.firstname = validateField("FirstName", data.firstname);
-    errors.lastname = validateField("Lastname", data.lastname);
-    errors.email = validateField("Email", data.email);
-    errors.contact = validateContact("Phoneno", data.contact);
-    errors.profile = validateImageField("Profile", data.profile);
-    errors.checkbox = validateCheckbox("Checkbox", data.checkbox);
+    if (!gender) {
+      toast.error("Gender is required");
+      return false;
+    }
+    if (!email) {
+      toast.error("Email is required");
+      return false;
+    }
+    if (!contact) {
+      toast.error("Phone number is required");
+      return false;
+    }
 
+    if (contact.length !== 10) {
+      toast.error("Phone number must be 10 digits");
+      return false;
+    }
+
+    if (!password) {
+      toast.error("Password is required");
+      return false;
+    }
     const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z]).{6,}$/;
-    if (!data.password.trim()) {
-      formIsValid = false;
-      errors.password = "Password is required";
-    } else if (!passwordRegex.test(data.password)) {
-      // Pass the password to the test method
-      errors.password =
-        "Password must contain at least one number, one special character, and one capital letter";
+    if (!passwordRegex.test(password)) {
+      toast.error(
+        "Password must contain at least one number, one special character, and one capital letter"
+      );
+      return false;
+    }
+
+    if (!repassword) {
+      toast.error("Confirm Password is required");
+      return false;
+    }
+
+    if (password !== repassword) {
+      toast.error("Passwords do not match");
+      return false;
+    }
+  
+
+    
+    if (!password.trim()) {
+      toast.error("Password is required");
+      return false;
+    }
+
+    console.log("pass", passwordRegex.test(password));
+
+
+
+    if (!checkbox) {
+      toast.error("You must agree to the terms and conditions.");
+      return false;
     }
 
     if (!data.repassword.trim()) {
-      formIsValid = false;
-      errors.repassword = "Confirm Password is required";
+      toast.error("Confirm Password is required");
+      return false;
     } else if (data.repassword !== data.password) {
-      formIsValid = false;
-      errors.repassword = "Passwords do not match";
+      toast.error("Passwords do not match");
+      return false;
     }
 
-    setErrors(errors);
-    if (formIsValid) {
-      console.log("data", data);
+    if (!profile) {
+      toast.error("Profile photo is required");
+      return false;
+    }
+    return true;
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!checkValidity()) {
+      return;
     }
 
-    for (let key in errors) {
-      if (errors[key]) {
-        formIsValid = false;
-        break;
+    const formData = new FormData();
+    formData.append("firstname", data.firstname);
+    formData.append("lastname", data.lastname);
+    formData.append("email", data.email);
+    formData.append("contact", data.contact);
+    formData.append("file", data.profile);
+    formData.append("password", data.password);
+    formData.append("gender", data.gender);
+
+    try {
+      const res = await axiosMultipartInstance.post("/registerUser", data);
+      console.log("user regsit", res);
+      if (res.data.status === 200) {
+        alert("Register SuccessFully");
+        navigate("/user/login");
+      } else {
+        alert(`Registeration is failed : ${res.data.msg}`);
       }
-    }
-
-    if (formIsValid) {
-      const formData = new FormData();
-      formData.append("firstname", data.firstname);
-      formData.append("lastname", data.lastname);
-      formData.append("email", data.email);
-      formData.append("contact", data.contact);
-      formData.append("file", data.profile);
-      formData.append("password", data.password);
-      formData.append("gender", data.gender);
-
-      try {
-        const res = await axiosMultipartInstance.post("/registerUser", data);
-        console.log(res);
-        if (res.data.status === 200) {
-          alert("Register SuccessFully");
-          navigate("/user/login");
-        } else {
-          alert(`Registeration is failed : ${res.data.msg}`);
-        }
-      } catch (error) {
-        console.error("There was an error!", error);
-        alert("Error");
-      }
+    } catch (error) {
+      console.error("There was an error!", error);
+      alert("Error");
     }
   };
 
@@ -196,9 +214,7 @@ function UserRegister() {
                       name="firstname"
                       onChange={handleChange}
                     ></input>
-                    {errors.firstname && (
-                      <span className="text-danger">{errors.firstname}</span>
-                    )}
+
                     <input
                       type="text"
                       placeholder="Last Name"
@@ -207,31 +223,31 @@ function UserRegister() {
                       name="lastname"
                       onChange={handleChange}
                     ></input>
-                    {errors.lastname && (
-                      <span className="text-danger">{errors.lastname}</span>
-                    )}
                   </div>
-                  <label className="user-register-label mt-5">Gender</label>
-                  <input
-                    type="radio"
-                    className="ms-5"
-                    id="user-register-radio"
-                    name="gender"
-                    onChange={handleChange}
-                    value="male"
-                    checked={data.gender === "male"}
-                  ></input>
-                  <label className="user-register-label ms-2">Male</label>
-                  <input
-                    type="radio"
-                    className="ms-5"
-                    id="user-register-radio"
-                    name="gender"
-                    onChange={handleChange}
-                    value="female"
-                    checked={data.gender === "female"}
-                  ></input>
-                  <label className="user-register-label ms-2">Female</label>
+                  <div></div>
+                  <div>
+                    <label className="user-register-label mt-5">Gender</label>
+                    <input
+                      type="radio"
+                      className="ms-3"
+                      id="user-register-radio"
+                      name="gender"
+                      onChange={handleChange}
+                      value="male"
+                      checked={data.gender === "male"}
+                    ></input>
+                    <label className="user-register-label ms-2">Male</label>
+                    <input
+                      type="radio"
+                      className="ms-3"
+                      id="user-register-radio"
+                      name="gender"
+                      onChange={handleChange}
+                      value="female"
+                      checked={data.gender === "female"}
+                    />
+                    <label className="user-register-label ms-2">Female</label>
+                  </div>
                   <br></br>
                   <div>
                     <label className="user-register-label mt-4">Email</label>
@@ -242,10 +258,7 @@ function UserRegister() {
                       value={data.email}
                       name="email"
                       onChange={handleChange}
-                    ></input>
-                    {errors.email && (
-                      <span className="text-danger">{errors.email}</span>
-                    )}
+                    />
                   </div>
                   <div>
                     <label className="user-register-label mt-4">
@@ -259,9 +272,6 @@ function UserRegister() {
                       name="contact"
                       onChange={handleChange}
                     ></input>
-                    {errors.contact && (
-                      <span className="text-danger">{errors.contact}</span>
-                    )}
                   </div>
                 </div>
                 <div className="col">
@@ -288,14 +298,10 @@ function UserRegister() {
                         style={{ display: "none" }}
                         name="profile"
                         onChange={handleFileChange}
-                        className={errors.profile ? "is-valid" : ""}
                       />
-                      {errors.profile && (
-                        <span className="text-danger">{errors.profile}</span>
-                      )}
                     </label>
                   </div>
-                  <div>
+                  <div className="mt-4">
                     <label className="user-register-label mt-3">Password</label>
                     <input
                       type="password"
@@ -305,9 +311,6 @@ function UserRegister() {
                       name="password"
                       onChange={handleChange}
                     ></input>
-                    {errors.password && (
-                      <span className="text-danger">{errors.password}</span>
-                    )}
                   </div>
                   <div>
                     <label className="user-register-label mt-4">
@@ -321,30 +324,41 @@ function UserRegister() {
                       name="repassword"
                       onChange={handleChange}
                     ></input>
-                    {errors.password && (
-                      <span className="text-danger">{errors.password}</span>
-                    )}
                   </div>
                 </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input mt-5"
-                    type="checkbox"
-                    value={data.checkbox}
-                    name="checkbox"
-                    onChange={handleChangeChecked}
-                    id="flexCheckChecked"
-                  />
-                  <label
-                    class="form-check-label mt-5 label-user-register"
-                    for="flexCheckChecked"
-                  >
-                    Agree to Terms and Condition
-                  </label>
-                  <br></br>
-                  {errors.checkbox && (
-                    <span className="text-danger">{errors.checkbox}</span>
-                  )}
+                <div
+                  style={{ height: "50px" }}
+                  className="mt-4  form-check d-flex shadow justify-content-between align-items-center"
+                >
+                  <div className="ms-3">
+                    <input
+                      className="form-check-input "
+                      type="checkbox"
+                      value={data.checkbox}
+                      name="checkbox"
+                      onChange={handleChangeChecked}
+                      id="flexCheckChecked"
+                    />
+                    <label
+                      className="form-check-label label-user-register"
+                      for="flexCheckChecked"
+                    >
+                      Agree to Terms and Condition
+                    </label>
+                  </div>
+                  <div>
+                    <p className="mb-0">
+                      already have an account?
+                      <span
+                        onClick={() => navigate("/user/login")}
+                        className="text-primary fw-bold"
+                        style={{ cursor: "pointer" }}
+                      >
+                        {" "}
+                        Login
+                      </span>
+                    </p>
+                  </div>
                 </div>
 
                 <div className="text-center">

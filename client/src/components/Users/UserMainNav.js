@@ -56,7 +56,7 @@ function UserMainNav() {
             <p className="usermain-navbar-chat mt-3 pt-1">+Sell</p>
           </Nav.Link>
           <Nav.Link href="" className="me-5">
-            <p className="usermain-navbar-chat mt-3 pt-1">Points</p>
+            <p className="usermain-navbar-  chat mt-3 pt-1">Points</p>
           </Nav.Link>
           {/* <Nav.Link href="" className="me-5">
             <ImLoop className="usermain-navbar-iconloop" />
