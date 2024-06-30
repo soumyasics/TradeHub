@@ -125,17 +125,13 @@ function UserRegister() {
       toast.error("Passwords do not match");
       return false;
     }
-  
 
-    
     if (!password.trim()) {
       toast.error("Password is required");
       return false;
     }
 
     console.log("pass", passwordRegex.test(password));
-
-
 
     if (!checkbox) {
       toast.error("You must agree to the terms and conditions.");

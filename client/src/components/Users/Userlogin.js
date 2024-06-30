@@ -7,18 +7,12 @@ import { Link, useNavigate } from "react-router-dom";
 import MainNav from "../homeComponents/Navbar/MainNav";
 import Footer from "../Footer/Footer";
 import axiosInstance from "../../apis/axiosInstance";
+import { toast } from "react-hot-toast";
 function Userlogin() {
   const [data, setData] = useState({
     email: "",
     password: "",
   });
-
-  const [errors, setErrors] = useState({
-    email: "",
-    password: "",
-  });
-
-  const [formIsValid, setFormIsValid] = useState(true);
 
   const navigate = useNavigate();
 
@@ -28,50 +22,46 @@ function Userlogin() {
       ...data,
       [name]: value,
     });
-    setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
 
-  const validateField = (fieldName, value) => {
-    if (!value.trim()) {
-      setFormIsValid(false);
-      return `${fieldName} is required`;
+  const checkValidity = () => {
+    const { email, password } = data;
+    if (!email) {
+      toast.error("Email is required");
+      return false;
     }
-    return "";
+    if (!password) {
+      toast.error("Password is required");
+      return false;
+    }
+    return true;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let errors = {};
-    let formIsValid = true;
 
-    errors.email = validateField("Email", data.email);
-    if (errors.email) formIsValid = false;
-
-    errors.password = validateField("Password", data.password);
-    if (errors.password) formIsValid = false;
-
-    setErrors(errors);
-    setFormIsValid(formIsValid);
-
-    if (formIsValid) {
-      axiosInstance
-        .post("/loginUser", data)
-        .then((res) => {
-          if (res.data.status === 200) {
-            console.log("Login Successfully", res);
-            alert("Login Successfully");
-            localStorage.setItem("userId", res.data.data._id);
-            navigate("/user/home");
-          } else {
-            alert("Error");
-            console.log("error");
-          }
-        })
-        .catch((err) => {
-          console.log("Error", err);
-          alert("Error");
-        });
+    if (!checkValidity()) {
+      return;
     }
+
+    sendDataToServer();
+  };
+
+  const sendDataToServer = () => {
+    axiosInstance
+      .post("/loginUser", data)
+      .then((res) => {
+        if (res.status === 200) {
+          toast.success("Login Successfully");
+          navigate("/user/home");
+        } else {
+          toast.error("Login Failed");
+        }
+      })
+      .catch((err) => {
+        console.log("Error", err);
+        toast.error("Login failed.");
+      });
   };
 
   return (
@@ -101,11 +91,6 @@ function Userlogin() {
                       value={data.email}
                       onChange={handleChange}
                     ></input>
-                    {errors.email && (
-                      <div className="user-login-error mt-2  text-danger">
-                        {errors.email}
-                      </div>
-                    )}
                   </div>
                   <div>
                     <label className="user-login mt-5 ms-5">Password</label>
@@ -117,11 +102,6 @@ function Userlogin() {
                       value={data.password}
                       onChange={handleChange}
                     ></input>
-                    {errors.password && (
-                      <div className="user-login-error mt-2 text-danger">
-                        {errors.password}
-                      </div>
-                    )}
                   </div>
                   <div className="mt-3">
                     <Link to="/user/forgetpswd" className="user-login-forget">
