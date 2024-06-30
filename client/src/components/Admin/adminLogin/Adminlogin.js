@@ -6,6 +6,7 @@ import adminlogin from "../../../assets/images/adminlogin.png";
 import { useNavigate } from "react-router-dom";
 import MainNav from "../../homeComponents/Navbar/MainNav";
 import Footer from "../../Footer/Footer";
+import { AdminNavbar } from "../adminNavbar/adminNavbar";
 function Adminlogin() {
   const [data, setData] = useState({
     email: "",
@@ -50,7 +51,7 @@ function Adminlogin() {
 
   return (
     <div>
-      <MainNav />
+      <AdminNavbar />
       <div className="container admin-login-box mb-5 mt-5">
         <div className=" admin-login-box1 ">
           <Row>

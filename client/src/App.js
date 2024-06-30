@@ -60,6 +60,8 @@ const App = () => {
           <Route path="/adminlogin" element={<Adminlogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
 
+          {/* admin components  */}
+
           <Route path="/*" element={<h1> 404 </h1>} />
         </Routes>
       </BrowserRouter>
