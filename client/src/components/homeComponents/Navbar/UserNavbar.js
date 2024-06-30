@@ -21,16 +21,16 @@ function UserNavbar() {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <a href="#home" className="navlink  me-5  text-decoration-none">
-                <h6 className="usernav-about">Home</h6>
+                <p className="usernav-about">Home</p>
               </a>
               <a href="#about " className="navlink ms-2 me-5 text-decoration-none">
-                <h6 className="usernav-about">About</h6>
+                <p className="usernav-about">About</p>
               </a>
               <a href="#about " className="navlink ms-2 me-1 text-decoration-none">
                 <h6 className="usernav-about">Contact&nbsp;<span>Us</span> </h6>
               </a>
-                <Dropdown>
-                  <Dropdown.Toggle id='usernav-button' className='ms-5 me-5'>
+                <Dropdown >
+                  <Dropdown.Toggle id='usernav-button' className='ms-5 me-5' style={{fontSize: "16px"}}>
                     Login
                   </Dropdown.Toggle>
 

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import MainNav from "../../homeComponents/Navbar/MainNav";
 import Footer from "../../Footer/Footer";
 import { AdminNavbar } from "../adminNavbar/adminNavbar";
+import {toast} from 'react-hot-toast'
 function Adminlogin() {
   const [data, setData] = useState({
     email: "",
@@ -21,7 +22,7 @@ function Adminlogin() {
     password: "",
   });
 
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,8 +42,8 @@ function Adminlogin() {
       const values = { email: data.email, password: data.password };
       console.log("value: => ", values);
       if (mail == data.email && pass == data.password) {
-        alert("Loggedin Successfully");
-        Navigate("/admin/dashboard");
+        toast.success("Login Successfully");
+        navigate("/admin/dashboard");
       } else {
         alert("Username or password is incorrect");
       }

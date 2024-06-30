@@ -15,7 +15,7 @@ export const AdminNavbar = () => {
       <div className="nav-page-color">
         <Navbar collapseOnSelect expand="lg" className="" id="navfixed">
           <div className="col-10">
-            <Navbar.Brand href="/" className="toggleimg">
+            <Navbar.Brand href="/tradehub" className="toggleimg">
               <img src={logos} className="logoimg ms-3" alt="img"></img>
               <span className="nav-page-trade">trade</span>{" "}
               <span className="nav-page-hub">hub</span>

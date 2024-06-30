@@ -20,11 +20,11 @@ function MainNav() {
               <span className="nav-page-hub">hub</span>
             </Navbar.Brand>
           </div>
-          <div className="col-5 bg-danger ">
+          <div className="col-5 ">
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav
-                className="me-auto w-100 d-flex justify-content-between align-items-center"
+                className="me-auto w-100 d-flex justify-content-end pe-5 gap-5 align-items-center"
               >
                 <h6 className="nav-about">Home</h6>
                 {/* <a href="#home" className="navlink ms-5 me-5  text-decoration-none">

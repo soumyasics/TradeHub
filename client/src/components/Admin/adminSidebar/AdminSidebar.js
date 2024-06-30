@@ -9,8 +9,14 @@ import { MdAddModerator } from "react-icons/md";
 import { AiFillInteraction } from "react-icons/ai";
 import { TbNotes } from "react-icons/tb";
 import { MdLogout } from "react-icons/md";
-
+import { useNavigate } from "react-router-dom";
+import {toast} from 'react-hot-toast';
 export const AdminSidebar = ({ changeSelectedPage }) => {
+  const navigate = useNavigate();
+  const handleAdminLogout = () => {
+    toast.success("Admin Logout Successfully");
+    navigate("/admin/login");
+  };
   return (
     <div>
       <div className="admin-sidebar-color">
@@ -47,8 +53,9 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
             <li>
               <TbNotes /> Guidelines
             </li>
-            <li>
-              <MdLogout /> Logout
+            <li onClick={handleAdminLogout} className="text-danger fw-bold ">
+              <MdLogout />
+              <span className="shadow ms-1">Logout</span>
             </li>
           </ol>
         </div>

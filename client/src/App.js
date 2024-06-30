@@ -20,11 +20,12 @@ import ModeratorRegister from "./components/moderator/ModeratorRegister";
 import Moderatorlogin from "./components/moderator/Moderatorlogin";
 import Moderatorforget from "./components/moderator/Moderatorforget";
 import { AdminDashboard } from "./components/admin/AdminDashboard";
-
+import {Toaster} from 'react-hot-toast'
 const App = () => {
   return (
     <div className="App">
       <BrowserRouter basename="tradehub">
+      <Toaster/> 
         <Routes>
           {/* common  */}
           <Route path="/" element={<Userlanding />} />
@@ -57,7 +58,7 @@ const App = () => {
           <Route path="/delivery/login" element={<DeliveryLogin />} />
 
           {/* Admin */}
-          <Route path="/adminlogin" element={<Adminlogin />} />
+          <Route path="/admin/login" element={<Adminlogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
 
           {/* admin components  */}
