@@ -59,6 +59,10 @@ function Userlogin() {
       .post("/loginUser", data)
       .then((res) => {
         if (res?.data?.status === 200) {
+          const userId = res?.data?.data?._id || null;
+          if (userId) {
+            localStorage.setItem("trade-hub-userId", userId);
+          }
           toast.success("Login Successfully");
           console.log("respo", res)
           navigate("/user/home");
