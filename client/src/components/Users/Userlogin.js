@@ -34,6 +34,13 @@ function Userlogin() {
       toast.error("Password is required");
       return false;
     }
+    const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z]).{6,}$/;
+    if (!passwordRegex.test(password)) {
+      toast.error(
+        "Password must contain at least one number, one special character, and one capital letter"
+      );
+      return false;
+    }
     return true;
   };
 
@@ -51,11 +58,12 @@ function Userlogin() {
     axiosInstance
       .post("/loginUser", data)
       .then((res) => {
-        if (res.status === 200) {
+        if (res?.data?.status === 200) {
           toast.success("Login Successfully");
+          console.log("respo", res)
           navigate("/user/home");
         } else {
-          toast.error("Login Failed");
+          toast.error("Please check your email and password");
         }
       })
       .catch((err) => {
