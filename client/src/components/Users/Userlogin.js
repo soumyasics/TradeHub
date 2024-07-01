@@ -66,7 +66,10 @@ function Userlogin() {
           toast.success("Login Successfully");
           console.log("respo", res)
           navigate("/user/home");
-        } else {
+        } else if (res?.data?.status === 405) {
+          const msg = res.data?.msg || "Please check your email and password";
+          toast.error(msg);
+        }else {
           toast.error("Please check your email and password");
         }
       })

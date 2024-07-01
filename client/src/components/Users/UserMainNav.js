@@ -76,7 +76,7 @@ function UserMainNav() {
               onClick={toggleDropdown}
               className="custom-dropdown-toggle"
             >
-              <Nav.Link href="" className="me-5 ">
+              <Nav.Link href="" className=""  style={{marginRight: "90px"}}>
                 <IoMdContact className="usermain-navbar-iconloop mt-3" />
               </Nav.Link>
             </Dropdown.Toggle>

@@ -308,7 +308,7 @@ const login = (req, res) => {
       }
 
       if (!user.isActive) {
-        return res.json({ status: 405, msg: "User not activated" });
+        return res.json({ status: 405, msg: "Your account is deactivated" });
       }
       const token = createToken(user);
 
