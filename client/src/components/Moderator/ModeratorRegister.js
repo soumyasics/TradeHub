@@ -146,6 +146,9 @@ function ModeratorRegister() {
       if (res.data.status === 200) {
         toast.success("Registration Successfull");
         navigate("/moderator/login");
+      }else if (res.data.status === 400 || res.data.status === 409) {
+        const msg = res.data?.msg || "Please check inputs"
+        toast.error(`Registeration is failed : ${msg}`);
       } else {
         toast.error(`Registeration is failed : ${res.data.msg}`);
       }

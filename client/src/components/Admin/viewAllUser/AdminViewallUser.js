@@ -11,6 +11,7 @@ export const  AdminViewallUser = () => {
     axiosInstance
       .post(`/activateUserById/${id}`)
       .then((res) => {
+        console.log("respo, handle acti", res)
         if (res.data.status === 200) {
           const updatedData = data.map((users) => {
             if (users._id === id) {
@@ -46,6 +47,7 @@ export const  AdminViewallUser = () => {
   };
 
   const toggleUserActiveState = (users) => {
+    console.log("toggle", users)
     if (users.isActive) {
       handleDeactive(users._id);
     } else {

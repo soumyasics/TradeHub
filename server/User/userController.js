@@ -170,12 +170,13 @@ const viewUserById = (req, res) => {
 };
 // View User by ID
 const activateUserById = (req, res) => {
-  User.findById({ _id: req.params.id }, { isActive: true })
+  User.findByIdAndUpdate(req.params.id, { isActive: true }, {new: true})
     .exec()
     .then((data) => {
+      console.log("result", data);
       res.json({
         status: 200,
-        msg: "Data obtained successfully",
+        msg: "User Activated successfully",
         data: data,
       });
     })
@@ -189,12 +190,12 @@ const activateUserById = (req, res) => {
 };
 // Delete User by ID
 const deActivateUserById = (req, res) => {
-  User.findByIdAndUpdate({ _id: req.params.id }, { isActive: false })
+  User.findByIdAndUpdate(req.params.id, { isActive: false })
     .exec()
     .then((data) => {
       res.json({
         status: 200,
-        msg: "Data updated successfully",
+        msg: "User deactivated successfully",
         data: data,
       });
     })
@@ -306,6 +307,9 @@ const login = (req, res) => {
         return res.json({ status: 405, msg: "Password Mismatch !!" });
       }
 
+      if (!user.isActive) {
+        return res.json({ status: 405, msg: "User not activated" });
+      }
       const token = createToken(user);
 
       res.json({

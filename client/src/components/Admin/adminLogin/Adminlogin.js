@@ -40,7 +40,6 @@ function Adminlogin() {
 
     if (!errors.email && !errors.password) {
       const values = { email: data.email, password: data.password };
-      console.log("value: => ", values);
       if (mail == data.email && pass == data.password) {
         toast.success("Login Successfully");
         navigate("/admin/dashboard");
