@@ -80,7 +80,7 @@ export const ModViewUsers = () => {
         <h3 className="mt-5 text-center"> View active users </h3>
         {data.length !== 0 ? (
           <div className="table-container">
-            <Table striped hover className="table">
+            <Table striped hover className="table mx-auto" responsive style={{width: "90%"}}>
               <thead>
                 <tr>
                   <th>S.No</th>

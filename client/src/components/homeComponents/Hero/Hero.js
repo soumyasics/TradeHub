@@ -3,10 +3,10 @@ import styles from "./Hero.module.css";
 const Hero = () => {
   return (
     <div className={`${styles.heroWrapper} center`}>
-      <select className={styles.dropDown}>
+      {/* <select className={styles.dropDown}>
         <option value="US">US</option>
         <option value="IN">IN</option>
-      </select>
+      </select> */}
       <div className={`${styles.heroInner}`}>
         <h2 className={styles.headerText}>
           Explore a dynamic exchange platform
@@ -15,9 +15,9 @@ const Hero = () => {
           <p> where preferences meet needs, brought right to your door</p>
         </div>
         <div className={styles.inputLocation}>
-          <i className="fas fa-map-marker-alt"> </i>
+          {/* <i className="fas fa-map-marker-alt"> </i>
           <input type="text" placeholder="Enter your address" />
-          <i className={`${styles.arrow} fas fa-arrow-right`}></i>
+          <i className={`${styles.arrow} fas fa-arrow-right`}></i> */}
         </div>
       </div>
       <div className={styles.heroImage}>

@@ -44,9 +44,12 @@ export const ModNavbar = ({ hamActive, setHamActive }) => {
     fetchModData(modId);
   }, []);
 
+  const redirecModHome = () => {
+    navigate("/moderator/home");
+  };
   const redirectModViewUsers = () => {
-    navigate('/moderator/view-users')
-  }
+    navigate("/moderator/view-users");
+  };
   return (
     <nav className={`${styles.navbarWrapper} center`}>
       <div className={`${styles.navbarInner} center`}>
@@ -57,7 +60,7 @@ export const ModNavbar = ({ hamActive, setHamActive }) => {
           <span className={styles.hamburgerLines}></span>
         </button>
 
-        <div className={`${styles.navLeft}`}>
+        <div className={`${styles.navLeft}`} onClick={redirecModHome} >
           <img src={tradeHubLogo} alt="logo" className={styles.brand} />
         </div>
         <div
@@ -67,7 +70,12 @@ export const ModNavbar = ({ hamActive, setHamActive }) => {
           <div className={styles.navLinksWrapper}>
             <div className={styles.verticalLine}> </div>
             <p className={`${styles.nav} center`}>View Products</p>
-            <p className={`${styles.nav} center`} onClick={redirectModViewUsers}>View Users</p>
+            <p
+              className={`${styles.nav} center`}
+              onClick={redirectModViewUsers}
+            >
+              View Users
+            </p>
           </div>
 
           <Dropdown

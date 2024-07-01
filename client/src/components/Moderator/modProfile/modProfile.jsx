@@ -42,7 +42,7 @@ export const ModProfile = () => {
       <div className="mt-5 ms-5">
         <Link to="/moderator/home">
           <FaArrowLeft className="user-profile-icon" />{" "}
-          <span className="user-profile-para ms-3 mt-3"> Profile</span>
+          <span className="user-profile-para ms-3 mt-3"> Home </span>
         </Link>
       </div>
       <div className="user-profile-div container">
