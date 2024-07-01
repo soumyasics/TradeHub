@@ -24,6 +24,7 @@ import {Toaster} from 'react-hot-toast'
 import { ModeratorHome } from "./pages/common/moderatorHome";
 import { ModProfile } from "./components/Moderator/modProfile/modProfile";
 import { ModViewUsers } from "./components/Moderator/modViewUsers/modViewUsers";
+import { AddProducts } from "./components/Users/addProducts/addProducts";
 const App = () => {
   return (
     <div className="App">
@@ -45,6 +46,7 @@ const App = () => {
           />
           <Route path="/user/additemtosell" element={<UserAddItemToSell />} />
           <Route path="/user/viewitemtobuy" element={<UserViewItemToBuy />} />
+          <Route path="/user/add-product" element={<AddProducts />} />
 
           {/* moderators  */}
 
