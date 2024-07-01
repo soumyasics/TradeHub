@@ -16,14 +16,14 @@ import UserEditProfile from "./components/Users/UserEditProfile";
 import UserAddItemToSell from "./components/Users/UserAddItemToSell";
 import UserViewItemToBuy from "./components/Users/UserViewItemToBuy";
 import Userlogin from "./components/Users/Userlogin";
-import ModeratorRegister from "./components/moderator/ModeratorRegister";
-import Moderatorlogin from "./components/moderator/Moderatorlogin";
-import Moderatorforget from "./components/moderator/Moderatorforget";
+import ModeratorRegister from "./components/Moderator/ModeratorRegister";
+import Moderatorlogin from "./components/Moderator/Moderatorlogin";
+import Moderatorforget from "./components/Moderator/Moderatorforget";
 import { AdminDashboard } from "./components/admin/AdminDashboard";
 import {Toaster} from 'react-hot-toast'
 import { ModeratorHome } from "./pages/common/moderatorHome";
-import { ModProfile } from "./components/moderator/modProfile/modProfile";
-import { ModViewUsers } from "./components/moderator/modViewUsers/modViewUsers";
+import { ModProfile } from "./components/Moderator/modProfile/modProfile";
+import { ModViewUsers } from "./components/Moderator/modViewUsers/modViewUsers";
 const App = () => {
   return (
     <div className="App">
