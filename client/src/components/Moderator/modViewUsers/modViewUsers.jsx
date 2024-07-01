@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./modViewUsers.css";
 import axiosInstance from "../../../apis/axiosInstance";
 import { Button, Table } from "react-bootstrap";
+import { ModNavbar } from "../../homeComponents/Navbar/Navbar";
+import Footer from "../../Footer/Footer";
 
 export const ModViewUsers = () => {
   const [data, setData] = useState([]);
-
+    let tableRowCount = 0;
   const handleActive = (id) => {
     console.log(id);
     axiosInstance
@@ -72,65 +74,57 @@ export const ModViewUsers = () => {
   }, []);
 
   return (
-    <div>
-      {/* <button className="admin-view-user-btn mt-5 ms-5">View Users</button> */}
-      <br></br>
-      {/* <label className="mt-5 ms-5">Rows per page</label>{" "} */}
-      {/* <select>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-        <option>9</option>
-        <option>10</option>
-      </select> */}
-      <h3 className="mt-5 text-center"> View Users </h3>
-      {data.length !== 0 ? (
-        <div className="table-container">
-          <Table striped hover className="table">
-            <thead>
-              <tr>
-                <th>S.No</th>
-                <th>Name</th>
-                <th>Gender</th>
-                <th>Email</th>
-                <th>Phone number</th>
-                <th>View More</th>
-                {/* <th>Active/Inactive</th> */}
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((user, index) => {
-                if (user && !user.isActive) {
-                  return null;
-                }
-                return (
-                  <tr key={user._id}>
-                    <td>{index + 1}</td>
-                    <td>
-                      {user.firstname} {user.lastname}
-                    </td>
-                    <td>{user.gender}</td>
-                    <td>{user.email}</td>
-                    <td>{user.contact}</td>
-                    <td>
-                      <Button variant={"success"}>View Details</Button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </Table>
-        </div>
-      ) : (
-        <div>
-          <h1>No data found</h1>
-        </div>
-      )}
-    </div>
+    <>
+      <ModNavbar />
+      <div style={{minHeight: "70vh"}}>
+        <h3 className="mt-5 text-center"> View active users </h3>
+        {data.length !== 0 ? (
+          <div className="table-container">
+            <Table striped hover className="table">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Name</th>
+                  <th>Gender</th>
+                  <th>Email</th>
+                  <th>Phone number</th>
+                  <th>View Details</th>
+                  {/* <th>Active/Inactive</th> */}
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((user, index) => {
+                  if (user && !user.isActive) {
+                    return null;
+                  }
+                  tableRowCount++;
+                  return (
+                    <tr key={user._id}>
+                      <td>{tableRowCount}</td>
+                      <td>
+                        {user.firstname} {user.lastname}
+                      </td>
+                      <td>{user.gender}</td>
+                      <td>{user.email}</td>
+                      <td>{user.contact}</td>
+                      <td>
+                        <Button variant={"success"}>View Details</Button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
+          </div>
+        ) : (
+          <div>
+            <h1>No data found</h1>
+          </div>
+        )}
+      </div>
+      <div className='mt-5'>
+        <Footer />
+      </div>
+    </>
   );
 };
