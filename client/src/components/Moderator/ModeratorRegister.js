@@ -113,6 +113,10 @@ function ModeratorRegister() {
       return false;
     }
 
+    if (!data.profile) {
+      toast.error("Please upload your profile picture");
+      return false;
+    }
     if (!checkbox) {
       toast.error("You must agree to the terms and conditions.");
       return false;

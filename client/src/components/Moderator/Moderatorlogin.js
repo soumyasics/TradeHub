@@ -12,7 +12,7 @@ function Moderatorlogin() {
     email: "",
     password: "",
   });
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const checkValidity = () => {
     const { email, password } = data;
@@ -54,13 +54,14 @@ function Moderatorlogin() {
   const sendDataToServer = async () => {
     try {
       const res = await axiosInstance.post("/loginModerator", data);
-      console.log("res" , res)
+      console.log("res", res);
       if (res.data.status === 200) {
         toast.success(res.data.msg);
-        
-        navigate("/moderator/home");
-      } else {
 
+        navigate("/moderator/home");
+      } else if (res.data.status === 410) {
+        toast.error(res.data.msg);
+      } else {
         toast.error(res.data.msg);
       }
     } catch (e) {

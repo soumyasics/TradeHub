@@ -9,8 +9,9 @@ export const AdminViewallMods = () => {
   const handleActive = (id) => {
     console.log(id);
     axiosInstance
-      .post(`/activateUserById/${id}`)
+      .post(`/activateModeratorById/${id}`)
       .then((res) => {
+        console.log("activ,", res)
         if (res.data.status === 200) {
           const updatedData = data.map((users) => {
             if (users._id === id) {
@@ -28,8 +29,9 @@ export const AdminViewallMods = () => {
 
   const handleDeactive = (id) => {
     axiosInstance
-      .post(`/deActivateUserById/${id}`)
+      .post(`/deactivateModeratorById/${id}`)
       .then((res) => {
+        console.log("resp deac,", res)
         if (res.data.status === 200) {
           const updatedData = data.map((users) => {
             if (users._id === id) {
@@ -91,7 +93,7 @@ export const AdminViewallMods = () => {
       </select> */}
       <h3 className="mt-5 text-center"> View Moderators </h3>
       {data.length !== 0 ? (
-        <div className="table-container">
+        <div  className="table-container">
           <Table striped hover className="table">
             <thead>
               <tr>
@@ -105,7 +107,7 @@ export const AdminViewallMods = () => {
             </thead>
             <tbody>
               {data.map((users, index) => (
-                <tr key={users.id}>
+                <tr key={users._id}>
                   <td>{index + 1}</td>
                   <td>
                     {users.firstname} {users.lastname}
