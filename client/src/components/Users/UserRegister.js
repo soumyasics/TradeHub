@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import userreg from "../../assets/images/userreg.png";
-import userregimg from "../../assets/images/userregimg.png";
+import userreg from "../../assets/images/userreg.jpg";
 import MainNav from "../homeComponents/Navbar/MainNav";
 import Footer from "../Footer/Footer";
 import {axiosMultipartInstance} from "../../apis/axiosMultipartInstance";

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./User.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import adminlogin from "../../assets/images/adminlogin.png";
+import adminlogin from "../../assets/images/adminlogin.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import MainNav from "../homeComponents/Navbar/MainNav";
 import Footer from "../Footer/Footer";

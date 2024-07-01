@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Col, Container, Row, Image } from "react-bootstrap";
 import cactusImg from "../../../assets/images/cactus.png";
 import typingGirlImg from "../../../assets/images/typing-girl-img.png";
-import delBoyImg from "../../../assets/images/del-boy-png.png";
+import delBoyImg from "../../../assets/images/del-boy-png.jpg";
 import DelSignupForm from "./delSignupForm";
 import "./delSignup.css";
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Moderator.css";
 import MainNav from "../homeComponents/Navbar/MainNav";
 import Footer from "../Footer/Footer";
-import moderatorlogin from "../../assets/images/moderatorlogin.png";
+import moderatorlogin from "../../assets/images/moderatorlogin.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axiosInstance from "../../apis/axiosInstance";

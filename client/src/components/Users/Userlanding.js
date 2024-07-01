@@ -4,14 +4,14 @@ import carouselitem1 from '../../assets/images/carousel-item1.png'
 import carouselitem2 from '../../assets/images/carousel-item2.png'
 import carouselitem3 from '../../assets/images/carousel-item3.png'
 import Carousel from 'react-bootstrap/Carousel';
-import landingdelivery from '../../assets/images/landingdelivery.png'
+import landingdelivery from '../../assets/images/landingdelivery.jpg'
 import Card from 'react-bootstrap/Card';
-import userlandingmen from '../../assets/images/userlandingmen.png'
+import userlandingmen from '../../assets/images/userlandingfamily.jpg'
 import userlandinghand from '../../assets/images/userlandinghand.png'
 import userlandingdelivery from '../../assets/images/userlandingdelivery.png'
-import userlandingfamily from '../../assets/images/userlandingfamily.png'
+import userlandingfamily from '../../assets/images/userlandingfamily.jpg'
 import Footer from '../Footer/Footer'
-function Userlanding() {
+function Userlanding() {  
   return (
     <div>
       <UserNavbar />

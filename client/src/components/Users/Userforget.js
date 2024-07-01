@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import userforget from '../../assets/images/userforget.png'
+import userforget from '../../assets/images/userforget.jpg'
 import { useNavigate } from 'react-router-dom';
 import MainNav from '../homeComponents/Navbar/MainNav';
 import Footer from '../Footer/Footer';

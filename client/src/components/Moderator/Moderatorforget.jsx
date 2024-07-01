@@ -4,7 +4,7 @@ import MainNav from '../homeComponents/Navbar/MainNav'
 import Footer from '../Footer/Footer'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaArrowLeft } from "react-icons/fa";
-import moderatorforget from '../../assets/images/moderatorforget.png'
+import moderatorforget from '../../assets/images/moderatorforget.jpg'
 function Moderatorforget() {
 
     const[data,setData]=useState({
