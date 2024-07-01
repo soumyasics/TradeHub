@@ -4,9 +4,9 @@ import ModLogin from "./pages/moderator/modLogin/modLogin";
 import DeliveryLogin from "./pages/delivery/deliveryLogin/deliveryLogin";
 import ModSignup from "./pages/moderator/modSignup/modSignup";
 import DelSignup from "./pages/delivery/deliverySignup/delSignup";
-import Adminlogin from "./components/admin/adminLogin/Adminlogin";
+import Adminlogin from "./components/Admin/adminLogin/Adminlogin";
 
-import AdminViewallUser from "./components/admin/viewAllUser/AdminViewallUser";
+import AdminViewallUser from "./components/Admin/viewAllUser/AdminViewallUser";
 import Userlanding from "./components/Users/Userlanding";
 import Userforget from "./components/Users/Userforget";
 import UserRegister from "./components/Users/UserRegister";
@@ -19,7 +19,7 @@ import Userlogin from "./components/Users/Userlogin";
 import ModeratorRegister from "./components/Moderator/ModeratorRegister";
 import Moderatorlogin from "./components/Moderator/Moderatorlogin";
 import Moderatorforget from "./components/Moderator/Moderatorforget";
-import { AdminDashboard } from "./components/admin/AdminDashboard";
+import { AdminDashboard } from "./components/Admin/AdminDashboard";
 import {Toaster} from 'react-hot-toast'
 import { ModeratorHome } from "./pages/common/moderatorHome";
 import { ModProfile } from "./components/Moderator/modProfile/modProfile";
