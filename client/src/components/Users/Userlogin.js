@@ -8,6 +8,7 @@ import MainNav from "../homeComponents/Navbar/MainNav";
 import Footer from "../Footer/Footer";
 import axiosInstance from "../../apis/axiosInstance";
 import { toast } from "react-hot-toast";
+import UserNavbar from "../homeComponents/Navbar/UserNavbar";
 function Userlogin() {
   const [data, setData] = useState({
     email: "",
@@ -81,7 +82,7 @@ function Userlogin() {
 
   return (
     <div>
-      <MainNav />
+      <UserNavbar />
       <div>
         <div className="container user-login-box mb-5 mt-5">
           <div className=" user-login-box1">

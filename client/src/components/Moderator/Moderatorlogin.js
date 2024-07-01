@@ -56,6 +56,11 @@ function Moderatorlogin() {
       const res = await axiosInstance.post("/loginModerator", data);
       console.log("res", res);
       if (res.data.status === 200) {
+        const userId = res?.data?.data?._id || null;
+      
+        if (userId) {
+          localStorage.setItem("trade-hub-modId", userId);
+        }
         toast.success(res.data.msg);
 
         navigate("/moderator/home");

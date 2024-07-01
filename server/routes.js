@@ -32,7 +32,7 @@ router.post('/viewActiveItems', items.viewActiveItems);
 
 //user routes
 router.post('/registerModerator',Moderator.upload,Moderator.registerModerator);
-router.post('/viewModeratorById/:id', Moderator.viewModeratorById);
+router.get('/viewModeratorById/:id', Moderator.viewModeratorById);
 router.post('/editModeratorById/:id',Moderator.upload, Moderator.editModeratorById);
 router.post('/forgotPasswordUserModerators', Moderator.forgotPassword);
 router.post('/viewModerators', Moderator.viewModerators); 

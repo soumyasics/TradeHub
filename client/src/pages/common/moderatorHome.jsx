@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Navbar from "../../components/homeComponents/Navbar/Navbar";
+import  { ModNavbar } from "../../components/homeComponents/Navbar/Navbar";
 import NavbarResponsive from "../../components/homeComponents/NavbarResponsive/NavbarResponsive";
 import Hero from "../../components/homeComponents/Hero/Hero";
 import Features from "../../components/homeComponents/Features/Features";
@@ -15,7 +15,7 @@ export const ModeratorHome = () => {
   const [hamActive, setHamActive] = useState(false);
   return (
     <div className="App">
-      <Navbar hamActive={hamActive} setHamActive={setHamActive} />
+      <ModNavbar hamActive={hamActive} setHamActive={setHamActive}/>
       <NavbarResponsive hamActive={hamActive} />
       <Hero />
       <Features />

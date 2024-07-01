@@ -80,7 +80,7 @@ function Userlanding() {
           </Carousel.Item>
         </Carousel>
       </div>
-      <div>
+      <div  style={{marginTop: "100px"}}>
         <div className='container mt-5'>
           <div className='row container'>
             <div className='col-6'>

@@ -137,12 +137,12 @@ const editModeratorById = async (req, res) => {
 
 // View Moderator by ID
 const viewModeratorById = (req, res) => {
-  Moderator.findById({ _id: req.params.id })
+  Moderator.findById(req.params.id)
     .exec()
     .then((data) => {
       res.json({
         status: 200,
-        msg: "Data obtained successfully",
+        msg: "Moderator data found.",
         data: data,
       });
     })
