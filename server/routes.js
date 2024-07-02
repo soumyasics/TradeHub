@@ -12,14 +12,13 @@ router.post('/forgotPasswordUser', user.forgotPassword);
 router.post('/viewUsers', user.viewUsers); 
 router.post('/deActivateUserById/:id', user.deActivateUserById);
 router.post('/activateUserById/:id', user.activateUserById);
-
 router.post('/resetPasswordUser/:id', user.resetPassword);
 router.post('/loginUser', user.login);
 router.post('/requireAuthUser', user.requireAuth);
 
 
 //item routes
-router.post('/registerItem/:id',items.upload,items.registerItem);
+router.post('/registerItem',items.upload,items.registerItem);
 router.post('/viewItemById/:id', items.viewItemById);
 router.post('/editItemById/:id',items.upload, items.editItemById);
 router.post('/activateItemById/:id', items.activateItemById);
@@ -27,7 +26,7 @@ router.post('/deActivateItemById/:id', items.deActivateItemById);
 router.post('/viewItemByUserId/:id', items.viewItemByUserId);
 router.post('/viewItemsToBeApproved', items.viewItemsToBeApproved);
 router.post('/viewActiveItems', items.viewActiveItems);
-
+router.get("/viewAllitemsByUserId/:id", items.viewAllitemsByUserId);
 
 
 //user routes

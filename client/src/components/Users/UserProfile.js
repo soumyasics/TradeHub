@@ -19,8 +19,11 @@ function UserProfile() {
       .post(`viewUserById/${id}`)
       .then((res) => {
         console.log(res);
-        setData(res.data.data);
-        console.log(res.data.data);
+        if (res.data?.status === 200) {
+
+          setData(res.data.data);
+          console.log(res.data.data);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -28,7 +31,7 @@ function UserProfile() {
   };
   
   useEffect(() => {
-    const id = localStorage.getItem("trade-hub-userId") || null;
+    let id = localStorage.getItem("trade-hub-userId") || null;
     if (id) {
         setActiveUserId(id)
         getUserData(id)
@@ -44,7 +47,7 @@ function UserProfile() {
       <div className="mt-5 ms-5">
         <Link to="/user/home">
           <FaArrowLeft className="user-profile-icon" />{" "}
-          <span className="user-profile-para ms-3 mt-3"> Profile</span>
+          <span className="user-profile-para ms-3 mt-3"> Home</span>
         </Link>
       </div>
       <div className="user-profile-div container">

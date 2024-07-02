@@ -31,7 +31,11 @@ function UserMainNav() {
 
   const userAddProduct = () => {
     navigate("/user/add-product");
-  }
+  };
+
+  const userViewItems = () => {
+    navigate("/user/view-items");
+  };
   return (
     <div>
       <div className="usermainnav-page-color ">
@@ -42,34 +46,47 @@ function UserMainNav() {
           id="navfixed"
         >
           <div className="col-2">
-            <Navbar.Brand onClick={navigateUserHome} style={{cursor: "pointer"}} className="toggleimg">
-              <img src={logos} className="usermainlogoimg ms-3" alt="img"></img>
+            <Navbar.Brand
+              onClick={navigateUserHome}
+              style={{ cursor: "pointer" }}
+              className="toggleimg"
+            >
+              <img src={logos} className="usermainlogoimg ms-3" alt="img" />
               <span className="usermainnav-page-trade">trade</span>{" "}
               <span className="usermainnav-page-hub">hub</span>
             </Navbar.Brand>
           </div>
-          {/* <Form className="d-flex">
+          <Form className="d-flex">
             <Form.Control
               type="search"
               placeholder="Search"
               className="me-5"
               aria-label="Search"
             />
-          </Form> */}
+          </Form>
 
-      
+          <p
+            className="usermain-navbar-home "
+            style={{ cursor: "pointer" }}
+            onClick={navigateUserHome}
+          >
+            Home
+          </p>
           {/* <p className="usermain-navbar-home mt-3 ">About</p> */}
-          {/* <Nav.Link href="" className='me-5'><p className='usermain-navbar-home mt-3 '>My Items</p></Nav.Link> */}
+          <p className="usermain-navbar-home" onClick={userViewItems}>
+            My Items
+          </p>
           {/* <Nav.Link href="" className="me-5">
             <p className="usermain-navbar-chat mt-3 pt-1">
               <BsChatText /> Chat
             </p>
           </Nav.Link> */}
+
+          <Link to="/user/add-product" className="">
+            <p className="usermain-navbar-chat">Sell</p>
+          </Link>
           <Nav.Link href="" className="">
-            {/* <p className="usermain-navbar-chat">+Sell</p> */}
-          </Nav.Link>
-          <Nav.Link href="" className="">
-            {/* <p className="usermain-navbar-chat">Points</p> */}
+            <p className="usermain-navbar-chat">Points</p>
           </Nav.Link>
           {/* <p className="usermain-navbar-home " onClick={navigateUserHome} >Home</p> */}
           {/* <Nav.Link href="" className="me-5">
@@ -81,7 +98,7 @@ function UserMainNav() {
               onClick={toggleDropdown}
               className="custom-dropdown-toggle"
             >
-              <Nav.Link href="" className=""  style={{marginRight: "90px"}}>
+              <Nav.Link className="" style={{ marginRight: "90px" }}>
                 <IoMdContact className="usermain-navbar-iconloop mt-3" />
               </Nav.Link>
             </Dropdown.Toggle>
@@ -89,9 +106,7 @@ function UserMainNav() {
               <Link className="dropdown-item" to="/user/user-profile" id="">
                 View Profile
               </Link>
-              <Link className="dropdown-item" to="/user/add-product" id="">
-                Add Item
-              </Link>
+
               <Link className="dropdown-item" to="" id="">
                 My Orders
               </Link>

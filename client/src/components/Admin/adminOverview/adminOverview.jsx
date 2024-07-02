@@ -1,14 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { HiUserGroup } from "react-icons/hi2";
 import { MdAddModerator } from "react-icons/md";
 import { GiReceiveMoney } from "react-icons/gi";
 import { TbTruckDelivery } from "react-icons/tb";
-import "../Admin.css"
+import "../Admin.css";
+import axiosInstance from "../../../apis/axiosInstance";
 export const AdminOverview = () => {
   const [users, setUsers] = useState([]);
   const [moderator, setModerator] = useState([]);
   const [transaction, setTransaction] = useState([]);
   const [delivery, setDelivery] = useState([]);
+
+  useEffect(() => {
+    getAllUsers();
+    getAllMods()
+  }, []);
+
+  const getAllUsers = async () => {
+    try {
+      const res = await axiosInstance.post("viewUsers");
+      if (res.data.status === 200) {
+        const data = res.data?.data || [];
+        setUsers(data);
+      } else {
+        console.log("respo", res);
+      }
+    } catch (error) {
+      console.log("all users", error);
+    }
+  };
+
+  const getAllMods = async () => {
+    try {
+      const res = await axiosInstance.post("viewModerators");
+      if (res.data.status === 200) {
+        const data = res.data?.data || [];
+        setModerator(data);
+      } else {
+        console.log("respo", res);
+      }
+    } catch (error) {
+      console.log("all users", error);
+    }
+  };
 
   return (
     <div>
