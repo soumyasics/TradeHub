@@ -24,6 +24,7 @@ import {Toaster} from 'react-hot-toast'
 import { ModeratorHome } from "./pages/common/moderatorHome";
 import { ModProfile } from "./components/Moderator/modProfile/modProfile";
 import { ModViewUsers } from "./components/Moderator/modViewUsers/modViewUsers";
+import ModeratorSidebar from "./components/Moderator/moderatorSidebar/moderatorSidebar";
 const App = () => {
   return (
     <div className="App">
@@ -58,6 +59,8 @@ const App = () => {
             element={<Moderatorforget />}
           />
 
+          <Route path="/moderatorsidebar" element={<ModeratorSidebar/>}/>
+
           {/* delivery  */}
           <Route path="/delivery/signup" element={<DelSignup />} />
           <Route path="/delivery/login" element={<DeliveryLogin />} />
@@ -75,4 +78,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default App
