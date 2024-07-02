@@ -21,6 +21,7 @@ import { ModeratorHome } from "./pages/common/moderatorHome";
 import { ModProfile } from "./components/Moderator/modProfile/modProfile";
 import { ModViewUsers } from "./components/Moderator/modViewUsers/modViewUsers";
 import { AddProducts } from "./components/Users/addProducts/addProducts";
+import { ViewUserDetails } from "./components/Users/viewUserDetails/viewUserDetails";
 const App = () => {
   return (
     <div className="App">
@@ -51,6 +52,7 @@ const App = () => {
           <Route path="/moderator/home" element={<ModeratorHome />} />
           <Route path="/moderator/profile" element={<ModProfile />} />
           <Route path="/moderator/view-users" element={<ModViewUsers />} />
+          <Route path="/moderator/view-users/:id" element={<ViewUserDetails />} />
           <Route
             path="/moderator/forgetpassword"
             element={<Moderatorforget />}
