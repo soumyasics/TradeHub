@@ -15,6 +15,7 @@ import axiosInstance from "../../../apis/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { BASE_URL } from "../../../apis/baseURL";
+import { axiosMultipartInstance } from "../../../apis/axiosMultipartInstance";
 
 export const AddProducts = () => {
   const [validated, setValidated] = useState(false);
@@ -24,19 +25,20 @@ export const AddProducts = () => {
     "https://t4.ftcdn.net/jpg/05/42/36/11/360_F_542361185_VFRJWpR2FH5OiAEVveWO7oZnfSccZfD3.jpg"
   );
   const [productData, setProductData] = useState({
-    name: "",
     userId: "",
+    name: "",
     category: "",
     condition: "",
     address: "",
     description: "",
-    quanity: "",
+    quantity: "",
     pincode: "",
     location: "",
-    itemPhoto: null
+    itemPhoto: null,
   });
   const navigate = useNavigate();
   const handleSubmit = (event) => {
+    event.preventDefault()
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -44,6 +46,104 @@ export const AddProducts = () => {
     }
 
     setValidated(true);
+
+    function checkValidity() {
+      const {
+        address,
+        category,
+        condition,
+        description,
+        location,
+        name,
+        pincode,
+        quantity,
+        itemPhoto,
+        userId,
+      } = productData;
+
+      if (!category) {
+        toast.error("Please enter category");
+        return false;
+      }
+
+      if (!condition) {
+        toast.error("Please enter condition");
+        return false;
+      }
+      if (!quantity) {
+        toast.error("Please enter quantity");
+        return false;
+      }
+      if (!itemPhoto) {
+        toast.error("Please choose item photo");
+        return false;
+      }
+
+      if (!name) {
+        toast.error("Please enter name");
+        return false;
+      }
+
+      if (!description) {
+        toast.error("Please enter description");
+        return false;
+      }
+
+      if (!address) {
+        toast.error("Please enter address");
+        return false;
+      }
+
+      if (!pincode) {
+        toast.error("Please enter pincode");
+        return false;
+      }
+
+      if (pincode.length !== 6) {
+        toast.error("Please enter valid pincode");
+        return false;
+      }
+
+      if (!location) {
+        toast.error("Please enter location");
+        return false;
+      }
+
+      return true;
+    }
+
+    if (!checkValidity()) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("userId", productData.userId);
+    formData.append("name", productData.name);
+    formData.append("category", productData.category);
+    formData.append("condition", productData.condition);
+    formData.append("address", productData.address);
+    formData.append("description", productData.description);
+    formData.append("quantity", productData.quantity);
+    formData.append("pincode", productData.pincode);
+    formData.append("location", productData.location);
+    formData.append("itemPhoto", productData.itemPhoto);
+    console.log("form data", formData)
+    sendDataToServer(formData);
+  };
+
+  const sendDataToServer = async (formData) => {
+    try {
+      const res =await  axiosMultipartInstance.post("/registerItem", formData);
+      if (res.status === 200) {
+        toast.success("Item added successfully");
+        // navigate("/user/home");
+      }else {
+        console.log("error", res);  
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Something went wrong");
+    }
   };
 
   const handleChanges = (e) => {
@@ -53,6 +153,15 @@ export const AddProducts = () => {
       [name]: value,
     });
   };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setProductData({
+      ...productData,
+      itemPhoto: file,
+    });
+  };
+
   const getUserData = (id) => {
     axiosInstance
       .post(`viewUserById/${id}`)
@@ -73,9 +182,14 @@ export const AddProducts = () => {
   };
 
   useEffect(() => {
-    const id = localStorage.getItem("trade-hub-userId") || null;
+    let id = localStorage.getItem("trade-hub-userId") || null;
+    console.log("iddd", id)
     if (id) {
-      setActiveUserId(id);
+      // id = 
+      setProductData({
+        ...productData,
+        userId: id,
+      });
       getUserData(id);
     } else {
       toast.error("Please login again.");
@@ -83,8 +197,7 @@ export const AddProducts = () => {
     }
   }, []);
 
-  console.log("user datt", userData);
-  console.log("user datt", userData?.firstname);
+  console.log("pro data", productData);
 
   return (
     <>
@@ -139,13 +252,17 @@ export const AddProducts = () => {
                         required
                         class="form-select userproduct-select-inp"
                         aria-label="Default select example"
+                        onChange={handleChanges}
+                        name="condition"
                       >
                         <option value="" defaultValue={""}>
                           Select
                         </option>
-                        <option value="1">Flawless</option>
-                        <option value="2">No Damange</option>
-                        <option value="3">Minner scratches</option>
+                        <option value="flawless">Flawless</option>
+                        <option value="no-damage">No Damange</option>
+                        <option value="minner-scratches">
+                          Minner scratches
+                        </option>
                       </select>
                       <Form.Control.Feedback
                         type="invalid"
@@ -160,10 +277,13 @@ export const AddProducts = () => {
                       md="4"
                       controlId="validationCustom01"
                       className="d-flex"
+                      required
                     >
                       <Form.Label>Quantity</Form.Label>
                       <select
                         required
+                        name="quantity"
+                        onChange={handleChanges}
                         class="form-select userproduct-select-inp"
                         aria-label="Default select example"
                       >
@@ -190,12 +310,13 @@ export const AddProducts = () => {
                         type="file"
                         placeholder="Upload Images"
                         className="userproduct-select-inp-img"
+                        onChange={handleFileChange}
                       />
                       <Form.Control.Feedback
                         type="invalid"
                         className="addproducts-error-message"
                       >
-                        provide a valid image
+                        Provide a valid image
                       </Form.Control.Feedback>
                     </Form.Group>
 
@@ -273,7 +394,7 @@ export const AddProducts = () => {
                               type="invalid"
                               className="addproducts-error-message"
                             >
-                              provide phone number
+                              Provide phone number
                             </Form.Control.Feedback>
                           </Form.Group>
                         </div>
@@ -288,6 +409,9 @@ export const AddProducts = () => {
                       required
                       type="text"
                       placeholder="Enter Item Name"
+                      onChange={handleChanges}
+                      name="name"
+                      value={productData?.name}
                       className="userproduct-select-inp"
                     />
                     <Form.Control.Feedback
@@ -309,6 +433,10 @@ export const AddProducts = () => {
                         rows={3}
                         placeholder="Item description"
                         className=""
+                        onChange={handleChanges}
+                        name="description"
+                        value={productData?.description}
+                        required
                       />
                     </Form.Group>
 
@@ -330,6 +458,10 @@ export const AddProducts = () => {
                         as="textarea"
                         rows={3}
                         placeholder="Address"
+                        onChange={handleChanges}
+                        name="address"
+                        required
+                        value={productData?.address}
                       />
                     </Form.Group>
 
@@ -347,6 +479,9 @@ export const AddProducts = () => {
                       type="number"
                       placeholder="Enter Pincode"
                       required
+                      onChange={handleChanges}
+                      name="pincode"
+                      value={productData?.pincode}
                       className="userproduct-select-inp addproduct-right-input"
                     />
                     <Form.Control.Feedback
@@ -358,26 +493,13 @@ export const AddProducts = () => {
                   </Form.Group>
 
                   <Form.Group as={Row} md="6" controlId="validationCustom03">
-                    <Form.Label> District</Form.Label>
-                    <Form.Control
-                      type="number"
-                      placeholder="Enter Pincode"
-                      required
-                      className="userproduct-select-inp addproduct-right-input"
-                    />
-                    <Form.Control.Feedback
-                      type="invalid"
-                      className="addproducts-error-message"
-                    >
-                      Please provide a valid District.
-                    </Form.Control.Feedback>
-                  </Form.Group>
-
-                  <Form.Group as={Row} md="6" controlId="validationCustom03">
                     <Form.Label>Location</Form.Label>
                     <Form.Control
                       type="text"
                       placeholder="Enter Location"
+                      onChange={handleChanges}
+                      name="location"
+                      value={productData?.location}
                       required
                       className="userproduct-select-inp addproduct-right-input"
                     />

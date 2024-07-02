@@ -31,7 +31,7 @@ function UserProfile() {
   };
   
   useEffect(() => {
-    const id = localStorage.getItem("trade-hub-userId") || null;
+    let id = localStorage.getItem("trade-hub-userId") || null;
     if (id) {
         setActiveUserId(id)
         getUserData(id)

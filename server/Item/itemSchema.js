@@ -40,6 +40,7 @@ const sSchema = mongoose.Schema({
   },
   itemPhoto: {
     type: Object,
+    required: true
   },
   isActive: {
     type: Boolean,

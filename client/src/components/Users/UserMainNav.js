@@ -32,6 +32,10 @@ function UserMainNav() {
   const userAddProduct = () => {
     navigate("/user/add-product");
   };
+
+  const userViewItems = () => {
+    navigate("/user/view-items");
+  };
   return (
     <div>
       <div className="usermainnav-page-color ">
@@ -61,11 +65,17 @@ function UserMainNav() {
             />
           </Form>
 
-          <p className="usermain-navbar-home " style={{cursor: "pointer"}} onClick={navigateUserHome}>
+          <p
+            className="usermain-navbar-home "
+            style={{ cursor: "pointer" }}
+            onClick={navigateUserHome}
+          >
             Home
           </p>
           {/* <p className="usermain-navbar-home mt-3 ">About</p> */}
-          {/* <Nav.Link href="" className='me-5'><p className='usermain-navbar-home mt-3 '>My Items</p></Nav.Link> */}
+          <p className="usermain-navbar-home" onClick={userViewItems}>
+            My Items
+          </p>
           {/* <Nav.Link href="" className="me-5">
             <p className="usermain-navbar-chat mt-3 pt-1">
               <BsChatText /> Chat

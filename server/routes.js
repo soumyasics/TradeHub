@@ -12,7 +12,6 @@ router.post('/forgotPasswordUser', user.forgotPassword);
 router.post('/viewUsers', user.viewUsers); 
 router.post('/deActivateUserById/:id', user.deActivateUserById);
 router.post('/activateUserById/:id', user.activateUserById);
-
 router.post('/resetPasswordUser/:id', user.resetPassword);
 router.post('/loginUser', user.login);
 router.post('/requireAuthUser', user.requireAuth);
@@ -27,7 +26,7 @@ router.post('/deActivateItemById/:id', items.deActivateItemById);
 router.post('/viewItemByUserId/:id', items.viewItemByUserId);
 router.post('/viewItemsToBeApproved', items.viewItemsToBeApproved);
 router.post('/viewActiveItems', items.viewActiveItems);
-
+router.get("/viewAllitemsByUserId/:id", items.viewAllitemsByUserId);
 
 
 //user routes

@@ -1,5 +1,6 @@
 const Item = require("./itemSchema");
 const multer = require("multer");
+const mongoose = require("mongoose");
 
 // Multer storage configuration
 const storage = multer.diskStorage({
@@ -17,11 +18,12 @@ const storage = multer.diskStorage({
     cb(null, filename);
   },
 });
-const upload = multer({ storage: storage }).single("item-photo")
+const upload = multer({ storage: storage }).single("itemPhoto");
 
 const registerItem = async (req, res) => {
   try {
     const {
+      userId,
       name,
       category,
       condition,
@@ -32,8 +34,33 @@ const registerItem = async (req, res) => {
       location,
     } = req.body;
 
+    if (
+      !userId ||
+      !name ||
+      !category ||
+      !condition ||
+      !address ||
+      !description ||
+      !quantity ||
+      !pincode ||
+      !location
+    ) {
+      return res.json({
+        status: 400,
+        msg: "Please fill all the fields",
+      });
+    }
+
+    console.log("user idd", req.body);
+
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return res.status(400).json({ msg: "Invalid userId", userId });
+    }
+
+    console.log("items", req.file);
+
     const newItem = new Item({
-      userId: req.params.id,
+      userId,
       name,
       category,
       condition,
@@ -42,30 +69,32 @@ const registerItem = async (req, res) => {
       quantity,
       pincode,
       location,
-      itemPhoto: req.file
+      itemPhoto: req.file,
     });
 
-    await newItem
-      .save()
-      .then((data) => {
-        res.json({
-          status: 200,
-          msg: "Inserted successfully",
-          data: data,
-        });
-      })
-      .catch((err) => {
-        res.json({
-          status: 500,
-          msg: "Data not Inserted",
-          data: err,
-        });
-      });
+    console.log("new ite", newItem);
+
+    await newItem.save();
+    return res.status(200).json({ msg: "Item added successfully" });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message });
   }
 };
+const viewAllitemsByUserId = async (req, res) => {
+  try {
+    const id = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ msg: "Invalid userId", id });
+    }
 
+    const items = await Item.find({ userId: id });
+    return res
+      .status(200)
+      .json({ msg: "Data obtained successfully", data: items });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
 // View all Items
 const viewActiveItems = (req, res) => {
   Item.find({ isActive: true })
@@ -261,6 +290,7 @@ module.exports = {
   viewItemsToBeApproved,
   viewItemById,
   activateItemById,
+  viewAllitemsByUserId,
   deActivateItemById,
   upload,
 };
