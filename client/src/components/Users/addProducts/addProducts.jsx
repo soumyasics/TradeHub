@@ -6,6 +6,10 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
 import girlImg from "../../../assets/images/girl.png";
+import { ModNavbar } from "../../homeComponents/Navbar/Navbar";
+import Footer from "../../Footer/Footer";
+import UserNavbar from "../../homeComponents/Navbar/UserNavbar";
+import MainNav from "../../homeComponents/Navbar/MainNav";
 export const AddProducts = () => {
   const [validated, setValidated] = useState(false);
 
@@ -20,7 +24,9 @@ export const AddProducts = () => {
   };
 
   return (
-    <div className="addProduct-body">
+    <>   
+    <MainNav />
+     <div className="addProduct-body">
       <h2 className="addproducts-heading">ADD ITEM TO SELL</h2>
       <div className="addProducts-login-box">
         <div class="container text-center">
@@ -253,5 +259,8 @@ export const AddProducts = () => {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
+
   );
 };

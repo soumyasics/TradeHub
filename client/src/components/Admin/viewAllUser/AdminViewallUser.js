@@ -90,8 +90,8 @@ export const  AdminViewallUser = () => {
       </select> */}
       <h3 className="mt-5 text-center"> View Users </h3>
       {data.length !== 0 ? (
-        <div className="table-container">
-          <Table striped hover   className="table">
+        <div className="table-container" style={{overflowY: "scroll", height: "80vh"}}>
+          <Table striped hover className="table">
             <thead>
               <tr>
                 <th>S.No</th>

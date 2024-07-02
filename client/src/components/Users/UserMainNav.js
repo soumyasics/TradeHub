@@ -28,6 +28,10 @@ function UserMainNav() {
   const navigateUserHome = () => {
     navigate("/user/home");
   };
+
+  const userAddProduct = () => {
+    navigate("/user/add-product");
+  }
   return (
     <div>
       <div className="usermainnav-page-color ">
@@ -38,7 +42,7 @@ function UserMainNav() {
           id="navfixed"
         >
           <div className="col-2">
-            <Navbar.Brand href="/" className="toggleimg">
+            <Navbar.Brand onClick={navigateUserHome} style={{cursor: "pointer"}} className="toggleimg">
               <img src={logos} className="usermainlogoimg ms-3" alt="img"></img>
               <span className="usermainnav-page-trade">trade</span>{" "}
               <span className="usermainnav-page-hub">hub</span>
@@ -53,7 +57,7 @@ function UserMainNav() {
             />
           </Form> */}
 
-          <p className="usermain-navbar-home " onClick={navigateUserHome} >Home</p>
+      
           {/* <p className="usermain-navbar-home mt-3 ">About</p> */}
           {/* <Nav.Link href="" className='me-5'><p className='usermain-navbar-home mt-3 '>My Items</p></Nav.Link> */}
           {/* <Nav.Link href="" className="me-5">
@@ -62,11 +66,12 @@ function UserMainNav() {
             </p>
           </Nav.Link> */}
           <Nav.Link href="" className="">
-            <p className="usermain-navbar-chat">+Sell</p>
+            {/* <p className="usermain-navbar-chat">+Sell</p> */}
           </Nav.Link>
           <Nav.Link href="" className="">
-            <p className="usermain-navbar-chat">Points</p>
+            {/* <p className="usermain-navbar-chat">Points</p> */}
           </Nav.Link>
+          {/* <p className="usermain-navbar-home " onClick={navigateUserHome} >Home</p> */}
           {/* <Nav.Link href="" className="me-5">
             <ImLoop className="usermain-navbar-iconloop" />
           </Nav.Link> */}
@@ -84,7 +89,7 @@ function UserMainNav() {
               <Link className="dropdown-item" to="/user/user-profile" id="">
                 View Profile
               </Link>
-              <Link className="dropdown-item" to="/user/additemtosell" id="">
+              <Link className="dropdown-item" to="/user/add-product" id="">
                 Add Item
               </Link>
               <Link className="dropdown-item" to="" id="">
