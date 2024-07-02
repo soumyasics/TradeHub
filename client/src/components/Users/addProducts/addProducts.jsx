@@ -100,7 +100,7 @@ export const AddProducts = () => {
       }
 
       if (pincode.length !== 6) {
-        toast.error("Please enter valid pincode");
+        toast.error("Please enter 6 digits valid pincode");
         return false;
       }
 
@@ -136,7 +136,7 @@ export const AddProducts = () => {
       const res =await  axiosMultipartInstance.post("/registerItem", formData);
       if (res.status === 200) {
         toast.success("Item added successfully");
-        // navigate("/user/home");
+        navigate("/user/view-items");
       }else {
         console.log("error", res);  
       }

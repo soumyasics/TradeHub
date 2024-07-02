@@ -91,9 +91,9 @@ export const AdminViewallMods = () => {
         <option>9</option>
         <option>10</option>
       </select> */}
-      <h3 className="mt-5 text-center"> View Moderators </h3>
+      <h3 className="mt-2 text-center"> View Moderators </h3>
       {data.length !== 0 ? (
-        <div  className="table-container">
+        <div  className="table-container" style={{overflowY: "scroll", height: "80vh"}}>
           <Table striped hover className="table">
             <thead>
               <tr>

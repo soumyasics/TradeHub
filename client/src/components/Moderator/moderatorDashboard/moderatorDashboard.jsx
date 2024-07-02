@@ -16,7 +16,7 @@ export const ModeratorDashboard = () => {
       </div>
       <div className="w-100">
         {selectpage === "overview" && <ModeratorOverview />}
-        {selectpage === "items" && <ProductRequest />}
+        {selectpage === "pending-items" && <ProductRequest />}
       </div>
     </div>
   );
