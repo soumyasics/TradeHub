@@ -1,0 +1,65 @@
+
+/* moderator Sidebar */
+.moderator-sidebar-color {
+    background-color: #6e3799;
+    height: 150vh;
+    width: 225px;
+}
+
+.moderator-sidebar-img {
+    margin-top: 10px;
+    margin-left: 30px;
+    height: 50px;
+    width: 50px;
+}
+
+.moderator-sidebar-logotext {
+    color: white;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.moderator-sidebar-list li {
+    color: white;
+    margin-top: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.moderator-sidebar-dropdown {
+    background-color: #6d3698;
+    border: none;
+    color: white;
+    font-size: 23px;
+    margin-top: 5px;
+}
+
+.moderator-sidebar-icon {
+    margin-bottom: 10px;
+}
+
+.moderator-sidebar-dropdowns {
+    background-color: #6d3698;
+}
+.notifiactionIcon {
+    font-size: 30px;
+    margin-top: 4%;
+    margin-left: 2%;
+}
+.contentIcons{
+    margin-right: 4%;
+}
+.reviewbtn{
+    color: #fff;
+    width: 100%;
+    background: transparent;
+    border: none;
+    height: 10px;
+}
+.collapse-drop{
+    width: 90%;
+}
+.collapse-dropbody li{
+    color: black;
+    margin-top: 10px;
+}
