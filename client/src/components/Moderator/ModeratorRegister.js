@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./Moderator.css";
 import MainNav from "../homeComponents/Navbar/MainNav";
-import { BiImageAdd } from "react-icons/bi";
-import { FiEdit2 } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import { toast } from "react-hot-toast";
@@ -177,7 +175,7 @@ function ModeratorRegister() {
                     value={data.firstname}
                     name="firstname"
                     onChange={handleChange}
-                  ></input>
+                  />
                   <input
                     type="text"
                     placeholder="Last Name"
@@ -185,7 +183,7 @@ function ModeratorRegister() {
                     value={data.lastname}
                     name="lastname"
                     onChange={handleChange}
-                  ></input>
+                  />
                 </div>
                 <label className="moderator-register-label mt-5">Gender</label>
                 <input
@@ -195,7 +193,7 @@ function ModeratorRegister() {
                   value="male"
                   onChange={handleChange}
                   checked={data.gender === "male"}
-                ></input>
+                />
                 <label className="user-register-label ms-2">Male</label>
                 <input
                   type="radio"
@@ -204,7 +202,7 @@ function ModeratorRegister() {
                   value="female"
                   onChange={handleChange}
                   checked={data.gender === "female"}
-                ></input>
+                />
                 <label className="user-register-label ms-2">Female</label>
                 <br></br>
                 <div>
@@ -216,7 +214,7 @@ function ModeratorRegister() {
                     value={data.email}
                     name="email"
                     onChange={handleChange}
-                  ></input>
+                  />
                 </div>
                 <div>
                   <label className="moderator-register-label mt-4">
@@ -229,7 +227,7 @@ function ModeratorRegister() {
                     value={data.contact}
                     name="contact"
                     onChange={handleChange}
-                  ></input>
+                  />
                 </div>
                 <div className="form-check">
                   <input
@@ -261,7 +259,7 @@ function ModeratorRegister() {
                     value={data.password}
                     name="password"
                     onChange={handleChange}
-                  ></input>
+                  />
                 </div>
                 <div>
                   <label className="moderator-register-label mt-4">
@@ -274,7 +272,7 @@ function ModeratorRegister() {
                     value={data.repassword}
                     name="repassword"
                     onChange={handleChange}
-                  ></input>
+                  />
                 </div>
                 <div>
                   <label className="moderator-register-label mt-4">

@@ -7,6 +7,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 function UserNavbar() {
+  
   const navigate = useNavigate();
   const navigateToLanding = () => {
     navigate("/");
@@ -33,19 +34,21 @@ function UserNavbar() {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
-                <div
-                  className="me-5 navlink"
-                  style={{ cursor: "pointer" }}
-                  onClick={navigateToLanding}
-                >
-                  <p className="usernav-about">Home</p>
-                </div>
+                
                 <div className="me-5 navlink" style={{ cursor: "pointer" }}>
                   <p className="usernav-about">About</p>
                 </div>
 
                 <div className="me-5 navlink" style={{ cursor: "pointer" }}>
                   <p className="usernav-about">Contact</p>
+                </div>
+
+                <div
+                  className="me-5 navlink"
+                  style={{ cursor: "pointer" }}
+                  onClick={navigateToLanding}
+                >
+                  <p className="usernav-about">Home</p>
                 </div>
 
                 <Dropdown>

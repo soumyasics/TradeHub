@@ -1,5 +1,4 @@
 import React from "react";
-import MainNav from "../components/homeComponents/Navbar/MainNav";
 import Landingpage from "../components/LandingPage/Landingpage";
 import HomeCategories from "./HomeCategories";
 import Footer from "../components/Footer/Footer";

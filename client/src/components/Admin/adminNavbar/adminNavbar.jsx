@@ -1,12 +1,7 @@
 import React from "react";
 import "./adminNavbar.css";
 import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
 import logos from "../../././../assets/images/logo.png";
-import { Link } from "react-router-dom";
-import { FaCaretDown } from "react-icons/fa";
-import Dropdown from "react-bootstrap/Dropdown";
-// import { Link } from 'react-router-dom';
 import { GrUserAdmin } from "react-icons/gr";
 
 export const AdminNavbar = () => {

@@ -13,6 +13,9 @@ function MainNav() {
   const redirectToUserHome = () => {
     navigate("/user/home");
   };
+  const redirectToUserAddProduct = () => {
+    navigate("/user/add-product");
+  };
   return (
     <div>
       <div className="nav-page-color">

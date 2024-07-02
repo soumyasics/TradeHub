@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Moderator.css";
 import MainNav from "../homeComponents/Navbar/MainNav";
 import Footer from "../Footer/Footer";
-import moderatorlogin from "../../assets/images/moderatorlogin.png";
+import moderatorlogin from "../../assets/images/moderatorlogin.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axiosInstance from "../../apis/axiosInstance";
@@ -57,7 +57,7 @@ function Moderatorlogin() {
       console.log("res", res);
       if (res.data.status === 200) {
         const userId = res?.data?.data?._id || null;
-      
+
         if (userId) {
           localStorage.setItem("trade-hub-modId", userId);
         }
@@ -101,7 +101,7 @@ function Moderatorlogin() {
                       name="email"
                       value={data.email}
                       onChange={handleChange}
-                    ></input>
+                    />
                   </div>
                   <div>
                     <label className="moderator-login mt-5 ms-5">
@@ -113,7 +113,7 @@ function Moderatorlogin() {
                       name="password"
                       value={data.password}
                       onChange={handleChange}
-                    ></input>
+                    />
                   </div>
                   <div className="mt-3 moderator-login-link container">
                     <Link to="" className="moderator-login-forget">

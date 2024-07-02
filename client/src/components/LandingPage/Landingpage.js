@@ -1,11 +1,6 @@
 import React from 'react'
 import './Landingpage.css'
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from "react-bootstrap/Nav";
-import logo from '../../assets/images/logo.png'
-import { Link } from 'react-router-dom';
 import landingpage from '../../assets/images/landingpage.png'
-import MainNav from '../homeComponents/Navbar/MainNav';
 function Landingpage() {
   return (
      

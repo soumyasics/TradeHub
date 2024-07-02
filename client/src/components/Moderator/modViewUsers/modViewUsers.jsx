@@ -79,7 +79,7 @@ export const ModViewUsers = () => {
       <div style={{minHeight: "70vh"}}>
         <h3 className="mt-5 text-center"> View active users </h3>
         {data.length !== 0 ? (
-          <div className="table-container">
+          <div className="table-container" style={{overflowY: "scroll", height: "80vh"}}>
             <Table striped hover className="table mx-auto" responsive style={{width: "90%"}}>
               <thead>
                 <tr>

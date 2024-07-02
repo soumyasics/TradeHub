@@ -1,12 +1,8 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ModLogin from "./pages/moderator/modLogin/modLogin";
 import DeliveryLogin from "./pages/delivery/deliveryLogin/deliveryLogin";
-import ModSignup from "./pages/moderator/modSignup/modSignup";
 import DelSignup from "./pages/delivery/deliverySignup/delSignup";
 import Adminlogin from "./components/Admin/adminLogin/Adminlogin";
-
-import AdminViewallUser from "./components/Admin/viewAllUser/AdminViewallUser";
 import Userlanding from "./components/Users/Userlanding";
 import Userforget from "./components/Users/Userforget";
 import UserRegister from "./components/Users/UserRegister";
@@ -24,6 +20,7 @@ import {Toaster} from 'react-hot-toast'
 import { ModeratorHome } from "./pages/common/moderatorHome";
 import { ModProfile } from "./components/Moderator/modProfile/modProfile";
 import { ModViewUsers } from "./components/Moderator/modViewUsers/modViewUsers";
+import { AddProducts } from "./components/Users/addProducts/addProducts";
 import ModeratorSidebar from "./components/Moderator/moderatorSidebar/moderatorSidebar";
 const App = () => {
   return (
@@ -46,6 +43,7 @@ const App = () => {
           />
           <Route path="/user/additemtosell" element={<UserAddItemToSell />} />
           <Route path="/user/viewitemtobuy" element={<UserViewItemToBuy />} />
+          <Route path="/user/add-product" element={<AddProducts />} />
 
           {/* moderators  */}
 

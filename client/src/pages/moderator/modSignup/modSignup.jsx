@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Col, Container, Row, Image } from "react-bootstrap";
 import cactusImg from "../../../assets/images/cactus.png";
-import typingGirlImg from "../../../assets/images/typing-girl-img.png";
-import manThinkingImg from "../../../assets/images/thinking-png.png";
+import manThinkingImg from "../../../assets/images/typing-girl-img.png";
 import ModSignupForm from "./modSignupForm";
 import "./modSignup.css";
 

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import userreg from "../../assets/images/userreg.png";
-import userregimg from "../../assets/images/userregimg.png";
+import userreg from "../../assets/images/userreg.jpg";
 import MainNav from "../homeComponents/Navbar/MainNav";
 import Footer from "../Footer/Footer";
-import {axiosMultipartInstance} from "../../apis/axiosMultipartInstance";
+import { axiosMultipartInstance } from "../../apis/axiosMultipartInstance";
 import { Navigate, useNavigate } from "react-router-dom";
 import { BiImageAdd } from "react-icons/bi";
 import { FiEdit2 } from "react-icons/fi";
@@ -209,7 +208,7 @@ function UserRegister() {
                       value={data.firstname}
                       name="firstname"
                       onChange={handleChange}
-                    ></input>
+                    />
 
                     <input
                       type="text"
@@ -218,7 +217,7 @@ function UserRegister() {
                       value={data.lastname}
                       name="lastname"
                       onChange={handleChange}
-                    ></input>
+                    />
                   </div>
                   <div></div>
                   <div>
@@ -231,7 +230,7 @@ function UserRegister() {
                       onChange={handleChange}
                       value="male"
                       checked={data.gender === "male"}
-                    ></input>
+                    />
                     <label className="user-register-label ms-2">Male</label>
                     <input
                       type="radio"
@@ -267,7 +266,7 @@ function UserRegister() {
                       value={data.contact}
                       name="contact"
                       onChange={handleChange}
-                    ></input>
+                    />
                   </div>
                 </div>
                 <div className="col">
@@ -306,7 +305,7 @@ function UserRegister() {
                       value={data.password}
                       name="password"
                       onChange={handleChange}
-                    ></input>
+                    />
                   </div>
                   <div>
                     <label className="user-register-label mt-4">
@@ -319,7 +318,7 @@ function UserRegister() {
                       value={data.repassword}
                       name="repassword"
                       onChange={handleChange}
-                    ></input>
+                    />
                   </div>
                 </div>
                 <div
