@@ -21,7 +21,7 @@ function MainNav() {
       <div className="nav-page-color">
         <Navbar collapseOnSelect expand="lg" className="" id="navfixed">
           <div className="col-7">
-            <Navbar.Brand href="/" className="toggleimg">
+            <Navbar.Brand onClick={redirectToUserHome} className="toggleimg">
               <img src={logos} className="logoimg ms-3" alt="img"></img>
               <span className="nav-page-trade">trade</span>{" "}
               <span className="nav-page-hub">hub</span>

@@ -21,6 +21,8 @@ import { ModeratorHome } from "./pages/common/moderatorHome";
 import { ModProfile } from "./components/Moderator/modProfile/modProfile";
 import { ModViewUsers } from "./components/Moderator/modViewUsers/modViewUsers";
 import { AddProducts } from "./components/Users/addProducts/addProducts";
+import { ViewUserDetails } from "./components/Users/viewUserDetails/viewUserDetails";
+import { ViewItems } from "./components/Users/addProducts/viewItems/viewItems";
 import ModeratorSidebar from "./components/Moderator/moderatorSidebar/moderatorSidebar";
 import ProductRequest from "./components/Moderator/productRequestcontainer/productRequest";
 import { ModeratorDashboard } from "./components/Moderator/moderatorDashboard/moderatorDashboard";
@@ -47,6 +49,7 @@ const App = () => {
           <Route path="/user/additemtosell" element={<UserAddItemToSell />} />
           <Route path="/user/viewitemtobuy" element={<UserViewItemToBuy />} />
           <Route path="/user/add-product" element={<AddProducts />} />
+          <Route path="/user/view-items" element={<ViewItems/>} />
 
           {/* moderators  */}
 
@@ -55,6 +58,7 @@ const App = () => {
           <Route path="/moderator/home" element={<ModeratorHome />} />
           <Route path="/moderator/profile" element={<ModProfile />} />
           <Route path="/moderator/view-users" element={<ModViewUsers />} />
+          <Route path="/moderator/view-users/:id" element={<ViewUserDetails />} />
           <Route
             path="/moderator/forgetpassword"
             element={<Moderatorforget />}
