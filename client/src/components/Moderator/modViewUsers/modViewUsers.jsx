@@ -4,10 +4,10 @@ import axiosInstance from "../../../apis/axiosInstance";
 import { Button, Table } from "react-bootstrap";
 import { ModNavbar } from "../../homeComponents/Navbar/Navbar";
 import Footer from "../../Footer/Footer";
-
+import { useNavigate } from "react-router-dom";
 export const ModViewUsers = () => {
   const [data, setData] = useState([]);
-    let tableRowCount = 0;
+  let tableRowCount = 0;
   const handleActive = (id) => {
     console.log(id);
     axiosInstance
@@ -27,6 +27,14 @@ export const ModViewUsers = () => {
       .catch((err) => {
         console.log("Error", err);
       });
+  };
+  const navigate = useNavigate();
+  const navigateUserDetails = (id) => {
+    if (!id) {
+      return;
+    }
+
+    navigate(`/moderator/view-users/${id}`);
   };
 
   const handleDeactive = (id) => {
@@ -76,11 +84,20 @@ export const ModViewUsers = () => {
   return (
     <>
       <ModNavbar />
-      <div style={{minHeight: "70vh"}}>
+      <div style={{ minHeight: "70vh" }}>
         <h3 className="mt-5 text-center"> View active users </h3>
         {data.length !== 0 ? (
-          <div className="table-container" style={{overflowY: "scroll", height: "80vh"}}>
-            <Table striped hover className="table mx-auto" responsive style={{width: "90%"}}>
+          <div
+            className="table-container"
+            style={{ overflowY: "scroll", height: "80vh" }}
+          >
+            <Table
+              striped
+              hover
+              className="table mx-auto"
+              responsive
+              style={{ width: "90%" }}
+            >
               <thead>
                 <tr>
                   <th>S.No</th>
@@ -108,7 +125,14 @@ export const ModViewUsers = () => {
                       <td>{user.email}</td>
                       <td>{user.contact}</td>
                       <td>
-                        <Button variant={"success"}>View Details</Button>
+                        <Button
+                          onClick={() => {
+                            navigateUserDetails(user._id);
+                          }}
+                          variant={"success"}
+                        >
+                          View Details
+                        </Button>
                       </td>
                     </tr>
                   );
@@ -122,7 +146,7 @@ export const ModViewUsers = () => {
           </div>
         )}
       </div>
-      <div className='mt-5'>
+      <div className="mt-5">
         <Footer />
       </div>
     </>
