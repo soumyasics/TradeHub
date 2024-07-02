@@ -1,5 +1,6 @@
 {
   "name": "tradehub",
+  "homepage": "http://hybrid.srishticampus.in/tradehub/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

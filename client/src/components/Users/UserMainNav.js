@@ -84,8 +84,8 @@ function UserMainNav() {
               <Link className="dropdown-item" to="/user/user-profile" id="">
                 View Profile
               </Link>
-              <Link className="dropdown-item" to="" id="">
-                Whishlist
+              <Link className="dropdown-item" to="/user/additemtosell" id="">
+                Add Item
               </Link>
               <Link className="dropdown-item" to="" id="">
                 My Orders

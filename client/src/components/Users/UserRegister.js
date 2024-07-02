@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import userreg from "../../assets/images/userreg.jpg";
 import MainNav from "../homeComponents/Navbar/MainNav";
 import Footer from "../Footer/Footer";
-import {axiosMultipartInstance} from "../../apis/axiosMultipartInstance";
+import { axiosMultipartInstance } from "../../apis/axiosMultipartInstance";
 import { Navigate, useNavigate } from "react-router-dom";
 import { BiImageAdd } from "react-icons/bi";
 import { FiEdit2 } from "react-icons/fi";

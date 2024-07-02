@@ -131,7 +131,7 @@ a {
   /* transition: 400ms transform 0ms, 400ms background 400ms; */
 }
 .hamburger.active span::after {
-  opacity: 0;
+  /* opacity: 0; */
   /* transition: 400ms opacity 0ms; */
 }
 

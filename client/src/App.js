@@ -24,7 +24,7 @@ import { AddProducts } from "./components/Users/addProducts/addProducts";
 const App = () => {
   return (
     <div className="App">
-      <BrowserRouter >
+      <BrowserRouter basename="/tradehub">
       <Toaster/> 
         <Routes>
           {/* common  */}
