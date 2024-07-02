@@ -51,11 +51,9 @@ const registerItem = async (req, res) => {
       });
     }
 
-
     if (!mongoose.Types.ObjectId.isValid(userId)) {
       return res.status(400).json({ msg: "Invalid userId", userId });
     }
-
 
     const newItem = new Item({
       userId,
@@ -70,13 +68,44 @@ const registerItem = async (req, res) => {
       itemPhoto: req.file,
     });
 
-
     await newItem.save();
     return res.status(200).json({ msg: "Item added successfully" });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
 };
+
+const deleteItemById = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "Invalid userId", id });
+    }
+
+    const item = await Item.findById(id);
+
+    if (!item) {
+      return res.status(404).json({ message: "Item not found", id });
+    }
+
+    await Item.findByIdAndDelete(id);
+
+    return res.status(200).json({ message: "Item deleted successfully", id });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+const viewAllItemsPendingItems = async (req, res) => {
+  try {
+    const items = await Item.find({ isModApproved: false });
+    return res
+      .status(200)
+      .json({ msg: "Data obtained successfully", data: items });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+}
 const viewAllitemsByUserId = async (req, res) => {
   try {
     const id = req.params.id;
@@ -290,4 +319,5 @@ module.exports = {
   viewAllitemsByUserId,
   deActivateItemById,
   upload,
+  deleteItemById, viewAllItemsPendingItems
 };

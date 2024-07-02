@@ -37,9 +37,9 @@ function ModeratorSidebar({ changeSelectedPage }) {
           ></img>
           &nbsp; &nbsp;
           <div className="mt-3">Moderator </div>
-          <div className="notifiactionIcon">
+          {/* <div className="notifiactionIcon">
             <IoIosNotificationsOutline />
-          </div>
+          </div> */}
         </div>
         <div className="mt-4">
           <ol className="moderator-sidebar-list" style={{ fontSize: "14px" }}>
@@ -49,7 +49,7 @@ function ModeratorSidebar({ changeSelectedPage }) {
               </span>
               Dashboard
             </li>
-            <li onClick={() => changeSelectedPage("items")}>
+            <li onClick={() => changeSelectedPage("pending-items")}>
               <span className="contentIcons">
                 <BsBox />
               </span>
