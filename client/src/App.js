@@ -22,6 +22,7 @@ import { ModProfile } from "./components/Moderator/modProfile/modProfile";
 import { ModViewUsers } from "./components/Moderator/modViewUsers/modViewUsers";
 import { AddProducts } from "./components/Users/addProducts/addProducts";
 import { ViewUserDetails } from "./components/Users/viewUserDetails/viewUserDetails";
+import { ViewItems } from "./components/Users/addProducts/viewItems/viewItems";
 const App = () => {
   return (
     <div className="App">
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/user/additemtosell" element={<UserAddItemToSell />} />
           <Route path="/user/viewitemtobuy" element={<UserViewItemToBuy />} />
           <Route path="/user/add-product" element={<AddProducts />} />
+          <Route path="/user/view-items" element={<ViewItems/>} />
 
           {/* moderators  */}
 
