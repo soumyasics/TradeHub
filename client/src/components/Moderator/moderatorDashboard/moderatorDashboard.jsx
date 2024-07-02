@@ -2,9 +2,10 @@ import { useState } from "react";
 import ModeratorSidebar from "../moderatorSidebar/moderatorSidebar";
 import ProductRequest from "../productRequestcontainer/productRequest";
 import ModeratorItempage from "../moderatorItemPage/moderatorItempage";
+import { ModeratorOverview } from "../overview/moderatorOverview";
 
 export const ModeratorDashboard = () => {
-  const [selectpage, setSelectpage] = useState("productrequest");
+  const [selectpage, setSelectpage] = useState("overview");
   const changeSelectedPage = (value) => {
     setSelectpage(value);
   };
@@ -14,8 +15,8 @@ export const ModeratorDashboard = () => {
         <ModeratorSidebar changeSelectedPage={changeSelectedPage} />
       </div>
       <div className="w-100">
-        {selectpage === "productrequest" && <ProductRequest />}
-        {selectpage === "itempage" && <ModeratorItempage />}
+        {selectpage === "overview" && <ModeratorOverview />}
+        {selectpage === "items" && <ProductRequest />}
       </div>
     </div>
   );

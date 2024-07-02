@@ -50,6 +50,9 @@ export const ModNavbar = ({ hamActive, setHamActive }) => {
   const redirectModViewUsers = () => {
     navigate("/moderator/view-users");
   };
+  const redirectModDashboard = () => {
+    navigate("/moderator/dashboard");
+  };
   return (
     <nav className={`${styles.navbarWrapper} center`}>
       <div className={`${styles.navbarInner} center`}>
@@ -75,6 +78,12 @@ export const ModNavbar = ({ hamActive, setHamActive }) => {
               onClick={redirectModViewUsers}
             >
               View Users
+            </p>
+            <p
+              className={`${styles.nav} center`}
+              onClick={redirectModDashboard}
+            >
+              Dashboard
             </p>
           </div>
 

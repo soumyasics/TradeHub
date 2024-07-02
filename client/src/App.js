@@ -64,9 +64,10 @@ const App = () => {
             element={<Moderatorforget />}
           />
 
+ {/* new  */}
           <Route path="/moderatorsidebar" element={<ModeratorSidebar/>}/>
           <Route path="/productrequest" element={<ProductRequest/>}/>
-          <Route path="/moderatorDashboard" element={<ModeratorDashboard/>}/>
+          <Route path="/moderator/dashboard" element={<ModeratorDashboard/>}/>
           <Route path="/itemPage" element={<ModeratorItempage/>}/>
 
           {/* delivery  */}
