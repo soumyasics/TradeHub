@@ -23,6 +23,10 @@ import { ModViewUsers } from "./components/Moderator/modViewUsers/modViewUsers";
 import { AddProducts } from "./components/Users/addProducts/addProducts";
 import { ViewUserDetails } from "./components/Users/viewUserDetails/viewUserDetails";
 import { ViewItems } from "./components/Users/addProducts/viewItems/viewItems";
+import ModeratorSidebar from "./components/Moderator/moderatorSidebar/moderatorSidebar";
+import ProductRequest from "./components/Moderator/productRequestcontainer/productRequest";
+import { ModeratorDashboard } from "./components/Moderator/moderatorDashboard/moderatorDashboard";
+import ModeratorItempage from "./components/Moderator/moderatorItemPage/moderatorItempage";
 const App = () => {
   return (
     <div className="App">
@@ -60,6 +64,11 @@ const App = () => {
             element={<Moderatorforget />}
           />
 
+          <Route path="/moderatorsidebar" element={<ModeratorSidebar/>}/>
+          <Route path="/productrequest" element={<ProductRequest/>}/>
+          <Route path="/moderatorDashboard" element={<ModeratorDashboard/>}/>
+          <Route path="/itemPage" element={<ModeratorItempage/>}/>
+
           {/* delivery  */}
           <Route path="/delivery/signup" element={<DelSignup />} />
           <Route path="/delivery/login" element={<DeliveryLogin />} />
@@ -77,4 +86,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default App
