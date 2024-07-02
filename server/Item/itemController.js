@@ -1,36 +1,27 @@
-const Item = require('./itemSchema');
-const multer = require('multer');
-
+const Item = require("./itemSchema");
+const multer = require("multer");
 
 // Multer storage configuration
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './upload');
+    cb(null, "./upload");
   },
   filename: function (req, file, cb) {
-    const uniquePrefix = 'prefix-';
+    const uniquePrefix = "prefix-";
     const originalname = file.originalname;
-    const extension = originalname.split('.').pop();
-    const filename = `${uniquePrefix}${originalname.substring(0, originalname.lastIndexOf('.'))}-${Date.now()}.${extension}`;
+    const extension = originalname.split(".").pop();
+    const filename = `${uniquePrefix}${originalname.substring(
+      0,
+      originalname.lastIndexOf(".")
+    )}-${Date.now()}.${extension}`;
     cb(null, filename);
   },
 });
-const upload = multer({ storage: storage }).array("files",6);
+const upload = multer({ storage: storage }).single("item-photo")
 
 const registerItem = async (req, res) => {
   try {
-    const { name, category, condition, address, description, quantity, pincode, location } = req.body;
-    const images = {
-      img1: req.files[0]? req.files[0] : null,
-      img2: req.files[1]? req.files[1] : null,
-      img3: req.files[2] ? req.files[2] : null,
-      img4: req.files[3] ? req.files[3] : null,
-      img5: req.files[4] ? req.files[4] : null,
-      img6: req.files[5]? req.files[5] : null,
-    };
-
-    const newItem = new Item({
-        userId:req.params.id,
+    const {
       name,
       category,
       condition,
@@ -39,21 +30,34 @@ const registerItem = async (req, res) => {
       quantity,
       pincode,
       location,
-      ...images,
+    } = req.body;
+
+    const newItem = new Item({
+      userId: req.params.id,
+      name,
+      category,
+      condition,
+      address,
+      description,
+      quantity,
+      pincode,
+      location,
+      itemPhoto: req.file
     });
 
-    await newItem.save()
-      .then(data => {
+    await newItem
+      .save()
+      .then((data) => {
         res.json({
           status: 200,
-          msg: 'Inserted successfully',
+          msg: "Inserted successfully",
           data: data,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         res.json({
           status: 500,
-          msg: 'Data not Inserted',
+          msg: "Data not Inserted",
           data: err,
         });
       });
@@ -64,26 +68,27 @@ const registerItem = async (req, res) => {
 
 // View all Items
 const viewActiveItems = (req, res) => {
-  Item.find({isActive:true}).populate('userId')
+  Item.find({ isActive: true })
+    .populate("userId")
     .exec()
-    .then(data => {
+    .then((data) => {
       if (data.length > 0) {
         res.json({
           status: 200,
-          msg: 'Data obtained successfully',
+          msg: "Data obtained successfully",
           data: data,
         });
       } else {
         res.json({
           status: 200,
-          msg: 'No Data obtained',
+          msg: "No Data obtained",
         });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json({
         status: 500,
-        msg: 'Data not obtained',
+        msg: "Data not obtained",
         Error: err,
       });
     });
@@ -91,34 +96,44 @@ const viewActiveItems = (req, res) => {
 
 // View all Items
 const viewItemsToBeApproved = (req, res) => {
-    Item.find({isActive:false}).populate('userId')
-      .exec()
-      .then(data => {
-        if (data.length > 0) {
-          res.json({
-            status: 200,
-            msg: 'Data obtained successfully',
-            data: data,
-          });
-        } else {
-          res.json({
-            status: 200,
-            msg: 'No Data obtained',
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).json({
-          status: 500,
-          msg: 'Data not obtained',
-          Error: err,
+  Item.find({ isActive: false })
+    .populate("userId")
+    .exec()
+    .then((data) => {
+      if (data.length > 0) {
+        res.json({
+          status: 200,
+          msg: "Data obtained successfully",
+          data: data,
         });
+      } else {
+        res.json({
+          status: 200,
+          msg: "No Data obtained",
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        status: 500,
+        msg: "Data not obtained",
+        Error: err,
       });
-  };
+    });
+};
 
 // Update Item by ID
 const editItemById = async (req, res) => {
-  const { name, category, condition, address, description, quantity, pincode, location } = req.body;
+  const {
+    name,
+    category,
+    condition,
+    address,
+    description,
+    quantity,
+    pincode,
+    location,
+  } = req.body;
   const images = {
     img1: req.files.img1 ? req.files.img1[0] : null,
     img2: req.files.img2 ? req.files.img2[0] : null,
@@ -143,16 +158,16 @@ const editItemById = async (req, res) => {
     }
   )
     .exec()
-    .then(data => {
+    .then((data) => {
       res.json({
         status: 200,
-        msg: 'Updated successfully',
+        msg: "Updated successfully",
       });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json({
         status: 500,
-        msg: 'Data not Updated',
+        msg: "Data not Updated",
         Error: err,
       });
     });
@@ -160,19 +175,20 @@ const editItemById = async (req, res) => {
 
 // View Item by ID
 const viewItemById = (req, res) => {
-  Item.findById({ _id: req.params.id }).populate('userId')
+  Item.findById({ _id: req.params.id })
+    .populate("userId")
     .exec()
-    .then(data => {
+    .then((data) => {
       res.json({
         status: 200,
-        msg: 'Data obtained successfully',
+        msg: "Data obtained successfully",
         data: data,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json({
         status: 500,
-        msg: 'No Data obtained',
+        msg: "No Data obtained",
         Error: err,
       });
     });
@@ -180,38 +196,38 @@ const viewItemById = (req, res) => {
 
 // View Item by ID
 const viewItemByUserId = (req, res) => {
-    Item.find({ userId: req.params.id })
-      .exec()
-      .then(data => {
-        res.json({
-          status: 200,
-          msg: 'Data obtained successfully',
-          data: data,
-        });
-      })
-      .catch(err => {
-        res.status(500).json({
-          status: 500,
-          msg: 'No Data obtained',
-          Error: err,
-        });
+  Item.find({ userId: req.params.id })
+    .exec()
+    .then((data) => {
+      res.json({
+        status: 200,
+        msg: "Data obtained successfully",
+        data: data,
       });
-  };
+    })
+    .catch((err) => {
+      res.status(500).json({
+        status: 500,
+        msg: "No Data obtained",
+        Error: err,
+      });
+    });
+};
 // Activate Item by ID
 const activateItemById = (req, res) => {
   Item.findByIdAndUpdate({ _id: req.params.id }, { isActive: true })
     .exec()
-    .then(data => {
+    .then((data) => {
       res.json({
         status: 200,
-        msg: 'Data obtained successfully',
+        msg: "Data obtained successfully",
         data: data,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json({
         status: 500,
-        msg: 'No Data obtained',
+        msg: "No Data obtained",
         Error: err,
       });
     });
@@ -221,17 +237,17 @@ const activateItemById = (req, res) => {
 const deActivateItemById = (req, res) => {
   Item.findByIdAndDelete({ _id: req.params.id })
     .exec()
-    .then(data => {
+    .then((data) => {
       res.json({
         status: 200,
-        msg: 'Data updated successfully',
+        msg: "Data updated successfully",
         data: data,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).json({
         status: 500,
-        msg: 'No Data obtained',
+        msg: "No Data obtained",
         Error: err,
       });
     });

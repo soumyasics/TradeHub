@@ -19,7 +19,7 @@ router.post('/requireAuthUser', user.requireAuth);
 
 
 //item routes
-router.post('/registerItem/:id',items.upload,items.registerItem);
+router.post('/registerItem',items.upload,items.registerItem);
 router.post('/viewItemById/:id', items.viewItemById);
 router.post('/editItemById/:id',items.upload, items.editItemById);
 router.post('/activateItemById/:id', items.activateItemById);
