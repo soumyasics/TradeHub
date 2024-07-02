@@ -1,58 +1,8 @@
-/* moderator Login */
-
-.moderator-login-box {
-    width: 100%;
-    height: 606px;
-    top: 166px;
-    left: 132px;
-    gap: 0px;
-    border: 1px 0px 0px 0px;
-    opacity: 0px;
-    border: 1px solid #6d3698;
-    box-shadow: 0px 4px 4px 0px #00000040;
-}
-
-.moderator-login-box1 {
-    border-color: black;
-}
-
-.moderator-login-img {
-    height: 604px;
-    width: 100%;
-    border-color: black;
-    margin-left: -12px;
-}
-
-.moderator-login-h2 {
-    text-align: center;
-    margin-top: 100px;
-}
-
-.moderator-login {
-    font-size: 20px;
-}
-
-.moderator-login-textbox {
-    height: 50px;
-    width: 70%;
-    border-radius: 10px;
-    border-color: black;
-}
-
-.moderator-login-btn {
-    background: #6d3698;
-    color: white;
-    height: 45px;
-    width: 150px;
-    border-radius: 20px;
-    border: none;
-    margin-left: 290px;
-}
 
 /* moderator Sidebar */
 .moderator-sidebar-color {
     background-color: #6e3799;
-    height: 100vh;
+    height: 150vh;
     width: 225px;
 }
 
@@ -91,101 +41,25 @@
 .moderator-sidebar-dropdowns {
     background-color: #6d3698;
 }
-
-/* moderator Dashboard */
-
-.moderator-dash-div1 {
-    margin-top: 50px;
-}
-
-.moderator-dash-revenue-box {
-    background: #0bc2a4;
-    height: 170px;
-    width: 100%;
-    border-radius: 20px;
-}
-
-.moderator-dash-order-box {
-    background-color: #6d6ce4;
-    height: 170px;
-    width: 100%;
-    border-radius: 20px;
-}
-
-.moderator-dash-products-box {
-    background-color: #faaa1d;
-    height: 170px;
-    width: 100%;
-    border-radius: 20px;
-}
-
-.moderator-dash-user-box {
-    background-color: #ff6172;
-    height: 170px;
-    width: 100%;
-    border-radius: 20px;
-}
-
-.moderator-dash-icon {
-    color: white;
-    margin-top: 40px;
-    margin-left: 20px;
-    height: 70px;
-    width: 70px;
-}
-
-.moderator-dash-span {
-    font-size: 16px;
-    color: white;
-    margin-top: 30px;
-}
-
-.moderator-dash-length {
-    color: white;
-    font-size: 40px;
-}
-
-/* moderatorUserView */
-
-.table-container {
-    padding: 20px;
-}
-
-.table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.moderator-view-user-btn {
-    background-color: #d8c1eb;
-    border-radius: 7px;
-    height: 4vh;
-    width: 10%;
-}
-
-.toggle-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 25px;
-}
-
-.toggle-button.active {
-    background-color: green;
-    color: white;
-}
-
-.toggle-button.inactive {
-    background-color: red;
-    color: white;
-}
-
 .notifiactionIcon {
     font-size: 30px;
-    margin-top: 5%;
+    margin-top: 4%;
     margin-left: 2%;
 }
 .contentIcons{
     margin-right: 4%;
+}
+.reviewbtn{
+    color: #fff;
+    width: 100%;
+    background: transparent;
+    border: none;
+    height: 10px;
+}
+.collapse-drop{
+    width: 90%;
+}
+.collapse-dropbody li{
+    color: black;
+    margin-top: 10px;
 }

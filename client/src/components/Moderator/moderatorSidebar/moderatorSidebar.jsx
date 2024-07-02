@@ -8,7 +8,7 @@ import { PiShootingStarThin } from "react-icons/pi";
 import { FaUsers } from "react-icons/fa6";
 import { GiCardExchange } from "react-icons/gi";
 import { MdLogout } from "react-icons/md";
-function ModeratorSidebar() {
+function ModeratorSidebar({changeSelectedPage}) {
     return (
         <div>
             <div className="moderator-sidebar-color">
@@ -27,39 +27,53 @@ function ModeratorSidebar() {
                 </div>
                 <div className="mt-4">
                     <ol className="moderator-sidebar-list" style={{ fontSize: "14px" }}>
-                        <li>
+                        <li onClick={()=>changeSelectedPage("productrequest")}>
                             <span className='contentIcons'>
                                 <RxDashboard />
                             </span>
                             Dashboard
                         </li>
-                        <li>
+                        <li onClick={()=>changeSelectedPage("itempage")}>
                             <span className='contentIcons'>
                                 <BsBox />
                             </span>
                             Items
                         </li>
                         <li>
-                        <span className='contentIcons'>
-                        <PiShootingStarThin />
+                            <span className='contentIcons'>
+                                <PiShootingStarThin />
                             </span>
-                            item Review
+                            <p class="d-inline-flex gap-1">
+                                <button class="reviewbtn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    item Review
+                                </button>
+                            </p>
+                            <div class="collapse collapse-drop" id="collapseExample">
+                                <div class="card card-body">
+                                <span className='collapse-dropbody'>
+                                <li>Approved items</li>
+                                <li>Rejected items</li>
+                                </span>
+                                   
+                                  
+                                </div>
+                            </div>
                         </li>
                         <li>
-                        <span className='contentIcons'>
-                        <FaUsers />
+                            <span className='contentIcons'>
+                                <FaUsers />
                             </span>
                             Users
                         </li>
                         <li>
-                        <span className='contentIcons'>
-                        <GiCardExchange />
+                            <span className='contentIcons'>
+                                <GiCardExchange />
                             </span>
                             Exchanged Items
                         </li>
                         <li className="text-danger fw-bold ">
-                        <span className='contentIcons'>
-                        <MdLogout />
+                            <span className='contentIcons'>
+                                <MdLogout />
                             </span>
                             <span className=" ms-1">Logout</span>
                         </li>
