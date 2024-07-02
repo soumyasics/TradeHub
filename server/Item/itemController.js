@@ -51,13 +51,11 @@ const registerItem = async (req, res) => {
       });
     }
 
-    console.log("user idd", req.body);
 
     if (!mongoose.Types.ObjectId.isValid(userId)) {
       return res.status(400).json({ msg: "Invalid userId", userId });
     }
 
-    console.log("items", req.file);
 
     const newItem = new Item({
       userId,
@@ -72,7 +70,6 @@ const registerItem = async (req, res) => {
       itemPhoto: req.file,
     });
 
-    console.log("new ite", newItem);
 
     await newItem.save();
     return res.status(200).json({ msg: "Item added successfully" });

@@ -57,7 +57,9 @@ export const ViewItems = () => {
       .then((res) => {
         if (res.status === 200) {
           console.log("respo", res);
-          setMyItems(res?.data?.data || []);
+          let data = res?.data?.data || [];
+            data.reverse()
+          setMyItems(data);
         } else {
           console.log("view user by id", res);
         }
