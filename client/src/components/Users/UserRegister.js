@@ -208,7 +208,7 @@ function UserRegister() {
                       value={data.firstname}
                       name="firstname"
                       onChange={handleChange}
-                    ></input>
+                    />
 
                     <input
                       type="text"
@@ -217,7 +217,7 @@ function UserRegister() {
                       value={data.lastname}
                       name="lastname"
                       onChange={handleChange}
-                    ></input>
+                    />
                   </div>
                   <div></div>
                   <div>
@@ -230,7 +230,7 @@ function UserRegister() {
                       onChange={handleChange}
                       value="male"
                       checked={data.gender === "male"}
-                    ></input>
+                    />
                     <label className="user-register-label ms-2">Male</label>
                     <input
                       type="radio"
@@ -266,7 +266,7 @@ function UserRegister() {
                       value={data.contact}
                       name="contact"
                       onChange={handleChange}
-                    ></input>
+                    />
                   </div>
                 </div>
                 <div className="col">
@@ -305,7 +305,7 @@ function UserRegister() {
                       value={data.password}
                       name="password"
                       onChange={handleChange}
-                    ></input>
+                    />
                   </div>
                   <div>
                     <label className="user-register-label mt-4">
@@ -318,7 +318,7 @@ function UserRegister() {
                       value={data.repassword}
                       name="repassword"
                       onChange={handleChange}
-                    ></input>
+                    />
                   </div>
                 </div>
                 <div

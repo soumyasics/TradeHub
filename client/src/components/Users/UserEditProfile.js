@@ -101,7 +101,7 @@ function UserEditProfile() {
                                 name='firstname'
                                 onChange={handleChange}
                                 value={data.firstname}
-                            ></input>
+                            />
                             <label className='mt-2 useredit-profile-label'>Gender</label>
                             <input
                                 type='radio'
@@ -127,7 +127,7 @@ function UserEditProfile() {
                                 name='email'
                                 value={data.email}
                                 onChange={handleChange}
-                            ></input>
+                            />
                             <label className='useredit-profile-label mt-3'>Phone number</label>
                             <input
                                 type='text'
@@ -135,7 +135,7 @@ function UserEditProfile() {
                                 value={data.contact}
                                 name='contact'
                                 onChange={handleChange}
-                            ></input>
+                            />
                             <div className='text-center mt-3'>
                                 <button type='submit' className='useredit-profile-updatebtn'>
                                     Update

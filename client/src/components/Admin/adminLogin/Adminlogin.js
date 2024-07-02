@@ -4,7 +4,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import adminlogin from "../../../assets/images/adminlogin.jpg";
 import { useNavigate } from "react-router-dom";
-import MainNav from "../../homeComponents/Navbar/MainNav";
 import Footer from "../../Footer/Footer";
 import { AdminNavbar } from "../adminNavbar/adminNavbar";
 import {toast} from 'react-hot-toast'
@@ -39,7 +38,7 @@ function Adminlogin() {
     setErrors(errors);
 
     if (!errors.email && !errors.password) {
-      const values = { email: data.email, password: data.password };
+      // const values = { email: data.email, password: data.password };
       if (mail == data.email && pass == data.password) {
         toast.success("Login Successfully");
         navigate("/admin/dashboard");
@@ -70,7 +69,7 @@ function Adminlogin() {
                     value={data.email}
                     onChange={handleChange}
                     placeholder="Email"
-                  ></input>
+                  />
                   {errors.email && (
                     <div className="container ms-5 text-danger">
                       {errors.email}
@@ -86,7 +85,7 @@ function Adminlogin() {
                     value={data.password}
                     onChange={handleChange}
                     placeholder="Password"
-                  ></input>
+                  />
                   {errors.password && (
                     <div className="container me-1 text-danger">
                       {errors.password}

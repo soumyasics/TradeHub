@@ -106,7 +106,7 @@ function Userlogin() {
                       name="email"
                       value={data.email}
                       onChange={handleChange}
-                    ></input>
+                    />
                   </div>
                   <div>
                     <label className="user-login mt-5 ms-5">Password</label>
@@ -117,7 +117,7 @@ function Userlogin() {
                       name="password"
                       value={data.password}
                       onChange={handleChange}
-                    ></input>
+                    />
                   </div>
                   <div className="mt-3">
                     <Link to="/user/forgetpswd" className="user-login-forget">

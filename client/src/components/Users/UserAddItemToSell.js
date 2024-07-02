@@ -151,15 +151,15 @@ for (let key in errors) {
                       {errors.category && <span className='text-danger text-center'>{errors.category}</span>}
                       <div className='container mt-5 ms-4 ps-4'>
                         <label className='ms-5 useradd-itemtosell-label'>Condition</label>
-                        <input type='radio' className='ms-5 ps-2' name='condition'></input> Flawless
+                        <input type='radio' className='ms-5 ps-2' name='condition'/> Flawless
                         
                         <div className='container ms-5 ps-5'>
                           <label className='ms-5  useradd-itemtosell-label'></label>
-                          <input type='radio' className=' mt-3 useradd-itemtosell-radio' name='condition'></input> No Damage
+                          <input type='radio' className=' mt-3 useradd-itemtosell-radio' name='condition'/> No Damage
                         </div>
                         <div className='container ms-5 ps-5'>
                         <label className='ms-5 useradd-itemtosell-label'></label>
-                          <input type='radio' className='useradd-itemtosell-radio mt-3' name='condition'></input> Minor Scratches
+                          <input type='radio' className='useradd-itemtosell-radio mt-3' name='condition'/> Minor Scratches
                         </div>
                        
                       </div>
@@ -321,7 +321,7 @@ for (let key in errors) {
                               placeholder='Item'
                               name='item'
                               // value={data.item}
-                              onChange={handleChange}></input>  
+                              onChange={handleChange}/>
                               {errors.item && <span className='text-danger'>{errors.item}</span>}                       
                             </div>
                             <div className='container mt-4 ms-4 ps-4'>
@@ -330,7 +330,7 @@ for (let key in errors) {
                               placeholder='Item Description'
                               name='itemdescription'
                               value={data.itemdescription}
-                              onChange={handleChange}></input>
+                              onChange={handleChange}/>
                               {errors.itemdescription && <span  className='text-danger'>{errors.itemdescription}</span>}
                             </div>
                             <div className='container mt-4 ms-4 ps-4'>
@@ -339,7 +339,7 @@ for (let key in errors) {
                               placeholder='Address'
                               name='address'
                               value={data.address}
-                              onChange={handleChange}></input>
+                              onChange={handleChange}/>
                               {errors.address && <span  className='text-danger text-center'>{errors.address}</span>}
                             </div>
                             <div className='container mt-5  '>
@@ -348,7 +348,7 @@ for (let key in errors) {
                               placeholder='Pincode'
                               name='pincode'
                               value={data.pincode}
-                              onChange={handleChange}></input>  
+                              onChange={handleChange}/>
                               {errors.pincode && <span  className='text-danger text-center'>{errors.pincode}</span>}                       
                             </div>
                             <div className='container mt-5  '>
@@ -357,7 +357,7 @@ for (let key in errors) {
                               placeholder='District'
                               name='district'
                               value={data.district}
-                              onChange={handleChange}></input>   
+                              onChange={handleChange}/>
                               {errors.district && <span  className='text-danger'>{errors.district}</span>}                      
                             </div>
                             <div className='container mt-5  '>
@@ -366,7 +366,7 @@ for (let key in errors) {
                               placeholder='Location'
                               name='location'
                               value={data.location}
-                              onChange={handleChange}></input>     
+                              onChange={handleChange}/>
                               {errors.location && <span  className='text-danger'>{errors.location}</span>}                    
                             </div>
                         </div>

@@ -86,7 +86,7 @@ function Moderatorforget() {
                             name='email'
                             value={data.email}
                             onChange={handleInputChange}
-                            ></input>
+                            />
                             <div className='text-center mt-2'>
                             {errors.email && <div className='moderator-forget-div text-danger'>{errors.email}</div>}
                             </div>
@@ -98,7 +98,7 @@ function Moderatorforget() {
                             name='password'
                             value={data.password}
                             onChange={handleInputChange}
-                            ></input>
+                            />
                             <div className='text-center mt-2'>
                             {errors.password && <div className='moderator-forget-div text-danger'>{errors.password}</div>}
                             </div>
@@ -110,7 +110,7 @@ function Moderatorforget() {
                             name='confirmpassword'
                             value={data.confirmpassword}
                             onChange={handleInputChange}
-                            ></input>
+                            />
                             <div className='text-center mt-2'>
                             {errors.confirmpassword && <div className='moderator-forget-div text-danger'>{errors.confirmpassword}</div>}
                             </div>             

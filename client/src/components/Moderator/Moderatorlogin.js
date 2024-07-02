@@ -101,7 +101,7 @@ function Moderatorlogin() {
                       name="email"
                       value={data.email}
                       onChange={handleChange}
-                    ></input>
+                    />
                   </div>
                   <div>
                     <label className="moderator-login mt-5 ms-5">
@@ -113,7 +113,7 @@ function Moderatorlogin() {
                       name="password"
                       value={data.password}
                       onChange={handleChange}
-                    ></input>
+                    />
                   </div>
                   <div className="mt-3 moderator-login-link container">
                     <Link to="" className="moderator-login-forget">
