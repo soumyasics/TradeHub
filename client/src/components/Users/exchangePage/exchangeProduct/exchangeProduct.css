@@ -1,0 +1,148 @@
+.exchangeproduct-main {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2%;
+}
+.exchangeproduct-box {
+  width: 80%;
+  height: 479px;
+  border: 2px solid;
+  margin: auto;
+  border-radius: 20px;
+  border: 1px solid #6d3698;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-top: 2%;
+}
+.exchangeproduct-myitems {
+  width: 40%;
+  padding-top: 2%;
+  padding-left: 2%;
+}
+.exchangeproduct-myitems-head {
+  margin-left: 3%;
+  color: #000;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.exchangeproduct-myitems-photo img {
+  padding-top: 2%;
+  width: 43%;
+  height: 108px;
+  border-radius: 20px;
+}
+.exchangeproduct-myitems-detail table {
+  width: 100%;
+  margin-top: 10%;
+  color: #000;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.exchangeproduct-myitems-detail table td {
+  padding: 8px;
+}
+.viewmore button {
+  margin-left: 70%;
+  background: transparent;
+  border: none;
+  color: #e33131;
+  font-family: Poppins;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+/* exchange icon */
+.exchange-icon {
+  margin-top: 200px;
+}
+
+/* recieved items */
+
+.exchangeproduct-receiveditems {
+  width: 40%;
+  padding-top: 2%;
+  padding-left: 2%;
+}
+.exchangeproduct-receiveditems-head {
+  margin-left: 3%;
+  color: #000;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.exchangeproduct-receiveditems-photo img {
+  padding-top: 2%;
+  width: 43%;
+  height: 108px;
+  border-radius: 20px;
+}
+.exchangeproduct-receiveditems-detail table {
+  width: 100%;
+  margin-top: 10%;
+  color: #000;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.exchangeproduct-receiveditems-detail table td {
+  padding: 8px;
+}
+
+.viewmore button {
+  margin-left: 70%;
+  background: transparent;
+  border: none;
+  color: #e33131;
+  font-family: Poppins;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+.exchangeProduct-order-pending {
+  margin-top: 200px;
+  color: rgba(0, 0, 0, 0.8);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.exchangeProduct-chat-btn button {
+  margin-top: 25%;
+  margin-left: 2%;
+  width: 102px;
+  height: 35px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background: #fff;
+  box-shadow: 3px 3px 15px 3px rgba(0, 0, 0, 0.25);
+}
+.exchangeProduct-chat-btn img{
+    margin-bottom:2%;
+    margin-right: 1%;
+}
+.exchangeaccept-reject{
+    position: relative;
+    float: right;
+  margin-top: 30px;
+  margin-right: 2%;
+}
+.exchangeaccept-reject button{
+    width: 158px;
+height: 41.888px;
+margin: 1%;
+}
