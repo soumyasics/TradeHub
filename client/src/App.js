@@ -27,6 +27,7 @@ import ModeratorSidebar from "./components/Moderator/moderatorSidebar/moderatorS
 import ProductRequest from "./components/Moderator/productRequestcontainer/productRequest";
 import { ModeratorDashboard } from "./components/Moderator/moderatorDashboard/moderatorDashboard";
 import ModeratorItempage from "./components/Moderator/moderatorItemPage/moderatorItempage";
+import { ItemDetails } from "./components/Users/itemDetails.jsx/itemDetails";
 const App = () => {
   return (
     <div className="App">
@@ -50,6 +51,7 @@ const App = () => {
           <Route path="/user/viewitemtobuy" element={<UserViewItemToBuy />} />
           <Route path="/user/add-product" element={<AddProducts />} />
           <Route path="/user/view-items" element={<ViewItems/>} />
+          <Route path="/user/product-details" element={<ItemDetails/>} />
 
           {/* moderators  */}
 
