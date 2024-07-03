@@ -66,6 +66,11 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin-left: 50px !important;
+}
+
+.lable-ph-no {
+  margin-left: 50px !important;
 }
 
 .userproduct-select-textarea {
@@ -92,8 +97,8 @@
 }
 .userproduct-select-inp-img {
   width: 53% !important;
-  height: 45%;
   position: relative;
+  height: 40px;
   top: 20px;
   margin-left: 5% !important;
 }

@@ -36,6 +36,8 @@ export const ModProfile = () => {
     fetchModData(modId);
   }, []);
 
+
+  
   return (
     <div>
       <ModNavbar />

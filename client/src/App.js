@@ -46,7 +46,7 @@ const App = () => {
             path="/user/user-editprofile/:id"
             element={<UserEditProfile />}
           />
-          <Route path="/user/additemtosell" element={<UserAddItemToSell />} />
+          {/* <Route path="/user/additemtosell" element={<UserAddItemToSell />} /> */}
           <Route path="/user/viewitemtobuy" element={<UserViewItemToBuy />} />
           <Route path="/user/add-product" element={<AddProducts />} />
           <Route path="/user/view-items" element={<ViewItems/>} />
@@ -64,9 +64,10 @@ const App = () => {
             element={<Moderatorforget />}
           />
 
+ {/* new  */}
           <Route path="/moderatorsidebar" element={<ModeratorSidebar/>}/>
           <Route path="/productrequest" element={<ProductRequest/>}/>
-          <Route path="/moderatorDashboard" element={<ModeratorDashboard/>}/>
+          <Route path="/moderator/dashboard" element={<ModeratorDashboard/>}/>
           <Route path="/itemPage" element={<ModeratorItempage/>}/>
 
           {/* delivery  */}

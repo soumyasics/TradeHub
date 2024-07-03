@@ -275,6 +275,7 @@
 }
 .usermain-navbar-home {
   color: white;
+  cursor: pointer;
   font-size: 18px;
 }
 .usermain-navbar-chat {
