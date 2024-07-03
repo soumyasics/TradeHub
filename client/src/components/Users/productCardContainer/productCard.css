@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.productCard-body {
+  min-height: 140vh;
+}
+.product-card-heading {
+  color: #000;
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 500;
+  padding-top: 20px;
+  padding-left: 8rem;
+}
+.productCard-box {
+  margin-top: 25px;
+  padding: 8px;
+  border: 1px solid #6d3698;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  text-align: left;
+  height: 70%;
+}
+.productCard-button {
+  border-radius: 9px;
+  background: #6d3698;
+  margin-left: 24%;
+  width: 72%;
+  height: 35px;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 15px;
+  font-weight: 500;
+}
+.productCard-points-box {
+  height: 28px;
+  width: 85px;
+  border-radius: 24.286px;
+  border: 1.214px solid rgba(0, 0, 0, 0.5);
+  background: #fff;
+  margin-left: 5%;
+  margin-top: 8%;
+}
+.productCard-points-box p{
+    color: #000;
+font-family: Poppins;
+font-size: 18px;
+font-weight: 400;
+padding-left: 3px;
+
+}
+.productCard-points-box img{
+    height: 20px;
+    width: 30px;
+    padding-left: 10px;
+   margin-top: 2px;
+}
