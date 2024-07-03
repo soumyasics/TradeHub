@@ -27,6 +27,8 @@ import ModeratorSidebar from "./components/Moderator/moderatorSidebar/moderatorS
 import ProductRequest from "./components/Moderator/productRequestcontainer/productRequest";
 import { ModeratorDashboard } from "./components/Moderator/moderatorDashboard/moderatorDashboard";
 import ModeratorItempage from "./components/Moderator/moderatorItemPage/moderatorItempage";
+import { ExchangeProductPage } from "./components/Users/exchangePage/exchangeProductPage";
+import { ExchangeProduct } from "./components/Users/exchangePage/exchangeProduct/exchangeProduct";
 const App = () => {
   return (
     <div className="App">
@@ -64,6 +66,8 @@ const App = () => {
             element={<Moderatorforget />}
           />
 
+          <Route path="/moderator/exchangePage" element={<ExchangeProductPage/>}/>
+          <Route path="/moderator/exchangeProduct" element={<ExchangeProduct/>}/>
  {/* new  */}
           <Route path="/moderatorsidebar" element={<ModeratorSidebar/>}/>
           <Route path="/productrequest" element={<ProductRequest/>}/>
