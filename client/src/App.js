@@ -30,7 +30,12 @@ import ModeratorItempage from "./components/Moderator/moderatorItemPage/moderato
 import { ExchangeProductPage } from "./components/Users/exchangePage/exchangeProductPage";
 import { ExchangeProduct } from "./components/Users/exchangePage/exchangeProduct/exchangeProduct";
 import { ItemDetails } from "./components/Users/itemDetails.jsx/itemDetails";
+
 import { ProductCard } from "./components/Users/productCardContainer/productCard";
+
+import DeliveryAgentLogin from "./components/Delivery/deliveryLogin/deliveryLogin";
+import DeliveryAgentSignup from "./components/Delivery/deliverySignup'/deliverySignup";
+import Deliveryforgotpassword from "./components/Delivery/deliveryForgotpassword/deliveryforgotpassword";
 const App = () => {
   return (
     <div className="App">
@@ -57,6 +62,9 @@ const App = () => {
           {/* new route */}
           <Route path="/user/product-details" element={<ItemDetails />} />
           <Route path="/user/product-card" element={<ProductCard/>}/>
+          <Route path="/user/view-items" element={<ViewItems/>} />
+          <Route path="/user/product-details" element={<ItemDetails/>} />
+          <Route path="/user/view-items" element={<ViewItems />} />
 
           {/* moderators  */}
 
@@ -74,6 +82,7 @@ const App = () => {
             element={<Moderatorforget />}
           />
 
+{/* new-1 */}
           <Route
             path="/moderator/exchangePage"
             element={<ExchangeProductPage />}
@@ -82,6 +91,9 @@ const App = () => {
             path="/moderator/exchangeProduct"
             element={<ExchangeProduct />}
           />
+          <Route path="/agentlogin" element={<DeliveryAgentLogin/>}/>
+          <Route path="/agentsignup"element={<DeliveryAgentSignup/>}/>
+          <Route path="/agentforgotpassword" element={<Deliveryforgotpassword/>}/>
           {/* new  */}
           <Route path="/moderatorsidebar" element={<ModeratorSidebar />} />
           <Route path="/productrequest" element={<ProductRequest />} />

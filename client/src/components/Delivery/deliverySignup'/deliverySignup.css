@@ -1,0 +1,48 @@
+.deliverysignup-label {
+    font-weight: 600;
+  }
+  .deliverysignup-textbox {
+    height: 50px;
+    width: 100%;
+    border-radius: 8px;
+    border-color: black;
+    padding-left: 15px;
+  }
+  .deliverysignup-textbox1 {
+    height: 100px;
+    width: 100%;
+    border-radius: 8px;
+    border-color: black;
+    padding-left: 15px;
+  }
+  .deliverysignup-icon {
+    height: 250px;
+    width: 250px;
+    margin-left: 100px;
+    margin-top: 25px;
+    background-color: rgba(128, 128, 128, 0.438);
+    border-radius: 50%;
+  }
+  .deliverysignup-btn {
+    background-color: #6d3698;
+    color: white;
+    height: 50px;
+    width: 25%;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  .deliverysignup-radio {
+    height: 20px;
+    width: 20px;
+  }
+  .label-deliverysignup {
+    font-weight: 400;
+  }
+  .deliverysignup-box {
+    padding-bottom: 50px;
+  }
+  .deliverysignup-link {
+    color: #6d3698;
+    text-decoration: underline;
+  }
