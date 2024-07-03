@@ -29,6 +29,7 @@ import { ModeratorDashboard } from "./components/Moderator/moderatorDashboard/mo
 import ModeratorItempage from "./components/Moderator/moderatorItemPage/moderatorItempage";
 import { ExchangeProductPage } from "./components/Users/exchangePage/exchangeProductPage";
 import { ExchangeProduct } from "./components/Users/exchangePage/exchangeProduct/exchangeProduct";
+import { ItemDetails } from "./components/Users/itemDetails.jsx/itemDetails";
 import DeliveryAgentLogin from "./components/Delivery/deliveryLogin/deliveryLogin";
 import DeliveryAgentSignup from "./components/Delivery/deliverySignup'/deliverySignup";
 import Deliveryforgotpassword from "./components/Delivery/deliveryForgotpassword/deliveryforgotpassword";
@@ -54,6 +55,8 @@ const App = () => {
           {/* <Route path="/user/additemtosell" element={<UserAddItemToSell />} /> */}
           <Route path="/user/viewitemtobuy" element={<UserViewItemToBuy />} />
           <Route path="/user/add-product" element={<AddProducts />} />
+          <Route path="/user/view-items" element={<ViewItems/>} />
+          <Route path="/user/product-details" element={<ItemDetails/>} />
           <Route path="/user/view-items" element={<ViewItems />} />
 
           {/* moderators  */}
