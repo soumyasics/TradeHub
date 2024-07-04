@@ -36,6 +36,7 @@ import { ProductCard } from "./components/Users/productCardContainer/productCard
 import DeliveryAgentLogin from "./components/Delivery/deliveryLogin/deliveryLogin";
 import DeliveryAgentSignup from "./components/Delivery/deliverySignup'/deliverySignup";
 import Deliveryforgotpassword from "./components/Delivery/deliveryForgotpassword/deliveryforgotpassword";
+import { UserTransaction } from "./components/Admin/userTransaction/userTransaction";
 const App = () => {
   return (
     <div className="App">
@@ -107,6 +108,8 @@ const App = () => {
           {/* Admin */}
           <Route path="/admin/login" element={<Adminlogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          {/* new */}
+          <Route path="/admin/usertransaction" element={<UserTransaction/>}/> 
 
           {/* admin components  */}
 
