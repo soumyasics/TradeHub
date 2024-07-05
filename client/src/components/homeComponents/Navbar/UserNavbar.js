@@ -7,7 +7,6 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 function UserNavbar() {
-  
   const navigate = useNavigate();
   const navigateToLanding = () => {
     navigate("/");
@@ -35,6 +34,13 @@ function UserNavbar() {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
                 
+              <div
+                  className="me-5 navlink"
+                  style={{ cursor: "pointer" }}
+                  onClick={navigateToLanding}
+                >
+                  <p className="usernav-about">Home</p>
+                </div>
                 <div className="me-5 navlink" style={{ cursor: "pointer" }}>
                   <p className="usernav-about">About</p>
                 </div>
@@ -43,13 +49,6 @@ function UserNavbar() {
                   <p className="usernav-about">Contact</p>
                 </div>
 
-                <div
-                  className="me-5 navlink"
-                  style={{ cursor: "pointer" }}
-                  onClick={navigateToLanding}
-                >
-                  <p className="usernav-about">Home</p>
-                </div>
 
                 <Dropdown>
                   <Dropdown.Toggle
@@ -63,11 +62,12 @@ function UserNavbar() {
                   <Dropdown.Menu>
                     <Link
                       class="dropdown-item"
-                      to="/admin/login"
+                      to="/user/login"
                       id="landing-drop-link"
                     >
-                      Admin
+                      User
                     </Link>
+
                     <Link
                       class="dropdown-item"
                       to="/moderator/login"
@@ -75,19 +75,21 @@ function UserNavbar() {
                     >
                       Moderator
                     </Link>
-                    <Link
-                      class="dropdown-item"
-                      to="/user/login"
-                      id="landing-drop-link"
-                    >
-                      User
-                    </Link>
+
                     <Link
                       class="dropdown-item"
                       to="/delivery/login"
                       id="landing-drop-link"
                     >
                       Delivery Agent
+                    </Link>
+
+                    <Link
+                      class="dropdown-item"
+                      to="/admin/login"
+                      id="landing-drop-link"
+                    >
+                      Admin
                     </Link>
                   </Dropdown.Menu>
                 </Dropdown>

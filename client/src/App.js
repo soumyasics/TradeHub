@@ -94,7 +94,7 @@ const App = () => {
             element={<ExchangeProduct />}
           />
           <Route path="/delivery/login" element={<DeliveryAgentLogin/>}/>
-          <Route path="/agent/signup"element={<DeliveryAgentSignup/>}/>
+          <Route path="/delivery/signup"element={<DeliveryAgentSignup/>}/>
           <Route path="/agentforgotpassword" element={<Deliveryforgotpassword/>}/>
           {/* new  */}
           <Route path="/moderatorsidebar" element={<ModeratorSidebar />} />
@@ -103,7 +103,7 @@ const App = () => {
           <Route path="/itemPage" element={<ModeratorItempage />} />
 
           {/* delivery  */}
-          <Route path="/delivery/signup" element={<DelSignup />} />
+          {/* <Route path="/delivery/signup" element={<DelSignup />} /> */}
           {/* <Route path="/delivery/login" element={<DeliveryLogin />} /> */}
           <Route path="/delivery/home" element={<DeliveryHome/>} />
 

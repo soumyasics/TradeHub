@@ -7,6 +7,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { BiImageAdd } from "react-icons/bi";
 import { FiEdit2 } from "react-icons/fi";
 import { toast } from "react-hot-toast";
+import UserNavbar from "../homeComponents/Navbar/UserNavbar";
 
 function UserRegister() {
   const navigate = useNavigate();
@@ -189,7 +190,7 @@ function UserRegister() {
 
   return (
     <div>
-      <MainNav />
+     <UserNavbar />
       <div className="user-register-box container mb-5 mt-4 pb-5">
         <div className="row">
           <div className="col-5">

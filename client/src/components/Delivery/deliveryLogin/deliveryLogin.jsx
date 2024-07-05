@@ -7,6 +7,7 @@ import Footer from "../../Footer/Footer";
 import toast from "react-hot-toast";
 import axios from "axios";
 import axiosInstance from "../../../apis/axiosInstance";
+import UserNavbar from "../../homeComponents/Navbar/UserNavbar";
 
 function DeliveryAgentLogin() {
   const [data, setData] = useState({
@@ -73,7 +74,7 @@ function DeliveryAgentLogin() {
   return (
     <div>
       <div>
-        <MainNav />
+        <UserNavbar />
       </div>
       <div className="mt-5 container">
         <div className="deliveryagent-login-box mb-5">
@@ -131,7 +132,7 @@ function DeliveryAgentLogin() {
                   <div className="mt-4 ms-5">
                     <h6 className="text-center">
                       New to TradeHub Delivery?{" "}
-                      <Link to="/agent/signup" href="#">
+                      <Link to="/delivery/signup" href="#">
                         Register Now
                       </Link>
                     </h6>

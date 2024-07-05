@@ -6,7 +6,8 @@ import adminlogin from "../../../assets/images/adminlogin.jpg";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import { AdminNavbar } from "../adminNavbar/adminNavbar";
-import {toast} from 'react-hot-toast'
+import { toast } from "react-hot-toast";
+import UserNavbar from "../../homeComponents/Navbar/UserNavbar";
 function Adminlogin() {
   const [data, setData] = useState({
     email: "",
@@ -50,7 +51,7 @@ function Adminlogin() {
 
   return (
     <div>
-      <AdminNavbar />
+      <UserNavbar />
       <div className="container admin-login-box mb-5 mt-5">
         <div className=" admin-login-box1 ">
           <Row>

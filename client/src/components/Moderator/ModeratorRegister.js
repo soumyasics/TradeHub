@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./Moderator.css";
-import MainNav from "../homeComponents/Navbar/MainNav";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import { toast } from "react-hot-toast";
 import { axiosMultipartInstance } from "../../apis/axiosMultipartInstance";
+import UserNavbar from "../homeComponents/Navbar/UserNavbar";
+
 function ModeratorRegister() {
   const navigate = useNavigate();
 
@@ -137,8 +138,7 @@ function ModeratorRegister() {
     formData.append("gender", data.gender);
     formData.append("profile", data.profile);
 
-    sendDataToServer(formData)
-
+    sendDataToServer(formData);
   };
 
   const sendDataToServer = async () => {
@@ -148,8 +148,8 @@ function ModeratorRegister() {
       if (res.data.status === 200) {
         toast.success("Registration Successfull");
         navigate("/moderator/login");
-      }else if (res.data.status === 400 || res.data.status === 409) {
-        const msg = res.data?.msg || "Please check inputs"
+      } else if (res.data.status === 400 || res.data.status === 409) {
+        const msg = res.data?.msg || "Please check inputs";
         toast.error(`Registeration is failed : ${msg}`);
       } else {
         toast.error(`Registeration is failed : ${res.data.msg}`);
@@ -157,10 +157,10 @@ function ModeratorRegister() {
     } catch (err) {
       console.log(err);
     }
-  }
+  };
   return (
     <div>
-      <MainNav />
+      <UserNavbar />
       <div className="moderator-register-box container ">
         <div className="mb-5 ">
           <form onSubmit={handleSubmit}>
@@ -312,9 +312,18 @@ function ModeratorRegister() {
               </div>
               <div className="text-center mt-3">
                 <label>Are you Existing User?</label>
-                <Link className="moderator-register-link">
-                  <span> Login Now</span>
-                </Link>
+                {/* <p className="moderator-register-link">
+                </p> */}
+                  <span
+                    className="fw-bold ms-1 text-primary"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      navigate("/moderator/login");
+                    }}
+                  >
+                    {" "}
+                    Login Now
+                  </span>
               </div>
             </div>
           </form>
