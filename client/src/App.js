@@ -79,7 +79,7 @@ const App = () => {
             element={<ViewUserDetails />}
           />
           <Route
-            path="/moderator/forgetpassword"
+            path="/moderator/forget-password"
             element={<Moderatorforget />}
           />
 
@@ -93,7 +93,7 @@ const App = () => {
             element={<ExchangeProduct />}
           />
           <Route path="/agentlogin" element={<DeliveryAgentLogin/>}/>
-          <Route path="/agentsignup"element={<DeliveryAgentSignup/>}/>
+          <Route path="/agent/signup"element={<DeliveryAgentSignup/>}/>
           <Route path="/agentforgotpassword" element={<Deliveryforgotpassword/>}/>
           {/* new  */}
           <Route path="/moderatorsidebar" element={<ModeratorSidebar />} />
