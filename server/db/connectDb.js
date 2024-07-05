@@ -1,11 +1,10 @@
-const mongoose = require("mongoose");
-const connectDB = async (req, res) => {
-  try {
-    await mongoose.connect("mongodb://localhost:27017/tradehub");
-    console.log("Database connected successfully. ")
-  } catch (err) {
-    console.log("Error on connect DB", err);
-  }
-};
 
-module.exports = { connectDB };
+const mongoose=require("mongoose")
+mongoose.connect("mongodb://127.0.0.1:27017/tradehub")
+var db=mongoose.connection
+db.on("error",console.error.bind("error"))
+db.once("open",function(){
+    console.log("connection successful")
+})
+ 
+module.exports=db
