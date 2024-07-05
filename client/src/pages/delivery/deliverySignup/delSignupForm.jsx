@@ -6,11 +6,11 @@ const DelSignupForm = ({ signupBtnClicked, clickSignupBtn }) => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
     fullName: "",
+    phoneNumber: "",
     email: "",
     password: "",
     gender: "",
     age: "",
-    phoneNumber: "",
     address: "",
     img: null,
   });
