@@ -7,12 +7,51 @@ import Footer from "../../Footer/Footer";
 import toast from "react-hot-toast";
 
 function DeliveryAgentLogin() {
+  const [data, setData] = useState({
+    username: "",
+    password: "",
+  });
+  const handleChange = (e) => {
+    const { name, value, type } = e.target;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: e.target.checked,
+    }));
+  };
+  const checkValidate = () => {
+    const { username, password } = data;
 
+    if (!username) {
+      toast.error("Please enter the user name");
+    }
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(username)) {
+      toast.error("Please enter a valid email address");
+      return false;
+    }
+    if (!password) {
+      toast.error("Please enter password");
+    }
+    const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z]).{6,}$/;
+    if (!passwordRegex.test(password)) {
+      toast.error(
+        "Password must contain at least one number, one special character, and one capital letter"
+      );
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(data);
+    if (!checkValidate()) {
+      return;
+    }
+  };
 
   return (
     <div>
       <div>
-        <MainNav/>
+        <MainNav />
       </div>
       <div className="mt-5 container">
         <div className="deliveryagent-login-box mb-5">
@@ -29,7 +68,7 @@ function DeliveryAgentLogin() {
                 <h2>Delivery agent Login</h2>
               </div>
               <div>
-                <form >
+                <form onSubmit={handleSubmit}>
                   <div className="deliveryagent-inputs">
                     <label className="deliveryagent-login ms-2">
                       User name
@@ -38,7 +77,8 @@ function DeliveryAgentLogin() {
                       className="deliveryagent-login-textbox ms-3 px-3"
                       type="text"
                       name="username"
-                      placeholder="Enter Username" 
+                      placeholder="Enter Username"
+                      onChange={handleChange}
                     />
                   </div>
                   <div>
@@ -50,10 +90,13 @@ function DeliveryAgentLogin() {
                       type="password"
                       name="password"
                       placeholder="Enter Password"
+                      onChange={handleChange}
                     />
                   </div>
                   <div className="mt-3 deliveryagent-login-link container">
-                    <Link to="/agentforgotpassword" href="#">Forget Password?</Link>
+                    <Link to="/agentforgotpassword" href="#">
+                      Forget Password?
+                    </Link>
                   </div>
                   <button
                     type="submit"
@@ -63,7 +106,10 @@ function DeliveryAgentLogin() {
                   </button>
                   <div className="mt-4 ms-5">
                     <h6 className="text-center">
-                      New to TradeHub Delivery? <Link  to="/agent/signup" href="#">Register Now</Link>
+                      New to TradeHub Delivery?{" "}
+                      <Link to="/agent/signup" href="#">
+                        Register Now
+                      </Link>
                     </h6>
                   </div>
                 </form>
@@ -73,7 +119,7 @@ function DeliveryAgentLogin() {
         </div>
       </div>
       <div>
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );

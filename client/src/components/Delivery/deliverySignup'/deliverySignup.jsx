@@ -120,6 +120,8 @@ function DeliveryAgentSignup() {
     if (!checkValidity()) {
       return;
     }
+
+    
   };
   return (
     <div>
