@@ -16,7 +16,7 @@ import ModeratorRegister from "./components/Moderator/ModeratorRegister";
 import Moderatorlogin from "./components/Moderator/Moderatorlogin";
 import Moderatorforget from "./components/Moderator/Moderatorforget";
 import { AdminDashboard } from "./components/Admin/AdminDashboard";
-import {Toaster} from 'react-hot-toast'
+import { Toaster } from "react-hot-toast";
 import { ModeratorHome } from "./pages/common/moderatorHome";
 import { ModProfile } from "./components/Moderator/modProfile/modProfile";
 import { ModViewUsers } from "./components/Moderator/modViewUsers/modViewUsers";
@@ -27,11 +27,21 @@ import ModeratorSidebar from "./components/Moderator/moderatorSidebar/moderatorS
 import ProductRequest from "./components/Moderator/productRequestcontainer/productRequest";
 import { ModeratorDashboard } from "./components/Moderator/moderatorDashboard/moderatorDashboard";
 import ModeratorItempage from "./components/Moderator/moderatorItemPage/moderatorItempage";
+import { ExchangeProductPage } from "./components/Users/exchangePage/exchangeProductPage";
+import { ExchangeProduct } from "./components/Users/exchangePage/exchangeProduct/exchangeProduct";
+import { ItemDetails } from "./components/Users/itemDetails.jsx/itemDetails";
+
+import { ProductCard } from "./components/Users/productCardContainer/productCard";
+
+import DeliveryAgentLogin from "./components/Delivery/deliveryLogin/deliveryLogin";
+import DeliveryAgentSignup from "./components/Delivery/deliverySignup'/deliverySignup";
+import Deliveryforgotpassword from "./components/Delivery/deliveryForgotpassword/deliveryforgotpassword";
+import { UserTransaction } from "./components/Admin/userTransaction/userTransaction";
 const App = () => {
   return (
     <div className="App">
       <BrowserRouter basename="tradehub">
-      <Toaster/> 
+        <Toaster />
         <Routes>
           {/* common  */}
           <Route path="/" element={<Userlanding />} />
@@ -49,7 +59,13 @@ const App = () => {
           {/* <Route path="/user/additemtosell" element={<UserAddItemToSell />} /> */}
           <Route path="/user/viewitemtobuy" element={<UserViewItemToBuy />} />
           <Route path="/user/add-product" element={<AddProducts />} />
+          <Route path="/user/view-items" element={<ViewItems />} />
+          {/* new route */}
+          <Route path="/user/product-details" element={<ItemDetails />} />
+          <Route path="/user/product-card" element={<ProductCard/>}/>
           <Route path="/user/view-items" element={<ViewItems/>} />
+          <Route path="/user/product-details" element={<ItemDetails/>} />
+          <Route path="/user/view-items" element={<ViewItems />} />
 
           {/* moderators  */}
 
@@ -58,17 +74,32 @@ const App = () => {
           <Route path="/moderator/home" element={<ModeratorHome />} />
           <Route path="/moderator/profile" element={<ModProfile />} />
           <Route path="/moderator/view-users" element={<ModViewUsers />} />
-          <Route path="/moderator/view-users/:id" element={<ViewUserDetails />} />
           <Route
-            path="/moderator/forgetpassword"
+            path="/moderator/view-users/:id"
+            element={<ViewUserDetails />}
+          />
+          <Route
+            path="/moderator/forget-password"
             element={<Moderatorforget />}
           />
 
- {/* new  */}
-          <Route path="/moderatorsidebar" element={<ModeratorSidebar/>}/>
-          <Route path="/productrequest" element={<ProductRequest/>}/>
-          <Route path="/moderator/dashboard" element={<ModeratorDashboard/>}/>
-          <Route path="/itemPage" element={<ModeratorItempage/>}/>
+{/* new-1 */}
+          <Route
+            path="/moderator/exchangePage"
+            element={<ExchangeProductPage />}
+          />
+          <Route
+            path="/moderator/exchangeProduct"
+            element={<ExchangeProduct />}
+          />
+          <Route path="/agentlogin" element={<DeliveryAgentLogin/>}/>
+          <Route path="/agent/signup"element={<DeliveryAgentSignup/>}/>
+          <Route path="/agentforgotpassword" element={<Deliveryforgotpassword/>}/>
+          {/* new  */}
+          <Route path="/moderatorsidebar" element={<ModeratorSidebar />} />
+          <Route path="/productrequest" element={<ProductRequest />} />
+          <Route path="/moderator/dashboard" element={<ModeratorDashboard />} />
+          <Route path="/itemPage" element={<ModeratorItempage />} />
 
           {/* delivery  */}
           <Route path="/delivery/signup" element={<DelSignup />} />
@@ -77,6 +108,8 @@ const App = () => {
           {/* Admin */}
           <Route path="/admin/login" element={<Adminlogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          {/* new */}
+          <Route path="/admin/usertransaction" element={<UserTransaction/>}/> 
 
           {/* admin components  */}
 
@@ -87,4 +120,4 @@ const App = () => {
   );
 };
 
-export default App
+export default App;

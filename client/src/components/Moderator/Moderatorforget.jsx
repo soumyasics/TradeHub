@@ -5,6 +5,8 @@ import Footer from "../Footer/Footer";
 import { Link, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import moderatorforget from "../../assets/images/moderatorforget.jpg";
+import axiosInstance from "../../apis/axiosInstance";
+import toast, { Toast } from "react-hot-toast";
 function Moderatorforget() {
   const [data, setData] = useState({
     email: "",
@@ -58,7 +60,22 @@ function Moderatorforget() {
     }
 
     setErrors(errors);
+
+    if (formValid) {
+      axiosInstance
+        .post("/forgotPasswordUserModerators", data)
+        .then((res) => {
+          console.log(res);
+          toast.success(res.data.msg);
+          Navigate("/moderator/login");
+        })
+        .catch((err) => {
+          console.log(err);
+          alert(err);
+        });
+    }
   };
+
 
   return (
     <div>
