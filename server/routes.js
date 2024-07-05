@@ -2,6 +2,7 @@ const router = require("express").Router();
 const user = require("./User/userController");
 const items = require("./Item/itemController");
 const Moderator = require("./Moderator/modController");
+const DeliveryRoute = require("./delivery/deliveryController");
 
 //user routes
 router.post("/registerUser", user.upload, user.registerUser);
@@ -47,4 +48,17 @@ router.post("/activateModeratorById/:id", Moderator.activateModeratorById);
 
 router.post("/resetPasswordModeratorUser/:id", Moderator.resetPassword);
 router.post("/loginModerator", Moderator.login);
+
+// delivery
+
+router.post(
+  "/deliverySignup",
+  DeliveryRoute.upload,
+  DeliveryRoute.registerDelivery
+);
+router.post(
+  "/deliveryLogin",
+  DeliveryRoute.loginDelivery
+);
+
 module.exports = router;
