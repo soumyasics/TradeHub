@@ -1,6 +1,6 @@
 const { default: mongoose } = require("mongoose");
 const { DeliveryModel } = require("./deliverySchema");
-
+const multer = require('multer');
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {
     cb(null, "./upload");
@@ -26,6 +26,13 @@ const registerDelivery = async (req, res) => {
   try {
     const { firstname, lastname, email, contact, password, gender, address } =
       req.body;
+
+    const delivery = await DeliveryModel.findOne({ email });
+    if (delivery) {
+      return res
+        .status(409)
+        .json({ msg: "email Already Registered With Us !!", data: null });
+    }
 
     const newUser = new DeliveryModel({
       firstname,
