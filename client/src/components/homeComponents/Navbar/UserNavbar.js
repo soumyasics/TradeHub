@@ -84,7 +84,7 @@ function UserNavbar() {
                     </Link>
                     <Link
                       class="dropdown-item"
-                      to="/agentlogin"
+                      to="/delivery/login"
                       id="landing-drop-link"
                     >
                       Delivery Agent

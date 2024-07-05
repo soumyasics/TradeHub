@@ -37,6 +37,7 @@ import DeliveryAgentLogin from "./components/Delivery/deliveryLogin/deliveryLogi
 import DeliveryAgentSignup from "./components/Delivery/deliverySignup'/deliverySignup";
 import Deliveryforgotpassword from "./components/Delivery/deliveryForgotpassword/deliveryforgotpassword";
 import { UserTransaction } from "./components/Admin/userTransaction/userTransaction";
+import { DeliveryHome } from "./components/Delivery/deliveryHome/deliveryHome";
 const App = () => {
   return (
     <div className="App">
@@ -92,7 +93,7 @@ const App = () => {
             path="/moderator/exchangeProduct"
             element={<ExchangeProduct />}
           />
-          <Route path="/agentlogin" element={<DeliveryAgentLogin/>}/>
+          <Route path="/delivery/login" element={<DeliveryAgentLogin/>}/>
           <Route path="/agent/signup"element={<DeliveryAgentSignup/>}/>
           <Route path="/agentforgotpassword" element={<Deliveryforgotpassword/>}/>
           {/* new  */}
@@ -103,7 +104,8 @@ const App = () => {
 
           {/* delivery  */}
           <Route path="/delivery/signup" element={<DelSignup />} />
-          <Route path="/delivery/login" element={<DeliveryLogin />} />
+          {/* <Route path="/delivery/login" element={<DeliveryLogin />} /> */}
+          <Route path="/delivery/home" element={<DeliveryHome/>} />
 
           {/* Admin */}
           <Route path="/admin/login" element={<Adminlogin />} />
