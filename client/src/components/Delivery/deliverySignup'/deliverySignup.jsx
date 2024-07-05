@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import "./deliverySignup.css";
 import MainNav from "../../homeComponents/Navbar/MainNav";
 import { axiosMultipartInstance } from "../../../apis/axiosMultipartInstance";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Footer from "../../Footer/Footer";
 
+
 function DeliveryAgentSignup() {
+  const navigate = useNavigate();
   const [data, setData] = useState({
     firstname: "",
     lastname: "",
@@ -120,7 +122,38 @@ function DeliveryAgentSignup() {
     if (!checkValidity()) {
       return;
     }
+
+    const formData = new FormData ();
+    formData.append("firstname",data.firstname);
+    formData.append("lastname",data.lastname);
+    formData.append("email",data.email);
+    formData.append("contact",data.contact);
+    formData.append("password",data.password)
+    formData.append("gender",data.gender)
+    formData.append("profile",data.profile)
+
+    sendDataToServer(formData)
   };
+  
+  const sendDataToServer = async () => {
+    try {
+      const res = await axiosMultipartInstance.post("/deliverySignup", data);
+      console.log("delevery agent regsit", res);
+      if (res.status === 201) {
+        toast.success("Registration Successfull");
+        navigate("/delivery/login");
+      }
+    } catch (err) {
+      const status = err.response?.status; 
+      if (status === 400 || status === 409) {
+        const msg = err.response?.data?.msg || "Please check your network"
+        toast.error(`Registeration is failed : ${msg}`);
+      } else {
+        toast.error(`Registeration is failed : ${err.response?.data?.msg}`);
+      }
+      console.log(err);
+    }
+  }
   return (
     <div>
       <div>
@@ -158,6 +191,8 @@ function DeliveryAgentSignup() {
                   name="gender"
                   value="male"
                   onChange={handlechange}
+                  checked={data.gender === "male"}
+
 
                 />
                 <label className="user-register-label ms-2">Male</label>
@@ -167,6 +202,8 @@ function DeliveryAgentSignup() {
                   name="gender"
                   value="female"
                   onChange={handlechange}
+                  checked={data.gender === "female"}
+
 
                 />
                 <label className="user-register-label ms-2">Female</label>
@@ -275,7 +312,7 @@ function DeliveryAgentSignup() {
               </div>
               <div className="text-center mt-3">
                 <label>Already registerd!</label>
-                <Link to="/agentlogin" className="deliverysignup-link">
+                <Link to="/delivery/login" className="deliverysignup-link">
                   <span> Login</span>
                 </Link>
               </div>

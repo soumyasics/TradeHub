@@ -72,7 +72,7 @@ function MainNav() {
                     </Link>
                     <Link
                       className="dropdown-item"
-                      to="/agentlogin"
+                      to="/delivery/login"
                       id="landing-drop-link"
                     >
                       Delivery Agent

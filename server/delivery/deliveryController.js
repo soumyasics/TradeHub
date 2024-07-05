@@ -1,5 +1,5 @@
 const { DeliveryModel } = require("./deliverySchema");
-
+const multer = require('multer')
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {
     cb(null, "./upload");
@@ -26,6 +26,10 @@ const registerDelivery = async (req, res) => {
     const { firstname, lastname, email, contact, password, gender, address } =
       req.body;
 
+      const user = await DeliveryModel.findOne({email});
+      if (user) {
+        return res.status(400).json({msg: "Email already used."})
+      }
     const newUser = new DeliveryModel({
       firstname,
       lastname,
@@ -40,7 +44,7 @@ const registerDelivery = async (req, res) => {
 
     return res
       .status(201)
-      .json({ message: "Delivery Partner created", data: delivery });
+      .json({ message: "Delivery Partner created", data: newUser });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
