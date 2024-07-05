@@ -1,43 +1,50 @@
 import React, { useState } from "react";
 import "./deliveryLogin.css";
 import img1 from "../../../assets/images/agentphoto.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MainNav from "../../homeComponents/Navbar/MainNav";
 import Footer from "../../Footer/Footer";
 import toast from "react-hot-toast";
+import axios from "axios";
+import axiosInstance from "../../../apis/axiosInstance";
 
 function DeliveryAgentLogin() {
   const [data, setData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
   const handleChange = (e) => {
-    const { name, value, type } = e.target;
+    const { name, value } = e.target;
     setData((prevData) => ({
       ...prevData,
-      [name]: e.target.checked,
+      [name]: value,
     }));
   };
+  const navigate = useNavigate()
   const checkValidate = () => {
-    const { username, password } = data;
+    const { email, password } = data;
 
-    if (!username) {
-      toast.error("Please enter the user name");
+    if (!email) {
+      toast.error("Please enter a user name");
+      return false;
     }
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailRegex.test(username)) {
+    if (!emailRegex.test(email)) {
       toast.error("Please enter a valid email address");
       return false;
     }
     if (!password) {
       toast.error("Please enter password");
+      return false;
     }
     const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z]).{6,}$/;
     if (!passwordRegex.test(password)) {
       toast.error(
         "Password must contain at least one number, one special character, and one capital letter"
       );
+      return false;
     }
+    return true
   };
 
   const handleSubmit = (e) => {
@@ -46,6 +53,21 @@ function DeliveryAgentLogin() {
     if (!checkValidate()) {
       return;
     }
+    sendDataToServer();
+  };
+  const sendDataToServer = () => {
+    axiosInstance
+      .post("/deliveryLogin", data)
+      .then((res) => {
+        if (res.status === 200) {
+          toast.success("Login sucessfully");
+          navigate("/delivery/home");
+        }
+      })
+      .catch((err) => {
+        console.log("Error on delivery login",err);
+        toast.error("Please check your email id and password.")
+      });
   };
 
   return (
@@ -76,8 +98,9 @@ function DeliveryAgentLogin() {
                     <input
                       className="deliveryagent-login-textbox ms-3 px-3"
                       type="text"
-                      name="username"
-                      placeholder="Enter Username"
+                      name="email"
+                      value={data.email}
+                      placeholder="Enter User name"
                       onChange={handleChange}
                     />
                   </div>
@@ -88,6 +111,7 @@ function DeliveryAgentLogin() {
                     <input
                       className="deliveryagent-login-textbox-pass ms-4 px-3"
                       type="password"
+                      value={data.password}
                       name="password"
                       placeholder="Enter Password"
                       onChange={handleChange}

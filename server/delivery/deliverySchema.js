@@ -30,10 +30,6 @@ const dSchema = mongoose.Schema({
     type: Object,
     required: true,
   },
-  repassword: {
-    type: String,
-    required: true,
-  },
   address: {
     type: String,
     required: true,
