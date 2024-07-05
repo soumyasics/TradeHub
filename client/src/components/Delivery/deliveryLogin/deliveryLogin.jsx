@@ -1,8 +1,10 @@
 import React from "react";
 import "./deliveryLogin.css";
 import img1 from "../../../assets/images/agentphoto.png";
+import { Link } from "react-router-dom";
 
 function DeliveryAgentLogin() {
+
   return (
     <div>
       <div className="mt-5 container">
@@ -29,7 +31,7 @@ function DeliveryAgentLogin() {
                       className="deliveryagent-login-textbox ms-3"
                       type="text"
                       name="username"
-                      placeholder="Enter Username"
+                      placeholder="Enter Username" 
                     />
                   </div>
                   <div>
@@ -41,6 +43,7 @@ function DeliveryAgentLogin() {
                       type="password"
                       name="password"
                       placeholder="Enter Password"
+                     
                     />
                   </div>
                   <div className="mt-3 deliveryagent-login-link container">
@@ -54,7 +57,7 @@ function DeliveryAgentLogin() {
                   </button>
                   <div className="mt-4 ms-5">
                     <h6 className="text-center">
-                      New to TradeHub Delivery? <a href="#">Register Now</a>
+                      New to TradeHub Delivery? <Link  to="/agent/signup" href="#">Register Now</Link>
                     </h6>
                   </div>
                 </form>

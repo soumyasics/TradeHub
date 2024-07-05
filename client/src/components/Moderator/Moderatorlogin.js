@@ -116,7 +116,7 @@ function Moderatorlogin() {
                     />
                   </div>
                   <div className="mt-3 moderator-login-link container">
-                    <Link to="" className="moderator-login-forget">
+                    <Link to="/moderator/forget-password" className="moderator-login-forget">
                       Forget Password?
                     </Link>
                   </div>
