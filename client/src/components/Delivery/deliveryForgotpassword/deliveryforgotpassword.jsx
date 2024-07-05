@@ -1,10 +1,15 @@
 import React from "react";
 import "./deliveryforgotpassword.css";
 import img1 from "../../../assets/images/passwordImg.png";
+import MainNav from "../../homeComponents/Navbar/MainNav";
+import Footer from "../../Footer/Footer";
 
 function Deliveryforgotpassword() {
   return (
     <div>
+      <div>
+        <MainNav/>
+      </div>
       <div className="mb-5 container">
         <div className="deliveryagent-forgot-box ">
           <div className="row">
@@ -51,7 +56,10 @@ function Deliveryforgotpassword() {
             </form>
           </div>
         </div>
-        <div></div>
+       
+      </div>
+      <div>
+        <Footer/>
       </div>
     </div>
   );

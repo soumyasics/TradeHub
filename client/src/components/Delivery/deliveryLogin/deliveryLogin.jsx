@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./deliveryLogin.css";
 import img1 from "../../../assets/images/agentphoto.png";
 import { Link } from "react-router-dom";
+import MainNav from "../../homeComponents/Navbar/MainNav";
+import Footer from "../../Footer/Footer";
+import toast from "react-hot-toast";
 
 function DeliveryAgentLogin() {
 
+
   return (
     <div>
+      <div>
+        <MainNav/>
+      </div>
       <div className="mt-5 container">
         <div className="deliveryagent-login-box mb-5">
           <div className="row">
@@ -22,13 +29,13 @@ function DeliveryAgentLogin() {
                 <h2>Delivery agent Login</h2>
               </div>
               <div>
-                <form>
+                <form >
                   <div className="deliveryagent-inputs">
                     <label className="deliveryagent-login ms-2">
                       User name
                     </label>
                     <input
-                      className="deliveryagent-login-textbox ms-3"
+                      className="deliveryagent-login-textbox ms-3 px-3"
                       type="text"
                       name="username"
                       placeholder="Enter Username" 
@@ -39,15 +46,14 @@ function DeliveryAgentLogin() {
                       Password
                     </label>
                     <input
-                      className="deliveryagent-login-textbox-pass ms-4"
+                      className="deliveryagent-login-textbox-pass ms-4 px-3"
                       type="password"
                       name="password"
                       placeholder="Enter Password"
-                     
                     />
                   </div>
                   <div className="mt-3 deliveryagent-login-link container">
-                    <a href="#">Forget Password?</a>
+                    <Link to="/agentforgotpassword" href="#">Forget Password?</Link>
                   </div>
                   <button
                     type="submit"
@@ -65,6 +71,9 @@ function DeliveryAgentLogin() {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <Footer/>
       </div>
     </div>
   );

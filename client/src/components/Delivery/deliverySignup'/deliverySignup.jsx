@@ -4,6 +4,7 @@ import MainNav from "../../homeComponents/Navbar/MainNav";
 import { axiosMultipartInstance } from "../../../apis/axiosMultipartInstance";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import Footer from "../../Footer/Footer";
 
 function DeliveryAgentSignup() {
   const [data, setData] = useState({
@@ -281,6 +282,9 @@ function DeliveryAgentSignup() {
             </div>
           </form>
         </div>
+      </div>
+      <div>
+       <Footer/>
       </div>
     </div>
   );
