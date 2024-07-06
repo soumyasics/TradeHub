@@ -3,7 +3,7 @@ import "../Admin.css";
 import axiosInstance from "../../../apis/axiosInstance";
 import { Table } from "react-bootstrap";
 
-export const  AdminViewallUser = () => {
+export const AdminViewallUser = () => {
   const [data, setData] = useState([]);
 
   const handleActive = (id) => {
@@ -11,7 +11,7 @@ export const  AdminViewallUser = () => {
     axiosInstance
       .post(`/activateUserById/${id}`)
       .then((res) => {
-        console.log("respo, handle acti", res)
+        console.log("respo, handle acti", res);
         if (res.data.status === 200) {
           const updatedData = data.map((users) => {
             if (users._id === id) {
@@ -47,7 +47,7 @@ export const  AdminViewallUser = () => {
   };
 
   const toggleUserActiveState = (users) => {
-    console.log("toggle", users)
+    console.log("toggle", users);
     if (users.isActive) {
       handleDeactive(users._id);
     } else {
@@ -73,24 +73,12 @@ export const  AdminViewallUser = () => {
 
   return (
     <div>
-      {/* <button className="admin-view-user-btn mt-5 ms-5">View Users</button> */}
-      <br></br>
-      {/* <label className="mt-5 ms-5">Rows per page</label>{" "} */}
-      {/* <select>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-        <option>9</option>
-        <option>10</option>
-      </select> */}
       <h3 className="mt-2 text-center"> View Users </h3>
       {data.length !== 0 ? (
-        <div className="table-container" style={{overflowY: "scroll", height: "80vh"}}>
+        <div
+          className="table-container"
+          style={{ overflowY: "scroll", height: "80vh" }}
+        >
           <Table striped hover className="table">
             <thead>
               <tr>
@@ -136,6 +124,6 @@ export const  AdminViewallUser = () => {
       )}
     </div>
   );
-}
+};
 
 export default AdminViewallUser;

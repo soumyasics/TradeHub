@@ -56,14 +56,17 @@ router.post(
   DeliveryRoute.upload,
   DeliveryRoute.registerDelivery
 );
-router.post(
-  "/deliveryLogin",
-  DeliveryRoute.loginDelivery
+router.post("/deliveryLogin", DeliveryRoute.loginDelivery);
+router.post("/deliveryForgotPassword", DeliveryRoute.forgotPassword);
+router.get("/allPendingDelivery", DeliveryRoute.allPendingDelivery);
+router.get("/allAcceptDelivery", DeliveryRoute.allAcceptedDelivery);
+router.get("/allRejectDelivery", DeliveryRoute.allRejectedDelivery);
+router.get(
+  "/approveDeliveryAgentById/:id",
+  DeliveryRoute.approveDeliveryAgentById
 );
-router.post(
-  "/deliveryForgotPassword",
-  DeliveryRoute.forgotPassword
+router.get(
+  "/rejectDeliveryAgentById/:id",
+  DeliveryRoute.rejectDeliveryAgentById
 );
-
-
 module.exports = router;

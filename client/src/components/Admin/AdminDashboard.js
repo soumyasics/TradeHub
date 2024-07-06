@@ -3,6 +3,7 @@ import { AdminSidebar } from "./adminSidebar/AdminSidebar";
 import { AdminViewallUser } from "./viewAllUser/AdminViewallUser";
 import { useState } from "react";
 import { AdminViewallMods } from "./viewAllUserMods/AdminViewallMods";
+import { AdminViewAllDelRequest } from "./deliveryAgentRequest/deliveryAgentReq";
 export const AdminDashboard = () => {
   const [selectedPage, setSelectedPage] = useState("overview");
 
@@ -18,6 +19,7 @@ export const AdminDashboard = () => {
         {selectedPage === "overview" && <AdminOverview />}
         {selectedPage === "view-all-user" && <AdminViewallUser />}
         {selectedPage === "view-moderators" && <AdminViewallMods />}
+        {selectedPage === "view-pending-DA" && <AdminViewAllDelRequest />}
       </div>
     </div>
   );
