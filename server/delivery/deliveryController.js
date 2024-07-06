@@ -71,30 +71,34 @@ const loginDelivery = async (req, res) => {
   }
 };
 
-const forgotPasswordDelivery = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    if (!email || !password) {
-      return res.status(404).json({ msg: "Email and password is required." });
-    }
-    const delivery = await DeliveryModel.findOne({ email });
-    if (!delivery) {
-      return res.status(404).json({ msg: "Please check your credentials." });
-    }
-    const newDelivery = await DeliveryModel.findOneAndUpdate(
-      { email },
-      { password }
-    );
-    return res.status(200).json({
-      msg: "Password updated successfully.",
-      data: newDelivery,
+// Forgot Password for Moderator
+const forgotPassword = (req, res) => {
+  DeliveryModel.findOneAndUpdate(
+    { email: req.body.email },
+    { password: req.body.password }
+  )
+    .exec()
+    .then((data) => {
+      if (data != null)
+        res.json({
+          status: 200,
+          msg: "Updated successfully",
+        });
+      else
+        res.json({
+          status: 500,
+          msg: "User not found",
+        });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        status: 500,
+        msg: "Data not updated",
+        Error: err,
+      });
     });
-  } catch (error) {
-    return res.status(500).json({
-      msg: "Internal server error. Please try again later.",
-    });
-  }
 };
+
 
 const updateDelivery = async (req, res) => {
   try {
@@ -154,6 +158,6 @@ module.exports = {
   upload,
   registerDelivery,
   loginDelivery,
-  forgotPasswordDelivery,
+  forgotPassword,
   updateDelivery,
 };

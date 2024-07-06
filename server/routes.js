@@ -60,5 +60,10 @@ router.post(
   "/deliveryLogin",
   DeliveryRoute.loginDelivery
 );
+router.post(
+  "/deliveryForgotPassword",
+  DeliveryRoute.forgotPassword
+);
+
 
 module.exports = router;
