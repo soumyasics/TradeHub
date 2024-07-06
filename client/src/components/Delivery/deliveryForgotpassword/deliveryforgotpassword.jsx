@@ -63,8 +63,12 @@ function Deliveryforgotpassword() {
         .post("/deliveryForgotPassword", data)
         .then((res) => {
           console.log(res);
-          alert(res.data.msg);
-          Navigate("/delivery/login");
+          if (res.data.status == 200) {
+            toast.success(res.data.msg);
+            Navigate("/delivery/login");
+          } else {
+            toast.error(res.data.msg);
+          }
         })
         .catch((err) => {
           console.log(err);

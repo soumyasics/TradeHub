@@ -39,6 +39,7 @@ import Deliveryforgotpassword from "./components/Delivery/deliveryForgotpassword
 import { UserTransaction } from "./components/Admin/userTransaction/userTransaction";
 import { DeliveryHome } from "./components/Delivery/deliveryHome/deliveryHome";
 import { ContactUs } from "./components/common/illustration/contactUs/contactsUs";
+import { UsereditProfileCard } from "./components/Users/userEditProfileCard/userEditProfileCard";
 const App = () => {
   return (
     <div className="App">
@@ -69,6 +70,7 @@ const App = () => {
           <Route path="/user/view-items" element={<ViewItems/>} />
           <Route path="/user/product-details" element={<ItemDetails/>} />
           <Route path="/user/view-items" element={<ViewItems />} />
+          <Route path="/user/edit/profle" element={<UsereditProfileCard/>} />
 
           {/* moderators  */}
 
