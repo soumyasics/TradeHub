@@ -5,37 +5,72 @@ import MainNav from "../../homeComponents/Navbar/MainNav";
 import Footer from "../../Footer/Footer";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import axiosInstance from "../../../apis/axiosInstance";
 
 function Deliveryforgotpassword() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmpassword] = useState("");
-  const navigate = useNavigate();
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [error, setError] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const Navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData({
+      ...data,
+      [name]: value,
+    });
+    setError((prevErrors) => ({ ...prevErrors, [name]: "" }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailRegex.test(email)) {
-      toast.error("Please enter a valid email address");
-      return false;
+    let error = {};
+    let formValid = true;
+
+    if (!data.email.trim()) {
+      formValid = false;
+      error.email = "Email is required";
     }
 
-    if (!password) {
-      toast.error("password is required");
-      return;
+    const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z]).{6,}$/;
+    if (!data.password.trim()) {
+      formValid = false;
+      error.password = "Password is required";
+    } else if (!passwordRegex.test(data.password)) {
+      // Pass the password to the test method
+      error.password =
+        "Password must contain at least one number, one special character, and one capital letter";
     }
-    if (password.length < 8) {
-      toast("Password needs minimum 8 characters");
-      return;
+
+    if (!data.confirmPassword.trim()) {
+      formValid = false;
+      error.confirmPassword = "Confirm Password is required";
+    } else if (data.confirmPassword !== data.password) {
+      formValid = false;
+      error.confirmPassword = "Passwords do not match";
     }
-    if (!confirmPassword) {
-      toast.error("confirm password is required");
-      return;
+
+    setError(error);
+    if (formValid) {
+      axiosInstance
+        .post("/deliveryForgotPassword", data)
+        .then((res) => {
+          console.log(res);
+          alert(res.data.msg);
+          Navigate("/delivery/login");
+        })
+        .catch((err) => {
+          console.log(err);
+          alert(err);
+        });
     }
-    if (password !== confirmPassword) {
-      alert.error("password doesn't matches");
-      return;
-    }
-    sendToServer({email})
   };
 
   return (
@@ -65,10 +100,14 @@ function Deliveryforgotpassword() {
                       className="deliveryagent-forgot-textbox mt-5"
                       placeholder="Enter email"
                       name="email"
-                      onChange={(e) => {
-                        setEmail(e.target.value);
-                      }}
+                      value={data.email}
+                      onChange={handleChange}
                     />
+                    {error.email && (
+                      <div className="user-forget-div text-danger">
+                        {error.email}
+                      </div>
+                    )}
                   </div>
                   <div>
                     <input
@@ -76,10 +115,14 @@ function Deliveryforgotpassword() {
                       className="deliveryagent-forgot-textbox mt-5"
                       placeholder="Enter new Password"
                       name="password"
-                      onChange={(e) => {
-                        setPassword(e.target.value);
-                      }}
+                      value={data.password}
+                      onChange={handleChange}
                     />
+                    {error.password && (
+                      <div className="user-forget-div text-danger">
+                        {error.password}
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div>
@@ -87,11 +130,15 @@ function Deliveryforgotpassword() {
                     type="password"
                     className="deliveryagent-forgot-textbox mt-5"
                     placeholder="Re-Enter new Password"
-                    name="confirmpassword"
-                    onChange={(e) => {
-                      setConfirmpassword(e.target.value);
-                    }}
+                    name="confirmPassword"
+                    onChange={handleChange}
                   />
+
+                  {error.confirmPassword && (
+                    <div className="user-forget-div text-danger">
+                      {error.confirmPassword}
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="text-center">
