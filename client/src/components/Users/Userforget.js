@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import MainNav from "../homeComponents/Navbar/MainNav";
 import Footer from "../Footer/Footer";
 import axiosInstance from "../../apis/axiosInstance";
+import UserNavbar from "../homeComponents/Navbar/UserNavbar";
 function Userforget() {
   const [data, setData] = useState({
     email: "",
@@ -75,7 +76,7 @@ function Userforget() {
 
   return (
     <div>
-      <MainNav />
+      <UserNavbar />
       <div className="user-forget-box container mb-5 mt-5">
         <div className="row">
           <div className="col">
