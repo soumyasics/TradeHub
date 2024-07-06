@@ -2,52 +2,58 @@
 .contactUs-main-box {
   margin-top: 3%;
   border: 1px solid #6d3698;
-  width: 70%;
+  width: 68%;
   margin: auto;
-  margin-top: 3%;
-margin-bottom: 3%;}
+  margin-top: 5%;
+  margin-bottom: 3%;
+}
 .conatactUs-right-box h2 {
   color: black;
-  padding-top: 20px;
+  padding-top: 34px;
 }
 .contactUs-phone1-heading {
   color: #6d3698;
   font-family: Poppins;
-  font-size: 23px;
+  font-size: 20px;
   font-weight: 500;
-  padding-top: 8%;
+  padding-top: 12%;
 }
 .contactUs-right-inner-box {
   width: 90%;
   height: 80%;
   position: relative;
-  right: 28%;
+  right: 25%;
   margin-top: 20px;
   text-align: left;
 }
 .contactsUs-icons {
-  font-size: 25px;
+  font-size: 22px;
 }
 .contactUs-right-inner-box p {
   margin-left: 18px;
   color: #000;
   font-family: Poppins;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 400;
 }
-.contactsUs-details-box
-{
-    margin-top: 7%;
+.contactsUs-details-box {
+  margin-top: 7%;
 }
-.contactUs-sub-headings
-{
-    color: #6d3698;
-    font-family: Poppins;
-    font-size: 23px;
-    font-weight: 500;
-    padding-top: 10px;
+.contactUs-sub-headings {
+  color: #6d3698;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 500;
+  padding-top: 10px;
 }
-.contactsUs-location-icon
-{
-    font-size: 37px;
+.contactsUs-location-icon {
+  font-size: 32px;
+}
+.contactUs-left-arrow {
+  font-size: 33px;
+  flex-shrink: 0;
+  color: #6d3698;
+  margin-top: 3%;
+  position: absolute;
+  left: 5%;
 }
