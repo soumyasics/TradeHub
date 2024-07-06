@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.userEditProfileCard-header
+{
+    height: 160px;
+    margin-bottom: 50px;
+    background-color: #7A48A1 ;
+}
+
+
+.editProfileCard-input
+{
+    
+width: 78% !important;
+margin: auto;
+border: 0.807px solid rgba(0, 0, 0, 0.50);
+
+}
+.editProfileCard-radio
+{
+   margin-top: 20px;
+ color: #000;
+font-family: Poppins;
+font-size: 16.875px;
+font-weight: 500;
+justify-content:space-evenly; 
+}
+
+.EditProfileCatd-button
+{
+    margin-bottom: 50px;
+    width: 30%;
+    margin-left: 35%;
+    border-radius: 30.213px;
+border: 0.807px solid rgba(0, 0, 0, 0.50);
+background: linear-gradient(90deg, #6D3698 0%, rgba(109, 54, 152, 0.80) 100%);
+color: #FFF;
+font-family: Inter;
+font-size: 19.37px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.editProfileCard-Label
+{
+    margin-left: 10%;
+    color: #000;
+font-family: Poppins;
+font-size: 16.875px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}

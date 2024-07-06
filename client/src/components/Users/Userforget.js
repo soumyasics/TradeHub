@@ -5,6 +5,7 @@ import MainNav from "../homeComponents/Navbar/MainNav";
 import Footer from "../Footer/Footer";
 import axiosInstance from "../../apis/axiosInstance";
 import UserNavbar from "../homeComponents/Navbar/UserNavbar";
+import toast from "react-hot-toast";
 function Userforget() {
   const [data, setData] = useState({
     email: "",
@@ -64,8 +65,16 @@ function Userforget() {
         .post("/forgotPasswordUser", data)
         .then((res) => {
           console.log(res);
-          alert(res.data.msg);
-          Navigate("/user/login");
+         
+          if(res.data.status==200)
+            {
+              Navigate("/user/login");
+              toast.success(res.data.msg);
+            }
+            else
+            {
+              toast.error(res.data.msg);
+            }
         })
         .catch((err) => {
           console.log(err);
