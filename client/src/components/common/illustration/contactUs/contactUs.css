@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.contactUs-main-box {
+  margin-top: 3%;
+  border: 1px solid #6d3698;
+  width: 68%;
+  margin: auto;
+  margin-top: 5%;
+  margin-bottom: 3%;
+}
+.conatactUs-right-box h2 {
+  color: black;
+  padding-top: 34px;
+}
+.contactUs-phone1-heading {
+  color: #6d3698;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 500;
+  padding-top: 12%;
+}
+.contactUs-right-inner-box {
+  width: 90%;
+  height: 80%;
+  position: relative;
+  right: 25%;
+  margin-top: 20px;
+  text-align: left;
+}
+.contactsUs-icons {
+  font-size: 22px;
+}
+.contactUs-right-inner-box p {
+  margin-left: 18px;
+  color: #000;
+  font-family: Poppins;
+  font-size: 17px;
+  font-weight: 400;
+}
+.contactsUs-details-box {
+  margin-top: 7%;
+}
+.contactUs-sub-headings {
+  color: #6d3698;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 500;
+  padding-top: 10px;
+}
+.contactsUs-location-icon {
+  font-size: 32px;
+}
+.contactUs-left-arrow {
+  font-size: 33px;
+  flex-shrink: 0;
+  color: #6d3698;
+  margin-top: 3%;
+  position: absolute;
+  left: 5%;
+}

@@ -46,7 +46,11 @@ function UserNavbar() {
                 </div>
 
                 <div className="me-5 navlink" style={{ cursor: "pointer" }}>
-                  <p className="usernav-about">Contact</p>
+                  <p className="usernav-about" onClick={()=>
+                    {
+                      navigate("/contactUs")
+                    }
+                  }>Contact</p>
                 </div>
 
 
