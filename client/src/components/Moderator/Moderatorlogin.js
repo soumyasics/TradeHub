@@ -6,6 +6,7 @@ import moderatorlogin from "../../assets/images/moderatorlogin.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axiosInstance from "../../apis/axiosInstance";
+import UserNavbar from "../homeComponents/Navbar/UserNavbar";
 
 function Moderatorlogin() {
   const [data, setData] = useState({
@@ -76,7 +77,7 @@ function Moderatorlogin() {
 
   return (
     <div>
-      <MainNav />
+      <UserNavbar />
       <div className="mt-5 container">
         <div className="moderator-login-box mb-5">
           <div className="row">
@@ -116,7 +117,10 @@ function Moderatorlogin() {
                     />
                   </div>
                   <div className="mt-3 moderator-login-link container">
-                    <Link to="/moderator/forget-password" className="moderator-login-forget">
+                    <Link
+                      to="/moderator/forget-password"
+                      className="moderator-login-forget"
+                    >
                       Forget Password?
                     </Link>
                   </div>

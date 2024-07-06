@@ -5,6 +5,7 @@ import { axiosMultipartInstance } from "../../../apis/axiosMultipartInstance";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Footer from "../../Footer/Footer";
+import UserNavbar from "../../homeComponents/Navbar/UserNavbar";
 
 
 function DeliveryAgentSignup() {
@@ -157,7 +158,7 @@ function DeliveryAgentSignup() {
   return (
     <div>
       <div>
-        <MainNav />
+        <UserNavbar />
       </div>
 
       <div className="deliverysignup-box container ">
