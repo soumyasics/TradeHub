@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
 import { AssignPointsModal } from "./assignPointsModal";
+import { toast } from "react-hot-toast";
+import { ApprovedBtn, RejectedBtn } from "../../common/approvedBtn/approvedBtn";
 export const ModProductDetails = ({ productId }) => {
   const [product, setProduct] = useState(null);
   const [wishList, setWhishList] = useState(false);
@@ -36,16 +38,35 @@ export const ModProductDetails = ({ productId }) => {
 
   console.log("product deta", product);
 
+  const rejectProduct = async () => {
+    console.log("reject");
+    try {
+      const res = await axiosInstance.get(`itemRejectById/${productId}`);
+      if (res.status === 200) {
+        toast.success("Item rejected successfully");
+      }
+      console.log("res", res);
+    } catch (error) {
+      console.log("Error on reject", error);
+    } finally {
+      getProductDetails();
+    }
+  };
+
   const clickWishList = () => {
     setWhishList(!wishList);
   };
 
   const addPoint = () => {
     handleShow();
-  }
+  };
   return (
     <>
-      <AssignPointsModal show={show} handleClose={handleClose} ph={product?.userId?.contact}/>
+      <AssignPointsModal
+        show={show}
+        handleClose={handleClose}
+        ph={product?.userId?.contact}
+      />
       <div className="itemDeails-body shadow">
         <div class="container text-center">
           <div class="row">
@@ -68,7 +89,7 @@ export const ModProductDetails = ({ productId }) => {
                 )}
               </div>
             </div>
-            <div class="col-md-6 itemDetails-right-box2 mt-5">
+            <div className="shadow col-md-6 itemDetails-right-box2 p-3 mt-5">
               <h5>{product?.category}</h5>
               <h3>{product?.name}</h3>
               <div class="container ">
@@ -102,9 +123,21 @@ export const ModProductDetails = ({ productId }) => {
                     <td>{product?.location}</td>
                   </tr>
                 </table>
-                <div className="itemDetails-button-box">
-                  <button onClick={addPoint}>Add Point</button>
-                </div>
+                {product?.isModApproved === "approve" ? (
+                  <ApprovedBtn />
+                ) : product?.isModApproved === "reject" ? (
+                  <RejectedBtn />
+                ) : (
+                  <div className="itemDetails-button-box2">
+                    <button
+                      className="text-light bg-danger"
+                      onClick={rejectProduct}
+                    >
+                      Reject Product
+                    </button>
+                    <button onClick={addPoint}>Add Point</button>
+                  </div>
+                )}
               </div>
             </div>
           </div>

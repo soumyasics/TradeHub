@@ -40,6 +40,7 @@ import { ContactUs } from "./components/common/illustration/contactUs/contactsUs
 import { UsereditProfileCard } from "./components/Users/userEditProfileCard/userEditProfileCard";
 import { ModProductDetails } from "./components/Moderator/modProductRequest/modProductDetails";
 import { UserProductDetails } from "./components/Users/productDetails/userProductDetails";
+import { ApprovedBtn, RejectedBtn } from "./components/common/approvedBtn/approvedBtn";
 const App = () => {
   return (
     <div className="App">
@@ -65,7 +66,7 @@ const App = () => {
           <Route path="/user/add-product" element={<AddProducts />} />
           <Route path="/user/view-items" element={<ViewItems />} />
           <Route path="/user/view-items/:id" element={<UserProductDetails />} />
-          
+
           <Route path="/user/product-details" element={<ItemDetails />} />
           <Route path="/user/product-card" element={<ProductCard />} />
           <Route path="/user/product-details" element={<ItemDetails />} />
@@ -78,7 +79,10 @@ const App = () => {
           <Route path="/moderator/home" element={<ModeratorHome />} />
           <Route path="/moderator/profile" element={<ModProfile />} />
           <Route path="/moderator/view-users" element={<ModViewUsers />} />
-          <Route path="/moderator/product/:id" element={<ModProductDetails />} />
+          <Route
+            path="/moderator/product/:id"
+            element={<ModProductDetails />}
+          />
           <Route
             path="/moderator/view-users/:id"
             element={<ViewUserDetails />}
@@ -115,7 +119,8 @@ const App = () => {
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           {/* new component */}
           <Route path="/admin/usertransaction" element={<UserTransaction />} />
-
+          <Route path="/approved-btn" element={<ApprovedBtn />} />
+          <Route path="/rejected-btn" element={<RejectedBtn />} />
           {/* admin components  */}
 
           <Route path="/*" element={<h1> 404 </h1>} />

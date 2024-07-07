@@ -69,19 +69,21 @@
   font-style: normal;
   font-weight: 400;
 }
-.itemDetails-button-box {
+.itemDetails-button-box2 {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.itemDetails-button-box button {
-  width: 53%;
-  height: 50px;
+.itemDetails-button-box2 button {
+  width: 40%;
+  height: 40px;
   margin-top: 20px;
   border-radius: 14px;
   background-color: #6d3698;
   color: #fff;
-  font-size: 25px;
-  margin-left: 20%;
-  margin-top: 5%;
+  font-size: 16px;
+  border: none;
 }
 .itemDetails-left-arrow {
   color: #6d3698;

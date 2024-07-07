@@ -1,0 +1,22 @@
+
+
+.approve-btn {
+    border: 1.7px solid #16A72D;
+    color: #16A72D;
+    border-radius: 20px;
+    width: 137px;
+    height: 39px;
+
+}
+
+.reject-btn {
+    border: 1.7px solid #E10303;
+    color: #E10303;
+    border-radius: 20px;
+    width: 137px;
+    height: 39px;
+}
+.reject-btn img, .approve-btn img {
+    width: 25px;
+    height: 25px;
+}
