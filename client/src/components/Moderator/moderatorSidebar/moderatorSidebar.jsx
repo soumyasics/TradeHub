@@ -74,7 +74,9 @@ function ModeratorSidebar({ changeSelectedPage }) {
               <div class="collapse collapse-drop" id="collapseExample">
                 <div class="card card-body">
                   <span className="collapse-dropbody">
-                    <li>Approved items</li>
+                    <li onClick={() => changeSelectedPage("approved-items")}>
+                      Approved items
+                    </li>
                     <li
                       onClick={() => {
                         changeSelectedPage("rejected-items");
