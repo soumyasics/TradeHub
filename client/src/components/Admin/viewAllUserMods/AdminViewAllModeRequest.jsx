@@ -10,7 +10,7 @@ export const AdminViewAllModRequest = () => {
 
   const hanldeApprove = (id) => {
     axiosInstance
-      .get(`/approveDeliveryAgentById/${id}`)
+      .get(`/approveModById/${id}`)
       .then((res) => {
         console.log("respo, handle acti", res);
         if (res.status === 200) {
@@ -27,7 +27,7 @@ export const AdminViewAllModRequest = () => {
 
   const handleReject = (id) => {
     axiosInstance
-      .get(`/rejectDeliveryAgentById/${id}`)
+      .get(`/rejectModById/${id}`)
       .then((res) => {
         if (res.status === 200) {
           toast.success("Rejected successfully");
@@ -43,7 +43,7 @@ export const AdminViewAllModRequest = () => {
 
   const getAllPendingRequest = () => {
     axiosInstance
-      .get("/allPendingDelivery")
+      .get("/allPendingMods")
       .then((res) => {
         if (res.status === 200) {
           setData(res.data?.data || []);
@@ -82,7 +82,7 @@ export const AdminViewAllModRequest = () => {
                 <th>Gender</th>
                 <th>Email</th>
                 <th>Phone Number</th>
-                <th>Address</th>
+                {/* <th>Address</th> */}
                 <th>Approve/Reject</th>
               </tr>
             </thead>
@@ -96,7 +96,7 @@ export const AdminViewAllModRequest = () => {
                   <td>{users.gender}</td>
                   <td>{users.email}</td>
                   <td>{users.contact}</td>
-                  <td>{users.address}</td>
+                  {/* <td>{users.address}</td> */}
                   <td id="approval-btn-containers">
                     <button
                       className="text-success"
@@ -125,7 +125,7 @@ export const AdminViewAllModRequest = () => {
       ) : (
         <div>
           <h3 className="text-center">
-            Delivery agent pending request not found.
+            Moderator pending request not found.
           </h3>
         </div>
       )}
