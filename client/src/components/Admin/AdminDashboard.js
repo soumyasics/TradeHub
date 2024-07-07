@@ -5,6 +5,7 @@ import { useState } from "react";
 import { AdminViewallMods } from "./viewAllUserMods/AdminViewallMods";
 import { AdminViewAllDelRequest } from "./deliveryAgentRequest/deliveryAgentReq";
 import { AdminViewAllActiveDeliveryAgent } from "./deliveryAgentRequest/viewAllDeliveryAgent";
+import { AdminViewAllModRequest } from "./viewAllUserMods/AdminViewAllModeRequest";
 export const AdminDashboard = () => {
   const [selectedPage, setSelectedPage] = useState("overview");
 
@@ -19,7 +20,8 @@ export const AdminDashboard = () => {
       <div className=" w-100">
         {selectedPage === "overview" && <AdminOverview />}
         {selectedPage === "view-all-user" && <AdminViewallUser />}
-        {selectedPage === "view-moderators" && <AdminViewallMods />}
+        {selectedPage === "view-pending-mod" && <AdminViewAllModRequest />}
+        {selectedPage === "view-active-mod" && <AdminViewallMods />}
         {selectedPage === "view-pending-DA" && <AdminViewAllDelRequest />}
         {selectedPage === "view-active-DA" && <AdminViewAllActiveDeliveryAgent />}
       </div>

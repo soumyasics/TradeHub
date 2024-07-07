@@ -76,22 +76,9 @@ export const AdminViewallMods = () => {
 
   return (
     <div>
-      {/* <button className="admin-view-user-btn mt-5 ms-5">View Users</button> */}
-      <br></br>
-      {/* <label className="mt-5 ms-5">Rows per page</label>{" "} */}
-      {/* <select>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-        <option>9</option>
-        <option>10</option>
-      </select> */}
-      <h3 className="mt-2 text-center"> View Moderators </h3>
+  
+   
+      <h3 className="mt-2 text-center"> View active moderators </h3>
       {data.length !== 0 ? (
         <div  className="table-container" style={{overflowY: "scroll", height: "80vh"}}>
           <Table striped hover className="table">

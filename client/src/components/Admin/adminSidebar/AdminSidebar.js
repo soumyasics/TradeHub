@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 export const AdminSidebar = ({ changeSelectedPage }) => {
   const [dropdownDA, setdropdownDA] = useState(false);
+  const [dropdownMod, setdropdownMod] = useState(false);
 
   const navigate = useNavigate();
   const handleAdminLogout = () => {
@@ -21,8 +22,15 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
     navigate("/admin/login");
   };
   const toggleDA = () => {
+    setdropdownMod(false)
     setdropdownDA(!dropdownDA);
   };
+
+  const toggleMod = () => {
+    setdropdownDA(false)
+    setdropdownMod(!dropdownMod);
+  }
+
   return (
     <div>
       <div className="admin-sidebar-color2">
@@ -61,10 +69,20 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
                 </div>
               )}
             </li>
-
-            <li onClick={() => changeSelectedPage("view-moderators")}>
-              <MdAddModerator /> Moderator
+            <li onClick={toggleMod}>
+            <MdAddModerator /> Moderator
+              {dropdownMod && (
+                <div style={{ fontSize: "12px" }} className="ps-3 bg-light dd-container ">
+                  <li className="text-dark admin-dd-item" onClick={() => {
+                    changeSelectedPage("view-pending-mod")
+                  }}> Moderator requests</li>
+                  <li className="text-dark admin-dd-item" onClick={() => {
+                    changeSelectedPage("view-active-mod")
+                  }}> View active moderators </li>
+                </div>
+              )}
             </li>
+
             <li>
               <AiFillInteraction /> Interaction
             </li>
