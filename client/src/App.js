@@ -1,7 +1,5 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import DeliveryLogin from "./pages/delivery/deliveryLogin/deliveryLogin";
-import DelSignup from "./pages/delivery/deliverySignup/delSignup";
 import Adminlogin from "./components/Admin/adminLogin/Adminlogin";
 import Userlanding from "./components/Users/Userlanding";
 import Userforget from "./components/Users/Userforget";
@@ -37,7 +35,7 @@ import DeliveryAgentLogin from "./components/Delivery/deliveryLogin/deliveryLogi
 import DeliveryAgentSignup from "./components/Delivery/deliverySignup'/deliverySignup";
 import Deliveryforgotpassword from "./components/Delivery/deliveryForgotpassword/deliveryforgotpassword";
 import { UserTransaction } from "./components/Admin/userTransaction/userTransaction";
-import { DeliveryDashboard } from "./components/Delivery/deliveryHome/deliveryHome";
+import { DeliveryDashboard } from "./components/Delivery/deliveryDashboard/deliveryDashboard";
 import { ContactUs } from "./components/common/illustration/contactUs/contactsUs";
 import { UsereditProfileCard } from "./components/Users/userEditProfileCard/userEditProfileCard";
 const App = () => {
@@ -48,7 +46,7 @@ const App = () => {
         <Routes>
           {/* common  */}
           <Route path="/" element={<Userlanding />} />
-          <Route path="/contactUs" element={<ContactUs/>} />
+          <Route path="/contactUs" element={<ContactUs />} />
 
           {/* users  */}
           <Route path="/user/login" element={<Userlogin />} />
@@ -66,11 +64,11 @@ const App = () => {
           <Route path="/user/view-items" element={<ViewItems />} />
           {/* new route */}
           <Route path="/user/product-details" element={<ItemDetails />} />
-          <Route path="/user/product-card" element={<ProductCard/>}/>
-          <Route path="/user/view-items" element={<ViewItems/>} />
-          <Route path="/user/product-details" element={<ItemDetails/>} />
+          <Route path="/user/product-card" element={<ProductCard />} />
           <Route path="/user/view-items" element={<ViewItems />} />
-          <Route path="/user/edit/profle" element={<UsereditProfileCard/>} />
+          <Route path="/user/product-details" element={<ItemDetails />} />
+          <Route path="/user/view-items" element={<ViewItems />} />
+          <Route path="/user/edit/profle" element={<UsereditProfileCard />} />
 
           {/* moderators  */}
 
@@ -88,7 +86,7 @@ const App = () => {
             element={<Moderatorforget />}
           />
 
-{/* new-1 */}
+          {/* new-1 */}
           <Route
             path="/moderator/exchangePage"
             element={<ExchangeProductPage />}
@@ -97,9 +95,12 @@ const App = () => {
             path="/moderator/exchangeProduct"
             element={<ExchangeProduct />}
           />
-          <Route path="/delivery/login" element={<DeliveryAgentLogin/>}/>
-          <Route path="/delivery/signup"element={<DeliveryAgentSignup/>}/>
-          <Route path="/agentforgotpassword" element={<Deliveryforgotpassword/>}/>
+          <Route path="/delivery/login" element={<DeliveryAgentLogin />} />
+          <Route path="/delivery/signup" element={<DeliveryAgentSignup />} />
+          <Route
+            path="/agentforgotpassword"
+            element={<Deliveryforgotpassword />}
+          />
           {/* new  */}
           <Route path="/moderatorsidebar" element={<ModeratorSidebar />} />
           <Route path="/productrequest" element={<ProductRequest />} />
@@ -109,14 +110,14 @@ const App = () => {
           {/* delivery  */}
           {/* <Route path="/delivery/signup" element={<DelSignup />} /> */}
           {/* <Route path="/delivery/login" element={<DeliveryLogin />} /> */}
-          <Route path="/delivery/dashboard" element={<DeliveryDashboard/>} />
+          <Route path="/delivery/dashboard" element={<DeliveryDashboard />} />
 
           {/* Admin */}
           <Route path="/admin/login" element={<Adminlogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           {/* new */}
-          <Route path="/admin/usertransaction" element={<UserTransaction/>}/> 
-      
+          <Route path="/admin/usertransaction" element={<UserTransaction />} />
+
           {/* admin components  */}
 
           <Route path="/*" element={<h1> 404 </h1>} />

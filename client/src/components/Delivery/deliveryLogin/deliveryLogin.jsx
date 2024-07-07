@@ -62,7 +62,7 @@ function DeliveryAgentLogin() {
       .then((res) => {
         if (res.status === 200) {
           toast.success("Login sucessfully");
-          navigate("/delivery/home");
+          navigate("/delivery/dashboard");
         }
       })
       .catch((err) => {
