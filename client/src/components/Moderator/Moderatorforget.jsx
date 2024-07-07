@@ -7,6 +7,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import moderatorforget from "../../assets/images/moderatorforget.jpg";
 import axiosInstance from "../../apis/axiosInstance";
 import toast, { Toast } from "react-hot-toast";
+import UserNavbar from "../homeComponents/Navbar/UserNavbar";
 function Moderatorforget() {
   const [data, setData] = useState({
     email: "",
@@ -46,7 +47,7 @@ function Moderatorforget() {
       formValid = false;
       errors.password = "Password is required";
     } else if (!passwordRegex.test(data.password)) {
-      // Pass the password to the test method
+      formValid = false;
       errors.password =
         "Password must contain at least one number, one special character, and one capital letter";
     }
@@ -79,7 +80,7 @@ function Moderatorforget() {
 
   return (
     <div>
-      <MainNav />
+      <UserNavbar />
 
       <div className="ms-5 mt-5">
         <Link to="/moderator/login" className="moderator-forget-link">

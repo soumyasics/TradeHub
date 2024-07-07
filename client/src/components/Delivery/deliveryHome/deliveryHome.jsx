@@ -1,4 +1,4 @@
-export const DeliveryHome = () =>
+export const DeliveryDashboard = () =>
     {
         return(
             <div>

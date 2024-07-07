@@ -37,7 +37,7 @@ import DeliveryAgentLogin from "./components/Delivery/deliveryLogin/deliveryLogi
 import DeliveryAgentSignup from "./components/Delivery/deliverySignup'/deliverySignup";
 import Deliveryforgotpassword from "./components/Delivery/deliveryForgotpassword/deliveryforgotpassword";
 import { UserTransaction } from "./components/Admin/userTransaction/userTransaction";
-import { DeliveryHome } from "./components/Delivery/deliveryHome/deliveryHome";
+import { DeliveryDashboard } from "./components/Delivery/deliveryHome/deliveryHome";
 import { ContactUs } from "./components/common/illustration/contactUs/contactsUs";
 import { UsereditProfileCard } from "./components/Users/userEditProfileCard/userEditProfileCard";
 const App = () => {
@@ -109,7 +109,7 @@ const App = () => {
           {/* delivery  */}
           {/* <Route path="/delivery/signup" element={<DelSignup />} /> */}
           {/* <Route path="/delivery/login" element={<DeliveryLogin />} /> */}
-          <Route path="/delivery/home" element={<DeliveryHome/>} />
+          <Route path="/delivery/dashboard" element={<DeliveryDashboard/>} />
 
           {/* Admin */}
           <Route path="/admin/login" element={<Adminlogin />} />

@@ -6,6 +6,7 @@ import Footer from "../../Footer/Footer";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import axiosInstance from "../../../apis/axiosInstance";
+import UserNavbar from "../../homeComponents/Navbar/UserNavbar";
 
 function Deliveryforgotpassword() {
   const [data, setData] = useState({
@@ -45,6 +46,7 @@ function Deliveryforgotpassword() {
       error.password = "Password is required";
     } else if (!passwordRegex.test(data.password)) {
       // Pass the password to the test method
+      formValid = false;
       error.password =
         "Password must contain at least one number, one special character, and one capital letter";
     }
@@ -80,7 +82,7 @@ function Deliveryforgotpassword() {
   return (
     <div>
       <div>
-        <MainNav />
+        <UserNavbar />
       </div>
       <div className="mb-5 container">
         <div className="deliveryagent-forgot-box ">
