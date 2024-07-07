@@ -24,7 +24,7 @@ router.get("/viewAllApproveItems", items.viewAllApproveItems);
 router.get("/viewAllRejectItems", items.viewAllRejectItems);
 router.get("/itemApproveById/:id", items.itemApproveById);
 router.get("/itemRejectById/:id", items.itemRejectById);
-
+router.post("/addPointToItem", items.addPointToItem);
 router.post("/activateItemById/:id", items.activateItemById);
 router.post("/deActivateItemById/:id", items.deActivateItemById);
 router.post("/viewItemByUserId/:id", items.viewItemByUserId);

@@ -1,6 +1,7 @@
 const Item = require("./itemSchema");
 const multer = require("multer");
 const mongoose = require("mongoose");
+const ModeratorModal = require("../Moderator/modSchema");
 
 // Multer storage configuration
 const storage = multer.diskStorage({
@@ -193,6 +194,44 @@ const viewAllitemsByUserId = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+const addPointToItem = async (req, res) => {
+  try {
+    
+    const {modId, itemId, point, listing } = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(modId)) {
+      return res.status(400).json({ msg: "Invalid modId", modId });
+    }
+    if (!mongoose.Types.ObjectId.isValid(itemId)) {
+      return res.status(400).json({ msg: "Invalid itemId", itemId });
+    }
+
+    const item = await Item.findById(itemId);
+    if (!item) {
+      return res.status(404).json({ msg: "Item not found", itemId });
+    }
+
+    const mod = await ModeratorModal.findById(modId);
+    if (!mod) {
+      return res.status(404).json({ msg: "Mod not found", modId });
+    }
+
+    item.point = point;
+    item.listing = listing;
+    item.approvedModId = modId;
+    item.isModApproved = "approve";
+
+    await item.save();
+
+    return res
+      .status(200)
+      .json({ msg: "Point added successfully", data: item });
+
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+}
 // View all Items
 const viewActiveItems = (req, res) => {
   Item.find({ isActive: true })
@@ -346,4 +385,5 @@ module.exports = {
   viewAllRejectItems,
   itemApproveById,
   itemRejectById,
+  addPointToItem
 };

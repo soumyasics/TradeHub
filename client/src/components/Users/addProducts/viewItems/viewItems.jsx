@@ -127,7 +127,15 @@ export const ViewItems = () => {
                     <div class="col-2 user-viewItems-right-box">
                       <div className="userView-right-inner-box">
                         <div className="userItemView-pending bg-danger"></div>
-                        <p>{e.isModApproved ? "Approved" : "Pending"}</p>
+                        <p>
+                          {e.isModApproved === "approve" ? (
+                            <span className="text-success">Approved </span>
+                          ) : e.isModApproved === "reject" ? (
+                            <span className="text-danger">Rejected </span>
+                          ) : (
+                            <span className="text-warning">Pending </span>
+                          )}
+                        </p>
                       </div>
                       <div
                         onClick={() => {

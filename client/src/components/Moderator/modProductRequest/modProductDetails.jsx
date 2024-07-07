@@ -14,7 +14,10 @@ export const ModProductDetails = ({ productId }) => {
   const [wishList, setWhishList] = useState(false);
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    getProductDetails()
+    setShow(false)
+  };
   const handleShow = () => setShow(true);
 
   useEffect(() => {
@@ -66,6 +69,7 @@ export const ModProductDetails = ({ productId }) => {
         show={show}
         handleClose={handleClose}
         ph={product?.userId?.contact}
+        itemId={productId}
       />
       <div className="itemDeails-body shadow">
         <div class="container text-center">

@@ -1,12 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { Table } from "react-bootstrap";
 import { toast } from "react-hot-toast";
-export const AssignPointsModal = ({ show, handleClose, ph }) => {
+import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../../apis/axiosInstance";
+export const AssignPointsModal = ({ show, itemId, handleClose, ph }) => {
   const [point, setPoint] = useState("");
   const [listing, setListing] = useState("");
+  const [modId, setModId] = useState("");
+  const navigate = useNavigate();
+  useEffect(() => {
+    const modId = localStorage.getItem("trade-hub-modId") || null;
+    if (!modId) {
+      navigate("moderator/login");
+      return;
+    }
+
+    setModId(modId);
+  }, []);
+
+  console.log("mod id", modId);
 
   const handleSubmit = () => {
     console.log(point, listing);
@@ -27,7 +42,33 @@ export const AssignPointsModal = ({ show, handleClose, ph }) => {
       toast.error("Please enter listing");
       return;
     }
+
+    const data = {
+      modId,
+      itemId,
+      point,
+      listing,
+    };
+    sendDataToServer(data)
   };
+  const sendDataToServer = async (data) => {
+    try {
+      const res = await axiosInstance.post("/addPointToItem", data);
+      if (res.status === 200) {
+        toast.success(res.data.msg);
+      }
+    } catch (error) {
+      const status = error?.response.status || null;
+      if (status === 400 || status === 404 || status === 500) {
+        toast.error(error?.response?.data?.msg);
+      } else {
+        toast.error("Network issue. Please try again");
+      }
+    }finally {
+      handleClose()
+
+    }
+  }
   return (
     <div>
       <Modal show={show} onHide={handleClose} animation={false}>

@@ -42,6 +42,15 @@ const sSchema = mongoose.Schema({
     type: Object,
     required: true
   },
+  listing: {
+    type: String,
+    default: "",
+  },
+  approvedModId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "moderators",
+    default: null
+  },
   isActive: {
     type: Boolean,
     default: true,
