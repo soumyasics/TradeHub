@@ -36,7 +36,7 @@ const dSchema = mongoose.Schema({
   },
   isActive: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   adminApproved: {
     type: String,

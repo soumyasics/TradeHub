@@ -2,66 +2,51 @@ import React, { useEffect, useState } from "react";
 import "../Admin.css";
 import axiosInstance from "../../../apis/axiosInstance";
 import { Table } from "react-bootstrap";
-
-export const AdminViewallUser = () => {
+import { FcCheckmark } from "react-icons/fc";
+import { FaXmark } from "react-icons/fa6";
+import { toast } from "react-hot-toast";
+export const AdminViewAllActiveDeliveryAgent = () => {
   const [data, setData] = useState([]);
 
   const handleActive = (id) => {
-    console.log(id);
     axiosInstance
-      .post(`/activateUserById/${id}`)
+      .get(`/activeDeliveryAgentById/${id}`)
       .then((res) => {
         console.log("respo, handle acti", res);
-        if (res.data.status === 200) {
-          const updatedData = data.map((users) => {
-            if (users._id === id) {
-              users.isActive = true;
-            }
-            return users;
-          });
-          setData(updatedData);
+        if (res.status === 200) {
+          toast.success("Activate successfully");
         }
       })
       .catch((err) => {
         console.log("Error", err);
+      })
+      .finally(() => {
+        getAllActiveRequest();
       });
   };
 
-  const handleDeactive = (id) => {
+  const handleInActive = (id) => {
     axiosInstance
-      .post(`/deActivateUserById/${id}`)
+      .get(`/inActiveDeliveryAgentById/${id}`)
       .then((res) => {
-        if (res.data.status === 200) {
-          const updatedData = data.map((users) => {
-            if (users._id === id) {
-              users.isActive = false;
-            }
-            return users;
-          });
-          setData(updatedData);
+        if (res.status === 200) {
+          toast.success("Deactivate successfully");
         }
       })
       .catch((err) => {
         console.log("Error", err);
+      })
+      .finally(() => {
+        getAllActiveRequest();
       });
   };
 
-  const toggleUserActiveState = (users) => {
-    console.log("toggle", users);
-    if (users.isActive) {
-      handleDeactive(users._id);
-    } else {
-      handleActive(users._id);
-    }
-  };
-
-  useEffect(() => {
+  const getAllActiveRequest = () => {
     axiosInstance
-      .post("/viewUsers")
+      .get("/allAcceptDelivery")
       .then((res) => {
-        if (res.data.status === 200) {
-          console.log(res);
-          setData(res.data.data || []);
+        if (res.status === 200) {
+          setData(res.data?.data || []);
         } else {
           setData([]);
         }
@@ -69,25 +54,51 @@ export const AdminViewallUser = () => {
       .catch((err) => {
         console.log("Error", err);
       });
+  };
+  useEffect(() => {
+    getAllActiveRequest();
   }, []);
 
+  const toggleUserActiveState = (users) => {
+    console.log("toggle", users);
+    if (users.isActive) {
+      handleInActive(users._id);
+    } else {
+      handleActive(users._id);
+    }
+  };
+
+  console.log("pending data", data);
+
   return (
-    <div>
-      <h3 className="mt-2 text-center"> View Users </h3>
+    <div className="pt-5">
+      {data.length > 0 && (
+        <div className="text-center">
+          <h4 className="mx-auto">View all delivery agents</h4>
+        </div>
+      )}
+
       {data.length !== 0 ? (
         <div
           className="table-container"
           style={{ overflowY: "scroll", height: "80vh" }}
         >
-          <Table striped hover className="table">
+          <Table
+            striped
+            hover
+            className="table"
+            responsive
+            id="adm-table-container"
+          >
             <thead>
               <tr>
                 <th>S.No</th>
-                <th>Name</th>
+                <th>Full Name</th>
                 <th>Gender</th>
                 <th>Email</th>
-                <th>Phone number</th>
-                <th>Active/Inactive</th>
+                <th>Phone Number</th>
+                <th>Address</th>
+                <th>Active/inactive</th>
               </tr>
             </thead>
             <tbody>
@@ -100,6 +111,7 @@ export const AdminViewallUser = () => {
                   <td>{users.gender}</td>
                   <td>{users.email}</td>
                   <td>{users.contact}</td>
+                  <td>{users.address}</td>
                   <td>
                     <button
                       className={`toggle-button ${
@@ -119,11 +131,11 @@ export const AdminViewallUser = () => {
         </div>
       ) : (
         <div>
-          <h1>No data found</h1>
+          <h3 className="text-center">
+            Delivery agent pending request not found.
+          </h3>
         </div>
       )}
     </div>
   );
 };
-
-export default AdminViewallUser;

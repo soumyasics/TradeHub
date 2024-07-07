@@ -21,7 +21,7 @@ function DeliveryAgentLogin() {
       [name]: value,
     }));
   };
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const checkValidate = () => {
     const { email, password } = data;
 
@@ -45,7 +45,7 @@ function DeliveryAgentLogin() {
       );
       return false;
     }
-    return true
+    return true;
   };
 
   const handleSubmit = (e) => {
@@ -66,8 +66,14 @@ function DeliveryAgentLogin() {
         }
       })
       .catch((err) => {
-        console.log("Error on delivery login",err);
-        toast.error("Please check your email id and password.")
+        const status = err?.response?.status;
+        if (status === 400 || status === 404 || status === 500) {
+          const msg = err?.response?.data?.msg;
+          toast.error(msg);
+        } else {
+          toast.error("Network issue. Please try again");
+        }
+        console.log("Error on delivery login", err);
       });
   };
 
