@@ -5,6 +5,7 @@ import { ModeratorOverview } from "../overview/moderatorOverview";
 import { ModViewallUser } from "../viewAllUsers/modViewAllusers";
 import { ModProductRequest } from "../modProductRequest/modProductRequest";
 import { ModProductDetails } from "../modProductRequest/modProductDetails";
+import { ModRejectedProduct } from "../modProductRequest/modRejectedProduct";
 
 export const ModeratorDashboard = () => {
   const [selectpage, setSelectpage] = useState("overview");
@@ -27,6 +28,9 @@ export const ModeratorDashboard = () => {
         {selectpage === "overview" && <ModeratorOverview />}
         {selectpage === "pending-items" && (
           <ModProductRequest updateProductId={updateProductId} />
+        )}
+        {selectpage === "rejected-items" && (
+          <ModRejectedProduct updateProductId={updateProductId} />
         )}
         {selectpage === "view-users" && <ModViewallUser />}
         {selectpage === "product-details" && (

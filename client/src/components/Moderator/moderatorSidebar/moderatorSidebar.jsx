@@ -75,7 +75,13 @@ function ModeratorSidebar({ changeSelectedPage }) {
                 <div class="card card-body">
                   <span className="collapse-dropbody">
                     <li>Approved items</li>
-                    <li>Rejected items</li>
+                    <li
+                      onClick={() => {
+                        changeSelectedPage("rejected-items");
+                      }}
+                    >
+                      Rejected items
+                    </li>
                   </span>
                 </div>
               </div>

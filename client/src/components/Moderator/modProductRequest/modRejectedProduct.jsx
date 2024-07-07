@@ -1,25 +1,22 @@
 import "./modProductRequest.css";
-import ModeratorSidebar from "../moderatorSidebar/moderatorSidebar";
-import productImg from "../../../assets/images/productImg.jpeg";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
 import { useNavigate } from "react-router-dom";
-export const ModProductRequest = ({updateProductId}) => {
-
-  const [pendingItems, setPendingItems] = useState([]);
-  const navigate = useNavigate()
+import { RejectedBtn } from "../../common/approvedBtn/approvedBtn";
+export const ModRejectedProduct = ({ updateProductId }) => {
+  const [rejectedItems, setRejectedItems] = useState([]);
   useEffect(() => {
-    getPendingItems();
+    getRejectedItems();
   }, []);
-  const getPendingItems = (id) => {
+  const getRejectedItems = (id) => {
     axiosInstance
-      .get(`viewAllPendingItems`)
+      .get(`viewAllRejectItems`)
       .then((res) => {
         if (res.status === 200) {
           let data = res?.data?.data || [];
           data.reverse();
-          setPendingItems(data);
+          setRejectedItems(data);
         } else {
           console.log("view user by id", res);
         }
@@ -33,10 +30,10 @@ export const ModProductRequest = ({updateProductId}) => {
     <div>
       <div className="productrequest-main">
         <div className="productrequest-head text-center">
-          {pendingItems.length === 0 ? (
-            <h2>No pending product request</h2>
+          {rejectedItems.length === 0 ? (
+            <h2>No rejected product found.</h2>
           ) : (
-            <h2>Pending product request</h2>
+            <h2>Rejected products</h2>
           )}
         </div>
         <div
@@ -44,23 +41,30 @@ export const ModProductRequest = ({updateProductId}) => {
           style={{ overflowY: "scroll", height: "80vh" }}
         >
           <div className="row">
-            {pendingItems.map((e) => {
+            {rejectedItems.map((e) => {
               const filename = e.itemPhoto?.filename || "";
               let pic;
               if (filename) {
                 pic = `${BASE_URL}${filename}`;
               }
-              
+
               return (
-                <div className="productrequest-box2 col-md-5 mt-5" onClick={() => {
-                //    navigate(`/moderator/product/${e?._id}`)
-                updateProductId(e?._id)
-                }}>
+                <div
+                  key={e._id}
+                  className="productrequest-box2 col-md-5 mt-5"
+                  onClick={() => {
+                    //    navigate(`/moderator/product/${e?._id}`)
+                    updateProductId(e?._id);
+                  }}
+                >
                   <div className="productImg">
                     <img style={{ width: "100%" }} src={pic} alt="product" />
                   </div>
                   <div className="productDetails2">
-                    <table>
+                    <table className="w-100">
+                        <tbody>
+
+                        
                       <tr>
                         <td>Item name</td>
                         <td>:</td>
@@ -81,7 +85,11 @@ export const ModProductRequest = ({updateProductId}) => {
                         <td>:</td>
                         <td>{e?.condition}</td>
                       </tr>
+                      </tbody>
                     </table>
+                      <div className="mx-auto mt-3 w-100 d-flex justify-content-center">
+                        <RejectedBtn />
+                      </div>
                   </div>
                 </div>
               );
