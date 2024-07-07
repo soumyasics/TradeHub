@@ -3,6 +3,7 @@ import ModeratorSidebar from "../moderatorSidebar/moderatorSidebar";
 import ProductRequest from "../productRequestcontainer/productRequest";
 import ModeratorItempage from "../moderatorItemPage/moderatorItempage";
 import { ModeratorOverview } from "../overview/moderatorOverview";
+import { ModViewallUser } from "../viewAllUsers/modViewAllusers";
 
 export const ModeratorDashboard = () => {
   const [selectpage, setSelectpage] = useState("overview");
@@ -17,6 +18,7 @@ export const ModeratorDashboard = () => {
       <div className="w-100">
         {selectpage === "overview" && <ModeratorOverview />}
         {selectpage === "pending-items" && <ProductRequest />}
+        {selectpage === "view-users" && <ModViewallUser />}
       </div>
     </div>
   );

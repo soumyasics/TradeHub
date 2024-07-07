@@ -68,7 +68,7 @@ function ModeratorSidebar({ changeSelectedPage }) {
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  item Review
+                  Item review
                 </button>
               </p>
               <div class="collapse collapse-drop" id="collapseExample">
@@ -80,7 +80,7 @@ function ModeratorSidebar({ changeSelectedPage }) {
                 </div>
               </div>
             </li>
-            <li>
+            <li onClick={() => changeSelectedPage("view-users")}>
               <span className="contentIcons">
                 <FaUsers />
               </span>

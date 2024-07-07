@@ -137,6 +137,7 @@ const viewActiveItems = (req, res) => {
         res.json({
           status: 200,
           msg: "No Data obtained",
+          data: []
         });
       }
     })
