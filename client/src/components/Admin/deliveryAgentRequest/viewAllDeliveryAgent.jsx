@@ -5,45 +5,45 @@ import { Table } from "react-bootstrap";
 import { FcCheckmark } from "react-icons/fc";
 import { FaXmark } from "react-icons/fa6";
 import { toast } from "react-hot-toast";
-export const AdminViewAllDelRequest = () => {
+export const AdminViewAllActiveDeliveryAgent = () => {
   const [data, setData] = useState([]);
 
-  const hanldeApprove = (id) => {
+  const handleActive = (id) => {
     axiosInstance
-      .get(`/approveDeliveryAgentById/${id}`)
+      .get(`/activeDeliveryAgentById/${id}`)
       .then((res) => {
         console.log("respo, handle acti", res);
         if (res.status === 200) {
-          toast.success("Approved successfully");
+          toast.success("Activate successfully");
         }
       })
       .catch((err) => {
         console.log("Error", err);
       })
       .finally(() => {
-        getAllPendingRequest();
+        getAllActiveRequest();
       });
   };
 
-  const handleReject = (id) => {
+  const handleInActive = (id) => {
     axiosInstance
-      .get(`/rejectDeliveryAgentById/${id}`)
+      .get(`/inActiveDeliveryAgentById/${id}`)
       .then((res) => {
         if (res.status === 200) {
-          toast.success("Rejected successfully");
+          toast.success("Deactivate successfully");
         }
       })
       .catch((err) => {
         console.log("Error", err);
       })
       .finally(() => {
-        getAllPendingRequest();
+        getAllActiveRequest();
       });
   };
 
-  const getAllPendingRequest = () => {
+  const getAllActiveRequest = () => {
     axiosInstance
-      .get("/allPendingDelivery")
+      .get("/allAcceptDelivery")
       .then((res) => {
         if (res.status === 200) {
           setData(res.data?.data || []);
@@ -56,8 +56,17 @@ export const AdminViewAllDelRequest = () => {
       });
   };
   useEffect(() => {
-    getAllPendingRequest();
+    getAllActiveRequest();
   }, []);
+
+  const toggleUserActiveState = (users) => {
+    console.log("toggle", users);
+    if (users.isActive) {
+      handleInActive(users._id);
+    } else {
+      handleActive(users._id);
+    }
+  };
 
   console.log("pending data", data);
 
@@ -65,7 +74,7 @@ export const AdminViewAllDelRequest = () => {
     <div className="pt-5">
       {data.length > 0 && (
         <div className="text-center">
-          <h4 className="mx-auto">Delivery agents requests</h4>
+          <h4 className="mx-auto">View all delivery agents</h4>
         </div>
       )}
 
@@ -74,8 +83,14 @@ export const AdminViewAllDelRequest = () => {
           className="table-container"
           style={{ overflowY: "scroll", height: "80vh" }}
         >
-          <Table striped hover className="table" responsive id="adm-table-container">
-            <thead >
+          <Table
+            striped
+            hover
+            className="table"
+            responsive
+            id="adm-table-container"
+          >
+            <thead>
               <tr>
                 <th>S.No</th>
                 <th>Full Name</th>
@@ -83,7 +98,7 @@ export const AdminViewAllDelRequest = () => {
                 <th>Email</th>
                 <th>Phone Number</th>
                 <th>Address</th>
-                <th>Approve/Reject</th>
+                <th>Active/inactive</th>
               </tr>
             </thead>
             <tbody>
@@ -97,24 +112,16 @@ export const AdminViewAllDelRequest = () => {
                   <td>{users.email}</td>
                   <td>{users.contact}</td>
                   <td>{users.address}</td>
-                  <td id="approval-btn-containers">
+                  <td>
                     <button
-                      className="text-success"
+                      className={`toggle-button ${
+                        users.isActive ? "active" : "inactive"
+                      }`}
                       onClick={() => {
-                        hanldeApprove(users._id);
+                        toggleUserActiveState(users);
                       }}
                     >
-                      {" "}
-                      <FcCheckmark />{" "}
-                    </button>
-                    <button
-                      className="text-danger"
-                      onClick={() => {
-                        handleReject(users._id);
-                      }}
-                    >
-                      {" "}
-                      <FaXmark />{" "}
+                      {users.isActive ? "Active" : "Inactive"}
                     </button>
                   </td>
                 </tr>

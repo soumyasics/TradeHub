@@ -74,6 +74,11 @@ const loginDelivery = async (req, res) => {
         .status(400)
         .json({ msg: "Your account has been rejected", data: delivery });
     }
+    if(!delivery.isActive) {
+      return res
+        .status(400)
+        .json({ msg: "Your account has been deactivated", data: delivery });
+    }
     return res
       .status(200)
       .json({ msg: "Delivery Partner logged in", data: delivery });
@@ -221,6 +226,58 @@ const approveDeliveryAgentById = async (req, res) => {
     return res.status(500).json({ msg: error.message });
   }
 };
+const activeDeliveryAgentById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const delivery = await DeliveryModel.findById(id);
+    if (!delivery) {
+      return res
+        .status(404)
+        .json({ msg: "Delivery Partner not found", data: null });
+    }
+
+    const updatedDelivery = await DeliveryModel.findByIdAndUpdate(
+      id,
+      {
+        isActive: true,
+      },
+      { new: true }
+    );
+
+    return res.status(200).json({
+      msg: "Delivery Partner approved successfully",
+      data: updatedDelivery,
+    });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+};
+const inActiveDeliveryAgentById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const delivery = await DeliveryModel.findById(id);
+    if (!delivery) {
+      return res
+        .status(404)
+        .json({ msg: "Delivery Partner not found", data: null });
+    }
+
+    const updatedDelivery = await DeliveryModel.findByIdAndUpdate(
+      id,
+      {
+        isActive: false,
+      },
+      { new: true }
+    );
+
+    return res.status(200).json({
+      msg: "Delivery Partner approved successfully",
+      data: updatedDelivery,
+    });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+};
 
 const rejectDeliveryAgentById = async (req, res) => {
   try {
@@ -260,4 +317,6 @@ module.exports = {
   allAcceptedDelivery,
   approveDeliveryAgentById,
   rejectDeliveryAgentById,
+  activeDeliveryAgentById,
+  inActiveDeliveryAgentById,
 };

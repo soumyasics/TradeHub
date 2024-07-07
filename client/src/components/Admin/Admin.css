@@ -170,6 +170,7 @@
 
 .admin-dd-item {
   background-color: #eee;
+  height: 30px;
 }
 .admin-dd-item:hover {
   background-color: #d4d1d7;
@@ -186,4 +187,8 @@
   width: 40px;
   font-size: 23px;
   height: 40px;
+}
+
+#adm-table-container thead tr th {
+  background-color: #e9c9f1 !important;
 }

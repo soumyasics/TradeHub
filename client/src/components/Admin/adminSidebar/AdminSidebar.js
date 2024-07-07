@@ -54,7 +54,9 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
                   <li className="text-dark admin-dd-item" onClick={() => {
                     changeSelectedPage("view-pending-DA")
                   }}> Delivery agent request</li>
-                  <li className="text-dark admin-dd-item" onClick={() => {}}> View all delivery agent </li>
+                  <li className="text-dark admin-dd-item" onClick={() => {
+                    changeSelectedPage("view-active-DA")
+                  }}> View all delivery agent </li>
                   <li className="text-dark admin-dd-item" onClick={() => {}}> View all delivery details </li>
                 </div>
               )}

@@ -69,4 +69,12 @@ router.get(
   "/rejectDeliveryAgentById/:id",
   DeliveryRoute.rejectDeliveryAgentById
 );
+router.get(
+  "/inActiveDeliveryAgentById/:id",
+  DeliveryRoute.inActiveDeliveryAgentById
+);
+router.get(
+  "/activeDeliveryAgentById/:id",
+  DeliveryRoute.activeDeliveryAgentById
+);
 module.exports = router;

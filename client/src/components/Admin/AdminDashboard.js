@@ -4,6 +4,7 @@ import { AdminViewallUser } from "./viewAllUser/AdminViewallUser";
 import { useState } from "react";
 import { AdminViewallMods } from "./viewAllUserMods/AdminViewallMods";
 import { AdminViewAllDelRequest } from "./deliveryAgentRequest/deliveryAgentReq";
+import { AdminViewAllActiveDeliveryAgent } from "./deliveryAgentRequest/viewAllDeliveryAgent";
 export const AdminDashboard = () => {
   const [selectedPage, setSelectedPage] = useState("overview");
 
@@ -20,6 +21,7 @@ export const AdminDashboard = () => {
         {selectedPage === "view-all-user" && <AdminViewallUser />}
         {selectedPage === "view-moderators" && <AdminViewallMods />}
         {selectedPage === "view-pending-DA" && <AdminViewAllDelRequest />}
+        {selectedPage === "view-active-DA" && <AdminViewAllActiveDeliveryAgent />}
       </div>
     </div>
   );
