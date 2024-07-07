@@ -132,7 +132,7 @@ export const AdminViewAllActiveDeliveryAgent = () => {
       ) : (
         <div>
           <h3 className="text-center">
-            Delivery agent pending request not found.
+            Delivery agents not found.
           </h3>
         </div>
       )}

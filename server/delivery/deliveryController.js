@@ -74,7 +74,7 @@ const loginDelivery = async (req, res) => {
         .status(400)
         .json({ msg: "Your account has been rejected", data: delivery });
     }
-    if(!delivery.isActive) {
+    if (!delivery.isActive) {
       return res
         .status(400)
         .json({ msg: "Your account has been deactivated", data: delivery });
@@ -180,7 +180,7 @@ const allPendingDelivery = async (req, res) => {
 
 const allAcceptedDelivery = async (req, res) => {
   try {
-    const allDelivery = await DeliveryModel.find({ adminApproved: "accepted" });
+    const allDelivery = await DeliveryModel.find({ adminApproved: "approve" });
     return res
       .status(200)
       .json({ data: allDelivery, msg: "All accepted delivery agents" });
@@ -191,10 +191,11 @@ const allAcceptedDelivery = async (req, res) => {
 const allRejectedDelivery = async (req, res) => {
   try {
     const allDelivery = await DeliveryModel.find({
-      adminApproved: "rejected",
-      msg: "All rejected delivery agents",
+      adminApproved: "reject",
     });
-    return res.status(200).json({ data: allDelivery, msg: "All rejected delivery agents" });
+    return res
+      .status(200)
+      .json({ data: allDelivery, msg: "All rejected delivery agents" });
   } catch (error) {
     return res.status(500).json({ msg: error.message });
   }
@@ -209,11 +210,10 @@ const approveDeliveryAgentById = async (req, res) => {
         .status(404)
         .json({ msg: "Delivery Partner not found", data: null });
     }
-
     const updatedDelivery = await DeliveryModel.findByIdAndUpdate(
       id,
       {
-        adminApproved: "accepted",
+        adminApproved: "approve",
       },
       { new: true }
     );
@@ -226,6 +226,34 @@ const approveDeliveryAgentById = async (req, res) => {
     return res.status(500).json({ msg: error.message });
   }
 };
+
+const rejectDeliveryAgentById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const delivery = await DeliveryModel.findById(id);
+    if (!delivery) {
+      return res
+        .status(404)
+        .json({ msg: "Delivery Partner not found", data: null });
+    }
+
+    const updatedDelivery = await DeliveryModel.findByIdAndUpdate(
+      id,
+      {
+        adminApproved: "reject",
+      },
+      { new: true }
+    );
+
+    return res.status(200).json({
+      msg: "Delivery Partner approved successfully",
+      data: updatedDelivery,
+    });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+};
+
 const activeDeliveryAgentById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -266,33 +294,6 @@ const inActiveDeliveryAgentById = async (req, res) => {
       id,
       {
         isActive: false,
-      },
-      { new: true }
-    );
-
-    return res.status(200).json({
-      msg: "Delivery Partner approved successfully",
-      data: updatedDelivery,
-    });
-  } catch (error) {
-    return res.status(500).json({ msg: error.message });
-  }
-};
-
-const rejectDeliveryAgentById = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const delivery = await DeliveryModel.findById(id);
-    if (!delivery) {
-      return res
-        .status(404)
-        .json({ msg: "Delivery Partner not found", data: null });
-    }
-
-    const updatedDelivery = await DeliveryModel.findByIdAndUpdate(
-      id,
-      {
-        adminApproved: "rejected",
       },
       { new: true }
     );
