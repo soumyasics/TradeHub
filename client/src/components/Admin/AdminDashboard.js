@@ -20,10 +20,10 @@ export const AdminDashboard = () => {
       <div className=" w-100">
         {selectedPage === "overview" && <AdminOverview />}
         {selectedPage === "view-all-user" && <AdminViewallUser />}
-        {selectedPage === "view-pending-mod" && <AdminViewAllModRequest />}
-        {selectedPage === "view-active-mod" && <AdminViewallMods />}
         {selectedPage === "view-pending-DA" && <AdminViewAllDelRequest />}
         {selectedPage === "view-active-DA" && <AdminViewAllActiveDeliveryAgent />}
+        {selectedPage === "view-pending-mod" && <AdminViewAllModRequest />}
+        {selectedPage === "view-active-mod" && <AdminViewallMods />}
       </div>
     </div>
   );

@@ -29,12 +29,14 @@ router.post("/viewActiveItems", items.viewActiveItems);
 router.get("/viewAllitemsByUserId/:id", items.viewAllitemsByUserId);
 router.delete("/deleteItemById/:id", items.deleteItemById);
 
-//user routes
+//moderator routes
 router.post(
   "/registerModerator",
   Moderator.upload,
   Moderator.registerModerator
 );
+router.post("/loginModerator", Moderator.login);
+
 router.get("/viewModeratorById/:id", Moderator.viewModeratorById);
 router.post(
   "/editModeratorById/:id",
@@ -43,11 +45,15 @@ router.post(
 );
 router.post("/forgotPasswordUserModerators", Moderator.forgotPassword);
 router.post("/viewModerators", Moderator.viewModerators);
+router.get("/allPendingMods", Moderator.allPendingMods);
+router.get("/allApprovedMods", Moderator.allApprovedMods);
+router.get("/allRejectedMods", Moderator.allRejectedMods);
+router.get("/approveModById/:id", Moderator.approveModById);
+router.get("/rejectModById/:id", Moderator.rejectModById);
 router.post("/deactivateModeratorById/:id", Moderator.deactivateModeratorById);
 router.post("/activateModeratorById/:id", Moderator.activateModeratorById);
-
 router.post("/resetPasswordModeratorUser/:id", Moderator.resetPassword);
-router.post("/loginModerator", Moderator.login);
+
 
 // delivery
 
