@@ -18,7 +18,7 @@ router.post("/requireAuthUser", user.requireAuth);
 
 //item routes
 router.post("/registerItem", items.upload, items.registerItem);
-router.post("/viewItemById/:id", items.viewItemById);
+router.get("/viewItemById/:id", items.viewItemById);
 router.get("/viewAllPendingItems", items.viewAllPendingItems);
 router.get("/viewAllApproveItems", items.viewAllApproveItems);
 router.get("/viewAllRejectItems", items.viewAllRejectItems);

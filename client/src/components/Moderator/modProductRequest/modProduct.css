@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.itemDeails-body {
+  min-height: 100vh;
+  width: 100%;
+}
+.itemdetails-view-product-image {
+  min-height: 65vh;
+  width: 68%;
+  margin-top: 18%;
+  margin-right: 10%;
+}
+.itemDetails-right-box2 {
+  text-align: left;
+}
+.itemDetails-right-box2 h3 {
+  
+  color: rgba(109, 54, 152, 0.8);
+  font-family: Poppins;
+  font-size: 30px;
+  font-weight: 400;
+}
+.itemDetails-right-box2 h1 {
+  color: #6d3698;
+  font-family: Poppins;
+  font-size: 57px;
+  font-weight: 500;
+}
+.itemDetails-right-inner-box {
+  width: 75%;
+  padding-top: 4%;
+  color: #6d3698;
+  font-family: Poppins;
+}
+.itemDetails-quantity {
+  width: 56px;
+  height: 28px;
+  text-align: center;
+  border-radius: 3.956px;
+  border: 0.44px solid #6e3799;
+  margin-left: 5%;
+  padding-top: px;
+  margin-top: 20px;
+}
+.itemDetails-right-inner-box h6 {
+  color: #6d3698;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 400;
+}
+.itemDetails-right-inner-box p {
+  margin-top: 22px;
+}
+.itemDetails-right-box2 table {
+  width: 95%;
+  height: 200px;
+}
+.itemDetails-right-box2 table td {
+  padding-right: 10px;
+  padding-left: 10px;
+  color: rgba(109, 54, 152, 0.8);
+  font-family: Poppins;
+  font-size: 17px;
+  font-weight: 400;
+}
+.itemDetails-right-box2 table th {
+  color: #6d3698;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+}
+.itemDetails-button-box {
+  width: 100%;
+}
+.itemDetails-button-box button {
+  width: 53%;
+  height: 50px;
+  margin-top: 20px;
+  border-radius: 14px;
+  background-color: #6d3698;
+  color: #fff;
+  font-size: 25px;
+  margin-left: 20%;
+  margin-top: 5%;
+}
+.itemDetails-left-arrow {
+  color: #6d3698;
+  font-size: 25px;
+  margin-top: 6%;
+}
+.itemDetails-coins-box {
+  height: 38px;
+  width: 119px;
+  background-color: #fff;
+  position: absolute;
+  top: 16%;
+  border-radius: 20px;
+  margin-left: 75px;
+
+  color: #000;
+  font-family: Poppins;
+  font-size: 23px;
+  font-weight: 500;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.itemDetails-points-image {
+  height: 30px;
+  width: 26px;
+  padding-top: 5px;
+  margin-left: 20px;
+}
+.itemDetails-coins-box p {
+  padding-top: 3px;
+  padding-left: 5px;
+}
+.itemdetails-heart {
+  position: absolute;
+  top: 17%;
+  left: 33%;
+  color: red;
+  font-size: 29px;
+}

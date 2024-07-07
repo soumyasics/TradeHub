@@ -4,7 +4,8 @@ import productImg from "../../../assets/images/productImg.jpeg";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
-export const ModProductRequest = () => {
+import { useNavigate } from "react-router-dom";
+export const ModProductRequest = ({updateProductId}) => {
   const data = [
     {
       productname: "Airpod",
@@ -36,7 +37,7 @@ export const ModProductRequest = () => {
     },
   ];
   const [pendingItems, setPendingItems] = useState([]);
-
+  const navigate = useNavigate()
   useEffect(() => {
     getPendingItems();
   }, []);
@@ -79,8 +80,12 @@ export const ModProductRequest = () => {
               if (filename) {
                 pic = `${BASE_URL}${filename}`;
               }
+              
               return (
-                <div className="productrequest-box2 col-md-5 mt-5">
+                <div className="productrequest-box2 col-md-5 mt-5" onClick={() => {
+                //    navigate(`/moderator/product/${e?._id}`)
+                updateProductId(e?._id)
+                }}>
                   <div className="productImg">
                     <img style={{ width: "100%" }} src={pic} alt="product" />
                   </div>
