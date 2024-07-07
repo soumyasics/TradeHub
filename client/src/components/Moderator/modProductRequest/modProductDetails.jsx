@@ -68,8 +68,8 @@ export const ModProductDetails = ({ productId }) => {
             </div>
           </div>
           <div class="col-md-6 itemDetails-right-box2 mt-5">
-            <h3>{product?.category}</h3>
-            <h1>{product?.name}</h1>
+            <h5>{product?.category}</h5>
+            <h3>{product?.name}</h3>
             <div class="container ">
               <div class="row itemDetails-right-inner-box">
                 <div class="col-6">
