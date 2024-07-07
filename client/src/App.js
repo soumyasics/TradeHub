@@ -102,20 +102,16 @@ const App = () => {
             element={<Deliveryforgotpassword />}
           />
           {/* new  */}
-          <Route path="/moderatorsidebar" element={<ModeratorSidebar />} />
           <Route path="/productrequest" element={<ProductRequest />} />
           <Route path="/moderator/dashboard" element={<ModeratorDashboard />} />
           <Route path="/itemPage" element={<ModeratorItempage />} />
 
-          {/* delivery  */}
-          {/* <Route path="/delivery/signup" element={<DelSignup />} /> */}
-          {/* <Route path="/delivery/login" element={<DeliveryLogin />} /> */}
           <Route path="/delivery/dashboard" element={<DeliveryDashboard />} />
 
           {/* Admin */}
           <Route path="/admin/login" element={<Adminlogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          {/* new */}
+          {/* new component */}
           <Route path="/admin/usertransaction" element={<UserTransaction />} />
 
           {/* admin components  */}
