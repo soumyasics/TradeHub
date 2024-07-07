@@ -39,6 +39,7 @@ import { DeliveryDashboard } from "./components/Delivery/deliveryDashboard/deliv
 import { ContactUs } from "./components/common/illustration/contactUs/contactsUs";
 import { UsereditProfileCard } from "./components/Users/userEditProfileCard/userEditProfileCard";
 import { ModProductDetails } from "./components/Moderator/modProductRequest/modProductDetails";
+import { UserProductDetails } from "./components/Users/productDetails/userProductDetails";
 const App = () => {
   return (
     <div className="App">
@@ -63,7 +64,8 @@ const App = () => {
           <Route path="/user/viewitemtobuy" element={<UserViewItemToBuy />} />
           <Route path="/user/add-product" element={<AddProducts />} />
           <Route path="/user/view-items" element={<ViewItems />} />
-          {/* new route */}
+          <Route path="/user/view-items/:id" element={<UserProductDetails />} />
+          
           <Route path="/user/product-details" element={<ItemDetails />} />
           <Route path="/user/product-card" element={<ProductCard />} />
           <Route path="/user/product-details" element={<ItemDetails />} />
