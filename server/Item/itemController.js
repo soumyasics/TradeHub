@@ -96,16 +96,88 @@ const deleteItemById = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
-const viewAllItemsPendingItems = async (req, res) => {
+const viewAllPendingItems = async (req, res) => {
   try {
-    const items = await Item.find({ isModApproved: false });
-    return res
-      .status(200)
-      .json({ msg: "Data obtained successfully", data: items });
+    const items = await Item.find({ isModApproved: "pending" })
+      .populate("userId")
+      .exec();
+    return res.status(200).json({ msg: "View all pending items", data: items });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
-}
+};
+const viewAllApproveItems = async (req, res) => {
+  try {
+    const items = await Item.find({ isModApproved: "approve" })
+      .populate("userId")
+      .exec();
+    return res.status(200).json({ msg: "View approved items", data: items });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+const viewAllRejectItems = async (req, res) => {
+  try {
+    const items = await Item.find({ isModApproved: "reject" })
+      .populate("userId")
+      .exec();
+    return res
+      .status(200)
+      .json({ msg: "View all rejected items", data: items });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+const itemApproveById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ msg: "Invalid item id", id });
+    }
+    const item = await Item.findById(id);
+    if (!item) {
+      return res.status(404).json({ msg: "Item not found", id });
+    }
+
+    const newItem = await Item.findByIdAndUpdate(
+      id,
+      { isModApproved: "approve" },
+      { new: true }
+    );
+
+    return res
+      .status(200)
+      .json({ msg: "Item approved successfully", data: newItem });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+const itemRejectById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ msg: "Invalid item id", id });
+    }
+    const item = await Item.findById(id);
+    if (!item) {
+      return res.status(404).json({ msg: "Item not found", id });
+    }
+
+    const newItem = await Item.findByIdAndUpdate(
+      id,
+      { isModApproved: "reject" },
+      { new: true }
+    );
+
+    return res
+      .status(200)
+      .json({ msg: "Item rejected  successfully", data: newItem });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
 const viewAllitemsByUserId = async (req, res) => {
   try {
     const id = req.params.id;
@@ -137,7 +209,7 @@ const viewActiveItems = (req, res) => {
         res.json({
           status: 200,
           msg: "No Data obtained",
-          data: []
+          data: [],
         });
       }
     })
@@ -178,60 +250,9 @@ const viewItemsToBeApproved = (req, res) => {
     });
 };
 
-// Update Item by ID
-const editItemById = async (req, res) => {
-  const {
-    name,
-    category,
-    condition,
-    address,
-    description,
-    quantity,
-    pincode,
-    location,
-  } = req.body;
-  const images = {
-    img1: req.files.img1 ? req.files.img1[0] : null,
-    img2: req.files.img2 ? req.files.img2[0] : null,
-    img3: req.files.img3 ? req.files.img3[0] : null,
-    img4: req.files.img4 ? req.files.img4[0] : null,
-    img5: req.files.img5 ? req.files.img5[0] : null,
-    img6: req.files.img6 ? req.files.img6[0] : null,
-  };
-
-  await Item.findByIdAndUpdate(
-    { _id: req.params.id },
-    {
-      name,
-      category,
-      condition,
-      address,
-      description,
-      quantity,
-      pincode,
-      location,
-      ...images,
-    }
-  )
-    .exec()
-    .then((data) => {
-      res.json({
-        status: 200,
-        msg: "Updated successfully",
-      });
-    })
-    .catch((err) => {
-      res.status(500).json({
-        status: 500,
-        msg: "Data not Updated",
-        Error: err,
-      });
-    });
-};
-
 // View Item by ID
 const viewItemById = (req, res) => {
-  Item.findById({ _id: req.params.id })
+  Item.findById(req.params.id)
     .populate("userId")
     .exec()
     .then((data) => {
@@ -312,7 +333,6 @@ const deActivateItemById = (req, res) => {
 module.exports = {
   registerItem,
   viewActiveItems,
-  editItemById,
   viewItemByUserId,
   viewItemsToBeApproved,
   viewItemById,
@@ -320,5 +340,10 @@ module.exports = {
   viewAllitemsByUserId,
   deActivateItemById,
   upload,
-  deleteItemById, viewAllItemsPendingItems
+  deleteItemById,
+  viewAllPendingItems,
+  viewAllApproveItems,
+  viewAllRejectItems,
+  itemApproveById,
+  itemRejectById,
 };

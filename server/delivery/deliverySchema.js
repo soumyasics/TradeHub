@@ -40,7 +40,7 @@ const dSchema = mongoose.Schema({
   },
   adminApproved: {
     type: String,
-    enums: ["pending", "approve", "reject"],
+    enum: ["pending", "approve", "reject"],
     default: "pending",
   },
 });

@@ -51,8 +51,9 @@ const sSchema = mongoose.Schema({
     default: 0,
   },
   isModApproved: {
-    type: Boolean,
-    default: false,
+    type: String,
+    enum: ["pending", "approve", "reject"],
+    default: "pending",
   }
 });
 module.exports = mongoose.model("items", sSchema);

@@ -18,9 +18,13 @@ router.post("/requireAuthUser", user.requireAuth);
 
 //item routes
 router.post("/registerItem", items.upload, items.registerItem);
-router.get("/viewAllItemsPendingItems", items.viewAllItemsPendingItems);
 router.post("/viewItemById/:id", items.viewItemById);
-router.post("/editItemById/:id", items.upload, items.editItemById);
+router.get("/viewAllPendingItems", items.viewAllPendingItems);
+router.get("/viewAllApproveItems", items.viewAllApproveItems);
+router.get("/viewAllRejectItems", items.viewAllRejectItems);
+router.get("/itemApproveById/:id", items.itemApproveById);
+router.get("/itemRejectById/:id", items.itemRejectById);
+
 router.post("/activateItemById/:id", items.activateItemById);
 router.post("/deActivateItemById/:id", items.deActivateItemById);
 router.post("/viewItemByUserId/:id", items.viewItemByUserId);
