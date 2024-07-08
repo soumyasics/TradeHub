@@ -173,7 +173,6 @@ const activateUserById = (req, res) => {
   User.findByIdAndUpdate(req.params.id, { isActive: true }, {new: true})
     .exec()
     .then((data) => {
-      console.log("result", data);
       res.json({
         status: 200,
         msg: "User Activated successfully",

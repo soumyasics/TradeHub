@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "../Admin.css";
+import "../Moderator.css";
 import axiosInstance from "../../../apis/axiosInstance";
 import { Table } from "react-bootstrap";
 
-export const AdminViewallUser = () => {
+export const ModViewallUser = () => {
   const [data, setData] = useState([]);
 
   const handleActive = (id) => {
@@ -101,16 +101,12 @@ export const AdminViewallUser = () => {
                   <td>{users.email}</td>
                   <td>{users.contact}</td>
                   <td>
-                    <button
-                      className={`toggle-button ${
-                        users.isActive ? "active" : "inactive"
-                      }`}
-                      onClick={() => {
-                        toggleUserActiveState(users);
-                      }}
-                    >
-                      {users.isActive ? "Active" : "Inactive"}
-                    </button>
+                    {users.isActive ? (
+                      <span className="text-success"> Active</span>
+                    ) : (
+                      <span className="text-danger"> In Active</span>
+                    )}
+
                   </td>
                 </tr>
               ))}
@@ -125,5 +121,3 @@ export const AdminViewallUser = () => {
     </div>
   );
 };
-
-export default AdminViewallUser;

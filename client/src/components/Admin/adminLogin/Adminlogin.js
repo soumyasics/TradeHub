@@ -14,13 +14,8 @@ function Adminlogin() {
     password: "",
   });
 
-  let mail = "admin@gmail.com";
-  let pass = "admin@123";
-
-  const [errors, setErrors] = useState({
-    email: "",
-    password: "",
-  });
+  let realEmail = "admin@gmail.com";
+  let realPassword = "admin@123";
 
   const navigate = useNavigate();
 
@@ -30,22 +25,28 @@ function Adminlogin() {
       ...data,
       [name]: value,
     });
-    setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
+
+  console.log("data", data);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let errors = {};
-    setErrors(errors);
 
-    if (!errors.email && !errors.password) {
-      // const values = { email: data.email, password: data.password };
-      if (mail == data.email && pass == data.password) {
-        toast.success("Login Successfully");
-        navigate("/admin/dashboard");
-      } else {
-        alert("Username or password is incorrect");
-      }
+    const { email, password } = data;
+    if (!email) {
+      toast.error("Please Enter Email");
+      return;
+    }
+    if (!password) {
+      toast.error("Please Enter Password");
+      return;
+    }
+    if (email === realEmail && password === realPassword) {
+      toast.success("Login Successfull");
+      navigate("/admin/dashboard");
+    } else {
+      toast.error("Please check your email id and password.");
+      return;
     }
   };
 
@@ -71,11 +72,6 @@ function Adminlogin() {
                     onChange={handleChange}
                     placeholder="Email"
                   />
-                  {errors.email && (
-                    <div className="container ms-5 text-danger">
-                      {errors.email}
-                    </div>
-                  )}
                 </div>
                 <div>
                   <label className="admin-login mt-5 ms-5">Password</label>
@@ -87,11 +83,6 @@ function Adminlogin() {
                     onChange={handleChange}
                     placeholder="Password"
                   />
-                  {errors.password && (
-                    <div className="container me-1 text-danger">
-                      {errors.password}
-                    </div>
-                  )}
                 </div>
                 <button
                   type="submit"

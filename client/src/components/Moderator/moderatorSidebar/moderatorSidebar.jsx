@@ -68,19 +68,27 @@ function ModeratorSidebar({ changeSelectedPage }) {
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  item Review
+                  Item review
                 </button>
               </p>
               <div class="collapse collapse-drop" id="collapseExample">
                 <div class="card card-body">
                   <span className="collapse-dropbody">
-                    <li>Approved items</li>
-                    <li>Rejected items</li>
+                    <li onClick={() => changeSelectedPage("approved-items")}>
+                      Approved items
+                    </li>
+                    <li
+                      onClick={() => {
+                        changeSelectedPage("rejected-items");
+                      }}
+                    >
+                      Rejected items
+                    </li>
                   </span>
                 </div>
               </div>
             </li>
-            <li>
+            <li onClick={() => changeSelectedPage("view-users")}>
               <span className="contentIcons">
                 <FaUsers />
               </span>

@@ -65,7 +65,7 @@ function Moderatorlogin() {
         toast.success(res.data.msg);
 
         navigate("/moderator/home");
-      } else if (res.data.status === 410) {
+      } else if (res.data.status === 410 || res.data.status === 405) {
         toast.error(res.data.msg);
       } else {
         toast.error(res.data.msg);

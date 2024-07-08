@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "../Admin.css";
+import "../delivery.css";
 import axiosInstance from "../../../apis/axiosInstance";
 import { Table } from "react-bootstrap";
 
-export const AdminViewallUser = () => {
+export const DeliveryViewallUser = () => {
   const [data, setData] = useState([]);
 
   const handleActive = (id) => {
@@ -126,4 +126,3 @@ export const AdminViewallUser = () => {
   );
 };
 
-export default AdminViewallUser;

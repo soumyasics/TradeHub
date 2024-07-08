@@ -14,11 +14,11 @@ export const ViewItems = () => {
   const [show, setShow] = useState(false);
   const [deletingItemId, setDeletingId] = useState(null);
   const handleShow = () => setShow(true);
- const [countDelete, setCountDelete] = useState(0)
- const updateCount = () => {
-  setCountDelete((prev) => prev + 1);
- }
-  useEffect(() => { 
+  const [countDelete, setCountDelete] = useState(0);
+  const updateCount = () => {
+    setCountDelete((prev) => prev + 1);
+  };
+  useEffect(() => {
     let id = localStorage.getItem("trade-hub-userId") || null;
     console.log("iddd", id);
     if (id) {
@@ -47,6 +47,10 @@ export const ViewItems = () => {
       });
   };
 
+  const viewProductDetails = (id) => {
+    navigate(`/user/view-items/${id}`);
+  };
+
   return (
     <>
       <UserMainNav />
@@ -66,7 +70,13 @@ export const ViewItems = () => {
             pic = `${BASE_URL}${filename}`;
           }
           return (
-            <div key={e._id}>
+            <div
+              key={e._id}
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                viewProductDetails(e._id);
+              }}
+            >
               <div className="user_viewItems-box">
                 <div class="container text-center">
                   <div class="row">
@@ -117,7 +127,15 @@ export const ViewItems = () => {
                     <div class="col-2 user-viewItems-right-box">
                       <div className="userView-right-inner-box">
                         <div className="userItemView-pending bg-danger"></div>
-                        <p>{e.isModApproved ? "Approved" : "Pending"}</p>
+                        <p>
+                          {e.isModApproved === "approve" ? (
+                            <span className="text-success">Approved </span>
+                          ) : e.isModApproved === "reject" ? (
+                            <span className="text-danger">Rejected </span>
+                          ) : (
+                            <span className="text-warning">Pending </span>
+                          )}
+                        </p>
                       </div>
                       <div
                         onClick={() => {

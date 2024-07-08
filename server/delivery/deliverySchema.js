@@ -36,11 +36,11 @@ const dSchema = mongoose.Schema({
   },
   isActive: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   adminApproved: {
     type: String,
-    enums: ["pending", "approve", "reject"],
+    enum: ["pending", "approve", "reject"],
     default: "pending",
   },
 });

@@ -1,7 +1,5 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import DeliveryLogin from "./pages/delivery/deliveryLogin/deliveryLogin";
-import DelSignup from "./pages/delivery/deliverySignup/delSignup";
 import Adminlogin from "./components/Admin/adminLogin/Adminlogin";
 import Userlanding from "./components/Users/Userlanding";
 import Userforget from "./components/Users/Userforget";
@@ -37,9 +35,12 @@ import DeliveryAgentLogin from "./components/Delivery/deliveryLogin/deliveryLogi
 import DeliveryAgentSignup from "./components/Delivery/deliverySignup'/deliverySignup";
 import Deliveryforgotpassword from "./components/Delivery/deliveryForgotpassword/deliveryforgotpassword";
 import { UserTransaction } from "./components/Admin/userTransaction/userTransaction";
-import { DeliveryHome } from "./components/Delivery/deliveryHome/deliveryHome";
+import { DeliveryDashboard } from "./components/Delivery/deliveryDashboard/deliveryDashboard";
 import { ContactUs } from "./components/common/illustration/contactUs/contactsUs";
 import { UsereditProfileCard } from "./components/Users/userEditProfileCard/userEditProfileCard";
+import { ModProductDetails } from "./components/Moderator/modProductRequest/modProductDetails";
+import { UserProductDetails } from "./components/Users/productDetails/userProductDetails";
+import { ApprovedBtn, RejectedBtn } from "./components/common/approvedBtn/approvedBtn";
 const App = () => {
   return (
     <div className="App">
@@ -48,7 +49,7 @@ const App = () => {
         <Routes>
           {/* common  */}
           <Route path="/" element={<Userlanding />} />
-          <Route path="/contactUs" element={<ContactUs/>} />
+          <Route path="/contactUs" element={<ContactUs />} />
 
           {/* users  */}
           <Route path="/user/login" element={<Userlogin />} />
@@ -64,13 +65,12 @@ const App = () => {
           <Route path="/user/viewitemtobuy" element={<UserViewItemToBuy />} />
           <Route path="/user/add-product" element={<AddProducts />} />
           <Route path="/user/view-items" element={<ViewItems />} />
-          {/* new route */}
+          <Route path="/user/view-items/:id" element={<UserProductDetails />} />
+
           <Route path="/user/product-details" element={<ItemDetails />} />
-          <Route path="/user/product-card" element={<ProductCard/>}/>
-          <Route path="/user/view-items" element={<ViewItems/>} />
-          <Route path="/user/product-details" element={<ItemDetails/>} />
-          <Route path="/user/view-items" element={<ViewItems />} />
-          <Route path="/user/edit/profle" element={<UsereditProfileCard/>} />
+          <Route path="/user/product-card" element={<ProductCard />} />
+          <Route path="/user/product-details" element={<ItemDetails />} />
+          <Route path="/user/edit/profle" element={<UsereditProfileCard />} />
 
           {/* moderators  */}
 
@@ -80,6 +80,10 @@ const App = () => {
           <Route path="/moderator/profile" element={<ModProfile />} />
           <Route path="/moderator/view-users" element={<ModViewUsers />} />
           <Route
+            path="/moderator/product/:id"
+            element={<ModProductDetails />}
+          />
+          <Route
             path="/moderator/view-users/:id"
             element={<ViewUserDetails />}
           />
@@ -88,7 +92,7 @@ const App = () => {
             element={<Moderatorforget />}
           />
 
-{/* new-1 */}
+          {/* new-1 */}
           <Route
             path="/moderator/exchangePage"
             element={<ExchangeProductPage />}
@@ -97,26 +101,26 @@ const App = () => {
             path="/moderator/exchangeProduct"
             element={<ExchangeProduct />}
           />
-          <Route path="/delivery/login" element={<DeliveryAgentLogin/>}/>
-          <Route path="/delivery/signup"element={<DeliveryAgentSignup/>}/>
-          <Route path="/agentforgotpassword" element={<Deliveryforgotpassword/>}/>
+          <Route path="/delivery/login" element={<DeliveryAgentLogin />} />
+          <Route path="/delivery/signup" element={<DeliveryAgentSignup />} />
+          <Route
+            path="/agentforgotpassword"
+            element={<Deliveryforgotpassword />}
+          />
           {/* new  */}
-          <Route path="/moderatorsidebar" element={<ModeratorSidebar />} />
           <Route path="/productrequest" element={<ProductRequest />} />
           <Route path="/moderator/dashboard" element={<ModeratorDashboard />} />
           <Route path="/itemPage" element={<ModeratorItempage />} />
 
-          {/* delivery  */}
-          {/* <Route path="/delivery/signup" element={<DelSignup />} /> */}
-          {/* <Route path="/delivery/login" element={<DeliveryLogin />} /> */}
-          <Route path="/delivery/home" element={<DeliveryHome/>} />
+          <Route path="/delivery/dashboard" element={<DeliveryDashboard />} />
 
           {/* Admin */}
           <Route path="/admin/login" element={<Adminlogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          {/* new */}
-          <Route path="/admin/usertransaction" element={<UserTransaction/>}/> 
-
+          {/* new component */}
+          <Route path="/admin/usertransaction" element={<UserTransaction />} />
+          <Route path="/approved-btn" element={<ApprovedBtn />} />
+          <Route path="/rejected-btn" element={<RejectedBtn />} />
           {/* admin components  */}
 
           <Route path="/*" element={<h1> 404 </h1>} />

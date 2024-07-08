@@ -31,11 +31,12 @@ const mSchema = mongoose.Schema({
   },
   isActive: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   adminApproved: {
-    type: Boolean,
-    default: false,
+    type: String,
+    enum: ["pending", "approve", "reject"],
+    default: "pending",
   },
 });
 module.exports = mongoose.model("moderators", mSchema);

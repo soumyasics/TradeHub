@@ -46,6 +46,7 @@ function Userforget() {
       errors.password = "Password is required";
     } else if (!passwordRegex.test(data.password)) {
       // Pass the password to the test method
+      formValid = false;
       errors.password =
         "Password must contain at least one number, one special character, and one capital letter";
     }

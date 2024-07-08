@@ -27,16 +27,6 @@ const registerModerator = async (req, res) => {
     const { firstname, lastname, contact, email, password, gender } = req.body;
     const profile = req.file;
 
-    const newModerator = new Moderator({
-      firstname,
-      lastname,
-      contact,
-      email,
-      password,
-      gender,
-      profile,
-    });
-
     let existingModerator = await Moderator.findOne({ email });
     if (existingModerator) {
       return res.json({
@@ -54,6 +44,16 @@ const registerModerator = async (req, res) => {
         data: null,
       });
     }
+
+    const newModerator = new Moderator({
+      firstname,
+      lastname,
+      contact,
+      email,
+      password,
+      gender,
+      profile,
+    });
 
     await newModerator
       .save()
@@ -90,6 +90,7 @@ const viewModerators = (req, res) => {
       } else {
         res.json({
           status: 200,
+          data: [],
           msg: "No data obtained",
         });
       }
@@ -101,6 +102,84 @@ const viewModerators = (req, res) => {
         Error: err,
       });
     });
+};
+
+const allPendingMods = async (req, res) => {
+  try {
+    const allMods = await Moderator.find({ adminApproved: "pending" });
+    return res.status(200).json({ msg: "all pending mods", data: allMods });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+};
+const allApprovedMods = async (req, res) => {
+  try {
+    const allMods = await Moderator.find({ adminApproved: "approve" });
+    return res.status(200).json({ msg: "all approved mods", data: allMods });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+};
+const allRejectedMods = async (req, res) => {
+  try {
+    const allMods = await Moderator.find({ adminApproved: "reject" });
+    return res.status(200).json({ msg: "all rejected mods", data: allMods });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+};
+
+const approveModById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const mod = await Moderator.findById(id);
+    if (!mod) {
+      return res
+        .status(404)
+        .json({ msg: "Moderator not found", data: null });
+    }
+
+    const updatedMod = await Moderator.findByIdAndUpdate(
+      id,
+      {
+        adminApproved: "approve",
+      },
+      { new: true }
+    );
+
+    return res.status(200).json({
+      msg: "Moderator approved successfully",
+      data: updatedMod,
+    });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+};
+const rejectModById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const mod = await Moderator.findById(id);
+    if (!mod) {
+      return res
+        .status(404)
+        .json({ msg: "Moderator not found", data: null });
+    }
+
+    const updatedMod = await Moderator.findByIdAndUpdate(
+      id,
+      {
+        adminApproved: "reject",
+      },
+      { new: true }
+    );
+
+    return res.status(200).json({
+      msg: "Moderator rejected successfully",
+      data: updatedMod,
+    });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
 };
 
 // Update Moderator by ID
@@ -183,49 +262,6 @@ const deactivateModeratorById = (req, res) => {
       res.json({
         status: 200,
         msg: "Moderator deactivated successfully",
-        data: data,
-      });
-    })
-    .catch((err) => {
-      res.status(500).json({
-        status: 500,
-        msg: "No data obtained",
-        Error: err,
-      });
-    });
-};
-
-// Admin Approve Moderator by ID
-const adminApproveModeratorById = (req, res) => {
-  Moderator.findByIdAndUpdate(
-    { _id: req.params.id },
-    { adminApproved: true, isActive: true }
-  )
-    .exec()
-    .then((data) => {
-      res.json({
-        status: 200,
-        msg: "Moderator approved successfully",
-        data: data,
-      });
-    })
-    .catch((err) => {
-      res.status(500).json({
-        status: 500,
-        msg: "No data obtained",
-        Error: err,
-      });
-    });
-};
-
-// Admin Disapprove Moderator by ID
-const adminDisapproveModeratorById = (req, res) => {
-  Moderator.findByIdAndDelete({ _id: req.params.id })
-    .exec()
-    .then((data) => {
-      res.json({
-        status: 200,
-        msg: "Moderator disapproved successfully",
         data: data,
       });
     })
@@ -339,6 +375,19 @@ const login = (req, res) => {
         });
       }
 
+      if (user.adminApproved === "pending") {
+        return res.json({
+          status: 410,
+          msg: "Your account is not approved by admin yet.",
+        });
+      }
+      if (user.adminApproved === "reject") {
+        return res.json({
+          status: 410,
+          msg: "Your account is rejected by admin.",
+        });
+      }
+
       if (!user.isActive) {
         return res.json({
           status: 410,
@@ -348,7 +397,7 @@ const login = (req, res) => {
 
       const token = createToken(user);
 
-      res.json({
+      return res.json({
         status: 200,
         data: user,
         msg: "Login successful",
@@ -379,15 +428,18 @@ const requireAuth = (req, res, next) => {
 
 module.exports = {
   registerModerator,
+  login,
   viewModerators,
   editModeratorById,
+  allPendingMods,
+  allApprovedMods,
+  allRejectedMods,
   viewModeratorById,
   deactivateModeratorById,
   activateModeratorById,
-  adminApproveModeratorById,
-  adminDisapproveModeratorById,
   forgotPassword,
   resetPassword,
   upload,
-  login,
+  approveModById,
+  rejectModById
 };

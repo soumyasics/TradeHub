@@ -1,5 +1,6 @@
 import React from "react";
 import "../Admin.css";
+import { useState } from "react";
 import adminsidebarimg from "../../../assets/images/adminsidebarimg.png";
 import { RxDashboard } from "react-icons/rx";
 import { MdPeopleAlt } from "react-icons/md";
@@ -10,16 +11,29 @@ import { AiFillInteraction } from "react-icons/ai";
 import { TbNotes } from "react-icons/tb";
 import { MdLogout } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import {toast} from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 export const AdminSidebar = ({ changeSelectedPage }) => {
+  const [dropdownDA, setdropdownDA] = useState(false);
+  const [dropdownMod, setdropdownMod] = useState(false);
+
   const navigate = useNavigate();
   const handleAdminLogout = () => {
     toast.success("Admin Logout Successfully");
     navigate("/admin/login");
   };
+  const toggleDA = () => {
+    setdropdownMod(false)
+    setdropdownDA(!dropdownDA);
+  };
+
+  const toggleMod = () => {
+    setdropdownDA(false)
+    setdropdownMod(!dropdownMod);
+  }
+
   return (
     <div>
-      <div className="admin-sidebar-color">
+      <div className="admin-sidebar-color2">
         <div className="admin-sidebar-logotext d-flex  align-items-center">
           <img
             className="admin-sidebar-img"
@@ -41,12 +55,34 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
             <li>
               <GiReceiveMoney /> Transaction
             </li>
-            <li>
+            <li onClick={toggleDA}>
               <TbTrolley /> Delivery Agent
+              {dropdownDA && (
+                <div style={{ fontSize: "12px" }} className="ps-3 bg-light dd-container ">
+                  <li className="text-dark admin-dd-item" onClick={() => {
+                    changeSelectedPage("view-pending-DA")
+                  }}> Delivery agent request</li>
+                  <li className="text-dark admin-dd-item" onClick={() => {
+                    changeSelectedPage("view-active-DA")
+                  }}> View all delivery agent </li>
+                  <li className="text-dark admin-dd-item" onClick={() => {}}> View all delivery details </li>
+                </div>
+              )}
             </li>
-            <li onClick={() => changeSelectedPage("view-moderators")}>
-              <MdAddModerator /> Moderator
+            <li onClick={toggleMod}>
+            <MdAddModerator /> Moderator
+              {dropdownMod && (
+                <div style={{ fontSize: "12px" }} className="ps-3 bg-light dd-container ">
+                  <li className="text-dark admin-dd-item" onClick={() => {
+                    changeSelectedPage("view-pending-mod")
+                  }}> Moderator requests</li>
+                  <li className="text-dark admin-dd-item" onClick={() => {
+                    changeSelectedPage("view-active-mod")
+                  }}> View active moderators </li>
+                </div>
+              )}
             </li>
+
             <li>
               <AiFillInteraction /> Interaction
             </li>
