@@ -121,7 +121,7 @@ function Moderatorlogin() {
                       to="/moderator/forget-password"
                       className="moderator-login-forget"
                     >
-                      Forget Password?
+                      Forgot password?
                     </Link>
                   </div>
                   <button type="submit" className="moderator-login-btn mt-5">

@@ -121,7 +121,7 @@ function Userlogin() {
                   </div>
                   <div className="mt-3">
                     <Link to="/user/forgetpswd" className="user-login-forget">
-                      Forget Password?
+                      Forgot password?
                     </Link>
                   </div>
                   <div className="text-center">

@@ -126,7 +126,7 @@ function DeliveryAgentLogin() {
                   </div>
                   <div className="mt-3 deliveryagent-login-link container">
                     <Link to="/agentforgotpassword" href="#">
-                      Forget Password?
+                      Forgot Password?
                     </Link>
                   </div>
                   <button

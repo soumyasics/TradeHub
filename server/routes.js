@@ -3,7 +3,7 @@ const user = require("./User/userController");
 const items = require("./Item/itemController");
 const Moderator = require("./Moderator/modController");
 const DeliveryRoute = require("./delivery/deliveryController");
-
+const GuidelineRoute = require("./guidelines/guidelineController");
 //user routes
 router.post("/registerUser", user.upload, user.registerUser);
 router.post("/viewUserById/:id", user.viewUserById);
@@ -58,7 +58,6 @@ router.post("/deactivateModeratorById/:id", Moderator.deactivateModeratorById);
 router.post("/activateModeratorById/:id", Moderator.activateModeratorById);
 router.post("/resetPasswordModeratorUser/:id", Moderator.resetPassword);
 
-
 // delivery
 
 router.post(
@@ -87,4 +86,10 @@ router.get(
   "/activeDeliveryAgentById/:id",
   DeliveryRoute.activeDeliveryAgentById
 );
+
+// guideline
+
+router.post("/createGuideline", GuidelineRoute.createGuideline);
+router.get("/viewGuideline", GuidelineRoute.viewGuideline);
+router.patch("editGuidelines", GuidelineRoute.editGuidelines);
 module.exports = router;
