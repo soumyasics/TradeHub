@@ -1,8 +1,8 @@
-import "./adminGuideline.css";
+import "./adminUpdateGuideline.css";
 import Form from 'react-bootstrap/Form';
 
 
-export const AdminGuideline = () => {
+export const AdminUpdateGuideline = () => {
   return (
     <div style={{ minHeight: "100vh" }}>
       <div className="adminGuieline-body">

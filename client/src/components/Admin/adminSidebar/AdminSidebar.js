@@ -140,7 +140,7 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
                     }}
                   >
                     {" "}
-                    Moderator request
+                    All Guidelines
                   </li>
                   <li
                     className="text-dark admin-dd-item"
@@ -149,7 +149,7 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
                     }}
                   >
                     {" "}
-                    View all Moderator{" "}
+                    View Guidelines{" "}
                   </li>
                 </div>
               )}
