@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.adminGuieline-body {
+  max-width: 80%;
+  min-height: 90vh;
+  border-radius: 20px;
+  background: rgba(216, 193, 235, 0.8);
+  box-shadow: 0px 0px 3.971px -3px rgba(0, 0, 0, 0.25);
+  margin-top: 46px;
+  margin-left: 100px;
+}
+.adminGuieline-body h1 {
+  padding-top: 25px;
+  padding-left: 42px;
+  color: #000;
+  font-family: Poppins;
+  font-size: 45px;
+  font-weight: 600;
+}
+.adminGuideline-input {
+  width: 74% !important;
+  margin-top: 20px !important;
+  margin-left: 78px !important;
+}
+.adminGuideline-textArea1 {
+  width: 75% !important;
+  margin-left: 28px !important;
+  margin-top: 15px !important;
+}
+.adminGuideline-title {
+  padding-left: 27px;
+  padding-right: 21px;
+  padding-top: 25px;
+  color: #000;
+  font-family: Poppins;
+  font-size: 21px;
+  font-weight: 400;
+}
+.adminGuideline-label1 {
+  padding-left: 24px;
+  padding-right: 42px;
+  padding-top: 25px;
+  color: #000;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 400;
+}
+.adminGuideline-label2 {
+  padding-left: 23px;
+  padding-right: 42px;
+  padding-top: 25px;
+  color: #000;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 400;
+}
+.adminGuideline-textArea2 {
+  width: 75% !important;
+  margin-left: 5px !important;
+  margin-top: 15px !important;
+}
+.adminGuideline-submit {
+  width: 139.383px;
+  height: 46px;
+  border-radius: 15.478px;
+  background: rgba(109, 54, 152, 0.93);
+  color: #fff;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 500;
+  position: relative;
+  left: 50%;
+}
