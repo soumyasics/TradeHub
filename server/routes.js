@@ -91,5 +91,5 @@ router.get(
 
 router.post("/createGuideline", GuidelineRoute.createGuideline);
 router.get("/viewGuideline", GuidelineRoute.viewGuideline);
-router.patch("editGuidelines", GuidelineRoute.editGuidelines);
+router.patch("/editGuidelines", GuidelineRoute.editGuidelines);
 module.exports = router;
