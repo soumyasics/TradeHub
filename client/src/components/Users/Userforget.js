@@ -94,7 +94,7 @@ function Userforget() {
           </div>
           <div className="col">
             <div className="container mt-5 text-center">
-              <h2>Forget Password</h2>
+              <h2>Forgot password?</h2>
             </div>
             <form onSubmit={handleSubmit}>
               <div>

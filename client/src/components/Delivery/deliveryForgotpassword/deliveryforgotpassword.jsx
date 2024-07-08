@@ -96,7 +96,7 @@ function Deliveryforgotpassword() {
             </div>
             <form className="col" onSubmit={handleSubmit}>
               <div className="container mt-5 text-center">
-                <h2>Forget Password</h2>
+                <h2>Forgot Password?</h2>
               </div>
               <div>
                 <div>
