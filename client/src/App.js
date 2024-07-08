@@ -41,6 +41,9 @@ import { UsereditProfileCard } from "./components/Users/userEditProfileCard/user
 import { ModProductDetails } from "./components/Moderator/modProductRequest/modProductDetails";
 import { UserProductDetails } from "./components/Users/productDetails/userProductDetails";
 import { ApprovedBtn, RejectedBtn } from "./components/common/approvedBtn/approvedBtn";
+import { AdminGuideline } from "./components/Admin/admineGuideline/adminGuideline";
+import { AdmineViewGuideline } from "./components/Admin/adminViewGuideline/adminViewGuideline";
+import { UserConfirmExchange } from "./components/Users/userConfirmExchange/userConfirmExchange";
 const App = () => {
   return (
     <div className="App">
@@ -71,6 +74,7 @@ const App = () => {
           <Route path="/user/product-card" element={<ProductCard />} />
           <Route path="/user/product-details" element={<ItemDetails />} />
           <Route path="/user/edit/profle" element={<UsereditProfileCard />} />
+          <Route path="/user/confirm/exchange" element={<UserConfirmExchange/>} />
 
           {/* moderators  */}
 
@@ -121,6 +125,8 @@ const App = () => {
           <Route path="/admin/usertransaction" element={<UserTransaction />} />
           <Route path="/approved-btn" element={<ApprovedBtn />} />
           <Route path="/rejected-btn" element={<RejectedBtn />} />
+          <Route path="/admin/Guideline" element={<AdminGuideline/>} />
+          <Route path="/admine/view/guideline" element={<AdmineViewGuideline/>} />
           {/* admin components  */}
 
           <Route path="/*" element={<h1> 404 </h1>} />

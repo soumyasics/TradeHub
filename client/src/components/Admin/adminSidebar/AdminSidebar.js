@@ -15,6 +15,7 @@ import { toast } from "react-hot-toast";
 export const AdminSidebar = ({ changeSelectedPage }) => {
   const [dropdownDA, setdropdownDA] = useState(false);
   const [dropdownMod, setdropdownMod] = useState(false);
+  const [dropdownGuide, setdropdownGuide] = useState(false);
 
   const navigate = useNavigate();
   const handleAdminLogout = () => {
@@ -22,14 +23,20 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
     navigate("/admin/login");
   };
   const toggleDA = () => {
-    setdropdownMod(false)
+    setdropdownMod(false);
     setdropdownDA(!dropdownDA);
   };
 
   const toggleMod = () => {
-    setdropdownDA(false)
+    setdropdownDA(false);
     setdropdownMod(!dropdownMod);
-  }
+  };
+
+  const toggleGuide = () => {
+    setdropdownDA(false);
+    setdropdownMod(false);
+    setdropdownGuide(!dropdownGuide);
+  };
 
   return (
     <div>
@@ -58,27 +65,60 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
             <li onClick={toggleDA}>
               <TbTrolley /> Delivery Agent
               {dropdownDA && (
-                <div style={{ fontSize: "12px" }} className="ps-3 bg-light dd-container ">
-                  <li className="text-dark admin-dd-item" onClick={() => {
-                    changeSelectedPage("view-pending-DA")
-                  }}> Delivery agent request</li>
-                  <li className="text-dark admin-dd-item" onClick={() => {
-                    changeSelectedPage("view-active-DA")
-                  }}> View all delivery agent </li>
-                  <li className="text-dark admin-dd-item" onClick={() => {}}> View all delivery details </li>
+                <div
+                  style={{ fontSize: "12px" }}
+                  className="ps-3 bg-light dd-container "
+                >
+                  <li
+                    className="text-dark admin-dd-item"
+                    onClick={() => {
+                      changeSelectedPage("view-pending-DA");
+                    }}
+                  >
+                    {" "}
+                    Delivery agent request
+                  </li>
+                  <li
+                    className="text-dark admin-dd-item"
+                    onClick={() => {
+                      changeSelectedPage("view-active-DA");
+                    }}
+                  >
+                    {" "}
+                    View all delivery agent{" "}
+                  </li>
+                  <li className="text-dark admin-dd-item" onClick={() => {}}>
+                    {" "}
+                    View all delivery details{" "}
+                  </li>
                 </div>
               )}
             </li>
             <li onClick={toggleMod}>
-            <MdAddModerator /> Moderator
+              <MdAddModerator /> Moderator
               {dropdownMod && (
-                <div style={{ fontSize: "12px" }} className="ps-3 bg-light dd-container ">
-                  <li className="text-dark admin-dd-item" onClick={() => {
-                    changeSelectedPage("view-pending-mod")
-                  }}> Moderator requests</li>
-                  <li className="text-dark admin-dd-item" onClick={() => {
-                    changeSelectedPage("view-active-mod")
-                  }}> View active moderators </li>
+                <div
+                  style={{ fontSize: "12px" }}
+                  className="ps-3 bg-light dd-container "
+                >
+                  <li
+                    className="text-dark admin-dd-item"
+                    onClick={() => {
+                      changeSelectedPage("view-pending-mod");
+                    }}
+                  >
+                    {" "}
+                    Moderator requests
+                  </li>
+                  <li
+                    className="text-dark admin-dd-item"
+                    onClick={() => {
+                      changeSelectedPage("view-active-mod");
+                    }}
+                  >
+                    {" "}
+                    View active moderators{" "}
+                  </li>
                 </div>
               )}
             </li>
@@ -86,8 +126,33 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
             <li>
               <AiFillInteraction /> Interaction
             </li>
-            <li>
+            <li onClick={toggleGuide}>
               <TbNotes /> Guidelines
+              {dropdownGuide && (
+                <div
+                  style={{ fontSize: "12px" }}
+                  className="ps-3 bg-light dd-container "
+                >
+                  <li
+                    className="text-dark admin-dd-item"
+                    onClick={() => {
+                      changeSelectedPage("adminGuideline");
+                    }}
+                  >
+                    {" "}
+                    Moderator request
+                  </li>
+                  <li
+                    className="text-dark admin-dd-item"
+                    onClick={() => {
+                      changeSelectedPage("adminViewGuideline");
+                    }}
+                  >
+                    {" "}
+                    View all Moderator{" "}
+                  </li>
+                </div>
+              )}
             </li>
             <li onClick={handleAdminLogout} className="text-danger fw-bold ">
               <MdLogout />
