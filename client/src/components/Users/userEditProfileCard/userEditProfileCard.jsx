@@ -13,7 +13,7 @@ export const UsereditProfileCard = () => {
       <Button variant="primary" onClick={handleShow}>
         Launch demo modal
       </Button>
-      <div className="editProfile-card-body">
+      <div className="editProfile-card-body"> 
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton className="userEditProfileCard-header">
             <Modal.Title className="EditProfileCard-heading">
