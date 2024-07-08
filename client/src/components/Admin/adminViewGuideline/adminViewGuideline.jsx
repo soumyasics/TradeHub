@@ -16,15 +16,6 @@ export const AdmineViewGuideline = () => {
         let us know, and we'll fix it. By using our website, you agree to play
         by these rules and help us make it better for everyone.
       </p>
-      <h3>Conclusion</h3>
-      <p>
-        Privacy and Security: Data Protection: Users' personal information
-        should be protected in accordance with relevant privacy laws. Secure
-        Transactions: The website should employ encryption and other security
-        measures to protect users' sensitive information. Reporting Security
-        Issues: Users should report any security vulnerabilities or concerns to
-        site administrators promptly.
-      </p>
     </div>
   );
 };

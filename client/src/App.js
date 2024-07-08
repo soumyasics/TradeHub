@@ -44,6 +44,7 @@ import { ApprovedBtn, RejectedBtn } from "./components/common/approvedBtn/approv
 import { AdminGuideline } from "./components/Admin/admineGuideline/adminGuideline";
 import { AdmineViewGuideline } from "./components/Admin/adminViewGuideline/adminViewGuideline";
 import { UserConfirmExchange } from "./components/Users/userConfirmExchange/userConfirmExchange";
+import { AdminUpdateGuideline } from "./components/Admin/adminUpdateGuideline/admineUpdateGuideline";
 const App = () => {
   return (
     <div className="App">
@@ -126,7 +127,9 @@ const App = () => {
           <Route path="/approved-btn" element={<ApprovedBtn />} />
           <Route path="/rejected-btn" element={<RejectedBtn />} />
           <Route path="/admin/Guideline" element={<AdminGuideline/>} />
+          {/* new */}
           <Route path="/admine/view/guideline" element={<AdmineViewGuideline/>} />
+          <Route path="/admin/update/guideline" element={<AdminUpdateGuideline/>} />
           {/* admin components  */}
 
           <Route path="/*" element={<h1> 404 </h1>} />
