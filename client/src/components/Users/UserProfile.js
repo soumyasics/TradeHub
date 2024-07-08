@@ -9,6 +9,7 @@ import { BASE_URL } from "../../apis/baseURL";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {toast} from "react-hot-toast";
+import { UsereditProfileCard } from "./userEditProfileCard/userEditProfileCard";
 
 function UserProfile() {
   const [data, setData] = useState({ profile: { filename: "" } });
@@ -88,14 +89,15 @@ function UserProfile() {
                     </div>
                   </div>
                   <div className="mt-5 text-center">
-                    <button type="submit" className="user-profile-btnedit">
+                    {/* <button type="submit" className="user-profile-btnedit">
                       <Link
                         to={`/user/user-editprofile/${activeUserId}`}
                         className="useredit-profile-color-link"
                       >
                         Edit
                       </Link>
-                    </button>
+                    </button> */}
+                    <UsereditProfileCard/>
                   </div>
                 </Card.Text>
               </Card.Body>

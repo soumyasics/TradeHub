@@ -6,6 +6,8 @@ import { AdminViewallMods } from "./viewAllUserMods/AdminViewallMods";
 import { AdminViewAllDelRequest } from "./deliveryAgentRequest/deliveryAgentReq";
 import { AdminViewAllActiveDeliveryAgent } from "./deliveryAgentRequest/viewAllDeliveryAgent";
 import { AdminViewAllModRequest } from "./viewAllUserMods/AdminViewAllModeRequest";
+import { AdminGuideline } from "./admineGuideline/adminGuideline";
+import { AdmineViewGuideline } from "./adminViewGuideline/adminViewGuideline";
 export const AdminDashboard = () => {
   const [selectedPage, setSelectedPage] = useState("overview");
 
@@ -24,6 +26,8 @@ export const AdminDashboard = () => {
         {selectedPage === "view-active-DA" && <AdminViewAllActiveDeliveryAgent />}
         {selectedPage === "view-pending-mod" && <AdminViewAllModRequest />}
         {selectedPage === "view-active-mod" && <AdminViewallMods />}
+        {selectedPage === "adminGuideline" && <AdminGuideline/>}
+        {selectedPage === "adminViewGuideline" && <AdmineViewGuideline/>}
       </div>
     </div>
   );

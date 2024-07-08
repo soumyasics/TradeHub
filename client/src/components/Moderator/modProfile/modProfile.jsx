@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { ModNavbar } from "../../homeComponents/Navbar/Navbar";
+import { UsereditProfileCard } from "../../Users/userEditProfileCard/userEditProfileCard";
 
 export const ModProfile = () => {
   const [activeUserId, setActiveUserId] = useState(null);
@@ -84,14 +85,15 @@ export const ModProfile = () => {
                     </div>
                   </div>
                   <div className="mt-5 text-center">
-                    <button type="submit" className="user-profile-btnedit">
+                    {/* <button type="submit" className="user-profile-btnedit">
                       <Link
                         to={`/user/user-editprofile/${activeUserId}`}
                         className="useredit-profile-color-link"
                       >
                         Edit
                       </Link>
-                    </button>
+                    </button> */}
+                    <UsereditProfileCard/>
                   </div>
                 </Card.Text>
               </Card.Body>
