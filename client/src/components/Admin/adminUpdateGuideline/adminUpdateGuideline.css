@@ -58,15 +58,29 @@
   margin-left: 5px !important;
   margin-top: 15px !important;
 }
-.adminGuideline-submit {
+.adminGuideline-update {
   width: 139.383px;
   height: 46px;
   border-radius: 15.478px;
-  background: rgba(109, 54, 152, 0.93);
   color: #fff;
   font-family: Poppins;
   font-size: 20px;
   font-weight: 500;
   position: relative;
-  left: 50%;
+  left: 40%;
+  margin-right: 20px;
+  background-color: #176f25;
+}
+.adminGuideline-cancel {
+  width: 139.383px;
+  height: 46px;
+  border-radius: 15.478px;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 500;
+  position: relative;
+  left: 40%;
+  margin-right: 20px;
+  background-color: #ca0909;
 }

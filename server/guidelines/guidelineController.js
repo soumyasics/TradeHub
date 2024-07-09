@@ -1,4 +1,4 @@
-const GuidelineModel = require("./guidelinesSchema");
+const {GuidelineModel} = require("./guidelinesSchema");
 const createGuideline = async (req, res) => {
   try {
     const { title, content } = req.body;

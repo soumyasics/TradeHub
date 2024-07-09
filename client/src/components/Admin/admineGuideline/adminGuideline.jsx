@@ -12,50 +12,48 @@ export const AdminGuideline = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
+    
   };
-const checkValidite = () =>{
+  console.log(data);
+  const checkValidite = () => {
     const { title, content } = data;
     if (!title) {
       toast.error("title is required");
-      return false
+      return false;
     }
     if (!content) {
       toast.error("content is required");
       return false;
     }
     return true;
-}
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(!checkValidite())
-        {
-            return;
-        }
-        sendData()
+    if (!checkValidite()) {
+      return;
     }
-    const sendData = async () => {
-        try {
-          const res = await axiosInstance.post("editGuidelines", data);
-          if (res.data.status === 200) {
-            toast.success("res.data.msg");
-          } else {
-            toast.error(res.msg.data);
-          }
-        } catch (err) {
-          console.log(err);
-        }
-      
+    sendData();
+  };
+
+  const sendData = async () => {
+    try {
+      const res = await axiosInstance.post("/createGuideline", data);
+      if (res.status === 200) {
+        toast.success(res.data.msg)
+      } else {
+        toast.error(res.data.msg);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div style={{ minHeight: "100vh" }}>
       <div className="adminGuieline-body">
         <h1>Guidelines</h1>
         <Form onSubmit={handleSubmit}>
-          <Form.Group
-            className="mb-3 d-flex"
-            controlId="exampleForm.ControlInput1"
-          >
+          <Form.Group className="mb-3 d-flex">
             <Form.Label className="adminGuideline-title ">Title</Form.Label>
             <Form.Control
               type="text"
@@ -63,6 +61,7 @@ const checkValidite = () =>{
               className="adminGuideline-input"
               onChange={handleChange}
               name="title"
+              value={data.title}
             />
           </Form.Group>
           <Form.Group
@@ -77,6 +76,7 @@ const checkValidite = () =>{
               placeholder="content"
               onChange={handleChange}
               name="content"
+              value={data.content}
             />
           </Form.Group>
           <button className="adminGuideline-submit" type="submit">
