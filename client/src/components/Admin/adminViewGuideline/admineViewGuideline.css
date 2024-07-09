@@ -28,3 +28,17 @@
   padding-left: 28px;
   padding-right: 20px;
 }
+.adminViewGuideline-button {
+  width: 139.383px;
+  height: 46px;
+  border-radius: 15.478px;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 40%;
+  background-color:
+  #6D3698;
+  position: absolute;
+  bottom: 2%;
+}
