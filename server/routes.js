@@ -42,11 +42,7 @@ router.post(
 router.post("/loginModerator", Moderator.login);
 
 router.get("/viewModeratorById/:id", Moderator.viewModeratorById);
-router.post(
-  "/editModeratorById/:id",
-  Moderator.upload,
-  Moderator.editModeratorById
-);
+router.post("/editModeratorById/:id", Moderator.editModeratorById);
 router.post("/forgotPasswordUserModerators", Moderator.forgotPassword);
 router.post("/viewModerators", Moderator.viewModerators);
 router.get("/allPendingMods", Moderator.allPendingMods);
@@ -67,6 +63,8 @@ router.post(
 );
 router.post("/deliveryLogin", DeliveryRoute.loginDelivery);
 router.post("/deliveryForgotPassword", DeliveryRoute.forgotPassword);
+router.post("/updateDeliveryById/:id", DeliveryRoute.updateDelivery);
+
 router.get("/allPendingDelivery", DeliveryRoute.allPendingDelivery);
 router.get("/allAcceptDelivery", DeliveryRoute.allAcceptedDelivery);
 router.get("/allRejectDelivery", DeliveryRoute.allRejectedDelivery);
