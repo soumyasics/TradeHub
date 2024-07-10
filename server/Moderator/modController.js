@@ -134,9 +134,7 @@ const approveModById = async (req, res) => {
     const { id } = req.params;
     const mod = await Moderator.findById(id);
     if (!mod) {
-      return res
-        .status(404)
-        .json({ msg: "Moderator not found", data: null });
+      return res.status(404).json({ msg: "Moderator not found", data: null });
     }
 
     const updatedMod = await Moderator.findByIdAndUpdate(
@@ -160,9 +158,7 @@ const rejectModById = async (req, res) => {
     const { id } = req.params;
     const mod = await Moderator.findById(id);
     if (!mod) {
-      return res
-        .status(404)
-        .json({ msg: "Moderator not found", data: null });
+      return res.status(404).json({ msg: "Moderator not found", data: null });
     }
 
     const updatedMod = await Moderator.findByIdAndUpdate(
@@ -184,34 +180,41 @@ const rejectModById = async (req, res) => {
 
 // Update Moderator by ID
 const editModeratorById = async (req, res) => {
-  const { firstname, lastname, contact, email, gender } = req.body;
-  const profile = req.file;
+  try {
+    const { firstname, lastname, email, contact } = req.body;
 
-  await Moderator.findByIdAndUpdate(
-    { _id: req.params.id },
-    {
-      firstname,
-      lastname,
-      contact,
-      email,
-      gender,
-      profile,
+    const userId = req.params.id;
+    const user = await Moderator.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
     }
-  )
-    .exec()
-    .then((data) => {
-      res.json({
-        status: 200,
-        msg: "Updated successfully",
-      });
-    })
-    .catch((err) => {
-      res.status(500).json({
-        status: 500,
-        msg: "Data not updated",
-        Error: err,
-      });
+    const updateField = {};
+    if (firstname) updateField.firstname = firstname;
+    if (lastname) updateField.lastname = lastname;
+    if (email) updateField.email = email;
+    if (contact) updateField.contact = contact;
+
+    const newUser = await Moderator.findByIdAndUpdate(userId, updateField, {
+      new: true,
     });
+
+    if (newUser) {
+      return res.status(200).json({
+        msg: "Moderator Updated successfully",
+        data: newUser,
+      });
+    }
+
+    return res.status(404).json({
+      msg: "Moderator not found",
+      data: newUser,
+    });
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ msg: "Something went wrong", error: err.message });
+  }
 };
 
 // View Moderator by ID
@@ -441,5 +444,5 @@ module.exports = {
   resetPassword,
   upload,
   approveModById,
-  rejectModById
+  rejectModById,
 };

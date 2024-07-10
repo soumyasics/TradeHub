@@ -117,55 +117,34 @@ const forgotPassword = (req, res) => {
 
 const updateDelivery = async (req, res) => {
   try {
-    const { id: deliveryId } = req.params;
-    const { firstname, lastname, email, contact, password, gender, address } =
-      req.body;
+    const { firstname, lastname, email, contact } = req.body;
 
-    if (!mongoose.Types.ObjectId.isValid(deliveryId)) {
-      return res
-        .status(404)
-        .json({ msg: "Delivery Partner not found", data: null });
-    }
-    const delivery = await DeliveryModel.findById(deliveryId);
-    if (!delivery) {
-      return res
-        .status(404)
-        .json({ msg: "Delivery Partner not found", data: null });
-    }
-    let updatingObj = {};
-    if (firstname) {
-      updatingObj.firstname = firstname;
-    }
-    if (lastname) {
-      updatingObj.lastname = lastname;
-    }
-    if (email) {
-      updatingObj.email = email;
-    }
-    if (contact) {
-      updatingObj.contact = contact;
-    }
-    if (password) {
-      updatingObj.password = password;
-    }
-    if (gender) {
-      updatingObj.gender = gender;
-    }
-    if (address) {
-      updatingObj.address = address;
-    }
+    const userId = req.params.id;
+    const user = await DeliveryModel.findById(userId);
 
-    const updatedDelivery = await DeliveryModel.findByIdAndUpdate(
-      deliveryId,
-      updatingObj,
-      { new: true }
-    );
-    return res.status(200).json({
-      msg: "Delivery Partner updated successfully",
-      data: updatedDelivery,
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+    const updateField = {};
+    if (firstname) updateField.firstname = firstname;
+    if (lastname) updateField.lastname = lastname;
+    if (email) updateField.email = email;
+    if (contact) updateField.contact = contact;
+
+    const newUser = await DeliveryModel.findByIdAndUpdate(userId, updateField, {
+      new: true,
     });
-  } catch (error) {
-    return res.status(500).json({ msg: error.message });
+
+    if (user) {
+      return res.status(200).json({
+        msg: "Delivery agent updated successfully",
+        data: newUser,
+      });
+    }
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ msg: "Something went wrong", error: err.message });
   }
 };
 

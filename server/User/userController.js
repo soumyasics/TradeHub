@@ -123,12 +123,17 @@ const editUserById = async (req, res) => {
       new: true,
     });
 
-    if (user) {
+    if (newUser) {
       return res.status(200).json({
         msg: "User Updated successfully",
         data: newUser,
       });
     }
+
+    return res.status(404).json({
+      msg: "User not found",
+      data: newUser,
+    });
   } catch (err) {
     return res
       .status(500)
