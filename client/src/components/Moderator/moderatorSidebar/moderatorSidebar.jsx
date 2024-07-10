@@ -34,6 +34,7 @@ function ModeratorSidebar({ changeSelectedPage }) {
             src={moderatorsidebarimg}
             style={{ width: "30px", height: "30px" }}
             alt="img"
+            onClick={()=>{navigate("/moderator/profile")}}
           ></img>
           &nbsp; &nbsp;
           <div className="mt-3">Moderator </div>

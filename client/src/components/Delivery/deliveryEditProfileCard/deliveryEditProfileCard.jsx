@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./userEditProfileCard.css";
+import "./deliveryEditProfileCard.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
@@ -8,7 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
 import toast from "react-hot-toast";
 
-export const UsereditProfileCard = ({getNewData}) => {
+export const DeliveryEditProfileCard = ({getNewData}) => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
  

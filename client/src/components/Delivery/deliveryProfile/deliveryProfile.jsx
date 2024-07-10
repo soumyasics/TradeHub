@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
-import "./modProfile.css";
-import { FaArrowLeft } from "react-icons/fa6";
+import "./deliveryProfle.css"
 import Card from "react-bootstrap/Card";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import { ModNavbar } from "../../homeComponents/Navbar/Navbar";
-import { UsereditProfileCard } from "../../Users/userEditProfileCard/userEditProfileCard";
-import { ModEditProfileCard } from "../modEditProfileCard/modEditProfileCard";
+import { DeliveryEditProfileCard } from "../deliveryEditProfileCard/deliveryEditProfileCard";
+// import { UsereditProfileCard } from "../../Users/userEditProfileCard/userEditProfileCard";
+// import { ModEditProfileCard } from "../modEditProfileCard/modEditProfileCard";
 
-export const ModProfile = () => {
+export const DeliveryProfile = () => {
   const [activeUserId, setActiveUserId] = useState(null);
   const [modData, setModData] = useState(null);
   const navigate = useNavigate();
@@ -42,18 +40,12 @@ export const ModProfile = () => {
   
   return (
     <div>
-      <ModNavbar />
-      <div className="mt-5 ms-5">
-        <Link to="/moderator/home">
-          <FaArrowLeft className="user-profile-icon" />{" "}
-          <span className="user-profile-para ms-3 mt-3"> Home </span>
-        </Link>
-      </div>
+     
       <div className="user-profile-div container">
         <div className="row">
           <div className="col-2"></div>
           <div className="col-8 mt-5">
-            <Card className="user-profile-card mb-5">
+            <Card className="delivery-profile-card mb-5">
               <div className="text-center user-profile-imgdiv">
                 {console.log(`${BASE_URL}${modData?.profile?.filename}`)}
                 <img
@@ -95,7 +87,7 @@ export const ModProfile = () => {
                       </Link>
                     </button> */}
 
-                    <ModEditProfileCard getNewData={fetchModData}/>
+                     <DeliveryEditProfileCard getNewData={fetchModData}/> 
                   </div>
                 </Card.Text>
               </Card.Body>

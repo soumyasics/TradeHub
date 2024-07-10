@@ -1,0 +1,77 @@
+.user-profile-icon {
+    font-size: 16px;
+    color: #6d3698;
+  }
+  .user-profile-para {
+    font-size: 16px;
+    color: #6d3698;
+  }
+  .delivery-profile-card {
+    width: 100%;
+    height: 90vh;
+    margin-top:12%;
+
+  }
+  .user-profile-img {
+    height: 250px;
+    width: 250px;
+    border-radius: 150px;
+    /* z-index: 1; */
+  }
+  .user-profile-imgdiv {
+    margin-top: -100px;
+  }
+  .user-profile-btnedit {
+    color: white;
+    background-color: #6d3698;
+    border: none;
+    height: 45px;
+    width: 120px;
+    border-radius: 20px;
+  }
+  .useredit-profile-nav {
+    background: linear-gradient(180deg, #7a48a1 0%, rgba(122, 72, 161, 0.8) 100%);
+    height: 30vh;
+    width: 100%;
+    padding-top: 40px;
+  }
+  .useredit-profile-navicon {
+    color: white;
+    font-size: 30px;
+  }
+  .useredit-profile-navedit {
+    padding-top: 80px;
+  }
+  .useredit-profile-img {
+    height: 250px;
+    width: 250px;
+    border-radius: 150px;
+  }
+  .useredit-profile-icon {
+    height: 50px;
+    width: 50px;
+    margin-left: -80px;
+    margin-top: 180px;
+  }
+  .useredit-profile-label {
+    font-weight: 600;
+  }
+  .useredit-profile-textbox {
+    height: 50px;
+    width: 100%;
+    border-radius: 8px;
+    border-color: black;
+    padding-left: 15px;
+  }
+  .useredit-profile-updatebtn {
+    color: white;
+    background-color: #662c93;
+    height: 44px;
+    width: 100px;
+    border: none;
+    border-radius: 26px;
+  }
+  .useredit-profile-color-link {
+    color: white;
+  }
+ 

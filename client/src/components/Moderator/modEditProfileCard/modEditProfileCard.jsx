@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./userEditProfileCard.css";
+import "./modEditProfileCard.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
@@ -8,34 +8,36 @@ import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
 import toast from "react-hot-toast";
 
-export const UsereditProfileCard = ({getNewData}) => {
+export const ModEditProfileCard = ({ getNewData }) => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
- 
+  const handleClose = () => setShow(false);
   const [edit, setEdit] = useState({
     firstname: "",
     lastname: "",
     contact: "",
     email: "",
   });
-  const [userId, setUserId] = useState("");
+  const [modId, setModId] = useState("");
 
   const handleShow = () => {
     setShow(true);
   };
-  const handleClose = () => setShow(false);
-  const getUserData = (id) => {
+  const getModData = (id) => {
     axiosInstance
-      .post(`/viewUserById/${id}`)
+      .get(`viewModeratorById/${id}`)
       .then((res) => {
+        console.log("get mod data  ", res);
         if (res.data?.status === 200) {
-          const userData = res.data.data;
+          const modData = res.data.data;
+          console.log("moderator", modData);
           setEdit({
-            email: userData.email,
-            contact: userData.contact,
-            firstname: userData.firstname,
-            lastname: userData.lastname,
+            email: modData.email,
+            contact: modData.contact,
+            firstname: modData.firstname,
+            lastname: modData.lastname,
           });
+          console.log(res.data.data);
         }
       })
       .catch((err) => {
@@ -43,14 +45,16 @@ export const UsereditProfileCard = ({getNewData}) => {
       });
   };
 
+  console.log("mod edit ", edit);
   useEffect(() => {
-    let id = localStorage.getItem("trade-hub-userId") || null;
+    let id = localStorage.getItem("trade-hub-modId") || null;
+  console.log("123",id);
     if (id) {
-      getUserData(id);
-      setUserId(id);
+      getModData(id);
+      setModId(id);
     } else {
       toast.error("Please login again.");
-      navigate("/user/login");
+      navigate("/moderator/login");
     }
   }, []);
 
@@ -62,25 +66,25 @@ export const UsereditProfileCard = ({getNewData}) => {
   const checkValidate = () => {
     const { firstname, lastname, email, contact } = edit;
     if (!firstname) {
-      toast.error("First name field can't be empty");
+      toast.error("first name field can't be empty");
       return false;
     }
     if (!lastname) {
-      toast.error("Lastname name field can't be empty");
+      toast.error("lastname name field can't be empty");
       return false;
     }
     if (!email) {
-      toast.error("Email field can't be empty");
-      return false;  
+      toast.error("email field can't be empty");
+      return false;
     }
-      
+
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(email)) {
       toast.error("Please enter a valid email address");
       return false;
     }
     if (!contact) {
-      toast.error("Contact field can't be empty");
+      toast.error("conatct field can't be empty");
       return false;
     }
     if (contact.length !== 10) {
@@ -100,7 +104,8 @@ export const UsereditProfileCard = ({getNewData}) => {
 
   const sendDataToServer = async () => {
     try {
-      const res = await axiosInstance.post(`editUserById/${userId}`, edit);
+      console.log("edit wor", edit);
+      const res = await axiosInstance.post(`/editModeratorById/${modId}`, edit);
       if (res.status === 200) {
         toast.success("Update successfull");
       }
@@ -113,7 +118,7 @@ export const UsereditProfileCard = ({getNewData}) => {
       }
     } finally {
       handleClose();
-      getNewData(userId);
+      getNewData(modId);
     }
   };
 

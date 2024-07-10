@@ -62,8 +62,8 @@
 }
 .admin-sidebar-list li {
   color: white;
-  margin-top: 20px;
-  font-size: 16px;
+  margin-top: 34px;
+  font-size: 18px;
   cursor: pointer;
 }
 .admin-sidebar-dropdown {
@@ -79,7 +79,18 @@
 .admin-sidebar-dropdowns {
   background-color: #6d3698;
 }
-
+.delivery-sidebar-notification{
+  margin-top: 17px;
+  margin-left: 12px;
+  margin-right: 8px;
+}
+.delivery-sidebar-icon
+{
+  padding-right: 5px;
+  color: white;
+  font-weight: 400;
+  font-size: 23px;
+}
 /* Admin Dashboard */
 
 .admin-dash-div1 {
