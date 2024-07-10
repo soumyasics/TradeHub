@@ -25,7 +25,7 @@
   padding-top: 7%;
 }
 .user-viewItems-middle-box table {
-  width: 120%;
+  min-width: 60%;
   height: 90%;
   margin-top: 3.5%;
   text-align: justify;

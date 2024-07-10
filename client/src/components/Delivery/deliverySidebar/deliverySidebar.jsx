@@ -44,11 +44,13 @@ export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
             style={{ width: "30px", height: "30px" }}
             alt="img"
             onClick={() => {
-              navigate("/delivery/profile");
+              changeSelectedPage("profile")
             }}
           ></img>
           &nbsp; &nbsp;
-          <div className="mt-3">Delivery Agent</div>
+          <div className="mt-3"  onClick={() => {
+              changeSelectedPage("profile")
+            }}>Delivery Agent</div>
           <FaRegBell className="delivery-sidebar-notification"/>
         </div>
         <div className="mt-4">

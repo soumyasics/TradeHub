@@ -11,29 +11,29 @@ import { DeliveryEditProfileCard } from "../deliveryEditProfileCard/deliveryEdit
 
 export const DeliveryProfile = () => {
   const [activeUserId, setActiveUserId] = useState(null);
-  const [modData, setModData] = useState(null);
+  const [delData, setDelData] = useState(null);
   const navigate = useNavigate();
 
-  const fetchModData = async (modId) => {
+  const fetchDelData = async (DelId) => {
     try {
-      const res = await axiosInstance.get(`/viewModeratorById/${modId}`);
+      const res = await axiosInstance.get(`/viewDeliveryById/${DelId}`);
       const data = res.data?.data || null;
       console.log("resp", res);
-      setModData(data);
+      setDelData(data);
     } catch (error) {
-      console.log("get mod data by id =>", error);
+      console.log("get Del data by id =>", error);
     }
   };
 
   useEffect(() => {
-    const modId = localStorage.getItem("trade-hub-modId") || null;
-    if (!modId) {
+    const DelId = localStorage.getItem("trade-hub-DAId") || null;
+    if (!DelId) {
       toast.error("Please login again.");
-      navigate("/moderator/login");
+      navigate("/delivery/login")
       return;
     }
 
-    fetchModData(modId);
+    fetchDelData(DelId);  
   }, []);
 
 
@@ -47,14 +47,14 @@ export const DeliveryProfile = () => {
           <div className="col-8 mt-5">
             <Card className="delivery-profile-card mb-5">
               <div className="text-center user-profile-imgdiv">
-                {console.log(`${BASE_URL}${modData?.profile?.filename}`)}
+                {console.log(`${BASE_URL}${delData?.profile?.filename}`)}
                 <img
-                  src={`${BASE_URL}${modData?.profile?.filename}`}
+                  src={`${BASE_URL}${delData?.profile?.filename}`}
                   className="user-profile-img"
                 />
               </div>
               <Card.Body>
-                <Card.Title className="moderator-profile-firstName">{modData?.firstname|| "Loading.."}</Card.Title>
+                <Card.Title className="moderator-profile-firstName">{delData?.firstname|| "Loading.."}</Card.Title>
                 <Card.Text className="mt-3">
                   <div className="row container">
                     <div className="col container ms-5">
@@ -70,11 +70,11 @@ export const DeliveryProfile = () => {
                       <label className="mt-5 ms-5">:</label> <br></br>
                     </div>
                     <div className="col">
-                      <label className="mt-5">{modData?.email|| "Loading.."} </label>
+                      <label className="mt-5">{delData?.email|| "Loading.."} </label>
                       <br></br>
-                      <label className="mt-5">{modData?.contact || "Loading.."}</label>
+                      <label className="mt-5">{delData?.contact || "Loading.."}</label>
                       <br></br>
-                      <label className="mt-5">{modData?.gender || "Loading.."}</label>
+                      <label className="mt-5">{delData?.gender || "Loading.."}</label>
                     </div>
                   </div>
                   <div className="mt-5 text-center">
@@ -87,7 +87,7 @@ export const DeliveryProfile = () => {
                       </Link>
                     </button> */}
 
-                     <DeliveryEditProfileCard getNewData={fetchModData}/> 
+                     <DeliveryEditProfileCard getNewData={fetchDelData}/> 
                   </div>
                 </Card.Text>
               </Card.Body>
