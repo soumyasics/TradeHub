@@ -45,6 +45,7 @@ import { AdminGuideline } from "./components/Admin/admineGuideline/adminGuidelin
 import { AdmineViewGuideline } from "./components/Admin/adminViewGuideline/adminViewGuideline";
 import { UserConfirmExchange } from "./components/Users/userConfirmExchange/userConfirmExchange";
 import { AdminUpdateGuideline } from "./components/Admin/adminUpdateGuideline/admineUpdateGuideline";
+import { DeliveryProfile } from "./components/Delivery/deliveryProfile/deliveryProfile";
 const App = () => {
   return (
     <div className="App">
@@ -112,6 +113,7 @@ const App = () => {
             path="/agentforgotpassword"
             element={<Deliveryforgotpassword />}
           />
+          <Route path="/delivery/profile" element={<DeliveryProfile/>} />
           {/* new  */}
           <Route path="/productrequest" element={<ProductRequest />} />
           <Route path="/moderator/dashboard" element={<ModeratorDashboard />} />
