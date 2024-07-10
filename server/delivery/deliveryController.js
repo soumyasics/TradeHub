@@ -148,6 +148,26 @@ const updateDelivery = async (req, res) => {
   }
 };
 
+const viewDeliveryById = (req, res) => {
+  DeliveryModel.findById(req.params.id)
+    .exec()
+    .then((data) => {
+      res.json({
+        status: 200,
+        msg: "Delivery data found.",
+        data: data,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        status: 500,
+        msg: "No data obtained",
+        Error: err,
+      });
+    });
+};
+
+
 const allPendingDelivery = async (req, res) => {
   try {
     const allDelivery = await DeliveryModel.find({ adminApproved: "pending" });
@@ -299,4 +319,5 @@ module.exports = {
   rejectDeliveryAgentById,
   activeDeliveryAgentById,
   inActiveDeliveryAgentById,
+  viewDeliveryById
 };

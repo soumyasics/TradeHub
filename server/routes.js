@@ -63,8 +63,8 @@ router.post(
 );
 router.post("/deliveryLogin", DeliveryRoute.loginDelivery);
 router.post("/deliveryForgotPassword", DeliveryRoute.forgotPassword);
+router.get("/viewDeliveryById/:id", DeliveryRoute.viewDeliveryById);
 router.post("/updateDeliveryById/:id", DeliveryRoute.updateDelivery);
-
 router.get("/allPendingDelivery", DeliveryRoute.allPendingDelivery);
 router.get("/allAcceptDelivery", DeliveryRoute.allAcceptedDelivery);
 router.get("/allRejectDelivery", DeliveryRoute.allRejectedDelivery);
