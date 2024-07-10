@@ -6,27 +6,40 @@ import Modal from "react-bootstrap/Modal";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
+import toast from "react-hot-toast";
 
 export const UsereditProfileCard = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const [data,setData] =useState(
-    {
-      firstName:"",
-      lastName:"",
-      email:"",
-      phoneNumber:""
-    }
-  )
-  const handleShow = (id) => {
+  const [data, setData] = useState({});
+
+  const handleShow = () => {
     setShow(true);
   };
-const handleChange = (e) =>
-  {
-    const {name,value} = e.target;
-    setData({...data,[name]:value})
-    console.log(data);
-  }
+  const getUserData = (id) => {
+    axiosInstance
+      .post(`/viewUserById/${id}`)
+      .then((res) => {
+        console.log(res);
+        if (res.data?.status === 200) {
+          setData(res.data.data);
+          console.log(res.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    let id = localStorage.getItem("trade-hub-userId") || null;
+    if (id) {
+      getUserData(id);
+    } else {
+      toast.error("Please login again.");
+    }
+  }, []);
+
   return (
     <div>
       <Button
@@ -54,15 +67,15 @@ const handleChange = (e) =>
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
               >
-                <Form.Label className="editProfileCard-Label">Name</Form.Label>
+                <Form.Label className="editProfileCard-Label">
+                  First name
+                </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter your name"
+                  placeholder="Enter your First name"
                   autoFocus
                   className="editProfileCard-input"
                   name="firstName"
-                  onChange={handleChange}
-                  value={data.firstName}
                 />
               </Form.Group>
               <Form.Group
@@ -74,13 +87,10 @@ const handleChange = (e) =>
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter your name"
+                  placeholder="Enter your First name"
                   autoFocus
                   className="editProfileCard-input"
                   name="lastName"
-                  onChange={handleChange}
-                  value={data.lastName}
-
                 />
               </Form.Group>
 
@@ -94,9 +104,6 @@ const handleChange = (e) =>
                   className="editProfileCard-input"
                   placeholder="Enter your email"
                   name="email"
-                  onChange={handleChange}
-                  value={data.email}
-
                 />
               </Form.Group>
 
@@ -112,17 +119,12 @@ const handleChange = (e) =>
                   className="editProfileCard-input"
                   placeholder="Enter your phone number"
                   name="phoneNumber"
-                  onChange={handleChange}
-                  value={data.phoneNumber}
-
                 />
               </Form.Group>
             </Form>
           </Modal.Body>
 
-          <Button onClick={handleClose} className="EditProfileCard-button">
-            Update
-          </Button>
+          <Button className="EditProfileCard-button">Update</Button>
         </Modal>
       </div>
     </div>
