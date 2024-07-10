@@ -7,7 +7,7 @@ const GuidelineRoute = require("./guidelines/guidelineController");
 //user routes
 router.post("/registerUser", user.upload, user.registerUser);
 router.post("/viewUserById/:id", user.viewUserById);
-router.post("/editUserById/:id", user.upload, user.editUserById);
+router.post("/editUserById/:id", user.editUserById);
 router.post("/forgotPasswordUser", user.forgotPassword);
 router.post("/viewUsers", user.viewUsers);
 router.post("/deActivateUserById/:id", user.deActivateUserById);

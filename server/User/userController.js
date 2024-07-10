@@ -104,48 +104,35 @@ const viewUsers = (req, res) => {
 
 // Update User by ID
 const editUserById = async (req, res) => {
-  let flag = 0;
-  const { firstname, lastname, gender, contact, email } = req.body;
-  let existingUser = await User.find({ contact });
-  let UserData = await User.findById({ _id: req.params.id });
-  await existingUser.map((x) => {
-    if (x.contact != UserData.contact) {
-      flag = 1;
-    }
-  });
+  try {
+    const { firstname, lastname, email, phonenumber } = req.body;
 
-  if (flag == 0) {
-    await User.findByIdAndUpdate(
-      { _id: req.params.id },
-      {
-        firstname,
-        lastname,
-        contact,
-        email,
-        gender,
-        profile: req.file,
-      }
-    )
-      .exec()
-      .then((data) => {
-        res.json({
-          status: 200,
-          msg: "Updated successfully",
-        });
-      })
-      .catch((err) => {
-        res.status(500).json({
-          status: 500,
-          msg: "Data not Updated",
-          Error: err,
-        });
-      });
-  } else {
-    return res.json({
-      status: 409,
-      msg: "contact Number Already Registered With Us !!",
-      data: null,
+    const userId = req.params.id;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+    const updateField = {};
+    if (firstname) updateField.firstname = firstname;
+    if (lastname) updateField.lastname = lastname;
+    if (email) updateField.email = email;
+    if (phonenumber) updateField.phonenumber = phonenumber;
+
+    const newUser = await User.findByIdAndUpdate(userId, updateField, {
+      new: true,
     });
+
+    if (user) {
+      return res.status(200).json({
+        msg: "User Updated successfully",
+        data: newUser,
+      });
+    }
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ msg: "Something went wrong", error: err.message });
   }
 };
 
@@ -170,7 +157,7 @@ const viewUserById = (req, res) => {
 };
 // View User by ID
 const activateUserById = (req, res) => {
-  User.findByIdAndUpdate(req.params.id, { isActive: true }, {new: true})
+  User.findByIdAndUpdate(req.params.id, { isActive: true }, { new: true })
     .exec()
     .then((data) => {
       res.json({
