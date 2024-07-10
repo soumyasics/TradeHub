@@ -105,7 +105,7 @@ const viewUsers = (req, res) => {
 // Update User by ID
 const editUserById = async (req, res) => {
   try {
-    const { firstname, lastname, email, phonenumber } = req.body;
+    const { firstname, lastname, email, contact } = req.body;
 
     const userId = req.params.id;
     const user = await User.findById(userId);
@@ -117,7 +117,7 @@ const editUserById = async (req, res) => {
     if (firstname) updateField.firstname = firstname;
     if (lastname) updateField.lastname = lastname;
     if (email) updateField.email = email;
-    if (phonenumber) updateField.phonenumber = phonenumber;
+    if (contact) updateField.contact = contact;
 
     const newUser = await User.findByIdAndUpdate(userId, updateField, {
       new: true,
