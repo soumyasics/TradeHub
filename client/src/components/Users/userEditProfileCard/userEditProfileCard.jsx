@@ -8,10 +8,18 @@ import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
 import toast from "react-hot-toast";
 
-export const UsereditProfileCard = () => {
+export const UsereditProfileCard = ({getNewData}) => {
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const [data, setData] = useState({});
+  const [edit, setEdit] = useState({
+    firstname: "",
+    lastname: "",
+    contact: "",
+    email: "",
+  });
+  const [userId, setUserId] = useState("");
 
   const handleShow = () => {
     setShow(true);
@@ -20,9 +28,16 @@ export const UsereditProfileCard = () => {
     axiosInstance
       .post(`/viewUserById/${id}`)
       .then((res) => {
-        console.log(res);
+        console.log("get user data  ", res);
         if (res.data?.status === 200) {
           setData(res.data.data);
+          const userData = res.data.data;
+          setEdit({
+            email: userData.email,
+            contact: userData.contact,
+            firstname: userData.firstname,
+            lastname: userData.lastname,
+          });
           console.log(res.data.data);
         }
       })
@@ -31,14 +46,81 @@ export const UsereditProfileCard = () => {
       });
   };
 
+  console.log("user edit ", edit);
   useEffect(() => {
     let id = localStorage.getItem("trade-hub-userId") || null;
     if (id) {
       getUserData(id);
+      setUserId(id);
     } else {
       toast.error("Please login again.");
+      navigate("/user/login");
     }
   }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEdit({ ...edit, [name]: value });
+  };
+
+  const checkValidate = () => {
+    const { firstname, lastname, email, contact } = edit;
+    if (!firstname) {
+      toast.error("first name field can't be empty");
+      return false;
+    }
+    if (!lastname) {
+      toast.error("lastname name field can't be empty");
+      return false;
+    }
+    if (!email) {
+      toast.error("email field can't be empty");
+      return false;  
+    }
+      
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address");
+      return false;
+    }
+    if (!contact) {
+      toast.error("conatct field can't be empty");
+      return false;
+    }
+    if (contact.length !== 10) {
+      toast.error("Please enter a valid 10 digit contact number");
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!checkValidate()) {
+      return;
+    }
+    sendDataToServer();
+  };
+
+  const sendDataToServer = async () => {
+    try {
+      console.log("edit wor", edit);
+      const res = await axiosInstance.post(`editUserById/${userId}`, edit);
+      if (res.status === 200) {
+        toast.success("Update successfull");
+      }
+    } catch (error) {
+      const status = error?.response?.status;
+      if (status === 404) {
+        toast.error("Please login again");
+      } else {
+        toast.error("Network error");
+      }
+    } finally {
+      handleClose();
+      getNewData(userId);
+    }
+  };
 
   return (
     <div>
@@ -62,7 +144,7 @@ export const UsereditProfileCard = () => {
           </Modal.Header>
 
           <Modal.Body>
-            <Form>
+            <Form onSubmit={handleSubmit}>
               <Form.Group
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
@@ -75,7 +157,9 @@ export const UsereditProfileCard = () => {
                   placeholder="Enter your First name"
                   autoFocus
                   className="editProfileCard-input"
-                  name="firstName"
+                  name="firstname"
+                  value={edit.firstname}
+                  onChange={handleChange}
                 />
               </Form.Group>
               <Form.Group
@@ -90,7 +174,9 @@ export const UsereditProfileCard = () => {
                   placeholder="Enter your First name"
                   autoFocus
                   className="editProfileCard-input"
-                  name="lastName"
+                  name="lastname"
+                  value={edit.lastname}
+                  onChange={handleChange}
                 />
               </Form.Group>
 
@@ -104,6 +190,8 @@ export const UsereditProfileCard = () => {
                   className="editProfileCard-input"
                   placeholder="Enter your email"
                   name="email"
+                  value={edit.email}
+                  onChange={handleChange}
                 />
               </Form.Group>
 
@@ -118,13 +206,16 @@ export const UsereditProfileCard = () => {
                   type="number"
                   className="editProfileCard-input"
                   placeholder="Enter your phone number"
-                  name="phoneNumber"
+                  name="contact"
+                  value={edit.contact}
+                  onChange={handleChange}
                 />
               </Form.Group>
+              <Button type="submit" className="EditProfileCard-button">
+                Update
+              </Button>
             </Form>
           </Modal.Body>
-
-          <Button className="EditProfileCard-button">Update</Button>
         </Modal>
       </div>
     </div>
