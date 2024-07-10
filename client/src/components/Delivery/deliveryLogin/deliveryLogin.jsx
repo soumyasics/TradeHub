@@ -61,6 +61,10 @@ function DeliveryAgentLogin() {
       .post("/deliveryLogin", data)
       .then((res) => {
         if (res.status === 200) {
+          const userId = res?.data?.data?._id || null;
+          if (userId) {
+            localStorage.setItem("trade-hub-DAId", userId);
+          }
           toast.success("Login sucessfully");
           navigate("/delivery/dashboard");
         }
