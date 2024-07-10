@@ -18,23 +18,23 @@ export const DeliveryEditProfileCard = ({getNewData}) => {
     contact: "",
     email: "",
   });
-  const [userId, setUserId] = useState("");
+  const [delId, setDelId] = useState("");
 
   const handleShow = () => {
     setShow(true);
   };
   const handleClose = () => setShow(false);
-  const getUserData = (id) => {
+  const getDelData = (id) => {
     axiosInstance
-      .post(`/viewUserById/${id}`)
+      .get(`/viewDeliveryById/${id}`)
       .then((res) => {
         if (res.data?.status === 200) {
-          const userData = res.data.data;
+          const delData = res.data.data;
           setEdit({
-            email: userData.email,
-            contact: userData.contact,
-            firstname: userData.firstname,
-            lastname: userData.lastname,
+            email: delData.email,
+            contact: delData.contact,
+            firstname: delData.firstname,
+            lastname: delData.lastname,
           });
         }
       })
@@ -44,13 +44,12 @@ export const DeliveryEditProfileCard = ({getNewData}) => {
   };
 
   useEffect(() => {
-    let id = localStorage.getItem("trade-hub-userId") || null;
+    let id = localStorage.getItem("trade-hub-DAId") || null;
     if (id) {
-      getUserData(id);
-      setUserId(id);
+      getDelData(id);
+      setDelId(id);
     } else {
-      toast.error("Please login again.");
-      navigate("/user/login");
+    
     }
   }, []);
 
@@ -100,7 +99,7 @@ export const DeliveryEditProfileCard = ({getNewData}) => {
 
   const sendDataToServer = async () => {
     try {
-      const res = await axiosInstance.post(`editUserById/${userId}`, edit);
+      const res = await axiosInstance.post(`/updateDeliveryById/${delId}`, edit);
       if (res.status === 200) {
         toast.success("Update successfull");
       }
@@ -113,7 +112,7 @@ export const DeliveryEditProfileCard = ({getNewData}) => {
       }
     } finally {
       handleClose();
-      getNewData(userId);
+      getNewData(delId);
     }
   };
 

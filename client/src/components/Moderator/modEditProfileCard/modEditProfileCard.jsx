@@ -66,15 +66,15 @@ export const ModEditProfileCard = ({ getNewData }) => {
   const checkValidate = () => {
     const { firstname, lastname, email, contact } = edit;
     if (!firstname) {
-      toast.error("first name field can't be empty");
+      toast.error("First name field can't be empty");
       return false;
     }
     if (!lastname) {
-      toast.error("lastname name field can't be empty");
+      toast.error("Lastname name field can't be empty");
       return false;
     }
     if (!email) {
-      toast.error("email field can't be empty");
+      toast.error("Email field can't be empty");
       return false;
     }
 
@@ -84,7 +84,7 @@ export const ModEditProfileCard = ({ getNewData }) => {
       return false;
     }
     if (!contact) {
-      toast.error("conatct field can't be empty");
+      toast.error("Contact field can't be empty");
       return false;
     }
     if (contact.length !== 10) {

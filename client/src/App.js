@@ -46,6 +46,7 @@ import { AdmineViewGuideline } from "./components/Admin/adminViewGuideline/admin
 import { UserConfirmExchange } from "./components/Users/userConfirmExchange/userConfirmExchange";
 import { AdminUpdateGuideline } from "./components/Admin/adminUpdateGuideline/admineUpdateGuideline";
 import { DeliveryProfile } from "./components/Delivery/deliveryProfile/deliveryProfile";
+import { MyDelivery } from "./components/Delivery/myDelivery/myDelivery";
 const App = () => {
   return (
     <div className="App">
@@ -120,6 +121,7 @@ const App = () => {
           <Route path="/itemPage" element={<ModeratorItempage />} />
 
           <Route path="/delivery/dashboard" element={<DeliveryDashboard />} />
+          <Route path="/mydelivery" element={<MyDelivery/>} />
 
           {/* Admin */}
           <Route path="/admin/login" element={<Adminlogin />} />
