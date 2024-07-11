@@ -14,7 +14,6 @@ import { LiaDropbox } from "react-icons/lia";
 import { BsBoxArrowInRight } from "react-icons/bs";
 import { FaRegBell } from "react-icons/fa";
 
-
 export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
   const [dropdownDA, setdropdownDA] = useState(false);
   const [dropdownMod, setdropdownMod] = useState(false);
@@ -36,7 +35,7 @@ export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
 
   return (
     <div>
-      <div className="admin-sidebar-color2">
+      <div style={{ height: "120vh" }} className="admin-sidebar-color2">
         <div className="admin-sidebar-logotext d-flex  align-items-center">
           <img
             className="admin-sidebar-img"
@@ -44,37 +43,43 @@ export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
             style={{ width: "30px", height: "30px" }}
             alt="img"
             onClick={() => {
-              changeSelectedPage("profile")
+              changeSelectedPage("profile");
             }}
           ></img>
           &nbsp; &nbsp;
-          <div className="mt-3"  onClick={() => {
-              changeSelectedPage("profile")
-            }}>Delivery Agent</div>
-          <FaRegBell className="delivery-sidebar-notification"/>
+          <div
+            className="mt-3"
+            onClick={() => {
+              changeSelectedPage("profile");
+            }}
+          >
+            Delivery Agent
+          </div>
+          <FaRegBell className="delivery-sidebar-notification" />
         </div>
         <div className="mt-4">
           <ol className="admin-sidebar-list" style={{ fontSize: "14px" }}>
             <li onClick={() => changeSelectedPage("overview")}>
-              <RxDashboard className="delivery-sidebar-icon"/> Dashboard
+              <RxDashboard className="delivery-sidebar-icon" /> Dashboard
             </li>
             <li onClick={() => changeSelectedPage("MyDeliveries")}>
-              <LiaDropbox className="delivery-sidebar-icon"/>
+              <LiaDropbox className="delivery-sidebar-icon" />
               My deliveries
             </li>
             <li onClick={() => changeSelectedPage("overview")}>
-              <CiDeliveryTruck className="delivery-sidebar-icon"/> Delivery request
+              <CiDeliveryTruck className="delivery-sidebar-icon" /> Delivery
+              request
             </li>
             <li onClick={() => changeSelectedPage("overview")}>
-              <MdOutlinePendingActions className="delivery-sidebar-icon"/>
+              <MdOutlinePendingActions className="delivery-sidebar-icon" />
               Delivery pending
             </li>
             <li onClick={() => changeSelectedPage("overview")}>
-              <TiDropbox className="delivery-sidebar-icon"/>
+              <TiDropbox className="delivery-sidebar-icon" />
               Orders
             </li>
             <li onClick={() => changeSelectedPage("overview")}>
-              <BsBoxArrowInRight className="delivery-sidebar-icon"/>
+              <BsBoxArrowInRight className="delivery-sidebar-icon" />
               delivery orders
             </li>
 
