@@ -47,6 +47,10 @@ import { UserConfirmExchange } from "./components/Users/userConfirmExchange/user
 import { AdminUpdateGuideline } from "./components/Admin/adminUpdateGuideline/admineUpdateGuideline";
 import { DeliveryProfile } from "./components/Delivery/deliveryProfile/deliveryProfile";
 import { MyDelivery } from "./components/Delivery/myDelivery/myDelivery";
+import { ChatSidebar, UserChatSidebar } from "./components/Users/usersChat/UserChatSidebar/userChatSidebar";
+import { NoUserSelected } from "./components/Users/usersChat/noUserSelected/noUserSelected";
+import { UserChatDashboard } from "./components/Users/usersChat/userChatDashboard/userChatDashboard";
+import { UserchatInterFace } from "./components/Users/usersChat/userChatInterface/userChatInterface";
 const App = () => {
   return (
     <div className="App">
@@ -78,6 +82,10 @@ const App = () => {
           <Route path="/user/product-details" element={<ItemDetails />} />
           <Route path="/user/edit/profle" element={<UsereditProfileCard />} />
           <Route path="/user/confirm/exchange" element={<UserConfirmExchange/>} />
+          <Route path="/user/chatSidebar" element={<UserChatSidebar/>} />
+          <Route path="no/user/selected" element={<NoUserSelected/>} />
+          <Route path="/user/chat/dashboard" element={<UserChatDashboard/>} />
+          <Route path="/user/chat/interface" element={<UserchatInterFace/>} />
 
           {/* moderators  */}
 
