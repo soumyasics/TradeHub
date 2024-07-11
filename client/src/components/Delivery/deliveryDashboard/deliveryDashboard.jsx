@@ -3,6 +3,7 @@ import { DeliveryAgentSidebar } from "../deliverySidebar/deliverySidebar";
 import { useState } from "react";
 import { DeliveryViewallUser } from "../viewAllUsers/deliveryViewAllusers";
 import { DeliveryProfile } from "../deliveryProfile/deliveryProfile";
+import { MyDelivery } from "../myDelivery/myDelivery";
 export const DeliveryDashboard = () => {
     const [selectedPage, setSelectedPage] = useState("overview");
   
@@ -18,6 +19,7 @@ export const DeliveryDashboard = () => {
           {selectedPage === "overview" && <DeliveryOverview />}
           {selectedPage === "view-users" && <DeliveryViewallUser />}
           {selectedPage === "profile" && <DeliveryProfile />}
+          {selectedPage === "MyDeliveries" && <MyDelivery />}
         </div>
       </div>
     );
