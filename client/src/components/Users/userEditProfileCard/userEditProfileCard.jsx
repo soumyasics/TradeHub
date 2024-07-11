@@ -8,10 +8,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
 import toast from "react-hot-toast";
 
-export const UsereditProfileCard = ({getNewData}) => {
+export const UsereditProfileCard = ({ getNewData }) => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
- 
+
   const [edit, setEdit] = useState({
     firstname: "",
     lastname: "",
@@ -71,9 +71,9 @@ export const UsereditProfileCard = ({getNewData}) => {
     }
     if (!email) {
       toast.error("Email field can't be empty");
-      return false;  
+      return false;
     }
-      
+
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(email)) {
       toast.error("Please enter a valid email address");
@@ -119,13 +119,15 @@ export const UsereditProfileCard = ({getNewData}) => {
 
   return (
     <div>
-      <Button
-        variant="primary"
-        onClick={handleShow}
-        className="userEditProfile-base-button"
-      >
-        Edit
-      </Button>
+      <div className="d-flex w-100 justify-content-center">
+        <Button
+          variant="primary"
+          onClick={handleShow}
+          className="userEditProfile-base-button"
+        >
+          Edit
+        </Button>
+      </div>
       <div className="editProfile-card-body">
         <Modal show={show} onHide={handleClose}>
           <Modal.Header className="userEditProfileCard-header">

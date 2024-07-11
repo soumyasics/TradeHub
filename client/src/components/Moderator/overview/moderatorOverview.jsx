@@ -6,7 +6,8 @@ import productSvg from "../../../assets/svg/product-icon.svg";
 import { TbTruckDelivery } from "react-icons/tb";
 import "../Moderator.css";
 import axiosInstance from "../../../apis/axiosInstance";
-export const ModeratorOverview = () => {
+import { ModProductRequest } from "../modProductRequest/modProductRequest";
+export const ModeratorOverview = ({ updateProductId }) => {
   const [users, setUsers] = useState([]);
   const [moderator, setModerator] = useState([]);
   const [products, setProducts] = useState([]);
@@ -60,7 +61,7 @@ export const ModeratorOverview = () => {
   };
 
   return (
-    <div>
+    <div style={{overflow: "scroll", height: "100vh"}}>
       <div className="container">
         <div className="admin-dash-div1">
           <section className="pt-5">
@@ -125,6 +126,10 @@ export const ModeratorOverview = () => {
             </div>
           </section>
         </div>
+      </div>
+
+      <div>
+        <ModProductRequest updateProductId={updateProductId} title="Recent product request" />
       </div>
     </div>
   );

@@ -65,7 +65,7 @@ function UserProfile() {
                 />
               </div>
               <Card.Body>
-                <Card.Title className="userEdit-cardTitle"> {data.firstname} </Card.Title>
+                <Card.Title className="userEdit-cardTitle"> {data.firstname} {data.lastname} </Card.Title>
                 <Card.Text className="mt-3">
                   <div className="row container">
                     <div className="col container ms-5">

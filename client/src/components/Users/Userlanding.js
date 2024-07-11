@@ -12,9 +12,15 @@ import userlandingdelivery from '../../assets/images/userlandingdelivery.png'
 import userlandingfamily from '../../assets/images/userlandingfamily.jpg'
 import Footer from '../Footer/Footer'
 function Userlanding() {  
+  const goToAboutSection = () => {
+    const aboutSec = document.getElementById('landing-about-us');
+    if (aboutSec) {
+      aboutSec.scrollIntoView({behavior: 'smooth'})
+    }
+  };
   return (
     <div>
-      <UserNavbar />
+      <UserNavbar goToAboutSection={goToAboutSection}/>
       <div>
         <Carousel className='container' prevIcon={null} nextIcon={null} >
           <Carousel.Item className='mt-5 user-landing-background' >
@@ -174,7 +180,7 @@ function Userlanding() {
       </div>
       <div className='container mt-5'>
         <div className='container text-center'>
-          <h4 className='user-landing-find'>About Us</h4>
+          <h4 className='user-landing-find' id="landing-about-us">About Us</h4>
         </div>
         <div className='container mt-5'>
           <img src={userlandingfamily} className='userlandingfamily container'></img>

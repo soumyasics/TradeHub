@@ -5,10 +5,9 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
 import { useNavigate } from "react-router-dom";
-export const ModProductRequest = ({updateProductId}) => {
-
+export const ModProductRequest = ({ updateProductId, title = "" }) => {
   const [pendingItems, setPendingItems] = useState([]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     getPendingItems();
   }, []);
@@ -36,7 +35,7 @@ export const ModProductRequest = ({updateProductId}) => {
           {pendingItems.length === 0 ? (
             <h2>No pending product request</h2>
           ) : (
-            <h2>Pending product request</h2>
+            <h2>{title}</h2>
           )}
         </div>
         <div
@@ -50,12 +49,15 @@ export const ModProductRequest = ({updateProductId}) => {
               if (filename) {
                 pic = `${BASE_URL}${filename}`;
               }
-              
+
               return (
-                <div className="productrequest-box2 col-md-5 mt-5" onClick={() => {
-                //    navigate(`/moderator/product/${e?._id}`)
-                updateProductId(e?._id)
-                }}>
+                <div
+                  className="productrequest-box2 col-md-5 mt-5"
+                  onClick={() => {
+                    //    navigate(`/moderator/product/${e?._id}`)
+                    updateProductId(e?._id);
+                  }}
+                >
                   <div className="productImg">
                     <img style={{ width: "100%" }} src={pic} alt="product" />
                   </div>
