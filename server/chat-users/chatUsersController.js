@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const { ChatUserModel } = require("./chatUsersSchema");
 
@@ -54,13 +54,15 @@ const getMessages = async (req, res) => {
     }
 
     const messages = await ChatUserModel.find({
-      $or: [{ senderId, receiverId }, { senderId: receiverId, receiverId: senderId }],
+      $or: [
+        { senderId, receiverId },
+        { senderId: receiverId, receiverId: senderId },
+      ],
     });
-    return res.status(200).json({ messages });
+    return res.status(200).json({ msg: "Fetch all messages", data: messages });
   } catch (error) {
     return res.status(500).json({ msg: error.message });
   }
 };
-
 
 module.exports = { sendMessage, getMessages };

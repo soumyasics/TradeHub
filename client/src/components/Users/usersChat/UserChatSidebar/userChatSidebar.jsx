@@ -1,13 +1,12 @@
-import "./userChatSidebar.css";
-import img1 from "../../../../assets/images/girl.png";
 import axiosInstance from "../../../../apis/axiosInstance";
 import { BASE_URL } from "../../../../apis/baseURL";
 import { useEffect, useState } from "react";
-export const UserChatSidebar = ({senderId, selectingUser}) => {
+import "./userChatSidebar.css";
+export const UserChatSidebar = ({ senderId, selectingUser }) => {
   const [data, setData] = useState([{ profile: { filename: "" } }]);
   const getData = async () => {
     try {
-      const res = await axiosInstance.post("/viewUsers");
+      const res = await axiosInstance.post("viewUsers");
       console.log(res);
       if (res.data.status == 200) {
         const users = res.data?.data || [];
@@ -23,26 +22,21 @@ export const UserChatSidebar = ({senderId, selectingUser}) => {
   }, [senderId]);
 
   return (
-    <div>
-      <div className="chatSidebar-body">
-        <input
-          type="text"
-          placeholder="Search"
-          className="chatSidebar-search"
-        />
-        {data.map((e) => {
-          return (
-            <div onClick={() => {
-              selectingUser(e._id)
-            }}>
-              <div className="chatSidebar-view-users d-flex">
-                <img src={`${BASE_URL}${e?.profile?.filename}`} alt="" />
-                <p>{e.firstname}</p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+    <div className="chatSidebar-body">
+      <input type="text" placeholder="Search" className="chatSidebar-search" />
+      {data.map((e) => {
+        return (
+          <div
+            onClick={() => {
+              selectingUser(e._id);
+            }}
+            className="chatSidebar-view-users d-flex"
+          >
+            <img src={`${BASE_URL}${e?.profile?.filename}`} alt="" />
+            <p>{e.firstname}</p>
+          </div>
+        );
+      })}
     </div>
   );
 };
