@@ -58,7 +58,7 @@ export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
             <li onClick={() => changeSelectedPage("overview")}>
               <RxDashboard className="delivery-sidebar-icon"/> Dashboard
             </li>
-            <li onClick={() => changeSelectedPage("overview")}>
+            <li onClick={() => changeSelectedPage("MyDeliveries")}>
               <LiaDropbox className="delivery-sidebar-icon"/>
               My deliveries
             </li>

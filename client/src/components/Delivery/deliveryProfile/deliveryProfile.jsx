@@ -18,7 +18,6 @@ export const DeliveryProfile = () => {
     try {
       const res = await axiosInstance.get(`/viewDeliveryById/${DelId}`);
       const data = res.data?.data || null;
-      console.log("resp", res);
       setDelData(data);
     } catch (error) {
       console.log("get Del data by id =>", error);
