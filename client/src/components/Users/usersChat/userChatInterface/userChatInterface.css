@@ -1,5 +1,8 @@
 .userChatInterface-body {
-  min-height: 100vh;
+  height: 62vh;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow-y: auto;
 }
 .userChatInterface-input {
   position: absolute;
@@ -21,27 +24,36 @@
   margin-bottom: 23px;
 }
 .userChatInterface-chat1 {
-    width: fit-content;
-    height: fit-content;
+  width: fit-content;
+  max-width: 90%;
+  padding: 5px;
+  height: fit-content;
   min-height: 47px;
   border-radius: 9px;
-  background: #d8c1eb;
   text-align: center;
-  background: dodgerblue;
-  padding-top: 5px;
+  background: #b6650e;
+  color: white;
+  margin-top: 20px;
+  /* background: #d8c1eb; */
+  padding: 8px 8px 0px 8px;
   position: relative;
-left: 20px;
-
+  left: 20px;
+  display: block;
 }
 .userChatInterface-chat2 {
-    width: fit-content;
-    height: fit-content;
+  width: fit-content;
+  max-width: 63%;
+  height: fit-content;
   min-height: 47px;
   border-radius: 9px;
   background: #d8c1eb;
   text-align: center;
-  background: dodgerblue;
-position: relative;
-right: 20px;
-padding-top: 5px;
+  padding: 8px 8px 0px 8px;
+  position: absolute;
+  right: 20px;
+  display: block;
+}
+
+/* modifications  */
+#display-user-messages {
 }
