@@ -6,7 +6,7 @@ import logos from "../../././../assets/images/logo.png";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-function UserNavbar() {
+function UserNavbar({ goToAboutSection = null}) {
   const navigate = useNavigate();
   const navigateToLanding = () => {
     navigate("/");
@@ -15,7 +15,7 @@ function UserNavbar() {
     <div>
       <div className="usernav-page-color">
         <Navbar collapseOnSelect expand="lg" className="" id="navfixed">
-          <div className="col-6">
+          <div className={`${goToAboutSection ? `col-6` : `col-7  `}`}>
             <Navbar.Brand className="toggleimg">
               <div onClick={navigateToLanding} style={{ cursor: "pointer" }}>
                 <img
@@ -29,30 +29,35 @@ function UserNavbar() {
               </div>
             </Navbar.Brand>
           </div>
-          <div className="col-2">
+          <div className="col-4">
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
-                
-              <div
+                <div
                   className="me-5 navlink"
                   style={{ cursor: "pointer" }}
                   onClick={navigateToLanding}
                 >
                   <p className="usernav-about">Home</p>
                 </div>
-                <div className="me-5 navlink" style={{ cursor: "pointer" }}>
-                  <p className="usernav-about">About</p>
-                </div>
+                {goToAboutSection && (
+                  <div className="me-5 navlink" style={{ cursor: "pointer" }}>
+                    <p className="usernav-about" onClick={goToAboutSection}>
+                      About
+                    </p>
+                  </div>
+                )}
 
                 <div className="me-5 navlink" style={{ cursor: "pointer" }}>
-                  <p className="usernav-about" onClick={()=>
-                    {
-                      navigate("/contactUs")
-                    }
-                  }>Contact</p>
+                  <p
+                    className="usernav-about"
+                    onClick={() => {
+                      navigate("/contactUs");
+                    }}
+                  >
+                    Contact
+                  </p>
                 </div>
-
 
                 <Dropdown>
                   <Dropdown.Toggle
