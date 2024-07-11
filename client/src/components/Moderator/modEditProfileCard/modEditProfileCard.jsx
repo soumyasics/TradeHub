@@ -48,7 +48,7 @@ export const ModEditProfileCard = ({ getNewData }) => {
   console.log("mod edit ", edit);
   useEffect(() => {
     let id = localStorage.getItem("trade-hub-modId") || null;
-  console.log("123",id);
+    console.log("123", id);
     if (id) {
       getModData(id);
       setModId(id);
@@ -124,13 +124,15 @@ export const ModEditProfileCard = ({ getNewData }) => {
 
   return (
     <div>
-      <Button
-        variant="primary"
-        onClick={handleShow}
-        className="userEditProfile-base-button"
-      >
-        Edit
-      </Button>
+      <div classname="w-100 d-flex justify-content-center">
+        <Button
+          variant="primary"
+          onClick={handleShow}
+          className="userEditProfile-base-button"
+        >
+          Edit
+        </Button>
+      </div>
       <div className="editProfile-card-body">
         <Modal show={show} onHide={handleClose}>
           <Modal.Header className="userEditProfileCard-header">
