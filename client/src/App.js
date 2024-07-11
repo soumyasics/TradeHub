@@ -47,7 +47,7 @@ import { UserConfirmExchange } from "./components/Users/userConfirmExchange/user
 import { AdminUpdateGuideline } from "./components/Admin/adminUpdateGuideline/admineUpdateGuideline";
 import { DeliveryProfile } from "./components/Delivery/deliveryProfile/deliveryProfile";
 import { MyDelivery } from "./components/Delivery/myDelivery/myDelivery";
-import { ChatSidebar, UserChatSidebar } from "./components/Users/usersChat/UserChatSidebar/userChatSidebar";
+import { UserChatSidebar } from "./components/Users/usersChat/UserChatSidebar/userChatSidebar";
 import { NoUserSelected } from "./components/Users/usersChat/noUserSelected/noUserSelected";
 import { UserChatDashboard } from "./components/Users/usersChat/userChatDashboard/userChatDashboard";
 import { UserchatInterFace } from "./components/Users/usersChat/userChatInterface/userChatInterface";
@@ -71,7 +71,6 @@ const App = () => {
             path="/user/user-editprofile/:id"
             element={<UserEditProfile />}
           />
-          {/* <Route path="/user/additemtosell" element={<UserAddItemToSell />} /> */}
           <Route path="/user/viewitemtobuy" element={<UserViewItemToBuy />} />
           <Route path="/user/add-product" element={<AddProducts />} />
           <Route path="/user/view-items" element={<ViewItems />} />
@@ -83,8 +82,8 @@ const App = () => {
           <Route path="/user/edit/profle" element={<UsereditProfileCard />} />
           <Route path="/user/confirm/exchange" element={<UserConfirmExchange/>} />
           <Route path="/user/chatSidebar" element={<UserChatSidebar/>} />
-          <Route path="no/user/selected" element={<NoUserSelected/>} />
-          <Route path="/user/chat/dashboard" element={<UserChatDashboard/>} />
+          <Route path="/no/user/selected" element={<NoUserSelected/>} />
+          <Route path="/users/chat" element={<UserChatDashboard/>} />
           <Route path="/user/chat/interface" element={<UserchatInterFace/>} />
 
           {/* moderators  */}

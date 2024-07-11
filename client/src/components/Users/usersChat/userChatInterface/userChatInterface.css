@@ -1,5 +1,5 @@
 .userChatInterface-body {
-  height: 62vh;
+  height: 86vh;
   display: flex;
   flex-direction: column-reverse;
   overflow-y: auto;
@@ -10,8 +10,6 @@
 }
 
 .userChatInterface-input input {
-  width: 848px;
-  padding: 2px 673px 3px 10px;
   border-radius: 9px;
   background: #fff;
   box-shadow: 0px 0.89px 3.89px 4px rgba(0, 0, 0, 0.25);
@@ -23,37 +21,43 @@
   margin-left: 31px;
   margin-bottom: 23px;
 }
+
+/* modifications  */
+#display-user-messages {
+  height: 100%;
+  overflow-y: scroll;
+  position: relative;
+}
+
 .userChatInterface-chat1 {
   width: fit-content;
   max-width: 90%;
-  padding: 5px;
-  height: fit-content;
   min-height: 47px;
   border-radius: 9px;
-  text-align: center;
-  background: #b6650e;
-  color: white;
+  text-align: left;
+  color: black;
+  background-color: #d8c1eb;
   margin-top: 20px;
-  /* background: #d8c1eb; */
+  margin-bottom: 20px;
   padding: 8px 8px 0px 8px;
   position: relative;
   left: 20px;
   display: block;
+  clear: both;
 }
 .userChatInterface-chat2 {
-  width: fit-content;
-  max-width: 63%;
-  height: fit-content;
+  max-width: 90%;
   min-height: 47px;
   border-radius: 9px;
-  background: #d8c1eb;
-  text-align: center;
+  text-align: right;
+  color: black;
+  background-color: #d8c1eb;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 8px 8px 0px 8px;
-  position: absolute;
-  right: 20px;
+  position: relative;
+  left: -25px;
   display: block;
-}
-
-/* modifications  */
-#display-user-messages {
+  float: right;
+  clear: both;
 }

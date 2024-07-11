@@ -1,18 +1,14 @@
 import React, { useState } from "react";
-import "./User.css";
 import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import logos from "../../assets/images/logo.png";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import { IoMdContact } from "react-icons/io";
-import { ImLoop } from "react-icons/im";
 import { BsChatText } from "react-icons/bs";
-import { IoIosSearch } from "react-icons/io";
 import { Dropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import "./User.css";
 
 function UserMainNav() {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -76,11 +72,11 @@ function UserMainNav() {
           <p className="usermain-navbar-home" onClick={userViewItems}>
             My Items
           </p>
-          {/* <Nav.Link href="" className="me-5">
-            <p className="usermain-navbar-chat mt-3 pt-1">
-              <BsChatText /> Chat
+          <Link to="/users/chat" className="me-5">
+            <p className="usermain-navbar-chat">
+              <BsChatText /> &nbsp; Chat
             </p>
-          </Nav.Link> */}
+          </Link>
 
           <Link to="/user/add-product" className="">
             <p className="usermain-navbar-chat">Sell</p>
