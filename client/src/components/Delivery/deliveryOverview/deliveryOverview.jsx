@@ -5,11 +5,9 @@ import { GiReceiveMoney } from "react-icons/gi";
 import productSvg from "../../../assets/svg/product-icon.svg";
 import { TbTruckDelivery } from "react-icons/tb";
 export const DeliveryOverview = () => {
-    return (
-        <div>
-
-
-<div className="container">
+  return (
+    <div style={{height: "100vh", overflowY: "scroll"}}>
+      <div className="container">
         <div className="admin-dash-div1">
           <section className="pt-5">
             <div className="row container">
@@ -43,8 +41,7 @@ export const DeliveryOverview = () => {
                           Total number<br></br>of products
                         </p>
                       </span>
-                      <span className="admin-dash-length">
-                      </span>
+                      <span className="admin-dash-length"></span>
                     </div>
                   </div>
                 </div>
@@ -62,8 +59,7 @@ export const DeliveryOverview = () => {
                           Total number<br></br>of deliveries
                         </p>
                       </span>
-                      <span className="admin-dash-length">
-                      </span>
+                      <span className="admin-dash-length"></span>
                     </div>
                   </div>
                 </div>
@@ -72,6 +68,6 @@ export const DeliveryOverview = () => {
           </section>
         </div>
       </div>
-            </div>
-    )
-}
+    </div>
+  );
+};

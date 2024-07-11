@@ -19,16 +19,17 @@ export const ModeratorDashboard = () => {
     setSelectpage("product-details");
   };
 
-
   return (
     <div className="d-flex">
       <div>
         <ModeratorSidebar changeSelectedPage={changeSelectedPage} />
       </div>
       <div className="w-100">
-        {selectpage === "overview" && <ModeratorOverview />}
+        {selectpage === "overview" && (
+          <ModeratorOverview updateProductId={updateProductId} />
+        )}
         {selectpage === "pending-items" && (
-          <ModProductRequest updateProductId={updateProductId} />
+          <ModProductRequest updateProductId={updateProductId} title="Pending product request"/>
         )}
         {selectpage === "rejected-items" && (
           <ModRejectedProduct updateProductId={updateProductId} />

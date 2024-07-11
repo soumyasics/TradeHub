@@ -138,7 +138,8 @@ export const ViewItems = () => {
                         </p>
                       </div>
                       <div
-                        onClick={() => {
+                        onClick={(event) => {
+                            event.stopPropagation()
                           setDeletingId(e._id);
                           handleShow();
                         }}

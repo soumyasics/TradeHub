@@ -38,8 +38,6 @@ export const ModProfile = () => {
     fetchModData(modId);
   }, []);
 
-
-  
   return (
     <div>
       <ModNavbar />
@@ -62,7 +60,9 @@ export const ModProfile = () => {
                 />
               </div>
               <Card.Body>
-                <Card.Title className="moderator-profile-firstName">{modData?.firstname|| "Loading.."}</Card.Title>
+                <Card.Title className="d-flex justify-content-center">
+                  {`${modData?.firstname} ${modData?.lastname}` || "Loading.."}
+                </Card.Title>
                 <Card.Text className="mt-3">
                   <div className="row container">
                     <div className="col container ms-5">
@@ -78,11 +78,17 @@ export const ModProfile = () => {
                       <label className="mt-5 ms-5">:</label> <br></br>
                     </div>
                     <div className="col">
-                      <label className="mt-5">{modData?.email|| "Loading.."} </label>
+                      <label className="mt-5">
+                        {modData?.email || "Loading.."}{" "}
+                      </label>
                       <br></br>
-                      <label className="mt-5">{modData?.contact || "Loading.."}</label>
+                      <label className="mt-5">
+                        {modData?.contact || "Loading.."}
+                      </label>
                       <br></br>
-                      <label className="mt-5">{modData?.gender || "Loading.."}</label>
+                      <label className="mt-5">
+                        {modData?.gender || "Loading.."}
+                      </label>
                     </div>
                   </div>
                   <div className="mt-5 text-center">
@@ -95,7 +101,7 @@ export const ModProfile = () => {
                       </Link>
                     </button> */}
 
-                    <ModEditProfileCard getNewData={fetchModData}/>
+                    <ModEditProfileCard getNewData={fetchModData} />
                   </div>
                 </Card.Text>
               </Card.Body>
