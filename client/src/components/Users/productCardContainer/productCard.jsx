@@ -2,6 +2,9 @@ import "./productCard.css";
 import { FaChevronRight } from "react-icons/fa";
 import img1 from "../../../assets/images/productCardImage.png";
 import img2 from "../../../assets/images/itemDetailsPoints.png";
+import { CiHeart } from "react-icons/ci";
+import { FaHeart } from "react-icons/fa";
+import { useState } from "react";
 export const ProductCard = () => {
   let cardDetails = [
     {
@@ -35,6 +38,10 @@ export const ProductCard = () => {
       points: 100,
     },
   ];
+  const [wishBtn, setWishBtn] = useState(true);
+  const btnWish = () => {
+    setWishBtn(!wishBtn);
+  };
   return (
     <div className="productCard-body">
       <h3 className="product-card-heading">New Arrivals</h3>
@@ -49,7 +56,17 @@ export const ProductCard = () => {
                 >
                   <img src={e.image} className="card-img-top" alt="..." />
                   <div className="d-flex">
-                 
+                  {wishBtn ? (
+                      <CiHeart
+                        className="user-wish-list-heart"
+                        onClick={btnWish}
+                      />
+                    ) : (
+                      <FaHeart
+                        className="user-wishlist-fill-heart"
+                        onClick={btnWish}
+                      />
+                    )}
                   <div className="card-body ">
                     <p className="card-text">{e.name} </p>
                     <h5 className="card-title">Description</h5>

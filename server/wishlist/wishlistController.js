@@ -31,7 +31,7 @@ const addToWishlist = async (req, res) => {
   }
 };
 
-const getAllWishlistsByUserId = (req, res) => {
+const getAllWishlistsByUserId  =async (req, res) => {
   try {
     const userId = req.params.id;
 
@@ -39,7 +39,7 @@ const getAllWishlistsByUserId = (req, res) => {
       return res.status(400).json({ msg: "Invalid Id" });
     }
 
-    const wishlists = WishlistModel.find({ userId });
+    const wishlists = await WishlistModel.find({ userId }).populate("userId").populate("itemId").exec();
     return res
       .status(200)
       .json({ msg: "Data obtained successfully", data: wishlists });
