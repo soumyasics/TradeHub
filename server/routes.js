@@ -5,6 +5,7 @@ const Moderator = require("./Moderator/modController");
 const DeliveryRoute = require("./delivery/deliveryController");
 const GuidelineRoute = require("./guidelines/guidelineController");
 const UserChatRoute = require("./chat-users/chatUsersController");
+const wishlistController = require("./wishlist/wishlistController");
 //user routes
 router.post("/registerUser", user.upload, user.registerUser);
 router.post("/viewUserById/:id", user.viewUserById);
@@ -92,8 +93,15 @@ router.post("/createGuideline", GuidelineRoute.createGuideline);
 router.get("/viewGuideline", GuidelineRoute.viewGuideline);
 router.patch("/editGuidelines", GuidelineRoute.editGuidelines);
 
-
 // chat with users
-router.post('/sendMessageToUser', UserChatRoute.sendMessage);
-router.post('/getUserMessages', UserChatRoute.getMessages);
+router.post("/sendMessageToUser", UserChatRoute.sendMessage);
+router.post("/getUserMessages", UserChatRoute.getMessages);
+
+// wishlist
+
+router.post("/addToWishlist", wishlistController.addToWishlist);
+router.get(
+  "/getAllWishlistsByUserId/:id",
+  wishlistController.getAllWishlistsByUserId
+);
 module.exports = router;
