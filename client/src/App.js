@@ -52,6 +52,7 @@ import { NoUserSelected } from "./components/Users/usersChat/noUserSelected/noUs
 import { UserChatDashboard } from "./components/Users/usersChat/userChatDashboard/userChatDashboard";
 import { UserchatInterFace } from "./components/Users/usersChat/userChatInterface/userChatInterface";
 import { UserWishlist } from "./components/Users/userWishlist/userWishlist";
+import { ViewAllItems } from "./components/Users/viewAllItems/viewAllItems";
 import { UserChatNavbar } from "./components/Users/usersChat/userChatNavbar/userChatNavbar";
 import { UserChatFooter } from "./components/Users/usersChat/userNavbarFooter/userChatFooter";
 const App = () => {
@@ -78,6 +79,7 @@ const App = () => {
           <Route path="/user/add-product" element={<AddProducts />} />
           <Route path="/user/view-items" element={<ViewItems />} />
           <Route path="/user/view-items/:id" element={<UserProductDetails />} />
+          <Route path="/user/view-all-items" element={<ViewAllItems />} />
 
           <Route path="/user/product-details" element={<ItemDetails />} />
           <Route path="/user/product-card" element={<ProductCard />} />
