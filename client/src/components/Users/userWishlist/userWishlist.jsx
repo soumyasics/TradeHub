@@ -4,8 +4,12 @@ import img1 from "../../../assets/images/productCardImage.png";
 import img2 from "../../../assets/images/itemDetailsPoints.png";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axiosInstance from "../../../apis/axiosInstance";
 export const UserWishlist = () => {
+  const [wishlist, setWishlist] = useState("");
+  const [usersId, setUsersId] = useState("");
+  const [wishBtn, setWishBtn] = useState(false);
   let cardDetails = [
     {
       image: img1,
@@ -38,15 +42,38 @@ export const UserWishlist = () => {
       points: 100,
     },
   ];
-  const [wishBtn, setWishBtn] = useState(false);
+  const userWishlist = async () => {
+    try {
+      const response = await axiosInstance.get(
+        `getAllWishlistsByUserId/${usersId}`
+      );
+
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    const userId = localStorage.getItem("trade-hub-userId") || null;
+    
+    if (userId) {
+      setUsersId(userId);
+    }
+  }, []);
+  useEffect(() => {
+    if (usersId) {
+      userWishlist();
+    }   
+  }, [usersId]);
+
   const btnWish = () => {
     setWishBtn(!wishBtn);
   };
   return (
     <div className="productCard-body">
       <h3 className="user-wishlist-heading">Wishlist</h3>
-      <div class="container text-center">
-        <div class="row row-cols-4">
+      <div className="container text-center">
+        <div className="row row-cols-4">
           {cardDetails.map((e) => {
             return (
               <div>
