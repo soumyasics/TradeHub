@@ -42,6 +42,11 @@ const sSchema = mongoose.Schema({
     type: Object,
     required: true
   },
+  wishlistedUsersId: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: "users",
+    default: [],
+  },
   listing: {
     type: String,
     default: "",
