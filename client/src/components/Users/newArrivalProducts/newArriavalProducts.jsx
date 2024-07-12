@@ -7,102 +7,25 @@ import { FaHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import UserAddItemToSell from "../UserAddItemToSell";
 export const NewArrivalProducts = () => {
-  let cardDetails = [
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-  ];
   const [approvedItems, setApprovedItems] = useState([]);
-  const [wishBtn, setWishBtn] = useState(false);
+  const [activeUserId, setActiveUserId] = useState(null);
+  const navigate = useNavigate();
   useEffect(() => {
-    getAllApprovedItems();
+    const userId = localStorage.getItem("trade-hub-userId") || null;
+    if (userId) {
+      setActiveUserId(userId);
+      getAllApprovedItems();
+    } else {
+      toast.error("Please login again");
+      navigate("/user/login");
+    }
   }, []);
 
-  console.log("approvedItems", approvedItems);
-
-  const getAllApprovedItems = async (req, res) => {
+  const getAllApprovedItems = async () => {
     try {
       const res = await axiosInstance.get("viewAllApproveItems");
       if (res.status === 200) {
@@ -113,8 +36,51 @@ export const NewArrivalProducts = () => {
     }
   };
 
-  const btnWish = () => {
-    setWishBtn(!wishBtn);
+  const addItemToWishlist = async (itemId) => {
+    if (!activeUserId || !itemId) {
+      console.log("Error in addItemToWishlist", activeUserId, itemId);
+      return;
+    }
+    try {
+      const res = await axiosInstance.post(`addToWishlist`, {
+        itemId,
+        userId: activeUserId,
+      });
+      if (res.status === 201) {
+        toast.success(res.data.msg);
+      }
+    } catch (error) {
+      console.log("Error in addToWishList", error);
+      const status = error?.response.status;
+      if (status === 400 || status === 404 || status === 500) {
+        toast.error(error.response?.data?.msg || "Network issue");
+      }else {
+        toast.error("Network issue.")
+      }
+    }finally {
+      getAllApprovedItems()
+    }
+  };
+
+  const removeItemFromWishlist = async (itemId) => {
+    console.log("removeItemFromWishlist", itemId);
+    if (!activeUserId || !itemId) {
+      console.log("Error in addItemToWishlist", activeUserId, itemId);
+      return;
+    }
+    try {
+      const res = await axiosInstance.post(`removeFromWishlist`, {
+        itemId,
+        userId: activeUserId,
+      });
+      if (res.status === 200) {
+        toast.success(res.data.msg);
+      }
+    } catch (error) {
+      console.log("Error in remove item from wishlist", error);
+    }finally {
+      getAllApprovedItems()
+    }
   };
   return (
     <div className="productCard-body">
@@ -128,9 +94,16 @@ export const NewArrivalProducts = () => {
             if (itemFilename) {
               itemPicUrl = `${BASE_URL}${itemFilename}`;
             }
+            let isAlreadyWishlisted = false;
+
+            const wishlistArr = e?.wishlistedUsersId || [];
+            if (wishlistArr.includes(activeUserId)) {
+              isAlreadyWishlisted = true;
+            }
+
             console.log("e item", e);
             return (
-              <div className="card productCard-box2" style={{ width: "18rem" }}>
+              <div className="card productCard-box2" key={e._id} style={{ width: "18rem" }}>
                 <img
                   src={itemPicUrl}
                   className="card-img-top w-100 h-50"
@@ -138,16 +111,22 @@ export const NewArrivalProducts = () => {
                 />
 
                 <div className="d-flex" style={{ height: "120px" }}>
-                  {wishBtn ? (
-                    <CiHeart
-                      className="user-wish-list-heart"
-                      onClick={btnWish}
-                    />
+                  {!isAlreadyWishlisted ? (
+                    <div className="wishlist-heart-icon"
+                      onClick={() => {
+                        addItemToWishlist(e._id);
+                      }}
+                    >
+                      <CiHeart className="user-wish-list-heart" />
+                    </div>
                   ) : (
-                    <FaHeart
-                      className="user-wishlist-fill-heart"
-                      onClick={btnWish}
-                    />
+                    <div className="wishlist-heart-icon"
+                      onClick={() => {
+                        removeItemFromWishlist(e._id);
+                      }}
+                    >
+                      <FaHeart className="user-wishlist-fill-heart" />
+                    </div>
                   )}
 
                   <div className="card-body ">
@@ -157,7 +136,7 @@ export const NewArrivalProducts = () => {
                     </p>
                   </div>
                   <div className="productCard-points-box d-flex ">
-                    <img src={img2} alt="" />
+                    <img src={img2} alt="coin" />
                     <p>{e?.point}</p>
                   </div>
                 </div>
