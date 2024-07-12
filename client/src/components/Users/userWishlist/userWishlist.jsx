@@ -7,45 +7,19 @@ import { FaHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
+import toast from "react-hot-toast";
+import MainNav from "../../homeComponents/Navbar/MainNav";
+import UserMainNav from "../UserMainNav";
+import Footer from "../../Footer/Footer";
 export const UserWishlist = () => {
-  const [wishlist, setWishlist] = useState([{ itemPhoto: { filename: "" } }]);
-  const [usersId, setUsersId] = useState("");
-  const [wishBtn, setWishBtn] = useState(false);
-  let cardDetails = [
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-  ];
+  const [wishlist, setWishlist] = useState([]);
+  const [activeUserId, setActiveUserId] = useState(null);
+
   const userWishlist = async () => {
     try {
-      const res = await axiosInstance.get(`getAllWishlistsByUserId/${usersId}`);
+      const res = await axiosInstance.get(
+        `getAllWishlistsByUserId/${activeUserId}`
+      );
       if (res.status == 200) {
         setWishlist(res.data.data);
       }
@@ -58,21 +32,39 @@ export const UserWishlist = () => {
     const userId = localStorage.getItem("trade-hub-userId") || null;
 
     if (userId) {
-      setUsersId(userId);
+      setActiveUserId(userId);
     }
   }, []);
   useEffect(() => {
-    if (usersId) {
+    if (activeUserId) {
       userWishlist();
     }
-  }, [usersId]);
+  }, [activeUserId]);
 
-  const btnWish = () => {
-    setWishBtn(!wishBtn);
+  const removeItemFromWishlist = async (itemId) => {
+    console.log("removeItemFromWishlist", itemId);
+    if (!activeUserId || !itemId) {
+      console.log("Error in addItemToWishlist", activeUserId, itemId);
+      return;
+    }
+    try {
+      const res = await axiosInstance.post(`removeFromWishlist`, {
+        itemId,
+        userId: activeUserId,
+      });
+      if (res.status === 200) {
+        toast.success(res.data.msg);
+      }
+    } catch (error) {
+      console.log("Error in remove item from wishlist", error);
+    } finally {
+      userWishlist();
+    }
   };
 
   return (
     <div className="productCard-body">
+    <UserMainNav/>
       <h3 className="user-wishlist-heading">Wishlist</h3>
       <div className="container text-center">
         <div className="row row-cols-4">
@@ -97,18 +89,15 @@ export const UserWishlist = () => {
                     alt="..."
                   />
 
-                  <div className="d-flex">
-                    {wishBtn ? (
-                      <CiHeart
-                        className="user-wish-list-heart"
-                        onClick={btnWish}
-                      />
-                    ) : (
-                      <FaHeart
-                        className="user-wishlist-fill-heart"
-                        onClick={btnWish}
-                      />
-                    )}
+                  <div className="d-flex" style={{ height: "120px" }}>
+                    <div
+                      className="wishlist-heart-icon"
+                      onClick={() => {
+                        removeItemFromWishlist(item._id);
+                      }}
+                    >
+                      <FaHeart className="user-wishlist-fill-heart" />
+                    </div>
 
                     <div className="card-body ">
                       <p className="card-text">{item?.name} </p>
@@ -129,7 +118,9 @@ export const UserWishlist = () => {
             );
           })}
         </div>
+       
       </div>
+      <Footer/>
     </div>
   );
 };
