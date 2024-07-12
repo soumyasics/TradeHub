@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { WishlistModel } = require("./wishlistSchema");
+const ItemModel = require("../Item/itemSchema");
 
 const addToWishlist = async (req, res) => {
   try {
@@ -18,10 +19,26 @@ const addToWishlist = async (req, res) => {
     if (wishlistExists) {
       return res.status(400).json({ msg: "Wishlist already exists" });
     }
+
+    const productItem = await ItemModel.findById(itemId);
+    if (!productItem) {
+      return res.status(400).json({ msg: "Item not found" });
+    }
+    // push the userid to product item wishlistedUsersId
+    if (!productItem.wishlistedUsersId) {
+      productItem.wishlistedUsersId = [];
+    }
+
+    if (productItem.wishlistedUsersId.includes(userId)) {
+      return res.status(400).json({ msg: "Wishlist already exists" });
+    }
+
+    productItem?.wishlistedUsersId?.push(userId);
     const wishlist = new WishlistModel({
       itemId,
       userId,
     });
+    await productItem.save();
     await wishlist.save();
     return res
       .status(201)
@@ -47,4 +64,4 @@ const getAllWishlistsByUserId  =async (req, res) => {
     return res.status(500).json({ msg: error.message });
   }
 };
-module.exports = { addToWishlist, getAllWishlistsByUserId };
+module.exports = { addToWishlist, getAllWishlistsByUserId, removeFromWishlist };

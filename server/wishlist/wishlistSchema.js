@@ -12,6 +12,7 @@ const wishlistSchema = Schema(
       ref: "users",
       required: true,
     },
+    
     active: {
       type: Boolean,
       default: true,
