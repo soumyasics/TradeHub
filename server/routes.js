@@ -104,4 +104,5 @@ router.get(
   "/getAllWishlistsByUserId/:id",
   wishlistController.getAllWishlistsByUserId
 );
+router.post('/removeFromWishlist', wishlistController.removeFromWishlist);
 module.exports = router;
