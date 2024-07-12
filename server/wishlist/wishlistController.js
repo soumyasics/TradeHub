@@ -48,47 +48,7 @@ const addToWishlist = async (req, res) => {
   }
 };
 
-const removeFromWishlist = async (req, res) => {
-  try {
-    const { itemId, userId, wishlistId } = req.body;
-    if (!itemId || !userId || !wishlistId) {
-      return res.status(400).json({ msg: "All fields are required" });
-    }
-    if (
-      !mongoose.Types.ObjectId.isValid(itemId) ||
-      !mongoose.Types.ObjectId.isValid(userId) ||
-      !mongoose.Types.ObjectId.isValid(wishlistId)
-    ) {
-      return res.status(400).json({ msg: "Invalid Id" });
-    }
-    const wishlist = await WishlistModel.findById(wishlistId);
-    if (!wishlist) {
-      return res.status(400).json({ msg: "Wishlist not found" });
-    }
-    const productItem = await ItemModel.findById(itemId);
-    if (!productItem) {
-      return res.status(400).json({ msg: "Item not found" });
-    }
-    if (!productItem.wishlistedUsersId) {
-      productItem.wishlistedUsersId = [];
-    }
-
-    productItem.wishlistedUsersId = productItem.wishlistedUsersId.filter(
-      (id) => id !== userId
-    );
-
-    await WishlistModel.findByIdAndDelete(wishlistId);
-    await productItem.save();
-
-    return res
-      .status(200)
-      .json({ msg: "Wishlist removed successfully", data: wishlist });
-  } catch (error) {
-    return res.status(500).json({ msg: error.message });
-  }
-};
-
-const getAllWishlistsByUserId = (req, res) => {
+const getAllWishlistsByUserId  =async (req, res) => {
   try {
     const userId = req.params.id;
 
@@ -96,7 +56,7 @@ const getAllWishlistsByUserId = (req, res) => {
       return res.status(400).json({ msg: "Invalid Id" });
     }
 
-    const wishlists = WishlistModel.find({ userId });
+    const wishlists = await WishlistModel.find({ userId }).populate("userId").populate("itemId").exec();
     return res
       .status(200)
       .json({ msg: "Data obtained successfully", data: wishlists });
