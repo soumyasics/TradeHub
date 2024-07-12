@@ -1,6 +1,4 @@
-import "./newArrivalproducts.css";
 import { FaChevronRight } from "react-icons/fa";
-import img1 from "../../../assets/images/productCardImage.png";
 import img2 from "../../../assets/images/itemDetailsPoints.png";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
@@ -9,7 +7,7 @@ import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import UserAddItemToSell from "../UserAddItemToSell";
+import "./newArrivalproducts.css";
 export const NewArrivalProducts = () => {
   const [approvedItems, setApprovedItems] = useState([]);
   const [activeUserId, setActiveUserId] = useState(null);
@@ -54,11 +52,11 @@ export const NewArrivalProducts = () => {
       const status = error?.response.status;
       if (status === 400 || status === 404 || status === 500) {
         toast.error(error.response?.data?.msg || "Network issue");
-      }else {
-        toast.error("Network issue.")
+      } else {
+        toast.error("Network issue.");
       }
-    }finally {
-      getAllApprovedItems()
+    } finally {
+      getAllApprovedItems();
     }
   };
 
@@ -78,8 +76,8 @@ export const NewArrivalProducts = () => {
       }
     } catch (error) {
       console.log("Error in remove item from wishlist", error);
-    }finally {
-      getAllApprovedItems()
+    } finally {
+      getAllApprovedItems();
     }
   };
   return (
@@ -88,6 +86,11 @@ export const NewArrivalProducts = () => {
       <div class="container text-center">
         <div class="row row-cols-4 gap-5 d-flex my-5">
           {approvedItems.map((e) => {
+            console.log("e user id", e.userId, activeUserId);
+            if (e?.userId._id === activeUserId) {
+              return null;
+            }
+
             const itemFilename = e?.itemPhoto?.filename || null;
             let itemPicUrl =
               "https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg";
@@ -101,9 +104,12 @@ export const NewArrivalProducts = () => {
               isAlreadyWishlisted = true;
             }
 
-            console.log("e item", e);
             return (
-              <div className="card productCard-box2" key={e._id} style={{ width: "18rem" }}>
+              <div
+                className="card productCard-box2"
+                key={e._id}
+                style={{ width: "18rem" }}
+              >
                 <img
                   src={itemPicUrl}
                   className="card-img-top w-100 h-50"
@@ -112,7 +118,8 @@ export const NewArrivalProducts = () => {
 
                 <div className="d-flex" style={{ height: "120px" }}>
                   {!isAlreadyWishlisted ? (
-                    <div className="wishlist-heart-icon"
+                    <div
+                      className="wishlist-heart-icon"
                       onClick={() => {
                         addItemToWishlist(e._id);
                       }}
@@ -120,7 +127,8 @@ export const NewArrivalProducts = () => {
                       <CiHeart className="user-wish-list-heart" />
                     </div>
                   ) : (
-                    <div className="wishlist-heart-icon"
+                    <div
+                      className="wishlist-heart-icon"
                       onClick={() => {
                         removeItemFromWishlist(e._id);
                       }}
@@ -148,6 +156,11 @@ export const NewArrivalProducts = () => {
               </div>
             );
           })}
+        </div>
+        <div className="user-view-more-btn">
+          <button onClick={() => {
+            navigate('/user/view-all-items')
+          }}>View More </button>
         </div>
       </div>
     </div>
