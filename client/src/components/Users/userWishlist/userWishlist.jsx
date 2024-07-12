@@ -4,6 +4,7 @@ import img1 from "../../../assets/images/productCardImage.png";
 import img2 from "../../../assets/images/itemDetailsPoints.png";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
+import { useState } from "react";
 export const UserWishlist = () => {
   let cardDetails = [
     {
@@ -37,6 +38,10 @@ export const UserWishlist = () => {
       points: 100,
     },
   ];
+  const [wishBtn, setWishBtn] = useState(false);
+  const btnWish = () => {
+    setWishBtn(!wishBtn);
+  };
   return (
     <div className="productCard-body">
       <h3 className="user-wishlist-heading">Wishlist</h3>
@@ -49,29 +54,34 @@ export const UserWishlist = () => {
                   className="card productCard-box"
                   style={{ width: "18rem" }}
                 >
-                     <CiHeart className="user-wish-list-heart" />
-                     <FaHeart className="user-wishlist-fill-heart" />
+                  <img src={e.image} className="card-img-top" alt="..." />
 
-<img src={e.image} className="card-img-top" alt="..." />
-
-  
-                 
                   <div className="d-flex">
-                 
-                  <div className="card-body ">
-                    <p className="card-text">{e.name} </p>
-                    <h5 className="card-title">Description</h5>
-                    <p className="card-text">{e.description}</p>
+                    {wishBtn ? (
+                      <CiHeart
+                        className="user-wish-list-heart"
+                        onClick={btnWish}
+                      />
+                    ) : (
+                      <FaHeart
+                        className="user-wishlist-fill-heart"
+                        onClick={btnWish}
+                      />
+                    )}
+
+                    <div className="card-body ">
+                      <p className="card-text">{e.name} </p>
+                      <h5 className="card-title">Description</h5>
+                      <p className="card-text">{e.description}</p>
                     </div>
                     <div className="productCard-points-box d-flex ">
-                    <img src={img2} alt="" />
-                    <p>{e.points}</p>
-                  </div>
+                      <img src={img2} alt="" />
+                      <p>{e.points}</p>
                     </div>
-                    <button className="productCard-button">
-                      Exchange Now <FaChevronRight />
-                    </button>
-                  
+                  </div>
+                  <button className="productCard-button">
+                    Exchange Now <FaChevronRight />
+                  </button>
                 </div>
               </div>
             );
