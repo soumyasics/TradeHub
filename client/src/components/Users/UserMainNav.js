@@ -103,8 +103,8 @@ function UserMainNav() {
                 View Profile
               </Link>
 
-              <Link className="dropdown-item" to="" id="">
-                My Orders
+              <Link className="dropdown-item" to="/user/wishlist" id="">
+                My wishlist
               </Link>
               <h6
                 className="dropdown-item text-danger fw-bold"

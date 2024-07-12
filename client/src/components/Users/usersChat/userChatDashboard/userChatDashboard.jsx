@@ -4,6 +4,8 @@ import { NoUserSelected } from "../noUserSelected/noUserSelected";
 import { UserchatInterFace } from "../userChatInterface/userChatInterface";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { UserChatNavbar } from "../userChatNavbar/userChatNavbar";
+import { UserChatFooter } from "../userNavbarFooter/userChatFooter";
 export const UserChatDashboard = () => {
   const [selectedUser, setSelectedUser] = useState("");
   const [senderId, setSenderId] = useState("");
@@ -21,6 +23,9 @@ export const UserChatDashboard = () => {
     }
   }, []);
   return (
+    
+    <div>
+      <UserChatNavbar/>
     <div className="row">
       <div className="col-4">
         <UserChatSidebar senderId={senderId} selectingUser={selectingUser} />
@@ -34,6 +39,8 @@ export const UserChatDashboard = () => {
           <NoUserSelected />
         </div>
       )}
+      <UserChatFooter/>
+    </div>
     </div>
   );
 };

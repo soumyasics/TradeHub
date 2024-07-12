@@ -117,7 +117,7 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
                     }}
                   >
                     {" "}
-                    View active moderators{" "}
+                    View active {" "}
                   </li>
                 </div>
               )}
