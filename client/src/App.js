@@ -53,6 +53,8 @@ import { UserChatDashboard } from "./components/Users/usersChat/userChatDashboar
 import { UserchatInterFace } from "./components/Users/usersChat/userChatInterface/userChatInterface";
 import { UserWishlist } from "./components/Users/userWishlist/userWishlist";
 import { ViewAllItems } from "./components/Users/viewAllItems/viewAllItems";
+import { UserChatNavbar } from "./components/Users/usersChat/userChatNavbar/userChatNavbar";
+import { UserChatFooter } from "./components/Users/usersChat/userNavbarFooter/userChatFooter";
 const App = () => {
   return (
     <div className="App">
@@ -88,7 +90,9 @@ const App = () => {
           <Route path="/no/user/selected" element={<NoUserSelected/>} />
           <Route path="/users/chat" element={<UserChatDashboard/>} />
           <Route path="/user/chat/interface" element={<UserchatInterFace/>} />
-          <Route path="/user/wishlist" element={<UserWishlist/>} /> 
+          <Route path="/user/wishlist" element={<UserWishlist/>} />
+          <Route path="/user/chat/navbar" element={<UserChatNavbar/>} />
+          <Route path="user/chat/footer" element={<UserChatFooter/>} />
 
           {/* moderators  */}
 

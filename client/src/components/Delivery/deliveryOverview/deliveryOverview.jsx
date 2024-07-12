@@ -4,7 +4,27 @@ import { MdAddModerator } from "react-icons/md";
 import { GiReceiveMoney } from "react-icons/gi";
 import productSvg from "../../../assets/svg/product-icon.svg";
 import { TbTruckDelivery } from "react-icons/tb";
+import axiosInstance from "../../../apis/axiosInstance";
 export const DeliveryOverview = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    getAllUsers();
+  }, []);
+
+  const getAllUsers = async () => {
+    try {
+      const res = await axiosInstance.post("viewUsers");
+      if (res.data.status === 200) {
+        const data = res.data?.data || [];
+        setUsers(data);
+      } else {
+        console.log("respo", res);
+      }
+    } catch (error) {
+      console.log("all users", error);
+    }
+  };
   return (
     <div style={{height: "100vh", overflowY: "scroll"}}>
       <div className="container">
@@ -24,7 +44,7 @@ export const DeliveryOverview = () => {
                           Total number<br></br>of users
                         </p>
                       </span>
-                      <span className="admin-dash-length"></span>
+                      <span className="admin-dash-length">{users.length}</span>
                     </div>
                   </div>
                 </div>

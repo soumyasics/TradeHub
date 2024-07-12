@@ -6,104 +6,108 @@ import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
+import { BASE_URL } from "../../../apis/baseURL";
+import toast from "react-hot-toast";
+import MainNav from "../../homeComponents/Navbar/MainNav";
+import UserMainNav from "../UserMainNav";
+import Footer from "../../Footer/Footer";
 export const UserWishlist = () => {
-  const [wishlist, setWishlist] = useState("");
-  const [usersId, setUsersId] = useState("");
-  const [wishBtn, setWishBtn] = useState(false);
-  let cardDetails = [
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-    {
-      image: img1,
-      name: "Airpode Pro",
-      description: "Brand New Airpode pro",
-      points: 100,
-    },
-  ];
+  const [wishlist, setWishlist] = useState([]);
+  const [activeUserId, setActiveUserId] = useState(null);
+
   const userWishlist = async () => {
     try {
-      const response = await axiosInstance.get(
-        `getAllWishlistsByUserId/${usersId}`
+      const res = await axiosInstance.get(
+        `getAllWishlistsByUserId/${activeUserId}`
       );
-
-      console.log(response);
+      if (res.status == 200) {
+        setWishlist(res.data.data);
+      }
     } catch (error) {
       console.log(error);
     }
   };
+  console.log("dataaaa", wishlist);
   useEffect(() => {
     const userId = localStorage.getItem("trade-hub-userId") || null;
-    
+
     if (userId) {
-      setUsersId(userId);
+      setActiveUserId(userId);
     }
   }, []);
   useEffect(() => {
-    if (usersId) {
+    if (activeUserId) {
       userWishlist();
-    }   
-  }, [usersId]);
+    }
+  }, [activeUserId]);
 
-  const btnWish = () => {
-    setWishBtn(!wishBtn);
+  const removeItemFromWishlist = async (itemId) => {
+    console.log("removeItemFromWishlist", itemId);
+    if (!activeUserId || !itemId) {
+      console.log("Error in addItemToWishlist", activeUserId, itemId);
+      return;
+    }
+    try {
+      const res = await axiosInstance.post(`removeFromWishlist`, {
+        itemId,
+        userId: activeUserId,
+      });
+      if (res.status === 200) {
+        toast.success(res.data.msg);
+      }
+    } catch (error) {
+      console.log("Error in remove item from wishlist", error);
+    } finally {
+      userWishlist();
+    }
   };
+
   return (
     <div className="productCard-body">
+    <UserMainNav/>
       <h3 className="user-wishlist-heading">Wishlist</h3>
       <div className="container text-center">
         <div className="row row-cols-4">
-          {cardDetails.map((e) => {
+          {wishlist.map((e) => {
+            const item = e.itemId;
+            const itemFilename = item?.itemPhoto?.filename || null;
+            let itemPicUrl =
+              "https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg";
+            if (itemFilename) {
+              itemPicUrl = `${BASE_URL}${itemFilename}`;
+            }
+
             return (
               <div>
                 <div
                   className="card productCard-box"
                   style={{ width: "18rem" }}
                 >
-                  <img src={e.image} className="card-img-top" alt="..." />
+                  <img
+                    src={itemPicUrl}
+                    className="card-img-top w-100 h-50"
+                    alt="..."
+                  />
 
-                  <div className="d-flex">
-                    {wishBtn ? (
-                      <CiHeart
-                        className="user-wish-list-heart"
-                        onClick={btnWish}
-                      />
-                    ) : (
-                      <FaHeart
-                        className="user-wishlist-fill-heart"
-                        onClick={btnWish}
-                      />
-                    )}
+                  <div className="d-flex" style={{ height: "120px" }}>
+                    <div
+                      className="wishlist-heart-icon"
+                      onClick={() => {
+                        removeItemFromWishlist(item._id);
+                      }}
+                    >
+                      <FaHeart className="user-wishlist-fill-heart" />
+                    </div>
 
                     <div className="card-body ">
-                      <p className="card-text">{e.name} </p>
-                      <h5 className="card-title">Description</h5>
-                      <p className="card-text">{e.description}</p>
+                      <p className="card-text">{item?.name} </p>
+                      <h5 className="card-title">
+                        {item?.description?.substring(0, 40)}
+                      </h5>
                     </div>
                     <div className="productCard-points-box d-flex ">
                       <img src={img2} alt="" />
-                      <p>{e.points}</p>
+                      <p> {item?.point}</p>
                     </div>
                   </div>
                   <button className="productCard-button">
@@ -114,7 +118,9 @@ export const UserWishlist = () => {
             );
           })}
         </div>
+       
       </div>
+      <Footer/>
     </div>
   );
 };
