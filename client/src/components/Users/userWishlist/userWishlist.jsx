@@ -7,7 +7,7 @@ import { FaHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 export const UserWishlist = () => {
-  const [wishlist, setWishlist] = useState("");
+  const [wishlist, setWishlist] = useState([{}]);
   const [usersId, setUsersId] = useState("");
   const [wishBtn, setWishBtn] = useState(false);
   let cardDetails = [
@@ -44,15 +44,20 @@ export const UserWishlist = () => {
   ];
   const userWishlist = async () => {
     try {
-      const response = await axiosInstance.get(
-        `getAllWishlistsByUserId/${usersId}`
+      const res = await axiosInstance.get(
+        `getAllWishlistsByUserId/${usersId}`      
       );
-
-      console.log(response);
+      if(res.status == 200)
+      {
+        setWishlist(res.data.data)
+       
+      }
+      console.log(res);
     } catch (error) {
       console.log(error);
     }
-  };
+};
+console.log("dataaaa",wishlist);
   useEffect(() => {
     const userId = localStorage.getItem("trade-hub-userId") || null;
     
@@ -69,12 +74,14 @@ export const UserWishlist = () => {
   const btnWish = () => {
     setWishBtn(!wishBtn);
   };
+
   return (
     <div className="productCard-body">
       <h3 className="user-wishlist-heading">Wishlist</h3>
       <div className="container text-center">
         <div className="row row-cols-4">
-          {cardDetails.map((e) => {
+          {wishlist.map((e) => {
+             const item = e.itemId
             return (
               <div>
                 <div
@@ -97,7 +104,7 @@ export const UserWishlist = () => {
                     )}
 
                     <div className="card-body ">
-                      <p className="card-text">{e.name} </p>
+                      <p className="card-text">{item?.name} </p>
                       <h5 className="card-title">Description</h5>
                       <p className="card-text">{e.description}</p>
                     </div>
