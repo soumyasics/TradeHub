@@ -118,9 +118,9 @@ export const UserWishlist = () => {
             );
           })}
         </div>
-       
       </div>
-      <Footer/>
+     
+        <Footer/>
     </div>
   );
 };

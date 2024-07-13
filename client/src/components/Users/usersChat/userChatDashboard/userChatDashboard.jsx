@@ -39,7 +39,6 @@ export const UserChatDashboard = () => {
           <NoUserSelected />
         </div>
       )}
-      <UserChatFooter/>
     </div>
     </div>
   );

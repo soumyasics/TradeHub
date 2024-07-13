@@ -2,6 +2,8 @@
     background: linear-gradient(#662C93,#662C93B2);
     height: 30vh;
     width: 100%;
+    position: absolute;
+    bottom: 0;
 }
 .footer-page-span{
     color: white;
