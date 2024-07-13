@@ -117,6 +117,31 @@ const viewAllApproveItems = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+const getApprovedItemsByCategory = async (req, res) => {
+  try {
+    const category = req.params.category;
+    if (
+      category === "Books" ||
+      category === "Electronics" ||
+      category === "Jewellery" ||
+      category === "Home Appliances" ||
+      category === "Clothing" ||
+      category === "Furniture" ||
+      category === "Beauty" 
+    ) {
+      const items = await Item.find({ isModApproved: "approve", category })
+        .populate("userId")
+        .exec();
+      return res.status(200).json({ msg: "View approved items by "+ category, data: items });
+    } else {
+      return res.status(400).json({ msg: "Invalid category" });
+    }
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
 const viewAllRejectItems = async (req, res) => {
   try {
     const items = await Item.find({ isModApproved: "reject" })
@@ -197,8 +222,7 @@ const viewAllitemsByUserId = async (req, res) => {
 
 const addPointToItem = async (req, res) => {
   try {
-    
-    const {modId, itemId, point, listing } = req.body;
+    const { modId, itemId, point, listing } = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(modId)) {
       return res.status(400).json({ msg: "Invalid modId", modId });
@@ -227,11 +251,10 @@ const addPointToItem = async (req, res) => {
     return res
       .status(200)
       .json({ msg: "Point added successfully", data: item });
-
   } catch (error) {
     return res.status(500).json({ msg: error.message });
   }
-}
+};
 // View all Items
 const viewActiveItems = (req, res) => {
   Item.find({ isActive: true })
@@ -385,5 +408,6 @@ module.exports = {
   viewAllRejectItems,
   itemApproveById,
   itemRejectById,
-  addPointToItem
+  addPointToItem,
+  getApprovedItemsByCategory
 };
