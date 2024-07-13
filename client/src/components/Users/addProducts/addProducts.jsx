@@ -231,7 +231,7 @@ export const AddProducts = () => {
                         <option value="Jewellery">Jewellery</option>
                         <option value="Home Appliances">Home Appliances</option>
                         <option value="Clothing">Clothing</option>
-                        <option value="Beauty">Beauty</option>
+                        <option value="Furniture">Furniture</option>
                       </Form.Select>
                       <Form.Control.Feedback
                         type="invalid"

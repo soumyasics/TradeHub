@@ -56,9 +56,9 @@
   top: 10%;
   left: 80%;
   color: red;
-  font-size: 29px;
+  font-size: 31px;
 }
-.user-wish-list-heart {
+.category-wish-list-heart {
   z-index: 2;
   position: absolute;
   top: 10%;
@@ -66,7 +66,6 @@
   font-size: 34px;
   color: red;
 }
-
 
 /* modifications  */
 .wishlist-heart-icon {
