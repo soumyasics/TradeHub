@@ -34,6 +34,7 @@ router.post("/viewItemsToBeApproved", items.viewItemsToBeApproved);
 router.post("/viewActiveItems", items.viewActiveItems);
 router.get("/viewAllitemsByUserId/:id", items.viewAllitemsByUserId);
 router.delete("/deleteItemById/:id", items.deleteItemById);
+router.get("/getApprovedItemsByCategory/category", items.getApprovedItemsByCategory);
 
 //moderator routes
 router.post(
