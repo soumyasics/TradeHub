@@ -3,7 +3,36 @@
   height: 255px;
   gap: 0px;
   border-radius: 20px;
+  transition: opacity 0.3s ease;
+  display: block;
+  
 }
 .userhome-category {
   margin-bottom: 30px;
+}
+
+.home-category-electronics-box
+{
+  overflow: hidden;
+  position: relative;
+  width: 186px;
+  height: 278px;
+  text-align: center;
+}
+.home-category-electronics-box h3{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color:black;
+  font-size: 28px;
+  font-weight: 600;
+  opacity: 0; 
+  transition: opacity 0.3s ease;
+}
+.home-category-electronics-box:hover img {
+  opacity: 0.7; 
+}
+.home-category-electronics-box:hover h3 {
+  opacity: 1; 
 }

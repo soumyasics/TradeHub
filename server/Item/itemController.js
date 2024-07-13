@@ -124,10 +124,11 @@ const getApprovedItemsByCategory = async (req, res) => {
     if (
       category === "Books" ||
       category === "Electronics" ||
-      category === "Jewels" ||
+      category === "Jewellery" ||
       category === "Home Appliances" ||
-      category === "Clothes" ||
-      category === "Furniture"
+      category === "Clothing" ||
+      category === "Furniture" ||
+      category === "Beauty" 
     ) {
       const items = await Item.find({ isModApproved: "approve", category })
         .populate("userId")

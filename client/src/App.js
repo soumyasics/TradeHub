@@ -55,6 +55,7 @@ import { UserWishlist } from "./components/Users/userWishlist/userWishlist";
 import { ViewAllItems } from "./components/Users/viewAllItems/viewAllItems";
 import { UserChatNavbar } from "./components/Users/usersChat/userChatNavbar/userChatNavbar";
 import { UserChatFooter } from "./components/Users/usersChat/userNavbarFooter/userChatFooter";
+import { ViewByCategory } from "./components/Users/viewByCategory/viewBycategory";
 const App = () => {
   return (
     <div className="App">
@@ -93,7 +94,7 @@ const App = () => {
           <Route path="/user/wishlist" element={<UserWishlist/>} />
           <Route path="/user/chat/navbar" element={<UserChatNavbar/>} />
           <Route path="user/chat/footer" element={<UserChatFooter/>} />
-
+         <Route path="/view-category/:category" element={<ViewByCategory/>} />
           {/* moderators  */}
 
           <Route path="/moderator/register" element={<ModeratorRegister />} />
