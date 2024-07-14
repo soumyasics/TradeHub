@@ -40,7 +40,10 @@ import { ContactUs } from "./components/common/illustration/contactUs/contactsUs
 import { UsereditProfileCard } from "./components/Users/userEditProfileCard/userEditProfileCard";
 import { ModProductDetails } from "./components/Moderator/modProductRequest/modProductDetails";
 import { UserProductDetails } from "./components/Users/productDetails/userProductDetails";
-import { ApprovedBtn, RejectedBtn } from "./components/common/approvedBtn/approvedBtn";
+import {
+  ApprovedBtn,
+  RejectedBtn,
+} from "./components/common/approvedBtn/approvedBtn";
 import { AdminGuideline } from "./components/Admin/admineGuideline/adminGuideline";
 import { AdmineViewGuideline } from "./components/Admin/adminViewGuideline/adminViewGuideline";
 import { UserConfirmExchange } from "./components/Users/userConfirmExchange/userConfirmExchange";
@@ -57,6 +60,7 @@ import { UserChatNavbar } from "./components/Users/usersChat/userChatNavbar/user
 import { UserChatFooter } from "./components/Users/usersChat/userNavbarFooter/userChatFooter";
 import { ViewByCategory } from "./components/Users/viewByCategory/viewBycategory";
 import { UserProductExchange } from "./components/Users/productExchange/userProductExchange";
+import { UserRequestes } from "./components/Users/userRequestes/userRequestes";
 const App = () => {
   return (
     <div className="App">
@@ -81,24 +85,26 @@ const App = () => {
           <Route path="/user/add-product" element={<AddProducts />} />
           <Route path="/user/view-items" element={<ViewItems />} />
           <Route path="/user/view-items/:id" element={<UserProductDetails />} />
-          <Route path="/user/exchange-items/:id" element={<UserProductExchange />} />
+          <Route
+            path="/user/exchange-items/:id"
+            element={<UserProductExchange />}
+          />
           <Route path="/user/view-all-items" element={<ViewAllItems />} />
-
           <Route path="/user/product-details" element={<ItemDetails />} />
           <Route path="/user/product-card" element={<ProductCard />} />
-          <Route path="/user/product-details" element={<ItemDetails />} />
           <Route path="/user/edit/profle" element={<UsereditProfileCard />} />
-          <Route path="/user/confirm/exchange" element={<UserConfirmExchange/>} />
-          <Route path="/user/chatSidebar" element={<UserChatSidebar/>} />
-          <Route path="/no/user/selected" element={<NoUserSelected/>} />
-          <Route path="/users/chat" element={<UserChatDashboard/>} />
-          <Route path="/user/chat/interface" element={<UserchatInterFace/>} />
-          <Route path="/user/wishlist" element={<UserWishlist/>} />
-          <Route path="/user/chat/navbar" element={<UserChatNavbar/>} />
-          <Route path="user/chat/footer" element={<UserChatFooter/>} />
-         <Route path="/view-category/:category" element={<ViewByCategory/>} />
-          {/* moderators  */}
+          
+          <Route path="/user/chatSidebar" element={<UserChatSidebar />} />
+          <Route path="/no/user/selected" element={<NoUserSelected />} />
+          <Route path="/users/chat" element={<UserChatDashboard />} />
+          <Route path="/user/chat/interface" element={<UserchatInterFace />} />
+          <Route path="/user/wishlist" element={<UserWishlist />} />
+          <Route path="/user/chat/navbar" element={<UserChatNavbar />} />
+          <Route path="user/chat/footer" element={<UserChatFooter />} />
+          <Route path="/view-category/:category" element={<ViewByCategory />} />
+          <Route path="/user/requests" element={<UserRequestes />} />
 
+          {/* moderators  */}
           <Route path="/moderator/register" element={<ModeratorRegister />} />
           <Route path="/moderator/login" element={<Moderatorlogin />} />
           <Route path="/moderator/home" element={<ModeratorHome />} />
@@ -117,43 +123,52 @@ const App = () => {
             element={<Moderatorforget />}
           />
 
+
           {/* new-1 */}
-          <Route
-            path="/moderator/exchangePage"
-            element={<ExchangeProductPage />}
-          />
-          <Route
-            path="/moderator/exchangeProduct"
-            element={<ExchangeProduct />}
-          />
           <Route path="/delivery/login" element={<DeliveryAgentLogin />} />
           <Route path="/delivery/signup" element={<DeliveryAgentSignup />} />
           <Route
             path="/agentforgotpassword"
             element={<Deliveryforgotpassword />}
           />
-          <Route path="/delivery/profile" element={<DeliveryProfile/>} />
+          <Route path="/delivery/profile" element={<DeliveryProfile />} />
           {/* new  */}
-          <Route path="/productrequest" element={<ProductRequest />} />
+
           <Route path="/moderator/dashboard" element={<ModeratorDashboard />} />
-          <Route path="/itemPage" element={<ModeratorItempage />} />
 
           <Route path="/delivery/dashboard" element={<DeliveryDashboard />} />
-          <Route path="/mydelivery" element={<MyDelivery/>} />
 
           {/* Admin */}
           <Route path="/admin/login" element={<Adminlogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           {/* new component */}
+
+          <Route path="/admin/Guideline" element={<AdminGuideline />} />
+          {/* new */}
+          <Route
+            path="/admine/view/guideline"
+            element={<AdmineViewGuideline />}
+          />
+          <Route
+            path="/admin/update/guideline"
+            element={<AdminUpdateGuideline />}
+          />
+          {/* admin components  */}
+
+          {/* reusable components  */}
+          <Route path="/mydelivery" element={<MyDelivery />} />
           <Route path="/admin/usertransaction" element={<UserTransaction />} />
           <Route path="/approved-btn" element={<ApprovedBtn />} />
           <Route path="/rejected-btn" element={<RejectedBtn />} />
-          <Route path="/admin/Guideline" element={<AdminGuideline/>} />
-          {/* new */}
-          <Route path="/admine/view/guideline" element={<AdmineViewGuideline/>} />
-          <Route path="/admin/update/guideline" element={<AdminUpdateGuideline/>} />
-          {/* admin components  */}
-
+          <Route path="/productrequest" element={<ProductRequest />} />
+          <Route
+            path="/moderator/exchangeProduct"
+            element={<ExchangeProduct />}
+          />
+          <Route
+            path="/moderator/exchangePage"
+            element={<ExchangeProductPage />}
+          />
           <Route path="/*" element={<h1> 404 </h1>} />
         </Routes>
       </BrowserRouter>

@@ -33,9 +33,9 @@ function UserMainNav() {
   const userViewItems = () => {
     navigate("/user/view-items");
   };
-  const redirectToRequest =  () => {
-
-  }
+  const redirectToRequest = () => {
+    navigate("/user/requests");
+  };
   return (
     <div>
       <div className="usermainnav-page-color ">
@@ -89,9 +89,14 @@ function UserMainNav() {
             <p className="usermain-navbar-chat">Points</p>
           </Nav.Link>
           <div
-          onClick={redirectToRequest}
-            style={{ height: "40px", width: "40px", borderRadius: "50%", cursor: "pointer" }}
-            className="bg-light mx-3 d-flex justify-content-center align-items-center fs-4" 
+            onClick={redirectToRequest}
+            style={{
+              height: "40px",
+              width: "40px",
+              borderRadius: "50%",
+              cursor: "pointer",
+            }}
+            className="bg-light mx-3 d-flex justify-content-center align-items-center fs-4"
           >
             <img src={exchangeIcon} alt="loop" />
           </div>
