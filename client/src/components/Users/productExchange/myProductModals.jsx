@@ -8,17 +8,8 @@ import { BASE_URL } from "../../../apis/baseURL";
 
 export const MyProductModals = ({ show, setShow }) => {
   const [myItems, setMyItems] = useState([]);
+  const [selectItem, setSelectedItem] = useState(null);
   const navigate = useNavigate();
-  let product = [
-    { itemName: "it end with us", Category: "Books" },
-    { itemName: "it end with us", Category: "Books" },
-    { itemName: "it end with us", Category: "Books" },
-    { itemName: "it end with us", Category: "Books" },
-    { itemName: "it end with us", Category: "Books" },
-    { itemName: "it end with us", Category: "Books" },
-    { itemName: "it end with us", Category: "Books" },
-    { itemName: "it end with us", Category: "Books" },
-  ];
 
   useEffect(() => {
     let id = localStorage.getItem("trade-hub-userId") || null;
@@ -50,7 +41,8 @@ export const MyProductModals = ({ show, setShow }) => {
   };
 
   const myItemIdForExchange = (id) => {
-    console.log("id", id);
+    console.log("selected item", id);
+    setSelectedItem(id);
   };
   return (
     <Modal
@@ -77,7 +69,9 @@ export const MyProductModals = ({ show, setShow }) => {
                 onClick={() => {
                   myItemIdForExchange(e._id);
                 }}
-                className="userConfirmExchange-product-view"
+                className={`userConfirmExchange-product-view ${
+                  selectItem === e._id ? "selected" : ""
+                }`}
               >
                 <img src={pic} alt="" className="userConfirmExchange-image" />
                 <table className="userConfirmExchange-table">
@@ -89,7 +83,7 @@ export const MyProductModals = ({ show, setShow }) => {
                   <tr>
                     <th>Category</th>
                     <th>:</th>
-                    <td>{e.Category}</td>
+                    <td>{e.category}</td>
                   </tr>
                 </table>
               </div>
