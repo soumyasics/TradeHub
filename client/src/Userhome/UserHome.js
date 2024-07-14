@@ -8,13 +8,11 @@ import { NewArrivalProducts } from "../components/Users/newArrivalProducts/newAr
 function UserHome() {
   return (
     <div>
-      <div>
-        <UserMainNav />
-        <Landingpage />
-        <HomeCategories />
-        <NewArrivalProducts/>
-        <Footer />
-      </div>
+      <UserMainNav />
+      <Landingpage />
+      <HomeCategories />
+      <NewArrivalProducts />
+      <Footer />
     </div>
   );
 }

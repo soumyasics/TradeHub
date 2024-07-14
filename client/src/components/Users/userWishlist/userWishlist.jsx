@@ -1,20 +1,18 @@
 import "./userWishlist.css";
 import { FaChevronRight } from "react-icons/fa";
-import img1 from "../../../assets/images/productCardImage.png";
 import img2 from "../../../assets/images/itemDetailsPoints.png";
-import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
 import toast from "react-hot-toast";
-import MainNav from "../../homeComponents/Navbar/MainNav";
 import UserMainNav from "../UserMainNav";
 import Footer from "../../Footer/Footer";
+import { useNavigate } from "react-router-dom";
 export const UserWishlist = () => {
   const [wishlist, setWishlist] = useState([]);
   const [activeUserId, setActiveUserId] = useState(null);
-
+  const navigate = useNavigate()
   const userWishlist = async () => {
     try {
       const res = await axiosInstance.get(
@@ -112,7 +110,9 @@ export const UserWishlist = () => {
                         <h5 className="card-title">
                           {item?.description?.substring(0, 40)}
                         </h5> */}
-                        <h6 className="card-text">{item?.name?.substring(0, 25)}  </h6>
+                        <h6 className="card-text">
+                          {item?.name?.substring(0, 25)}{" "}
+                        </h6>
                         <span className="card-text">
                           {item?.description?.length > 30
                             ? item?.description?.substring(0, 30) + "..."
@@ -124,7 +124,12 @@ export const UserWishlist = () => {
                         <p> {item?.point}</p>
                       </div>
                     </div>
-                    <button className="productCard-button">
+                    <button
+                      className="productCard-button"
+                      onClick={() => {
+                        navigate(`/user/exchange-items/${item._id}`);
+                      }}
+                    >
                       Exchange Now <FaChevronRight />
                     </button>
                   </div>

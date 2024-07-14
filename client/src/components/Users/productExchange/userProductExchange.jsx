@@ -10,14 +10,14 @@ import UserMainNav from "../UserMainNav";
 import Footer from "../../Footer/Footer";
 import { FaArrowLeft } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import { MyProductModals } from "./myProductModals.jsx";
+import { toast } from "react-hot-toast";
 
 export const UserProductExchange = () => {
   const [product, setProduct] = useState(null);
-  const [userSelectedProductId, setUserSelectedProductId] = useState("");
   const [wishList, setWhishList] = useState(false);
   const [show, setShow] = useState(false);
+  const [activeUserId, setActiveUserId] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
@@ -39,26 +39,77 @@ export const UserProductExchange = () => {
     }
   };
 
-  const changeSelectedProductItem = (id) => {
-    setUserSelectedProductId(id);
-  };
   const openMyProducts = () => {
     setShow(true);
   };
 
-  console.log("product deta", product);
   const redirectToProductList = () => {
     navigate(-1);
   };
   const clickWishList = () => {
     setWhishList(!wishList);
   };
+
+  useEffect(() => {
+    const userId = localStorage.getItem("trade-hub-userId") || null;
+
+    if (userId) {
+      setActiveUserId(userId);
+    } else {
+      toast.error("Please login again.");
+      navigate("/user/login");
+    }
+  }, []);
+
+  const handleConfirmExchange = (buyerProductId) => {
+    const data = {
+      buyerProductId,
+      sellerProductId: product?._id,
+      sellerId: product?.userId?._id,
+      buyerId: activeUserId,
+    };
+
+    const {  sellerProductId, sellerId, buyerId } = data;
+    if (!buyerProductId || !sellerProductId || !sellerId || !buyerId) {
+      toast.error("Please refresh the page and try again.");
+      return;
+    }
+
+    sendDataToServer(data);
+    console.log("my data", data);
+  };
+
+  const sendDataToServer = async (data) => {
+    try {
+      const res = await axiosInstance.post("/sendExchangeRequest", data);
+      if (res.status === 201) {
+        toast.success("Product exchange requeset sent successfully.");
+        setShow(false);
+        // todo => navigate to request page
+      }
+    } catch (error) {
+      const status = error?.response?.status;
+      if (
+        status === 400 ||
+        status === 401 ||
+        status === 404 ||
+        status === 500
+      ) {
+        toast.error(error?.response?.data?.msg || "Something went wrong.");
+      } else {
+        toast.error("Network error");
+      }
+
+      console.log("Error on product exchange", error);
+    }
+  };
+
   return (
     <>
       <UserMainNav />
       <MyProductModals
-        changeSelectedProductItem={changeSelectedProductItem}
         show={show}
+        handleConfirmExchange={handleConfirmExchange}
         setShow={setShow}
       />
 

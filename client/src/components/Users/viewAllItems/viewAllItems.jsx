@@ -143,7 +143,9 @@ export const ViewAllItems = () => {
                     )}
 
                     <div className="card-body ">
-                      <h6 className="card-text">{e?.name?.substring(0, 25)} </h6>
+                      <h6 className="card-text">
+                        {e?.name?.substring(0, 25)}{" "}
+                      </h6>
                       <span className="card-text">
                         {e?.description?.length > 30
                           ? e?.description?.substring(0, 30) + "..."
@@ -156,7 +158,12 @@ export const ViewAllItems = () => {
                     </div>
                   </div>
                   <div className="d-flex justify-content-center">
-                    <button className="productCard-button2">
+                    <button
+                      className="productCard-button2"
+                      onClick={() => {
+                        navigate(`/user/exchange-items/${e._id}`);
+                      }}
+                    >
                       Exchange Now <FaChevronRight />
                     </button>
                   </div>

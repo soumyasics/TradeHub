@@ -163,7 +163,12 @@ export const ViewByCategory = () => {
                   </div>
                 </div>
                 <div className="d-flex justify-content-center">
-                  <button className="productCard-button2">
+                  <button
+                    className="productCard-button2"
+                    onClick={() => {
+                      navigate(`/user/exchange-items/${e._id}`);
+                    }}
+                  >
                     Exchange Now <FaChevronRight />
                   </button>
                 </div>

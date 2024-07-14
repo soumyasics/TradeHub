@@ -37,12 +37,10 @@ function MainNav() {
                   style={{ cursor: "pointer" }}
                 >
                   Home
-                </h6>
-                {/* <a href="#home" className="navlink ms-5 me-5  text-decoration-none">
-              </a> */}
+                </h6> 
+
                 <h6 className="nav-about">About</h6>
-                {/* <a href="#about " className="navlink ms-5 me-5 text-decoration-none">
-              </a> */}
+
                 <Dropdown className="me-5">
                   <Dropdown.Toggle id="nav-button" className="">
                     Login

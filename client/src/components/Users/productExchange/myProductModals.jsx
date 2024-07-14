@@ -9,7 +9,7 @@ import { BASE_URL } from "../../../apis/baseURL";
 export const MyProductModals = ({
   show,
   setShow,
-  changeSelectedProductItem,
+  handleConfirmExchange,
 }) => {
   const [myItems, setMyItems] = useState([]);
   const [selectItem, setSelectedItem] = useState(null);
@@ -45,9 +45,14 @@ export const MyProductModals = ({
   };
 
   const myItemIdForExchange = (id) => {
-    console.log("selected item", id);
     setSelectedItem(id);
-    changeSelectedProductItem(id);
+  };
+  const handleConfirmExchangeFromModal = () => {
+    if (!selectItem) {
+      toast.error("Please choose your item for exchange");
+      return;
+    }
+    handleConfirmExchange(selectItem);
   };
   return (
     <Modal
@@ -57,10 +62,18 @@ export const MyProductModals = ({
       aria-labelledby="example-custom-modal-styling-title"
       className="userConfirmExchange-body"
     >
-      <Modal.Header className="border-0" closeButton></Modal.Header>
+      <Modal.Header
+        className="border-0 d-flex justify-content-center"
+        closeButton
+      >
+        <h6>Choose your product for exchange</h6>
+      </Modal.Header>
 
       <Modal.Body className="userConfirmExchange-main-body ">
-        <div className="d-flex flex-wrap gap-5">
+        <div
+          className="d-flex flex-wrap gap-5 "
+          style={{ height: "350px", overflowY: "auto" }}
+        >
           {myItems.map((e) => {
             const filename = e.itemPhoto?.filename || "";
             let pic =
@@ -97,7 +110,12 @@ export const MyProductModals = ({
             );
           })}
         </div>
-        <Button className="userConfirmExchange-button">Confirm Exchange</Button>{" "}
+        <Button
+          className="userConfirmExchange-button"
+          onClick={handleConfirmExchangeFromModal}
+        >
+          Confirm Exchange
+        </Button>{" "}
       </Modal.Body>
     </Modal>
   );
