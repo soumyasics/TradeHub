@@ -17,6 +17,19 @@ const sendExchangeRequest = async (req, res) => {
     ) {
       return res.status(400).json({ msg: "Invalid ID" });
     }
+    // check same user with same product request exists
+
+    const isSameExchangeRequestExist = await ExchangeProductModel.findOne({
+      buyerId,
+      sellerId,
+      buyerProductId,
+      sellerProductId,
+    });
+
+    if (isSameExchangeRequestExist) {
+      return res.status(400).json({ msg: "Same product exchange request already exists" });
+    }
+
     const newExchangeProduct = new ExchangeProductModel({
       buyerId,
       sellerId,

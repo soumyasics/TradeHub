@@ -6,6 +6,7 @@ const DeliveryRoute = require("./delivery/deliveryController");
 const GuidelineRoute = require("./guidelines/guidelineController");
 const UserChatRoute = require("./chat-users/chatUsersController");
 const wishlistController = require("./wishlist/wishlistController");
+const exchangeProductController = require("./exchangeProduct/exchangeController");
 //user routes
 router.post("/registerUser", user.upload, user.registerUser);
 router.post("/viewUserById/:id", user.viewUserById);
@@ -106,4 +107,13 @@ router.get(
   wishlistController.getAllWishlistsByUserId
 );
 router.post('/removeFromWishlist', wishlistController.removeFromWishlist);
+
+
+// exchange product request
+router.post('/sendExchangeRequest', exchangeProductController.sendExchangeRequest);
+router.get('/getAllRequestByBuyerId/:id', exchangeProductController.getAllRequestByBuyerId);
+router.get('/getAllRequestBySellerId/:id', exchangeProductController.getAllRequestBySellerId);
+router.get('/getAllExchangeRequests', exchangeProductController.getAllExchangeRequests);
+router.get('/getExchangeReqById/:id', exchangeProductController.getExchangeReqById);
+
 module.exports = router;
