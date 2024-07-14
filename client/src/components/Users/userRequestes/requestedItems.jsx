@@ -1,20 +1,22 @@
-import "./requests.css";
-import img1 from "../../../assets/images/productImg.jpeg";
 import exchange_icon from "../../../assets/images/tabler_exchange.svg";
-import chat_img from "../../../assets/images/chat-btn.svg";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
+import coinImg from "../../../assets/images/itemDetailsPoints.png";
+import "./requests.css";
 export const RequestedItems = () => {
   const [requests, setRequests] = useState([]);
   const [activeUserId, setActiveUserId] = useState("");
   const navigate = useNavigate();
 
   const navigateToMyProductDetails = (id) => {
-    navigate(`/user/view-items//${id}`);
-  }
+    navigate(`/user/view-items/${id}`);
+  };
+  const navigateToOtherUserProductDetails = (id) => {
+    navigate(`/user/exchange-items/${id}`);
+  };
   const getMyRequests = async () => {
     try {
       const res = await axiosInstance.get(
@@ -83,29 +85,40 @@ export const RequestedItems = () => {
                   </div>
                   <div className="exchangeproduct-myitems-detail">
                     <table>
-                      <tr>
-                        <td style={{ fontWeight: "600" }}>Item name</td>
-                        <td>:</td>
-                        <td>{buyerProduct?.name}</td>
-                      </tr>
-                      <tr>
-                        <td style={{ fontWeight: "600" }}>Category</td>
-                        <td>:</td>
-                        <td>{buyerProduct?.category}</td>
-                      </tr>
-                      <tr>
-                        <td style={{ fontWeight: "600" }}>Description</td>
-                        <td>:</td>
-                        <td>{buyerProduct?.description}</td>
-                      </tr>
+                      <tbody style={{ height: "215px" }}>
+                        <tr>
+                          <td style={{ fontWeight: "600" }}>Item name</td>
+                          <td>:</td>
+                          <td>{buyerProduct?.name}</td>
+                        </tr>
+                        <tr>
+                          <td style={{ fontWeight: "600" }}>Category</td>
+                          <td>:</td>
+                          <td>{buyerProduct?.category}</td>
+                        </tr>
+                        <tr>
+                          <td style={{ fontWeight: "600" }}>Description</td>
+                          <td>:</td>
+                          <td>{buyerProduct?.description}</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div className="productCard-points-box d-flex ">
+                              <img src={coinImg} alt="coin" />
+                              <p>{buyerProduct?.point}</p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
                     </table>
-                    <span
-                      className="viewmore"
-                      
-                    >
-                      <button onClick={() => {
-                        navigateToMyProductDetails(buyerProduct._id)
-                      }}>View more</button>
+                    <span className="viewmore">
+                      <button
+                        onClick={() => {
+                          navigateToMyProductDetails(buyerProduct._id);
+                        }}
+                      >
+                        View more
+                      </button>
                     </span>
                   </div>
                 </div>
@@ -125,24 +138,40 @@ export const RequestedItems = () => {
                   </div>
                   <div className="exchangeproduct-receiveditems-detail">
                     <table>
-                      <tr>
-                        <td style={{ fontWeight: "600" }}>Item name</td>
-                        <td>:</td>
-                        <td>{sellerProduct.name}</td>
-                      </tr>
-                      <tr>
-                        <td style={{ fontWeight: "600" }}>Category</td>
-                        <td>:</td>
-                        <td>{sellerProduct.category}</td>
-                      </tr>
-                      <tr>
-                        <td style={{ fontWeight: "600" }}>Description</td>
-                        <td>:</td>
-                        <td>{sellerProduct.description} </td>
-                      </tr>
+                      <tbody style={{ height: "215px" }}>
+                        <tr>
+                          <td style={{ fontWeight: "600" }}>Item name</td>
+                          <td>:</td>
+                          <td>{sellerProduct.name}</td>
+                        </tr>
+                        <tr>
+                          <td style={{ fontWeight: "600" }}>Category</td>
+                          <td>:</td>
+                          <td>{sellerProduct.category}</td>
+                        </tr>
+                        <tr>
+                          <td style={{ fontWeight: "600" }}>Description</td>
+                          <td>:</td>
+                          <td>{sellerProduct.description} </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div className="productCard-points-box d-flex ">
+                              <img src={coinImg} alt="coin" />
+                              <p>{sellerProduct?.point}</p>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
                     </table>
                     <span className="viewmore">
-                      <button>View more</button>
+                      <button
+                        onClick={() => {
+                          navigateToOtherUserProductDetails(buyerProduct._id);
+                        }}
+                      >
+                        View more
+                      </button>
                     </span>
                   </div>
                 </div>
@@ -157,7 +186,6 @@ export const RequestedItems = () => {
                   </button>
                 </div> */}
               </div>
-              
             </div>
           );
         })}

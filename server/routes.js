@@ -115,5 +115,7 @@ router.get('/getAllRequestByBuyerId/:id', exchangeProductController.getAllReques
 router.get('/getAllRequestBySellerId/:id', exchangeProductController.getAllRequestBySellerId);
 router.get('/getAllExchangeRequests', exchangeProductController.getAllExchangeRequests);
 router.get('/getExchangeReqById/:id', exchangeProductController.getExchangeReqById);
+router.patch('/acceptRequestById/:id', exchangeProductController.acceptRequestById);
+router.patch('/rejectRequestById/:id', exchangeProductController.rejectRequestById);
 
 module.exports = router;

@@ -8,7 +8,6 @@ import { IoMdContact } from "react-icons/io";
 import { BsChatText } from "react-icons/bs";
 import { Dropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { ImLoop } from "react-icons/im";
 import exchangeIcon from "../../assets/svg/exchange-icon.svg";
 import "./User.css";
 function UserMainNav() {
@@ -85,9 +84,9 @@ function UserMainNav() {
           <Link to="/user/add-product" className="">
             <p className="usermain-navbar-chat">Sell</p>
           </Link>
-          <Nav.Link href="" className="">
+          {/* <Nav.Link href="" className="">
             <p className="usermain-navbar-chat">Points</p>
-          </Nav.Link>
+          </Nav.Link> */}
           <div
             onClick={redirectToRequest}
             style={{
@@ -95,8 +94,9 @@ function UserMainNav() {
               width: "40px",
               borderRadius: "50%",
               cursor: "pointer",
+              top: "-6px",
             }}
-            className="bg-light mx-3 d-flex justify-content-center align-items-center fs-4"
+            className=" bg-light position-relative mx-3 d-flex justify-content-center align-items-center fs-4"
           >
             <img src={exchangeIcon} alt="loop" />
           </div>

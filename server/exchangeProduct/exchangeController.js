@@ -27,7 +27,9 @@ const sendExchangeRequest = async (req, res) => {
     });
 
     if (isSameExchangeRequestExist) {
-      return res.status(400).json({ msg: "Same product exchange request already exists" });
+      return res
+        .status(400)
+        .json({ msg: "Same product exchange request already exists" });
     }
 
     const newExchangeProduct = new ExchangeProductModel({
@@ -130,10 +132,55 @@ const getExchangeReqById = async (req, res) => {
   }
 };
 
+const acceptRequestById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ msg: "Invalid ID" });
+    }
+    const newRequest = await ExchangeProductModel.findByIdAndUpdate(
+      id,
+      {
+        sellerResponseStatus: "accepted",
+      },
+      { new: true }
+    );
+
+    return res
+      .status(200)
+      .json({ msg: "Request accepted successfully", data: newRequest });
+  } catch (error) {
+    return res.status(500).json({ msg: "Server error", error: error.message });
+  }
+};
+const rejectRequestById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ msg: "Invalid ID" });
+    }
+    const newRequest = await ExchangeProductModel.findByIdAndUpdate(
+      id,
+      {
+        sellerResponseStatus: "rejected",
+      },
+      { new: true }
+    );
+
+    return res
+      .status(200)
+      .json({ msg: "Request rejected successfully", data: newRequest });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+};
+
 module.exports = {
   sendExchangeRequest,
   getAllRequestByBuyerId,
   getAllRequestBySellerId,
   getAllExchangeRequests,
   getExchangeReqById,
+  acceptRequestById,
+  rejectRequestById,
 };

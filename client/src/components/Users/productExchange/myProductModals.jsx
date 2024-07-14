@@ -6,11 +6,7 @@ import { toast } from "react-hot-toast";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
 
-export const MyProductModals = ({
-  show,
-  setShow,
-  handleConfirmExchange,
-}) => {
+export const MyProductModals = ({ show, setShow, handleConfirmExchange }) => {
   const [myItems, setMyItems] = useState([]);
   const [selectItem, setSelectedItem] = useState(null);
   const navigate = useNavigate();
@@ -75,6 +71,9 @@ export const MyProductModals = ({
           style={{ height: "350px", overflowY: "auto" }}
         >
           {myItems.map((e) => {
+            if (e.isModApproved === "pending") {
+              return;
+            }
             const filename = e.itemPhoto?.filename || "";
             let pic =
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXxZR0_1ISIJx_T4oB5-5OJVSNgSMFLe8eCw&s";
@@ -98,12 +97,12 @@ export const MyProductModals = ({
                   <tr>
                     <th>Item name</th>
                     <td>:</td>
-                    <td>{e.name}</td>
+                    <td>{e?.name}</td>
                   </tr>
                   <tr>
                     <th>Category</th>
                     <th>:</th>
-                    <td>{e.category}</td>
+                    <td>{e?.category}</td>
                   </tr>
                 </table>
               </div>
