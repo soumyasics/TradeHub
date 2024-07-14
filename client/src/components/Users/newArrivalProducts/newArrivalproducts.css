@@ -2,13 +2,11 @@
 .productCard-body {
   min-height: 140vh;
 }
-.user-wishlist-heading2 {
+.user-wishlist-heading3 {
   color: black;
   font-family: Poppins;
   font-size: 34px;
   font-weight: 500;
-  padding-top: 20px;
-  padding-left: 45%;
 }
 .productCard-box2 {
   margin-top: 25px;

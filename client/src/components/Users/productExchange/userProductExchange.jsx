@@ -1,5 +1,5 @@
 import React from "react";
-import "./userProductDetails.css";
+import "./userProductExchange.css";
 import { FaHeart } from "react-icons/fa";
 import img2 from "../../../assets/images/itemDetailsPoints.png";
 import { useState, useEffect } from "react";
@@ -10,7 +10,8 @@ import UserMainNav from "../UserMainNav";
 import Footer from "../../Footer/Footer";
 import { FaArrowLeft } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-export const UserProductDetails = () => {
+
+export const UserProductExchange = () => {
   const [product, setProduct] = useState(null);
   const [wishList, setWhishList] = useState(false);
   const { id } = useParams();
@@ -23,7 +24,7 @@ export const UserProductDetails = () => {
 
   const getProductDetails = async (id) => {
     try {
-      const res = await axiosInstance.get(`/viewItemById/${id}`);
+      const res = await axiosInstance.get(`viewItemById/${id}`);
       if (res.data.status === 200) {
         setProduct(res.data.data);
       } else {
@@ -36,7 +37,7 @@ export const UserProductDetails = () => {
 
   console.log("product deta", product);
   const redirectToProductList = () => {
-    navigate("/user/view-items");
+    navigate(-1);
   };
   const clickWishList = () => {
     setWhishList(!wishList);

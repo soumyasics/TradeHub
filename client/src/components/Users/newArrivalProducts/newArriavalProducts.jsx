@@ -82,7 +82,9 @@ export const NewArrivalProducts = () => {
   };
   return (
     <div className="productCard-body">
-      <h5 className="user-wishlist-heading2">New Arrivals</h5>
+      <div className="d-flex justify-content-center mt-5">
+        <h6 className="user-wishlist-heading3">Products You Might Like</h6>
+      </div>
       <div class="container text-center">
         <div class="row row-cols-4 gap-5 d-flex my-5">
           {approvedItems.map((e) => {
@@ -149,7 +151,12 @@ export const NewArrivalProducts = () => {
                   </div>
                 </div>
                 <div className="d-flex justify-content-center">
-                  <button className="productCard-button2">
+                  <button
+                    className="productCard-button2"
+                    onClick={() => {
+                      navigate(`/user/exchange-items/${e._id}`);
+                    }}
+                  >
                     Exchange Now <FaChevronRight />
                   </button>
                 </div>

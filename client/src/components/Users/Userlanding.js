@@ -11,7 +11,9 @@ import userlandinghand from '../../assets/images/userlandinghand.png'
 import userlandingdelivery from '../../assets/images/userlandingdelivery.png'
 import userlandingfamily from '../../assets/images/userlandingfamily.jpg'
 import Footer from '../Footer/Footer'
+import {useNavigate} from 'react-router-dom'
 function Userlanding() {  
+  const navigate = useNavigate();
   const goToAboutSection = () => {
     const aboutSec = document.getElementById('landing-about-us');
     if (aboutSec) {
@@ -75,7 +77,9 @@ function Userlanding() {
                   <span>Early bird discounts or special offers forcustoms<br></br>
                     brokers.</span>
                 </div>
-                <div className='text-center mt-5'>
+                <div className='text-center mt-5' onClick={() => {
+                  navigate('user/view-all-items')
+                }}>
                   <button type='button' className='user-landing-button2 mt-5'>Explore Now</button>
                 </div>
               </div>

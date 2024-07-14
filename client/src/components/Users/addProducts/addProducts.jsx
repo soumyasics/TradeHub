@@ -229,7 +229,7 @@ export const AddProducts = () => {
                         <option value="Books">Books</option>
                         <option value="Electronics">Electronics</option>
                         <option value="Jewellery">Jewellery</option>
-                        <option value="Home Appliances">Home Appliances</option>
+                        <option value="Home-Appliances">Home Appliances</option>
                         <option value="Clothing">Clothing</option>
                         <option value="Furniture">Furniture</option>
                       </Form.Select>
@@ -308,6 +308,7 @@ export const AddProducts = () => {
                       <Form.Control
                         required
                         type="file"
+                        accept="image/*"
                         placeholder="Upload Images"
                         className="userproduct-select-inp-img"
                         onChange={handleFileChange}

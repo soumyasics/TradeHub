@@ -66,11 +66,14 @@ export const UserWishlist = () => {
     <>
       <div className="productCard-body">
         <UserMainNav />
-        <h3 className="user-wishlist-heading">Wishlist</h3>
+        {wishlist.length > 0 && (
+          <h3 className="user-wishlist-heading">Wishlist</h3>
+        )}
+
         <div className="container text-center">
           {wishlist.length == 0 && (
             <div>
-              <h1>You have not added any wishlist</h1>
+              <h3>You have not added any wishlist items</h3>
             </div>
           )}
           <div className="row row-cols-4">

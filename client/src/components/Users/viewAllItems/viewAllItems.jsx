@@ -163,7 +163,7 @@ export const ViewAllItems = () => {
             })}
           </div>
           <div className="user-view-more-btn">
-            <button>View More </button>
+            {/* <button>View More </button> */}
           </div>
         </div>
       </div>

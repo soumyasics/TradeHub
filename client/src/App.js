@@ -56,6 +56,7 @@ import { ViewAllItems } from "./components/Users/viewAllItems/viewAllItems";
 import { UserChatNavbar } from "./components/Users/usersChat/userChatNavbar/userChatNavbar";
 import { UserChatFooter } from "./components/Users/usersChat/userNavbarFooter/userChatFooter";
 import { ViewByCategory } from "./components/Users/viewByCategory/viewBycategory";
+import { UserProductExchange } from "./components/Users/productExchange/userProductExchange";
 const App = () => {
   return (
     <div className="App">
@@ -80,6 +81,7 @@ const App = () => {
           <Route path="/user/add-product" element={<AddProducts />} />
           <Route path="/user/view-items" element={<ViewItems />} />
           <Route path="/user/view-items/:id" element={<UserProductDetails />} />
+          <Route path="/user/exchange-items/:id" element={<UserProductExchange />} />
           <Route path="/user/view-all-items" element={<ViewAllItems />} />
 
           <Route path="/user/product-details" element={<ItemDetails />} />

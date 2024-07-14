@@ -99,7 +99,7 @@ export const ViewByCategory = () => {
     <div className="productCard-body">
      <UserMainNav/>
       <h5 className="user-wishlist-heading2">{category}</h5>
-      <div class="container text-center">
+      <div class="container text-center" style={{minHeight: "600px"}}>
         <div class="row row-cols-4 gap-5 d-flex my-5">
           {Items.map((e) => {
             console.log("e user id", e.userId, activeUserId);
@@ -174,13 +174,7 @@ export const ViewByCategory = () => {
           })}
         </div>
         <div className="user-view-more-btn">
-          <button
-            onClick={() => {
-              navigate("/user/view-all-items");
-            }}
-          >
-            View More{" "}
-          </button>
+          
         </div>
       </div>
       <Footer/>

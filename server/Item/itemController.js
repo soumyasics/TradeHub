@@ -125,7 +125,7 @@ const getApprovedItemsByCategory = async (req, res) => {
       category === "Books" ||
       category === "Electronics" ||
       category === "Jewellery" ||
-      category === "Home Appliances" ||
+      category === "Home-Appliances" ||
       category === "Clothing" ||
       category === "Furniture" ||
       category === "Beauty" 
