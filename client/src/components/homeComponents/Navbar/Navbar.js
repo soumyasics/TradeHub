@@ -97,14 +97,14 @@ export const ModNavbar = ({ hamActive, setHamActive }) => {
 
             <Dropdown.Menu>
               <div
-                class="dropdown-item"
+                className="dropdown-item"
                 id="landing-drop-link"
                 style={{ cursor: "pointer" }}
                 onClick={() => navigate("/moderator/profile")}
               >
                 Profile
               </div>
-              <div class="dropdown-item mt-3" id="landing-drop-link">
+              <div className="dropdown-item mt-3" id="landing-drop-link">
                 <Button onClick={redirectModLogin} variant="danger">
                   Logout
                 </Button>

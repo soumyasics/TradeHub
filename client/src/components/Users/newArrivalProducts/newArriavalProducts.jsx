@@ -85,8 +85,8 @@ export const NewArrivalProducts = () => {
       <div className="d-flex justify-content-center mt-5">
         <h6 className="user-wishlist-heading3">Products You Might Like</h6>
       </div>
-      <div class="container text-center">
-        <div class="row row-cols-4 gap-5 d-flex my-5">
+      <div className="container text-center">
+        <div className="row row-cols-4 gap-5 d-flex my-5">
           {approvedItems.map((e) => {
             console.log("e user id", e.userId, activeUserId);
             if (e?.userId._id === activeUserId) {

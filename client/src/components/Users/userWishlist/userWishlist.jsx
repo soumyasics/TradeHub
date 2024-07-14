@@ -27,7 +27,6 @@ export const UserWishlist = () => {
   };
   useEffect(() => {
     const userId = localStorage.getItem("trade-hub-userId") || null;
-
     if (userId) {
       setActiveUserId(userId);
     }

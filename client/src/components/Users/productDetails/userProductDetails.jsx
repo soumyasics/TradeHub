@@ -46,9 +46,9 @@ export const UserProductDetails = () => {
       <UserMainNav />
 
       <div className="itemDeails-body shadow">
-        <div class="container text-center">
-          <div class="row">
-            <div class="col-md-6 d-flex itemDetails-left-box">
+        <div className="container text-center">
+          <div className="row">
+            <div className="col-md-6 d-flex itemDetails-left-box">
               <div
                 className=" mt-5"
                 style={{ cursor: "pointer", width: "50px", height: "40px" }}
@@ -74,19 +74,19 @@ export const UserProductDetails = () => {
                 )}
               </div>
             </div>
-            <div class="col-md-6 itemDetails-right-box2 mt-5">
+            <div className="col-md-6 itemDetails-right-box2 mt-5">
               <h5>{product?.category}</h5>
               <h3>{product?.name}</h3>
-              <div class="container ">
-                <div class="row itemDetails-right-inner-box">
-                  <div class="col-6">
+              <div className="container ">
+                <div className="row itemDetails-right-inner-box">
+                  <div className="col-6">
                     <h6>Quantity</h6>
                     <div className="itemDetails-quantity">
                       {product?.quantity}
                     </div>
                     <div></div>
                   </div>
-                  <div class="col-6">
+                  <div className="col-6">
                     <h6>Condition</h6>
                     <p>{product?.condition}</p>
                   </div>

@@ -5,9 +5,9 @@ export const ExchangeProductPage = () => {
   return (
     <div>
       <div className="exchangepage-main">
-        <div class="text-center">
-          <div class="row">
-            <div class="col-6 exchangebtn">
+        <div className="text-center">
+          <div className="row">
+            <div className="col-6 exchangebtn">
               <div className="exchangepage-requestbtn">
                 <div className="d-flex">
                   <Button variant="white" size="lg">
@@ -16,7 +16,7 @@ export const ExchangeProductPage = () => {
                 </div>
               </div>
             </div>
-            <div class="col-6 exchangebtn">
+            <div className="col-6 exchangebtn">
               <div className="exchangepage-requestbtn">
                 <div className="d-flex">
                   <Button variant="white" size="lg">

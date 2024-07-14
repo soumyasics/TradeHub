@@ -70,7 +70,7 @@ function UserNavbar({ goToAboutSection = null}) {
 
                   <Dropdown.Menu>
                     <Link
-                      class="dropdown-item"
+                      className="dropdown-item"
                       to="/user/login"
                       id="landing-drop-link"
                     >
@@ -78,7 +78,7 @@ function UserNavbar({ goToAboutSection = null}) {
                     </Link>
 
                     <Link
-                      class="dropdown-item"
+                      className="dropdown-item"
                       to="/moderator/login"
                       id="landing-drop-link"
                     >
@@ -86,7 +86,7 @@ function UserNavbar({ goToAboutSection = null}) {
                     </Link>
 
                     <Link
-                      class="dropdown-item"
+                      className="dropdown-item"
                       to="/delivery/login"
                       id="landing-drop-link"
                     >
@@ -94,7 +94,7 @@ function UserNavbar({ goToAboutSection = null}) {
                     </Link>
 
                     <Link
-                      class="dropdown-item"
+                      className="dropdown-item"
                       to="/admin/login"
                       id="landing-drop-link"
                     >

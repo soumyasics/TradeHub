@@ -26,9 +26,9 @@ export const ItemDetails = () => {
     }
   return (
     <div className="itemDeails-body">
-      <div class="container text-center">
-        <div class="row">
-          <div class="col-md-6 d-flex itemDetails-left-box">
+      <div className="container text-center">
+        <div className="row">
+          <div className="col-md-6 d-flex itemDetails-left-box">
             <FaArrowLeft className="itemDetails-left-arrow" />
 
             <div>
@@ -46,19 +46,19 @@ export const ItemDetails = () => {
               {wishList&&<FaHeart className="itemdetails-heart" onClick={clickWishList} />}
             </div>
           </div>
-          <div class="col-md-6 itemDetails-right-box">
+          <div className="col-md-6 itemDetails-right-box">
             <h3>{productDetails.productType}</h3>
             <h1>{productDetails.productName}</h1>
-            <div class="container ">
-              <div class="row itemDetails-right-inner-box">
-                <div class="col-6">
+            <div className="container ">
+              <div className="row itemDetails-right-inner-box">
+                <div className="col-6">
                   <h6>Quantity</h6>
                   <div className="itemDetails-quantity">
                     {productDetails.quantity}
                   </div>
                   <div></div>
                 </div>
-                <div class="col-6">
+                <div className="col-6">
                   <h6>Condition</h6>
                   <p>{productDetails.condition}</p>
                 </div>

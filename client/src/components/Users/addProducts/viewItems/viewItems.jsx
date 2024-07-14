@@ -78,12 +78,12 @@ export const ViewItems = () => {
               }}
             >
               <div className="user_viewItems-box">
-                <div class="container text-center">
-                  <div class="row">
-                    <div class="col-4 user-viewItems-left-box">
+                <div className="container text-center">
+                  <div className="row">
+                    <div className="col-4 user-viewItems-left-box">
                       <img style={{ width: "50%" }} src={pic} alt="Item" />
                     </div>
-                    <div class="col-6 user-viewItems-middle-box">
+                    <div className="col-6 user-viewItems-middle-box">
                       <table>
                         <thead>
                           <tr>
@@ -124,7 +124,7 @@ export const ViewItems = () => {
                         </tbody>
                       </table>
                     </div>
-                    <div class="col-2 user-viewItems-right-box">
+                    <div className="col-2 user-viewItems-right-box">
                       <div className="userView-right-inner-box">
                         <div className="userItemView-pending bg-danger"></div>
                         <p>

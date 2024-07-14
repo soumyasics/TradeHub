@@ -112,10 +112,10 @@ export const ReceivedRequest = () => {
                 </div>
               </div>
               <span className="exchangeaccept-reject d-flex">
-                <button type="button" class="btn btn-success">
+                <button type="button" className="btn btn-success">
                   Accept
                 </button>
-                <button type="button" class="btn btn-danger">
+                <button type="button" className="btn btn-danger">
                   Reject
                 </button>
               </span>

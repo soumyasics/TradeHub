@@ -3,10 +3,10 @@ import { Button } from "react-bootstrap";
 export const RequestsToggle = ({ receivedRequest, setReceivedRequest }) => {
   return (
     <div className="">
-      <div class="text-center">
-        <div class="row">
+      <div className="text-center">
+        <div className="row">
           <div
-            class="col-6 exchangebtn"
+            className="col-6 exchangebtn"
             onClick={() => {
               setReceivedRequest(true);
             }}
@@ -20,7 +20,7 @@ export const RequestsToggle = ({ receivedRequest, setReceivedRequest }) => {
             </div>
           </div>
           <div
-            class="col-6 exchangebtn"
+            className="col-6 exchangebtn"
             onClick={() => {
               setReceivedRequest(false);
             }}
@@ -28,7 +28,7 @@ export const RequestsToggle = ({ receivedRequest, setReceivedRequest }) => {
             <div className="exchangepage-requestbtn">
               <div className="d-flex">
                 <Button variant="white" size="lg">
-                  Requested item
+                  Requested Items
                 </Button>
               </div>
             </div>
