@@ -34,7 +34,6 @@ export const ViewItems = () => {
       .get(`viewAllitemsByUserId/${id}`)
       .then((res) => {
         if (res.status === 200) {
-          console.log("respo", res);
           let data = res?.data?.data || [];
           data.reverse();
           setMyItems(data);
@@ -65,7 +64,8 @@ export const ViewItems = () => {
 
         {myItems.map((e) => {
           const filename = e.itemPhoto?.filename || "";
-          let pic;
+          let pic =
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXxZR0_1ISIJx_T4oB5-5OJVSNgSMFLe8eCw&s";
           if (filename) {
             pic = `${BASE_URL}${filename}`;
           }
@@ -139,7 +139,7 @@ export const ViewItems = () => {
                       </div>
                       <div
                         onClick={(event) => {
-                            event.stopPropagation()
+                          event.stopPropagation();
                           setDeletingId(e._id);
                           handleShow();
                         }}

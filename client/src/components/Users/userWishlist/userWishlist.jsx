@@ -27,7 +27,6 @@ export const UserWishlist = () => {
       console.log(error);
     }
   };
-  console.log("dataaaa", wishlist);
   useEffect(() => {
     const userId = localStorage.getItem("trade-hub-userId") || null;
 
@@ -109,10 +108,16 @@ export const UserWishlist = () => {
                       </div>
 
                       <div className="card-body ">
-                        <p className="card-text">{item?.name} </p>
+                        {/* <p className="card-text">{item?.name} </p>
                         <h5 className="card-title">
                           {item?.description?.substring(0, 40)}
-                        </h5>
+                        </h5> */}
+                        <h6 className="card-text">{item?.name?.substring(0, 25)}  </h6>
+                        <span className="card-text">
+                          {item?.description?.length > 30
+                            ? item?.description?.substring(0, 30) + "..."
+                            : item?.description}
+                        </span>
                       </div>
                       <div className="productCard-points-box d-flex ">
                         <img src={img2} alt="" />

@@ -10,10 +10,13 @@ import UserMainNav from "../UserMainNav";
 import Footer from "../../Footer/Footer";
 import { FaArrowLeft } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { MyProductModals } from "./myProductModals.jsx";
 
 export const UserProductExchange = () => {
   const [product, setProduct] = useState(null);
   const [wishList, setWhishList] = useState(false);
+  const [show, setShow] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
@@ -35,6 +38,10 @@ export const UserProductExchange = () => {
     }
   };
 
+  const openMyProducts = () => {
+    setShow(true)
+  };
+
   console.log("product deta", product);
   const redirectToProductList = () => {
     navigate(-1);
@@ -45,6 +52,7 @@ export const UserProductExchange = () => {
   return (
     <>
       <UserMainNav />
+      <MyProductModals show={show} setShow={setShow} />
 
       <div className="itemDeails-body shadow">
         <div class="container text-center">
@@ -111,6 +119,11 @@ export const UserProductExchange = () => {
                 </table>
               </div>
             </div>
+          </div>
+          <div className=" mt-5">
+            <button onClick={openMyProducts} className="user-xchange-now-btn">
+              Exchange Now
+            </button>
           </div>
         </div>
       </div>

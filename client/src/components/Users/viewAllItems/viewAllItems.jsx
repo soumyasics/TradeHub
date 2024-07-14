@@ -143,10 +143,12 @@ export const ViewAllItems = () => {
                     )}
 
                     <div className="card-body ">
-                      <h5 className="card-text">{e?.name} </h5>
-                      <p className="card-text">
-                        {e?.description?.substring(0, 40)}
-                      </p>
+                      <h6 className="card-text">{e?.name?.substring(0, 25)} </h6>
+                      <span className="card-text">
+                        {e?.description?.length > 30
+                          ? e?.description?.substring(0, 30) + "..."
+                          : e?.description}
+                      </span>
                     </div>
                     <div className="productCard-points-box d-flex ">
                       <img src={img2} alt="coin" />

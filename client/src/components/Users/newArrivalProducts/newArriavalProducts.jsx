@@ -140,10 +140,12 @@ export const NewArrivalProducts = () => {
                   )}
 
                   <div className="card-body ">
-                    <h5 className="card-text">{e?.name} </h5>
-                    <p className="card-text">
-                      {e?.description?.substring(0, 40)}
-                    </p>
+                    <h6 className="card-text">{e?.name} </h6>
+                    <span className="card-text">
+                      {e?.description?.length > 30
+                        ? e?.description?.substring(0, 30) + "..."
+                        : e?.description}
+                    </span>
                   </div>
                   <div className="productCard-points-box d-flex ">
                     <img src={img2} alt="coin" />
@@ -165,9 +167,13 @@ export const NewArrivalProducts = () => {
           })}
         </div>
         <div className="user-view-more-btn">
-          <button onClick={() => {
-            navigate('/user/view-all-items')
-          }}>View More </button>
+          <button
+            onClick={() => {
+              navigate("/user/view-all-items");
+            }}
+          >
+            View More{" "}
+          </button>
         </div>
       </div>
     </div>
