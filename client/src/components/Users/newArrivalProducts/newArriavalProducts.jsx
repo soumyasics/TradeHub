@@ -82,9 +82,11 @@ export const NewArrivalProducts = () => {
   };
   return (
     <div className="productCard-body">
-      <h5 className="user-wishlist-heading2">New Arrivals</h5>
-      <div class="container text-center">
-        <div class="row row-cols-4 gap-5 d-flex my-5">
+      <div className="d-flex justify-content-center mt-5">
+        <h6 className="user-wishlist-heading3">Products You Might Like</h6>
+      </div>
+      <div className="container text-center">
+        <div className="row row-cols-4 gap-5 d-flex my-5">
           {approvedItems.map((e) => {
             console.log("e user id", e.userId, activeUserId);
             if (e?.userId._id === activeUserId) {
@@ -138,10 +140,12 @@ export const NewArrivalProducts = () => {
                   )}
 
                   <div className="card-body ">
-                    <h5 className="card-text">{e?.name} </h5>
-                    <p className="card-text">
-                      {e?.description?.substring(0, 40)}
-                    </p>
+                    <h6 className="card-text">{e?.name} </h6>
+                    <span className="card-text">
+                      {e?.description?.length > 30
+                        ? e?.description?.substring(0, 30) + "..."
+                        : e?.description}
+                    </span>
                   </div>
                   <div className="productCard-points-box d-flex ">
                     <img src={img2} alt="coin" />
@@ -149,7 +153,12 @@ export const NewArrivalProducts = () => {
                   </div>
                 </div>
                 <div className="d-flex justify-content-center">
-                  <button className="productCard-button2">
+                  <button
+                    className="productCard-button2"
+                    onClick={() => {
+                      navigate(`/user/exchange-items/${e._id}`);
+                    }}
+                  >
                     Exchange Now <FaChevronRight />
                   </button>
                 </div>
@@ -158,9 +167,13 @@ export const NewArrivalProducts = () => {
           })}
         </div>
         <div className="user-view-more-btn">
-          <button onClick={() => {
-            navigate('/user/view-all-items')
-          }}>View More </button>
+          <button
+            onClick={() => {
+              navigate("/user/view-all-items");
+            }}
+          >
+            View More{" "}
+          </button>
         </div>
       </div>
     </div>

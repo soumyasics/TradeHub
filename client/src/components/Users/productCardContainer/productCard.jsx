@@ -45,8 +45,8 @@ export const ProductCard = () => {
   return (
     <div className="productCard-body">
       <h3 className="product-card-heading">New Arrivals</h3>
-      <div class="container text-center">
-        <div class="row row-cols-4">
+      <div className="container text-center">
+        <div className="row row-cols-4">
           {cardDetails.map((e) => {
             return (
               <div>

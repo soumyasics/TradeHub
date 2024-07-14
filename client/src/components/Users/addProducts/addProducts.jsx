@@ -205,10 +205,10 @@ export const AddProducts = () => {
       <div className="addProduct-body">
         <h2 className="addproducts-heading">ADD ITEM TO SELL</h2>
         <div className="addProducts-login-box">
-          <div class="container text-center">
+          <div className="container text-center">
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
               <div className="row">
-                <div class="col-6 addproduct-left-box">
+                <div className="col-6 addproduct-left-box">
                   <Row className="mb-3">
                     <Form.Group
                       as={Row}
@@ -229,7 +229,7 @@ export const AddProducts = () => {
                         <option value="Books">Books</option>
                         <option value="Electronics">Electronics</option>
                         <option value="Jewellery">Jewellery</option>
-                        <option value="Home Appliances">Home Appliances</option>
+                        <option value="Home-Appliances">Home Appliances</option>
                         <option value="Clothing">Clothing</option>
                         <option value="Furniture">Furniture</option>
                       </Form.Select>
@@ -250,7 +250,7 @@ export const AddProducts = () => {
                       <Form.Label>Condition</Form.Label>
                       <select
                         required
-                        class="form-select userproduct-select-inp"
+                        className="form-select userproduct-select-inp"
                         aria-label="Default select example"
                         onChange={handleChanges}
                         name="condition"
@@ -284,7 +284,7 @@ export const AddProducts = () => {
                         required
                         name="quantity"
                         onChange={handleChanges}
-                        class="form-select userproduct-select-inp"
+                        className="form-select userproduct-select-inp"
                         aria-label="Default select example"
                       >
                         <option value="" defaultValue={""} selected>
@@ -308,6 +308,7 @@ export const AddProducts = () => {
                       <Form.Control
                         required
                         type="file"
+                        accept="image/*"
                         placeholder="Upload Images"
                         className="userproduct-select-inp-img"
                         onChange={handleFileChange}
@@ -323,9 +324,9 @@ export const AddProducts = () => {
                     <h3 className="addproducts-review-head">
                       Review your details :
                     </h3>
-                    <div class="container text-center">
-                      <div class="row">
-                        <div class="col-5">
+                    <div className="container text-center">
+                      <div className="row">
+                        <div className="col-5">
                           <img
                             src={proPic}
                             style={{
@@ -337,7 +338,7 @@ export const AddProducts = () => {
                             className="my-5"
                           />
                         </div>
-                        <div class="col-7">
+                        <div className="col-7">
                           <Form.Group
                             as={Col}
                             md="4"
@@ -402,7 +403,7 @@ export const AddProducts = () => {
                     </div>
                   </Row>
                 </div>
-                <div class="col-6 addProduct-right-box">
+                <div className="col-6 addProduct-right-box">
                   <Form.Group as={Row} md="4" controlId="validationCustom02">
                     <Form.Label>Item Name</Form.Label>
                     <Form.Control

@@ -8,8 +8,8 @@ import { IoMdContact } from "react-icons/io";
 import { BsChatText } from "react-icons/bs";
 import { Dropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import exchangeIcon from "../../assets/svg/exchange-icon.svg";
 import "./User.css";
-
 function UserMainNav() {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
@@ -31,6 +31,9 @@ function UserMainNav() {
 
   const userViewItems = () => {
     navigate("/user/view-items");
+  };
+  const redirectToRequest = () => {
+    navigate("/user/requests");
   };
   return (
     <div>
@@ -81,13 +84,22 @@ function UserMainNav() {
           <Link to="/user/add-product" className="">
             <p className="usermain-navbar-chat">Sell</p>
           </Link>
-          <Nav.Link href="" className="">
+          {/* <Nav.Link href="" className="">
             <p className="usermain-navbar-chat">Points</p>
-          </Nav.Link>
-          {/* <p className="usermain-navbar-home " onClick={navigateUserHome} >Home</p> */}
-          {/* <Nav.Link href="" className="me-5">
-            <ImLoop className="usermain-navbar-iconloop" />
           </Nav.Link> */}
+          <div
+            onClick={redirectToRequest}
+            style={{
+              height: "40px",
+              width: "40px",
+              borderRadius: "50%",
+              cursor: "pointer",
+              top: "-6px",
+            }}
+            className=" bg-light position-relative mx-3 d-flex justify-content-center align-items-center fs-4"
+          >
+            <img src={exchangeIcon} alt="loop" />
+          </div>
           <Dropdown show={showDropdown} onToggle={toggleDropdown}>
             <Dropdown.Toggle
               as="div"

@@ -43,12 +43,12 @@ export const MyDelivery = () => {
             <div className="user-viewItems-body2">
               <div>
                 <div className="user_viewItems-box">
-                  <div class="container text-center">
-                    <div class="row">
-                      <div class="col-4 mydelivrey-viewItems-left-box">
+                  <div className="container text-center">
+                    <div className="row">
+                      <div className="col-4 mydelivrey-viewItems-left-box">
                         <img style={{ width: "50%" }} src={pic} alt="Item" />
                       </div>
-                      <div class="col-6 mydelivrey-viewItems-middle-box">
+                      <div className="col-6 mydelivrey-viewItems-middle-box">
                         <table>
                           <thead>
                             <tr>
@@ -84,7 +84,7 @@ export const MyDelivery = () => {
                           </tbody>
                         </table>
                       </div>
-                      <div class="col-2 user-viewItems-right-box">
+                      <div className="col-2 user-viewItems-right-box">
                         <div className="myDelivery-Delivered-box d-flex">
                           <p>Delivered</p>
                           <CiDeliveryTruck className="mydelivery-delivered-icon" />

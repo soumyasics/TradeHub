@@ -63,7 +63,7 @@ function HomeCategories() {
           <div
             className="col home-category-electronics-box"
             onClick={() => {
-              openCategoryPage("Home Appliances");
+              openCategoryPage("Home-Appliances");
             }}
           >
             <img

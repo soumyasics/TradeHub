@@ -19,33 +19,30 @@ export const ViewByCategory = () => {
 
   const navigate = useNavigate();
 
-
   useEffect(() => {
     const userId = localStorage.getItem("trade-hub-userId") || null;
     if (category && userId) {
       setActiveUserId(userId);
       getItemsByCategory();
-    }
-    else{
-      toast.error("login again")
-      navigate("/user/login")
+    } else {
+      toast.error("login again");
+      navigate("/user/login");
     }
   }, []);
 
   const getItemsByCategory = async () => {
     try {
-    const response = await axiosInstance.get(
-      `getApprovedItemsByCategory/${category}`
-    );
+      const response = await axiosInstance.get(
+        `getApprovedItemsByCategory/${category}`
+      );
       if (response.status == 200) {
         console.log(response);
-        setItems(response.data.data)
+        setItems(response.data.data);
       }
     } catch (error) {
       console.log(error);
     }
   };
-
 
   const addItemToWishlist = async (itemId) => {
     if (!activeUserId || !itemId) {
@@ -94,13 +91,12 @@ export const ViewByCategory = () => {
     }
   };
 
-
   return (
     <div className="productCard-body">
-     <UserMainNav/>
+      <UserMainNav />
       <h5 className="user-wishlist-heading2">{category}</h5>
-      <div class="container text-center">
-        <div class="row row-cols-4 gap-5 d-flex my-5">
+      <div className="container text-center" style={{ minHeight: "600px" }}>
+        <div className="row row-cols-4 gap-5 d-flex my-5">
           {Items.map((e) => {
             console.log("e user id", e.userId, activeUserId);
             if (e?.userId._id === activeUserId) {
@@ -154,10 +150,12 @@ export const ViewByCategory = () => {
                   )}
 
                   <div className="card-body ">
-                    <h5 className="card-text">{e?.name} </h5>
-                    <p className="card-text">
-                      {e?.description?.substring(0, 40)}
-                    </p>
+                    <h6 className="card-text">{e?.name?.substring(0, 25)} </h6>
+                    <span className="card-text">
+                      {e?.description?.length > 30
+                        ? e?.description?.substring(0, 30) + "..."
+                        : e?.description}
+                    </span>
                   </div>
                   <div className="productCard-points-box d-flex ">
                     <img src={img2} alt="coin" />
@@ -165,7 +163,12 @@ export const ViewByCategory = () => {
                   </div>
                 </div>
                 <div className="d-flex justify-content-center">
-                  <button className="productCard-button2">
+                  <button
+                    className="productCard-button2"
+                    onClick={() => {
+                      navigate(`/user/exchange-items/${e._id}`);
+                    }}
+                  >
                     Exchange Now <FaChevronRight />
                   </button>
                 </div>
@@ -173,17 +176,9 @@ export const ViewByCategory = () => {
             );
           })}
         </div>
-        <div className="user-view-more-btn">
-          <button
-            onClick={() => {
-              navigate("/user/view-all-items");
-            }}
-          >
-            View More{" "}
-          </button>
-        </div>
+        <div className="user-view-more-btn"></div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

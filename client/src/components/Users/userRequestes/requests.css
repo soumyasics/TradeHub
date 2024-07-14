@@ -1,3 +1,5 @@
+/* requested items styels */
+
 .exchangeproduct-main {
   width: 100%;
   min-height: 100vh;
@@ -131,18 +133,18 @@
   background: #fff;
   box-shadow: 3px 3px 15px 3px rgba(0, 0, 0, 0.25);
 }
-.exchangeProduct-chat-btn img{
-    margin-bottom:2%;
-    margin-right: 1%;
+.exchangeProduct-chat-btn img {
+  margin-bottom: 2%;
+  margin-right: 1%;
 }
-.exchangeaccept-reject{
-    position: relative;
-    float: right;
+.exchangeaccept-reject {
+  position: relative;
+  float: right;
   margin-top: 30px;
   margin-right: 2%;
 }
-.exchangeaccept-reject button{
-    width: 158px;
-height: 41.888px;
-margin: 1%;
+.exchangeaccept-reject button {
+  width: 158px;
+  height: 41.888px;
+  margin: 1%;
 }

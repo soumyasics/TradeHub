@@ -34,7 +34,6 @@ export const ViewItems = () => {
       .get(`viewAllitemsByUserId/${id}`)
       .then((res) => {
         if (res.status === 200) {
-          console.log("respo", res);
           let data = res?.data?.data || [];
           data.reverse();
           setMyItems(data);
@@ -65,7 +64,8 @@ export const ViewItems = () => {
 
         {myItems.map((e) => {
           const filename = e.itemPhoto?.filename || "";
-          let pic;
+          let pic =
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXxZR0_1ISIJx_T4oB5-5OJVSNgSMFLe8eCw&s";
           if (filename) {
             pic = `${BASE_URL}${filename}`;
           }
@@ -78,12 +78,12 @@ export const ViewItems = () => {
               }}
             >
               <div className="user_viewItems-box">
-                <div class="container text-center">
-                  <div class="row">
-                    <div class="col-4 user-viewItems-left-box">
+                <div className="container text-center">
+                  <div className="row">
+                    <div className="col-4 user-viewItems-left-box">
                       <img style={{ width: "50%" }} src={pic} alt="Item" />
                     </div>
-                    <div class="col-6 user-viewItems-middle-box">
+                    <div className="col-6 user-viewItems-middle-box">
                       <table>
                         <thead>
                           <tr>
@@ -124,7 +124,7 @@ export const ViewItems = () => {
                         </tbody>
                       </table>
                     </div>
-                    <div class="col-2 user-viewItems-right-box">
+                    <div className="col-2 user-viewItems-right-box">
                       <div className="userView-right-inner-box">
                         <div className="userItemView-pending bg-danger"></div>
                         <p>
@@ -139,7 +139,7 @@ export const ViewItems = () => {
                       </div>
                       <div
                         onClick={(event) => {
-                            event.stopPropagation()
+                          event.stopPropagation();
                           setDeletingId(e._id);
                           handleShow();
                         }}

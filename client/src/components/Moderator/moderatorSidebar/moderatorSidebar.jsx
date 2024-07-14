@@ -60,9 +60,9 @@ function ModeratorSidebar({ changeSelectedPage }) {
               <span className="contentIcons">
                 <PiShootingStarThin />
               </span>
-              <p class="d-inline-flex gap-1">
+              <p className="d-inline-flex gap-1">
                 <button
-                  class="reviewbtn"
+                  className="reviewbtn"
                   data-bs-toggle="collapse"
                   href="#collapseExample"
                   role="button"
@@ -72,8 +72,8 @@ function ModeratorSidebar({ changeSelectedPage }) {
                   Item review
                 </button>
               </p>
-              <div class="collapse collapse-drop" id="collapseExample">
-                <div class="card card-body">
+              <div className="collapse collapse-drop" id="collapseExample">
+                <div className="card card-body">
                   <span className="collapse-dropbody">
                     <li onClick={() => changeSelectedPage("approved-items")}>
                       Approved items
