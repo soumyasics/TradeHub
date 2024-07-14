@@ -15,6 +15,7 @@ import { MyProductModals } from "./myProductModals.jsx";
 
 export const UserProductExchange = () => {
   const [product, setProduct] = useState(null);
+  const [userSelectedProductId, setUserSelectedProductId] = useState("");
   const [wishList, setWhishList] = useState(false);
   const [show, setShow] = useState(false);
   const { id } = useParams();
@@ -38,8 +39,11 @@ export const UserProductExchange = () => {
     }
   };
 
+  const changeSelectedProductItem = (id) => {
+    setUserSelectedProductId(id);
+  };
   const openMyProducts = () => {
-    setShow(true)
+    setShow(true);
   };
 
   console.log("product deta", product);
@@ -52,7 +56,11 @@ export const UserProductExchange = () => {
   return (
     <>
       <UserMainNav />
-      <MyProductModals show={show} setShow={setShow} />
+      <MyProductModals
+        changeSelectedProductItem={changeSelectedProductItem}
+        show={show}
+        setShow={setShow}
+      />
 
       <div className="itemDeails-body shadow">
         <div class="container text-center">

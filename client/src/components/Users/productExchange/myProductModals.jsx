@@ -6,7 +6,11 @@ import { toast } from "react-hot-toast";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
 
-export const MyProductModals = ({ show, setShow }) => {
+export const MyProductModals = ({
+  show,
+  setShow,
+  changeSelectedProductItem,
+}) => {
   const [myItems, setMyItems] = useState([]);
   const [selectItem, setSelectedItem] = useState(null);
   const navigate = useNavigate();
@@ -43,6 +47,7 @@ export const MyProductModals = ({ show, setShow }) => {
   const myItemIdForExchange = (id) => {
     console.log("selected item", id);
     setSelectedItem(id);
+    changeSelectedProductItem(id);
   };
   return (
     <Modal
@@ -73,7 +78,9 @@ export const MyProductModals = ({ show, setShow }) => {
                   selectItem === e._id ? "selected" : ""
                 }`}
               >
-                <img src={pic} alt="" className="userConfirmExchange-image" />
+                <div className="d-flex justify-content-center">
+                  <img src={pic} alt="" className="userConfirmExchange-image" />
+                </div>
                 <table className="userConfirmExchange-table">
                   <tr>
                     <th>Item name</th>

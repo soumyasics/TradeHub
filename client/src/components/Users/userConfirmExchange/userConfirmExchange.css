@@ -6,7 +6,7 @@
   min-height: 78vh;
 }
 .userConfirmExchange-product-view {
-  height: 191px;
+  height: 230px;
   width: 155px;
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.5);
@@ -35,8 +35,9 @@
   margin-top: 10px;
 }
 .userConfirmExchange-image {
-  height: 50%;
-  width: 155px;
+  /* height: 50%; */
+  width: 90%;
+  margin: auto;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
