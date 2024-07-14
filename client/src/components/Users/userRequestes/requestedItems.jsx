@@ -167,7 +167,7 @@ export const RequestedItems = () => {
                     <span className="viewmore">
                       <button
                         onClick={() => {
-                          navigateToOtherUserProductDetails(buyerProduct._id);
+                          navigateToOtherUserProductDetails(sellerProduct._id);
                         }}
                       >
                         View more
@@ -175,9 +175,19 @@ export const RequestedItems = () => {
                     </span>
                   </div>
                 </div>
-                <div className="exchangeProduct-order-pending">
+                <div
+                  className="exchangeProduct-order-pending align-items-center d-flex"
+                  style={{ height: "30px" }}
+                >
                   <input type="radio" />
-                  Pending
+                  &nbsp; &nbsp;
+                  {e?.sellerResponseStatus === "pending" ? (
+                    <p className="m-0 text-warning"> Pending </p>
+                  ) : e?.sellerResponseStatus === "accepted" ? (
+                    <p className="m-0 text-success"> Accepted</p>
+                  ) : (
+                    <p className="m-0 text-danger"> Rejected</p>
+                  )}
                 </div>
                 {/* <div className="exchangeProduct-chat-btn">
                   <button>

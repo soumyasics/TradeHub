@@ -23,7 +23,11 @@ export const ReceivedRequest = () => {
         `getAllRequestBySellerId/${activeUserId}`
       );
       if (res.status == 200) {
-        setRequests(res.data.data);
+        const pendingReqs = res.data.data.filter(
+          (e) => e?.sellerResponseStatus === "pending"
+        );
+
+        setRequests(pendingReqs);
       }
     } catch (error) {
       const status = error?.response.status;
@@ -48,38 +52,42 @@ export const ReceivedRequest = () => {
   }, [activeUserId]);
 
   const acceptRequest = async (id) => {
-    console.log("id => ", id)
-      try {
-        const res = await axiosInstance.patch(`acceptRequestById/${id}`);
-        if (res.status === 200) {
-          toast.success(res.data.msg);
-        }
-      } catch (error) {
-        const status = error?.response.status;
-        if (status === 400 || status === 404 || status === 500) {
-          toast.error(error.response?.data?.msg || "Network issue");
-        } else {
-          toast.error("Something went wrong");
-        }
-        console.log("Error on acceptRequest =>", error);
+    console.log("id => ", id);
+    try {
+      const res = await axiosInstance.patch(`acceptRequestById/${id}`);
+      if (res.status === 200) {
+        toast.success(res.data.msg);
       }
-  }
+    } catch (error) {
+      const status = error?.response.status;
+      if (status === 400 || status === 404 || status === 500) {
+        toast.error(error.response?.data?.msg || "Network issue");
+      } else {
+        toast.error("Something went wrong");
+      }
+      console.log("Error on acceptRequest =>", error);
+    } finally {
+      getMyRequests();
+    }
+  };
   const rejectRequest = async (id) => {
-      try {
-        const res = await axiosInstance.patch(`rejectRequestById/${id}`);
-        if (res.status === 200) {
-          toast.success(res.data.msg);
-        }
-      } catch (error) {
-        const status = error?.response.status;
-        if (status === 400 || status === 404 || status === 500) {
-          toast.error(error.response?.data?.msg || "Network issue");
-        } else {
-          toast.error("Something went wrong");
-        }
-        console.log("Error on acceptRequest =>", error);
+    try {
+      const res = await axiosInstance.patch(`rejectRequestById/${id}`);
+      if (res.status === 200) {
+        toast.success(res.data.msg);
       }
-  }
+    } catch (error) {
+      const status = error?.response.status;
+      if (status === 400 || status === 404 || status === 500) {
+        toast.error(error.response?.data?.msg || "Network issue");
+      } else {
+        toast.error("Something went wrong");
+      }
+      console.log("Error on acceptRequest =>", error);
+    } finally {
+      getMyRequests();
+    }
+  };
 
   return (
     <div className="mt-5">
