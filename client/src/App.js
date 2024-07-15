@@ -61,6 +61,7 @@ import { UserChatFooter } from "./components/Users/usersChat/userNavbarFooter/us
 import { ViewByCategory } from "./components/Users/viewByCategory/viewBycategory";
 import { UserProductExchange } from "./components/Users/productExchange/userProductExchange";
 import { UserRequestes } from "./components/Users/userRequestes/userRequestes";
+import { ModExchangeProduct } from "./components/Moderator/modExchangeProduct/modExhangeProduct";
 const App = () => {
   return (
     <div className="App">
@@ -122,7 +123,7 @@ const App = () => {
             path="/moderator/forget-password"
             element={<Moderatorforget />}
           />
-
+<Route path="/moderator/exchange" element={<ModExchangeProduct/>} />
 
           {/* new-1 */}
           <Route path="/delivery/login" element={<DeliveryAgentLogin />} />
