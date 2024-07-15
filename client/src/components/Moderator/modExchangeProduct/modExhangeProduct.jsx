@@ -27,7 +27,11 @@ export const ModExchangeProduct = () => {
   }, []);
 
   return (
-    <div>
+    <div className="userTransaction-main">
+      <div className="userTransaction-heading-box">
+        Product exchange request
+      </div>
+
       {requestData.map((e) => {
         const buyer = e?.buyerId;
         const buyerProduct = e?.buyerProductId;
@@ -41,18 +45,19 @@ export const ModExchangeProduct = () => {
         const seller = e?.sellerId;
         const sellerProduct = e?.sellerProductId;
 
-        const sellerProductFilename = buyerProduct?.itemPhoto?.filename || null;
+        const sellerProductFilename =
+          sellerProduct?.itemPhoto?.filename || null;
         let sellerProductPic =
           "https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg";
         if (sellerProductFilename) {
-          sellerProductPic = `${BASE_URL}${buyerProductFilename}`;
+          sellerProductPic = `${BASE_URL}${sellerProductFilename}`;
         }
 
         return (
           <div>
-            <div className="userTransaction-main">
+            <div className="userTransaction-inner-box">
               <div>
-                <div className="userTransaction-box">
+                <div className="modTransaction-box">
                   <div className="userTransaction-boxcontent d-flex">
                     {/* myitems */}
                     <div className="userTransaction-myitems">
@@ -128,12 +133,33 @@ export const ModExchangeProduct = () => {
                       <img src={buyerProductPic} alt="" />
                     </div>
                   </div>
-                  <div className="userTransaction-center-image">
+
+                  <div className="modTransaction-center-image d-flex">
+                      <div className="modExchange-delivery-status d-flex">
+                        Seller response status : 
+                        {e?.sellerResponseStatus === "pending" ? (
+                          <p className="text-warning">Pending</p>
+                        ) : e?.sellerResponseStatus == "accepted" ? (
+                          <p className="text-success">Accepted</p>
+                        ) : (
+                          <p className="text-danger">Rejected</p>
+                        )}
+                      </div>
                     <img src={img3} alt="" />
+                    <div className="modExchange-delivery-status d-flex">
+                      Delivery status :
+                      {e?.deliveryStatus === "pending" ? (
+                        <p className="text-warning">Pending</p>
+                      ) : e?.deliveryStatus == "accepted" ? (
+                        <p className="text-success">Accepted</p>
+                      ) : (
+                        <p className="text-danger">Rejected</p>
+                      )}
+                    </div>
                   </div>
                 </div>
 
-                <div className="userTransaction-box">
+                <div className="modTransaction-box2">
                   <div className="userTransaction-boxcontent d-flex">
                     {/* myitems */}
                     <div className="userTransaction-myitems">

@@ -175,6 +175,72 @@ const rejectRequestById = async (req, res) => {
   }
 };
 
+// deliveries
+
+const getAllPendingDelivery = async (req, res) => {
+  try {
+    const allReqs = await ExchangeProductModel.find({
+      sellerResponseStatus: "accepted",
+      deliverStatus: "pending",
+      isExchangeRequestActive: true,
+    })
+      .populate("buyerProductId")
+      .populate("sellerProductId")
+      .populate("buyerId")
+      .populate("sellerId")
+      .exec();
+
+    return res
+      .status(200)
+      .json({ msg: "All exchange requests", data: allReqs });
+  } catch (error) {
+    return res.status(500).json({ error: error.message, msg: "server Error" });
+  }
+};
+
+const acceptDeliveryReqById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ msg: "Invalid ID" });
+    }
+    const newRequest = await ExchangeProductModel.findByIdAndUpdate(
+      id,
+      {
+        deliveryStatus: "accepted",
+      },
+      { new: true }
+    );
+
+    return res
+      .status(200)
+      .json({ msg: "Request accepted successfully", data: newRequest });
+  } catch (error) {
+    return res.status(500).json({ msg: "Server error", error: error.message });
+  }
+};
+const rejectDeliveryReqById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ msg: "Invalid ID" });
+    }
+    const newRequest = await ExchangeProductModel.findByIdAndUpdate(
+      id,
+      {
+        deliveryStatus: "rejected",
+      },
+      { new: true }
+    );
+
+    return res
+      .status(200)
+      .json({ msg: "Delivery request rejected successfully", data: newRequest });
+  } catch (error) {
+    return res.status(500).json({ msg: "Server error", error: error.message });
+  }
+};
+
 module.exports = {
   sendExchangeRequest,
   getAllRequestByBuyerId,
@@ -183,4 +249,7 @@ module.exports = {
   getExchangeReqById,
   acceptRequestById,
   rejectRequestById,
+  getAllPendingDelivery,
+  acceptDeliveryReqById,
+  rejectDeliveryReqById,
 };
