@@ -117,5 +117,8 @@ router.get('/getAllExchangeRequests', exchangeProductController.getAllExchangeRe
 router.get('/getExchangeReqById/:id', exchangeProductController.getExchangeReqById);
 router.patch('/acceptRequestById/:id', exchangeProductController.acceptRequestById);
 router.patch('/rejectRequestById/:id', exchangeProductController.rejectRequestById);
+router.get("/getAllPendingDelivery", exchangeProductController.getAllPendingDelivery)
+router.patch("/acceptDeliveryReqById/:id", exchangeProductController.acceptDeliveryReqById);
+router.patch("/rejectDeliveryReqById/:id", exchangeProductController.rejectDeliveryReqById);
 
 module.exports = router;
