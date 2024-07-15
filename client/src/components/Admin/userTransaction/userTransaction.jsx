@@ -1,4 +1,4 @@
-import "./userTransaction.css";
+import "./userTransaction.css"
 import img1 from "../../../assets/images/itemDetailsPoints.png";
 import img2 from "../../../assets/images/userTransactionImage.png";
 import img3 from "../../../assets/images/userTransactionImage2.svg";

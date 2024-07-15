@@ -36,7 +36,7 @@ export const UserProductDetails = () => {
 
   console.log("product deta", product);
   const redirectToProductList = () => {
-    navigate("/user/view-items");
+    navigate(-1);
   };
   const clickWishList = () => {
     setWhishList(!wishList);

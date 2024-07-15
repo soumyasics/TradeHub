@@ -95,7 +95,9 @@ function ModeratorSidebar({ changeSelectedPage }) {
               </span>
               Users
             </li>
-            <li>
+            <li onClick={()=>{
+              changeSelectedPage("exchangeItem")
+            }}>
               <span className="contentIcons">
                 <GiCardExchange />
               </span>
