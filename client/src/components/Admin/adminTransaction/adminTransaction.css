@@ -1,0 +1,248 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.userTransaction-main {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+}
+.userTransaction-inner-box {
+  height: 620px;
+  width: 85%;
+  border-radius: 18.417px;
+  border: 0.921px solid #000;
+  box-shadow: 0px 3.527px 3.527px 0px rgba(0, 0, 0, 0.25);
+  margin-top: 4%;
+  margin-left: 7%;
+}
+.adminTransaction-heading-box {
+  border-radius: 9px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background: #d8c1eb;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 6px 30px 5px 21px;
+  align-items: center;
+  width: 249px;
+  margin-left: 89px;
+  margin-top: 34px;
+  height: 40px;
+  color: #000;
+  font-family: Poppins;
+  font-size: 17px;
+  font-weight: 500;
+  justify-content: space-evenly;
+}
+.modTransaction-box {
+  width: 96%;
+  height: 258px;
+  border: 2px solid;
+  margin: auto;
+  border-radius: 20px;
+  border: 1px solid #6d3698;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-top: 2%;
+}
+.userTransaction-myitems {
+  width: 40%;
+  padding-left: 2%;
+}
+.userTransaction-myitems-head {
+  margin-left: 3%;
+  color: #000;
+  font-family: Poppins;
+  font-size: 35px;
+  font-weight: 500;
+  margin-top: 2%;
+}
+.userTransaction-myitems-photo img {
+  padding-top: 2%;
+  width: 43%;
+  height: 108px;
+  border-radius: 20px;
+}
+.userTransaction-myitems-detail table {
+  width: 100%;
+  margin-top: 3%;
+  color: #000;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.userTransaction-myitems-detail table td {
+  padding: 8px;
+}
+.viewmore button {
+  margin-left: 70%;
+  background: transparent;
+  border: none;
+  color: #e33131;
+  font-family: Poppins;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+.modTransaction-box2 {
+  width: 96%;
+  height: 258px;
+  border: 2px solid;
+  margin: auto;
+  border-radius: 20px;
+  border: 1px solid #6d3698;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin-top: 5%;
+}
+
+/* exchange icon */
+.exchange-icon {
+  margin-top: 200px;
+}
+
+/* recieved items */
+
+.userTransaction-receiveditems {
+  width: 40%;
+  padding-top: 2%;
+  padding-left: 2%;
+}
+.userTransaction-receiveditems-head {
+  margin-left: 3%;
+  color: #000;
+  font-family: Poppins;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.userTransaction-receiveditems-photo img {
+  padding-top: 2%;
+  width: 43%;
+  height: 108px;
+  border-radius: 20px;
+}
+.userTransaction-receiveditems-detail table {
+  width: 100%;
+  margin-top: 3%;
+  color: #000;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.userTransaction-receiveditems-detail table td {
+  padding: 8px;
+}
+
+.viewmore button {
+  margin-left: 70%;
+  background: transparent;
+  border: none;
+  color: #e33131;
+  font-family: Poppins;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+.userTransaction-order-pending {
+  margin-top: 200px;
+  color: rgba(0, 0, 0, 0.8);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.userTransaction-chat-btn button {
+  margin-top: 25%;
+  margin-left: 2%;
+  width: 102px;
+  height: 35px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background: #fff;
+  box-shadow: 3px 3px 15px 3px rgba(0, 0, 0, 0.25);
+}
+.userTransaction-chat-btn img {
+  margin-bottom: 2%;
+  margin-right: 1%;
+}
+
+.userTransaction-point-box {
+  height: 25px;
+  width: 86px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-top: 1px;
+}
+.userTransaction-point-box img {
+  height: 20px;
+  width: 20px;
+}
+.userTransaction-point-box p {
+  padding-left: 6px;
+  font-weight: 500;
+}
+.modTransaction-right-image img {
+  margin-top: 29%;
+  width: 200px;
+  height: 130px;
+}
+.modTransaction-center-image img {
+  margin-left: 12%;
+  margin-top: 3%;
+  margin-right: 40px;
+}
+.modExchange-delivery-status {
+  color: #000;
+  font-family: Poppins;
+  font-size: 17px;
+  font-weight: 500;
+  margin-top: 40px;
+}
+.admin-transaction-search-box p {
+  color: #000;
+  font-family: Poppins;
+  font-size: 19.808px;
+  font-weight: 500;
+  padding-left: 20px;
+  margin-right: 20px;
+}
+.admin-transaction-search-box input
+{
+  width: 214px;
+    height: 39px;
+    flex-shrink: 0;
+    background: #D8C1EB;
+}
+.admin-transaction-search-box button
+{
+background: #6D3698;
+color: #FFF;
+font-family: Poppins;
+font-size: 15.808px;
+font-weight: 500;
+height: 39px;
+width: 100px;
+margin-left: 20px;}
+.admin-transaction-search-box
+{
+  margin-top: 27px;
+  margin-left: 67px;
+}
+.admin-transaction-select
+{
+padding: 10px 39px 10px 33px;
+align-items: center;
+width: 19% !important;
+color: #FFF;
+font-family: Poppins;
+font-size: 25.808px;
+font-weight: 500;
+margin-left:31%;
+margin-top: 20px;
+}

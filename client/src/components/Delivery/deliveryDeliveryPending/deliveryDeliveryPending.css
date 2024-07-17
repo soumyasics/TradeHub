@@ -1,0 +1,19 @@
+#delivery-approval-btn-containers {
+  justify-content: space-around;
+}
+#delivery-approval-btn-containers button {
+  border-radius: 50%;
+  width: 40px;
+  font-size: 23px;
+  height: 40px;
+  margin-top: 5%;
+margin-left: 27px;  
+}
+#adm-table-container thead tr th {
+  background-color: #e9c9f1 !important;
+}
+.deliveryDeliveryPending-table {
+    border-collapse: collapse;
+  text-align: justify;
+  margin-left: 5%;
+}

@@ -22,7 +22,10 @@
 }
 .user-viewItems-left-box img {
   margin: auto;
-  padding-top: 7%;
+  height: 150px;
+  border-radius: 10px;
+  margin-top: 40px;
+
 }
 .user-viewItems-middle-box table {
   min-width: 60%;

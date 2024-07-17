@@ -17,6 +17,7 @@ import { FaRegBell } from "react-icons/fa";
 export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
   const [dropdownDA, setdropdownDA] = useState(false);
   const [dropdownMod, setdropdownMod] = useState(false);
+  const [dropDownOrders, setdropDownOrders] = useState(false);
 
   const navigate = useNavigate();
   const handleDeliveryLogout = () => {
@@ -31,6 +32,9 @@ export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
   const toggleMod = () => {
     setdropdownDA(false);
     setdropdownMod(!dropdownMod);
+  };
+  const toggleOrders = () => {
+    setdropDownOrders(!dropDownOrders);
   };
 
   return (
@@ -66,19 +70,30 @@ export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
               <LiaDropbox className="delivery-sidebar-icon" />
               My deliveries
             </li>
-            <li onClick={() => changeSelectedPage("overview")}>
+            <li onClick={() => changeSelectedPage("deliveryPending")}>
               <CiDeliveryTruck className="delivery-sidebar-icon" /> Delivery
               request
             </li>
-            <li onClick={() => changeSelectedPage("overview")}>
+            <li>
               <MdOutlinePendingActions className="delivery-sidebar-icon" />
               Delivery pending
             </li>
-            <li onClick={() => changeSelectedPage("overview")}>
+
+            <li onClick={toggleOrders}>
               <TiDropbox className="delivery-sidebar-icon" />
               Orders
+              {dropDownOrders && (
+                <div
+                  style={{ fontSize: "12px" }}
+                  className="ps-3 bg-light dd-container "
+                >
+                  <li className="text-dark admin-dd-item" onClick={()=>{changeSelectedPage("acceptedOrders")}}> Accepted orders </li>
+                  <li className="text-dark admin-dd-item" onClick={()=>{changeSelectedPage("rejectedOrders")}}> Rejected orders </li>
+                </div>
+              )}
             </li>
-            <li onClick={() => changeSelectedPage("overview")}>
+
+            <li>
               <BsBoxArrowInRight className="delivery-sidebar-icon" />
               delivery orders
             </li>

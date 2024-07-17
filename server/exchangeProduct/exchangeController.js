@@ -181,7 +181,7 @@ const getAllPendingDelivery = async (req, res) => {
   try {
     const allReqs = await ExchangeProductModel.find({
       sellerResponseStatus: "accepted",
-      deliverStatus: "pending",
+      deliveryStatus: "pending",
       isExchangeRequestActive: true,
     })
       .populate("buyerProductId")
@@ -201,7 +201,7 @@ const getAllAcceptedDelivery = async (req, res) => {
   try {
     const allReqs = await ExchangeProductModel.find({
       sellerResponseStatus: "accepted",
-      deliverStatus: "accepted",
+      deliveryStatus: "accepted",
       isExchangeRequestActive: true,
     })
       .populate("buyerProductId")
@@ -209,6 +209,8 @@ const getAllAcceptedDelivery = async (req, res) => {
       .populate("buyerId")
       .populate("sellerId")
       .exec();
+
+      console.log("allr req", allReqs)
 
     return res
       .status(200)
@@ -221,7 +223,7 @@ const getAllRejectedDelivery = async (req, res) => {
   try {
     const allReqs = await ExchangeProductModel.find({
       sellerResponseStatus: "accepted",
-      deliverStatus: "rejected",
+      deliveryStatus: "rejected", 
       isExchangeRequestActive: true,
     })
       .populate("buyerProductId")
@@ -244,6 +246,7 @@ const acceptDeliveryReqById = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({ msg: "Invalid ID" });
     }
+    console.log("id",id)
     const newRequest = await ExchangeProductModel.findByIdAndUpdate(
       id,
       {
@@ -252,6 +255,8 @@ const acceptDeliveryReqById = async (req, res) => {
       { new: true }
     );
 
+
+    console.log("new",newRequest)
     return res
       .status(200)
       .json({ msg: "Request accepted successfully", data: newRequest });
