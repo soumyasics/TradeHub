@@ -87,8 +87,8 @@ export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
                   style={{ fontSize: "12px" }}
                   className="ps-3 bg-light dd-container "
                 >
-                  <li className="text-dark admin-dd-item"> Accepted orders </li>
-                  <li className="text-dark admin-dd-item"> Rejected orders </li>
+                  <li className="text-dark admin-dd-item" onClick={()=>{changeSelectedPage("acceptedOrders")}}> Accepted orders </li>
+                  <li className="text-dark admin-dd-item" onClick={()=>{changeSelectedPage("rejectedOrders")}}> Rejected orders </li>
                 </div>
               )}
             </li>
