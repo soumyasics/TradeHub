@@ -118,6 +118,8 @@ router.get('/getExchangeReqById/:id', exchangeProductController.getExchangeReqBy
 router.patch('/acceptRequestById/:id', exchangeProductController.acceptRequestById);
 router.patch('/rejectRequestById/:id', exchangeProductController.rejectRequestById);
 router.get("/getAllPendingDelivery", exchangeProductController.getAllPendingDelivery)
+router.get("/getAllAcceptedDelivery", exchangeProductController.getAllAcceptedDelivery)
+router.get("/getAllRejectedDelivery", exchangeProductController.getAllRejectedDelivery)
 router.patch("/acceptDeliveryReqById/:id", exchangeProductController.acceptDeliveryReqById);
 router.patch("/rejectDeliveryReqById/:id", exchangeProductController.rejectDeliveryReqById);
 
