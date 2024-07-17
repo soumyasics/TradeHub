@@ -8,6 +8,7 @@ import { AdminViewAllActiveDeliveryAgent } from "./deliveryAgentRequest/viewAllD
 import { AdminViewAllModRequest } from "./viewAllUserMods/AdminViewAllModeRequest";
 import { AdminGuideline } from "./admineGuideline/adminGuideline";
 import { AdmineViewGuideline } from "./adminViewGuideline/adminViewGuideline";
+import { AdminTransaction } from "./adminTransaction/adminTransaction";
 export const AdminDashboard = () => {
   const [selectedPage, setSelectedPage] = useState("overview");
 
@@ -28,6 +29,7 @@ export const AdminDashboard = () => {
         {selectedPage === "view-active-mod" && <AdminViewallMods />}
         {selectedPage === "adminGuideline" && <AdminGuideline/>}
         {selectedPage === "adminViewGuideline" && <AdmineViewGuideline/>}
+        {selectedPage === "transaction" && <AdminTransaction/>} 
       </div>
     </div>
   );

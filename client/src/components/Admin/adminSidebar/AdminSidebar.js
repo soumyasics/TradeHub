@@ -59,7 +59,7 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
             <li onClick={() => changeSelectedPage("view-all-user")}>
               <MdPeopleAlt /> View User
             </li>
-            <li>
+            <li onClick={() => changeSelectedPage("transaction")}>
               <GiReceiveMoney /> Transaction
             </li>
             <li onClick={toggleDA}>
