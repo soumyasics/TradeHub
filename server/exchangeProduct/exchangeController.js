@@ -201,7 +201,7 @@ const getAllAcceptedDelivery = async (req, res) => {
   try {
     const allReqs = await ExchangeProductModel.find({
       sellerResponseStatus: "accepted",
-      deliverStatus: "accepted",
+      deliveryStatus: "accepted",
       isExchangeRequestActive: true,
     })
       .populate("buyerProductId")
@@ -209,6 +209,8 @@ const getAllAcceptedDelivery = async (req, res) => {
       .populate("buyerId")
       .populate("sellerId")
       .exec();
+
+      console.log("allr req", allReqs)
 
     return res
       .status(200)
@@ -221,7 +223,7 @@ const getAllRejectedDelivery = async (req, res) => {
   try {
     const allReqs = await ExchangeProductModel.find({
       sellerResponseStatus: "accepted",
-      deliverStatus: "rejected",
+      deliveryStatus: "rejected", 
       isExchangeRequestActive: true,
     })
       .populate("buyerProductId")
