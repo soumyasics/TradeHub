@@ -197,6 +197,46 @@ const getAllPendingDelivery = async (req, res) => {
     return res.status(500).json({ error: error.message, msg: "server Error" });
   }
 };
+const getAllAcceptedDelivery = async (req, res) => {
+  try {
+    const allReqs = await ExchangeProductModel.find({
+      sellerResponseStatus: "accepted",
+      deliverStatus: "accepted",
+      isExchangeRequestActive: true,
+    })
+      .populate("buyerProductId")
+      .populate("sellerProductId")
+      .populate("buyerId")
+      .populate("sellerId")
+      .exec();
+
+    return res
+      .status(200)
+      .json({ msg: "All exchange requests", data: allReqs });
+  } catch (error) {
+    return res.status(500).json({ error: error.message, msg: "server Error" });
+  }
+};
+const getAllRejectedDelivery = async (req, res) => {
+  try {
+    const allReqs = await ExchangeProductModel.find({
+      sellerResponseStatus: "accepted",
+      deliverStatus: "rejected",
+      isExchangeRequestActive: true,
+    })
+      .populate("buyerProductId")
+      .populate("sellerProductId")
+      .populate("buyerId")
+      .populate("sellerId")
+      .exec();
+
+    return res
+      .status(200)
+      .json({ msg: "All exchange requests", data: allReqs });
+  } catch (error) {
+    return res.status(500).json({ error: error.message, msg: "server Error" });
+  }
+};
 
 const acceptDeliveryReqById = async (req, res) => {
   try {
@@ -255,4 +295,6 @@ module.exports = {
   getAllPendingDelivery,
   acceptDeliveryReqById,
   rejectDeliveryReqById,
+  getAllAcceptedDelivery,
+  getAllRejectedDelivery,
 };
