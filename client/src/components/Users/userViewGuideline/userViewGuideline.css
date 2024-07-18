@@ -1,0 +1,31 @@
+.userViewGuideline-body {
+    width: 80%;
+    position: absolute;
+    left: 15%;
+  }
+  
+  .userViewGuideline-heading {
+    color: #000;
+    font-family: Poppins;
+    font-size: 46px;
+    font-weight: 600;
+text-align: center; 
+padding-top: 20px; }
+  .userViewGuideline-body h3 {
+    color: #000;
+    font-family: Poppins;
+    font-size: 29px;
+    font-weight: 600;
+    padding-left: 30px;
+    padding-top: 10px;
+  }
+  .userViewGuideline-body p {
+    text-align: justify;
+    color: #000;
+    font-size:17px;
+    font-weight: 400;
+    padding-left: 28px;
+    padding-right: 20px;
+  }
+
+  

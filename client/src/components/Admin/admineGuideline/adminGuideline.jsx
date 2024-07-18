@@ -3,8 +3,10 @@ import "./adminGuideline.css";
 import Form from "react-bootstrap/Form";
 import toast from "react-hot-toast";
 import axiosInstance from "../../../apis/axiosInstance";
+import { useNavigate } from "react-router-dom";
 
-export const AdminGuideline = () => {
+export const AdminGuideline = ({redirectToGuideline}) => {
+  const navigate = useNavigate()
   const [data, setData] = useState({
     title: "",
     content: "",
@@ -41,6 +43,8 @@ export const AdminGuideline = () => {
       const res = await axiosInstance.post("/createGuideline", data);
       if (res.status === 200) {
         toast.success(res.data.msg)
+        redirectToGuideline()
+        
       } else {
         toast.error(res.data.msg);
       }

@@ -27,11 +27,12 @@
 .admin-login {
   font-size: 20px;
 }
-.admin-login-textbox {
+.admin-login-textbox1 {
   height: 50px;
   width: 70%;
   border-radius: 10px;
   border-color: black;
+  margin-left: 10%;
 }
 .admin-login-btn {
   background: #6d3698;
@@ -42,6 +43,7 @@
   border: none;
   margin-left: 290px;
 }
+
 
 /* Admin Sidebar */
 .admin-sidebar-color2 {

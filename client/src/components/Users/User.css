@@ -5,7 +5,6 @@
   height: 606px;
   top: 166px;
   left: 132px;
-  gap: 0px;
   border: 1px 0px 0px 0px;
 
   border: 1px solid #6d3698;
@@ -28,17 +27,19 @@
 }
 .user-login-textbox {
   height: 50px;
-  width: 70%;
+  width: 69%;
   border-radius: 10px;
   border-color: black;
+    margin-left: 10% ;
+  
 }
+
 .user-login-btn {
   background: #6d3698;
   color: white;
   height: 45px;
   width: 150px;
   border-radius: 20px;
-  border: none;
 }
 .user-login-forget {
   color: #6d3698;
@@ -46,6 +47,35 @@
 }
 .user-login-error {
   margin-left: 150px;
+}
+.userlogin-eye-box
+{
+  
+  background-color:white !important;
+  border: 2px solid black !important;
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+  border-left: 0 solid !important;
+
+ }
+ .user-login-password-inp
+{
+  
+  border: 2px solid black !important;
+  border-right: 0 solid !important;
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}
+.user-login-password-box
+{
+  height: 50px;
+  width: 72% !important;
+  border-radius: 14px;
+  border-right:0 !important;
+  margin-top:20px;
+}
+.userLogin-toggleEye{
+ z-index: 1;
 }
 
 /* User Forget Password */
@@ -126,6 +156,7 @@
 }
 .label-user-register {
   font-weight: 400;
+  color: blue;
 }
 .user-register-icon {
   height: 250px;
@@ -147,6 +178,36 @@
 .rounded-circle {
   margin-top: 30px;
   margin-left: 30px;
+}
+
+.usersignup-eye-box
+{
+  
+  background-color:white !important;
+  border: 2px solid black !important;
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+  border-left: 0 solid !important;
+
+ }
+ .user-signup-password-inp
+{
+  
+  border: 2px solid black !important;
+  border-right: 0 solid !important;
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}
+.user-signup-password-box
+{
+  height: 50px;
+  width: 98% !important;
+  border-radius: 14px;
+  border-right:0 !important;
+  margin-top: 9px;
+}
+.usersign-toggleEye{
+ z-index: 1;
 }
 
 /* User Landing Page */

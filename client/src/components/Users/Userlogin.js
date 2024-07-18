@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import "./User.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaRegEye } from "react-icons/fa";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 import adminlogin from "../../assets/images/adminlogin.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import MainNav from "../homeComponents/Navbar/MainNav";
@@ -10,12 +14,15 @@ import axiosInstance from "../../apis/axiosInstance";
 import { toast } from "react-hot-toast";
 import UserNavbar from "../homeComponents/Navbar/UserNavbar";
 function Userlogin() {
+  const [show, setShow] = useState(true);
   const [data, setData] = useState({
     email: "",
     password: "",
   });
-
   const navigate = useNavigate();
+  const handleShow = () => {
+    setShow(!show);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -65,12 +72,12 @@ function Userlogin() {
             localStorage.setItem("trade-hub-userId", userId);
           }
           toast.success("Login Successfully");
-          console.log("respo", res)
+          console.log("respo", res);
           navigate("/user/home");
         } else if (res?.data?.status === 405) {
           const msg = res.data?.msg || "Please check your email and password";
           toast.error(msg);
-        }else {
+        } else {
           toast.error("Please check your email and password");
         }
       })
@@ -98,9 +105,9 @@ function Userlogin() {
                 <h2 className="user-login-h2">User Login</h2>
                 <form onSubmit={handleSubmit}>
                   <div>
-                    <label className="user-login mt-5 ms-5">Email</label>
+                    <label className="user-login mt-4 ms-4">Email</label>
                     <input
-                      className="user-login-textbox ms-5 ps-3"
+                      className="user-login-textbox  ps-3"
                       placeholder="Email"
                       type="email"
                       name="email"
@@ -108,16 +115,44 @@ function Userlogin() {
                       onChange={handleChange}
                     />
                   </div>
-                  <div>
-                    <label className="user-login mt-5 ms-5">Password</label>
-                    <input
+                  <div className="d-flex">
+                    <label className="user-login mt-4 ms-4">Password</label>
+                    {/* <input
                       className="user-login-textbox ms-2 ps-3"
                       placeholder="Password"
-                      type="password"
+                      type={show ? "password" : "text"}
                       name="password"
                       value={data.password}
                       onChange={handleChange}
-                    />
+                    /> */}
+                    <InputGroup className="user-login-password-box ms-2 ps-3 ">
+                      <Form.Control
+                        className="user-login-password-inp"
+                        type={show ? "password" : "text"}
+                        name="password"
+                        value={data.password}
+                        onChange={handleChange}
+                        aria-label="password"
+                        placeholder="password"
+                        aria-describedby="basic-addon1"
+                      />
+                      <InputGroup.Text
+                        id="basic-addon1"
+                        className="userlogin-eye-box"
+                      >
+                        {show ? (
+                          <FaEyeSlash
+                            className="userLogin-toggleEye"
+                            onClick={handleShow}
+                          />
+                        ) : (
+                          <FaRegEye
+                            className="userLogin-toggleEye"
+                            onClick={handleShow}
+                          />
+                        )}
+                      </InputGroup.Text>
+                    </InputGroup>
                   </div>
                   <div className="mt-3">
                     <Link to="/user/forgetpswd" className="user-login-forget">

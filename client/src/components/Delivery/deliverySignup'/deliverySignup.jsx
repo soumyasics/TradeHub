@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "./deliverySignup.css";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaRegEye } from "react-icons/fa";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 import MainNav from "../../homeComponents/Navbar/MainNav";
 import { axiosMultipartInstance } from "../../../apis/axiosMultipartInstance";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,6 +14,14 @@ import UserNavbar from "../../homeComponents/Navbar/UserNavbar";
 
 function DeliveryAgentSignup() {
   const navigate = useNavigate();
+  const [show1, setShow1] = useState(true);
+  const [show2, setShow2] = useState(true);
+  const handleShow1 = () => {
+    setShow1(!show1);
+  };
+  const handleShow2 = () => {
+    setShow2(!show2);
+  };
   const [data, setData] = useState({
     firstname: "",
     lastname: "",
@@ -255,27 +267,88 @@ function DeliveryAgentSignup() {
               <div className="col">
                 <div>
                   <label className="deliverysignup-label mt-3">Password</label>
-                  <input
+                  {/* <input
                     type="password"
                     placeholder="Password"
                     className="deliverysignup-textbox mt-2"
                     name="password"
                     onChange={handlechange}
                     value={data.password}
-                  />
+                  /> */}
+
+
+<InputGroup className="del-signup-password-box ">
+                    <Form.Control
+                      className="del-signup-password-inp"
+                      type={show1 ? "password" : "text"}
+                      name="password"
+                      value={data.password}
+                      onChange={handlechange}
+                      aria-label="password"
+                      placeholder="password"
+                      aria-describedby="basic-addon1"
+                    />
+                    <InputGroup.Text
+                      id="basic-addon1"
+                      className="delsignup-eye-box"
+                    >
+                      {show1 ? (
+                        <FaEyeSlash
+                          className="delsignup-toggleEye"
+                          onClick={handleShow1}
+                        />
+                      ) : (
+                        <FaRegEye
+                          className="delsignup-toggleEye"
+                          onClick={handleShow1}
+                        />
+                      )}
+                    </InputGroup.Text>
+                  </InputGroup>
+
                 </div>
                 <div>
                   <label className="deliverysignup-label mt-4">
                     Re-enter Password
                   </label>
-                  <input
+                  {/* <input
                     type="password"
                     placeholder="Re-enter Password"
                     className="deliverysignup-textbox mt-2"
                     name="repassword"
                     onChange={handlechange}
                     value={data.repassword}
-                  />
+                  /> */}
+
+<InputGroup className="del-signup-password-box ">
+                    <Form.Control
+                      className="del-signup-password-inp"
+                      type={show2 ? "password" : "text"}
+                      placeholder="Re-enter Password"
+                      value={data.repassword}
+                      name="repassword"
+                      onChange={handlechange}
+                      aria-label="password"
+                      aria-describedby="basic-addon1"
+                    />
+                    <InputGroup.Text
+                      id="basic-addon1"
+                      className="delsignup-eye-box"
+                    >
+                      {show2 ? (
+                        <FaEyeSlash
+                          className="delsignup-toggleEye"
+                          onClick={handleShow2}
+                        />
+                      ) : (
+                        <FaRegEye
+                          className="delsignup-toggleEye"
+                          onClick={handleShow2}
+                        />
+                      )}
+                    </InputGroup.Text>
+                  </InputGroup>
+
                 </div>
                 <div>
                   <label className="deliverysignup-label mt-4">Address</label>
