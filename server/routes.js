@@ -34,8 +34,12 @@ router.post("/viewItemByUserId/:id", items.viewItemByUserId);
 router.post("/viewItemsToBeApproved", items.viewItemsToBeApproved);
 router.post("/viewActiveItems", items.viewActiveItems);
 router.get("/viewAllitemsByUserId/:id", items.viewAllitemsByUserId);
+router.get("/viewAllActiveitemsByUserId/:id", items.viewAllActiveitemsByUserId);
 router.delete("/deleteItemById/:id", items.deleteItemById);
-router.get("/getApprovedItemsByCategory/:category", items.getApprovedItemsByCategory);
+router.get(
+  "/getApprovedItemsByCategory/:category",
+  items.getApprovedItemsByCategory
+);
 
 //moderator routes
 router.post(
@@ -106,21 +110,64 @@ router.get(
   "/getAllWishlistsByUserId/:id",
   wishlistController.getAllWishlistsByUserId
 );
-router.post('/removeFromWishlist', wishlistController.removeFromWishlist);
-
+router.post("/removeFromWishlist", wishlistController.removeFromWishlist);
 
 // exchange product request
-router.post('/sendExchangeRequest', exchangeProductController.sendExchangeRequest);
-router.get('/getAllRequestByBuyerId/:id', exchangeProductController.getAllRequestByBuyerId);
-router.get('/getAllRequestBySellerId/:id', exchangeProductController.getAllRequestBySellerId);
-router.get('/getAllExchangeRequests', exchangeProductController.getAllExchangeRequests);
-router.get('/getExchangeReqById/:id', exchangeProductController.getExchangeReqById);
-router.patch('/acceptRequestById/:id', exchangeProductController.acceptRequestById);
-router.patch('/rejectRequestById/:id', exchangeProductController.rejectRequestById);
-router.get("/getAllPendingDelivery", exchangeProductController.getAllPendingDelivery)
-router.get("/getAllAcceptedDelivery", exchangeProductController.getAllAcceptedDelivery)
-router.get("/getAllRejectedDelivery", exchangeProductController.getAllRejectedDelivery)
-router.patch("/acceptDeliveryReqById/:id", exchangeProductController.acceptDeliveryReqById);
-router.patch("/rejectDeliveryReqById/:id", exchangeProductController.rejectDeliveryReqById);
+router.post(
+  "/sendExchangeRequest",
+  exchangeProductController.sendExchangeRequest
+);
+router.get(
+  "/getAllRequestByBuyerId/:id",
+  exchangeProductController.getAllRequestByBuyerId
+);
+router.get(
+  "/getAllRequestBySellerId/:id",
+  exchangeProductController.getAllRequestBySellerId
+);
+router.get(
+  "/getAllExchangeRequests",
+  exchangeProductController.getAllExchangeRequests
+);
+router.get(
+  "/getExchangeReqById/:id",
+  exchangeProductController.getExchangeReqById
+);
+router.patch(
+  "/acceptRequestById/:id",
+  exchangeProductController.acceptRequestById
+);
+router.patch(
+  "/rejectRequestById/:id",
+  exchangeProductController.rejectRequestById
+);
+router.get(
+  "/getAllPendingDelivery",
+  exchangeProductController.getAllPendingDelivery
+);
+router.get(
+  "/getAllAcceptedDelivery",
+  exchangeProductController.getAllAcceptedDelivery
+);
+router.get(
+  "/getAllAcceptedOrdersByDeliveryAgentId/:id",
+  exchangeProductController.getAllAcceptedOrdersByDeliveryAgentId
+);
+router.get(
+  "/getAllRejectedOrdersByDeliveryAgentId/:id",
+  exchangeProductController.getAllRejectedOrdersByDeliveryAgentId
+);
+router.get(
+  "/getAllRejectedDelivery",
+  exchangeProductController.getAllRejectedDelivery
+);
+router.patch(
+  "/acceptDeliveryReqById/:id",
+  exchangeProductController.acceptDeliveryReqById
+);
+router.patch(
+  "/rejectDeliveryReqById/:id",
+  exchangeProductController.rejectDeliveryReqById
+);
 
 module.exports = router;

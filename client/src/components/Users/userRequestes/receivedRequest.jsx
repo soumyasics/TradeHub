@@ -139,6 +139,11 @@ export const ReceivedRequest = () => {
                           <td>{sellerProduct.category}</td>
                         </tr>
                         <tr>
+                          <td style={{ fontWeight: "600" }}>Quantity</td>
+                          <td>:</td>
+                          <td>{sellerProduct.quantity}</td>
+                        </tr>
+                        <tr>
                           <td style={{ fontWeight: "600" }}>Description</td>
                           <td>:</td>
                           <td>{sellerProduct.description} </td>
@@ -192,6 +197,11 @@ export const ReceivedRequest = () => {
                           <td style={{ fontWeight: "600" }}>Category</td>
                           <td>:</td>
                           <td>{buyerProduct?.category}</td>
+                        </tr>
+                        <tr>
+                          <td style={{ fontWeight: "600" }}>Quantity</td>
+                          <td>:</td>
+                          <td>{buyerProduct.quantity}</td>
                         </tr>
                         <tr>
                           <td style={{ fontWeight: "600" }}>Description</td>

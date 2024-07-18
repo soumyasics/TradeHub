@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import "./userChatSidebar.css";
 export const UserChatSidebar = ({ senderId, selectingUser }) => {
   const [data, setData] = useState([{ profile: { filename: "" } }]);
+  const [fixedUsers, setFixedUsers] = useState([]);
+  const [searchUser, setSearchUser] = useState("");
   const getData = async () => {
     try {
       const res = await axiosInstance.post("viewUsers");
@@ -12,6 +14,7 @@ export const UserChatSidebar = ({ senderId, selectingUser }) => {
         const users = res.data?.data || [];
         const removeSender = users.filter((user) => user._id !== senderId);
         setData(removeSender);
+        setFixedUsers(removeSender);
       }
     } catch (error) {
       console.log("error", error);
@@ -21,9 +24,25 @@ export const UserChatSidebar = ({ senderId, selectingUser }) => {
     getData();
   }, [senderId]);
 
+  const searchingUser = (e) => {
+    const value = e.target.value;
+    if (value) {
+      const filterUsers = data.filter((user) => {
+        return user.firstname.toLowerCase().includes(value.toLowerCase());
+      })
+      setData(filterUsers);
+    }else {
+      setData(fixedUsers);
+    }
+  }
   return (
     <div className="chatSidebar-body">
-      <input type="text" placeholder="Search" className="chatSidebar-search" />
+      <input
+        onChange={searchingUser}
+        type="text"
+        placeholder="Search"
+        className="chatSidebar-search"
+      />
       {data.map((e) => {
         return (
           <div

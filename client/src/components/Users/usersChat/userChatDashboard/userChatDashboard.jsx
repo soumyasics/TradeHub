@@ -23,23 +23,22 @@ export const UserChatDashboard = () => {
     }
   }, []);
   return (
-    
     <div>
-      <UserChatNavbar/>
-    <div className="row">
-      <div className="col-4">
-        <UserChatSidebar senderId={senderId} selectingUser={selectingUser} />
+      <UserChatNavbar />
+      <div className="row">
+        <div className="col-4">
+          <UserChatSidebar senderId={senderId} selectingUser={selectingUser} />
+        </div>
+        {selectedUser ? (
+          <div className="col-8">
+            <UserchatInterFace senderId={senderId} receiverId={selectedUser} />
+          </div>
+        ) : (
+          <div className="col-8">
+            <NoUserSelected />
+          </div>
+        )}
       </div>
-      {selectedUser ? (
-        <div className="col-8">
-          <UserchatInterFace senderId={senderId} receiverId={selectedUser} />
-        </div>
-      ) : (
-        <div className="col-8">
-          <NoUserSelected />
-        </div>
-      )}
-    </div>
     </div>
   );
 };
