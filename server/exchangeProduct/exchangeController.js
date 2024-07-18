@@ -210,7 +210,6 @@ const getAllAcceptedDelivery = async (req, res) => {
       .populate("sellerId")
       .exec();
 
-      console.log("allr req", allReqs)
 
     return res
       .status(200)
