@@ -24,7 +24,7 @@ export const MyProductModals = ({ show, setShow, handleConfirmExchange }) => {
 
   const getItems = (id) => {
     axiosInstance
-      .get(`viewAllitemsByUserId/${id}`)
+      .get(`viewAllActiveitemsByUserId/${id}`)
       .then((res) => {
         if (res.status === 200) {
           console.log("respo", res);

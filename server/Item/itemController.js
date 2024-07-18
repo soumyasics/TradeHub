@@ -219,6 +219,21 @@ const viewAllitemsByUserId = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+const viewAllActiveitemsByUserId = async (req, res) => {
+  try {
+    const id = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ msg: "Invalid userId", id });
+    }
+
+    const items = await Item.find({ userId: id, isActive: true, isModApproved: "approve" });
+    return res
+      .status(200)
+      .json({ msg: "Data obtained successfully", data: items });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
 
 const addPointToItem = async (req, res) => {
   try {
@@ -400,6 +415,7 @@ module.exports = {
   viewItemById,
   activateItemById,
   viewAllitemsByUserId,
+  viewAllActiveitemsByUserId,
   deActivateItemById,
   upload,
   deleteItemById,

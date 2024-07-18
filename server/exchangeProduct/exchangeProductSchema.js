@@ -27,6 +27,11 @@ const ExchangeProductSchema = Schema(
       enum: ["pending", "accepted", "rejected"],
       default: "pending",
     },
+    deliveryAgentId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "delivery-partner",
+      defualt: null
+    },
     deliveryStatus: {
       type: String,
       enum: [

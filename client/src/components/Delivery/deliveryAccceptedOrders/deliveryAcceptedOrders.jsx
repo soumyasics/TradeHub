@@ -4,12 +4,29 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import { First } from "react-bootstrap/esm/PageItem";
 import { BASE_URL } from "../../../apis/baseURL";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 export const DeliveryAcceptedOrders = () => {
   const [acceptData, setAcceptData] = useState([]);
 
+  const [deliveryAgentId, setDeliveryAgentId] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let id = localStorage.getItem("trade-hub-DAId") || null;
+    if (id) {
+      setDeliveryAgentId(id);
+    } else {
+      toast.error("Please login again.");
+      navigate("/delivery/login");
+    }
+  }, []);
+
   const getItems = async () => {
     try {
-      const response = await axiosInstance.get("/getAllAcceptedDelivery");
+      const response = await axiosInstance.get(
+        `getAllAcceptedOrdersByDeliveryAgentId/${deliveryAgentId}`
+      );
       if (response.status == 200) {
         console.log("data respon", response);
         setAcceptData(response.data.data);

@@ -34,6 +34,7 @@ router.post("/viewItemByUserId/:id", items.viewItemByUserId);
 router.post("/viewItemsToBeApproved", items.viewItemsToBeApproved);
 router.post("/viewActiveItems", items.viewActiveItems);
 router.get("/viewAllitemsByUserId/:id", items.viewAllitemsByUserId);
+router.get("/viewAllActiveitemsByUserId/:id", items.viewAllActiveitemsByUserId);
 router.delete("/deleteItemById/:id", items.deleteItemById);
 router.get("/getApprovedItemsByCategory/:category", items.getApprovedItemsByCategory);
 
@@ -119,6 +120,7 @@ router.patch('/acceptRequestById/:id', exchangeProductController.acceptRequestBy
 router.patch('/rejectRequestById/:id', exchangeProductController.rejectRequestById);
 router.get("/getAllPendingDelivery", exchangeProductController.getAllPendingDelivery)
 router.get("/getAllAcceptedDelivery", exchangeProductController.getAllAcceptedDelivery)
+router.get("/getAllAcceptedOrdersByDeliveryAgentId/:id", exchangeProductController.getAllAcceptedOrdersByDeliveryAgentId)
 router.get("/getAllRejectedDelivery", exchangeProductController.getAllRejectedDelivery)
 router.patch("/acceptDeliveryReqById/:id", exchangeProductController.acceptDeliveryReqById);
 router.patch("/rejectDeliveryReqById/:id", exchangeProductController.rejectDeliveryReqById);
