@@ -36,8 +36,10 @@ export const DeliveryAcceptedOrders = () => {
     }
   };
   useEffect(() => {
-    getItems();
-  }, []);
+    if (deliveryAgentId) {
+      getItems();
+    }
+  }, [deliveryAgentId]);
   return (
     <div>
       <div className="delivery-viewItems-body">

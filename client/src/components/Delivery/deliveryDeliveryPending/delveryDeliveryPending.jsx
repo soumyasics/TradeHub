@@ -54,13 +54,15 @@ export const DeliveryDeliveryPending = () => {
   };
 
   const toReject = async (id) => {
-    const response = await axiosInstance.patch(`rejectDeliveryReqById/${id}`);
     try {
+      const response = await axiosInstance.patch(`rejectDeliveryReqById/${id}`, {
+        deliveryAgentId
+      });
       if (response.status == 200) {
         toast.success("Rejected sucessfully");
       }
     } catch (error) {
-      console.log(error);
+      console.log("error on reject",error);
     } finally {
       getAllPendingRequest();
     }
