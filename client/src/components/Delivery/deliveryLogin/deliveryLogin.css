@@ -23,9 +23,10 @@
 }
 .deliveryagent-login-textbox {
   height: 50px;
-  width: 70%;
+  width: 73%;
   border-radius: 10px;
   border-color: black;
+  margin-left: 11%;
 }
 .deliveryagent-login-textbox-pass {
   width: 67%;
@@ -48,4 +49,38 @@
   border-radius: 20px;
   border: none;
   margin-left: 290px;
+}
+.delLogin-toggleEye{
+  position:absolute;
+  top:42%;
+right: 15%; z-index: 1;
+}
+.dellogin-eye-box
+{
+  
+  background-color:white !important;
+  border: 2px solid black !important;
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+  border-left: 0 solid !important;
+
+ }
+ .del-login-password-inp
+{
+  
+  border: 2px solid black !important;
+  border-right: 0 solid !important;
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}
+.delLogin-toggleEye{
+ z-index: 1;
+}
+.del-login-password-box
+{
+  height: 50px;
+  width: 72% !important;
+  border-radius: 14px;
+  border-right:0 !important;
+  margin-top:20px;
 }

@@ -42,6 +42,25 @@
   border: none;
   margin-left: 290px;
 }
+.admlogin-eye-box
+{
+  
+  background-color:white !important;
+  border: 2px solid black !important;
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+  border-left: 0 solid !important;
+
+ }
+ .adm-login-password-inp
+{
+  
+  border: 2px solid black !important;
+  border-right: 0 solid !important;
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}
+
 
 /* Admin Sidebar */
 .admin-sidebar-color2 {

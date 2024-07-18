@@ -65,6 +65,7 @@ import { ModExchangeProduct } from "./components/Moderator/modExchangeProduct/mo
 import { DeliveryDeliveryPending } from "./components/Delivery/deliveryDeliveryPending/delveryDeliveryPending";
 import { DeliveryAcceptedOrders } from "./components/Delivery/deliveryAccceptedOrders/deliveryAcceptedOrders";
 import { DeliveryRejectedOrders } from "./components/Delivery/deliveryRejectedOrders/deliveryRejectedOrders";
+import { UserViewGuideline } from "./components/Users/userViewGuideline/userViewGuideline";
 const App = () => {
   return (
     <div className="App">
@@ -107,8 +108,8 @@ const App = () => {
           <Route path="user/chat/footer" element={<UserChatFooter />} />
           <Route path="/view-category/:category" element={<ViewByCategory />} />
           <Route path="/user/requests" element={<UserRequestes />} />
-
-          {/* moderators  */}
+          <Route path="/user/view-guideline" element={<UserViewGuideline/>} />
+          {/* moderators  */} 
           <Route path="/moderator/register" element={<ModeratorRegister />} />
           <Route path="/moderator/login" element={<Moderatorlogin />} />
           <Route path="/moderator/home" element={<ModeratorHome />} />
@@ -152,11 +153,11 @@ const App = () => {
           <Route path="/admin/Guideline" element={<AdminGuideline />} />
           {/* new */}
           <Route
-            path="/admine/view/guideline"
+            path="/admine/view-guideline"
             element={<AdmineViewGuideline />}
           />
           <Route
-            path="/admin/update/guideline"
+            path="/admin/update-guideline"
             element={<AdminUpdateGuideline />}
           />
           {/* admin components  */}

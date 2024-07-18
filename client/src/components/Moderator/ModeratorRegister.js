@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "./Moderator.css";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaRegEye } from "react-icons/fa";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import { toast } from "react-hot-toast";
@@ -8,7 +12,8 @@ import UserNavbar from "../homeComponents/Navbar/UserNavbar";
 
 function ModeratorRegister() {
   const navigate = useNavigate();
-
+  const [show1, setShow1] = useState(true);
+  const [show2, setShow2] = useState(true);
   const [data, setData] = useState({
     firstname: "",
     lastname: "",
@@ -21,6 +26,13 @@ function ModeratorRegister() {
     address: "",
     checkbox: false,
   });
+
+  const handleShow1 = () => {
+    setShow1(!show1);
+  };
+  const handleShow2 = () => {
+    setShow2(!show2);
+  };
 
   const handleFileChange = (e) => {
     handleChange(e);
@@ -252,27 +264,85 @@ function ModeratorRegister() {
                   <label className="moderator-register-label mt-3">
                     Password
                   </label>
-                  <input
+                  {/* <input
                     type="password"
                     placeholder="Password"
                     className="moderator-register-textbox mt-2"
                     value={data.password}
                     name="password"
                     onChange={handleChange}
-                  />
+                  /> */}
+
+                  <InputGroup className="mod-signup-password-box ">
+                    <Form.Control
+                      className="mod-signup-password-inp"
+                      type={show1 ? "password" : "text"}
+                      name="password"
+                      value={data.password}
+                      onChange={handleChange}
+                      aria-label="password"
+                      placeholder="password"
+                      aria-describedby="basic-addon1"
+                    />
+                    <InputGroup.Text
+                      id="basic-addon1"
+                      className="modsignup-eye-box"
+                    >
+                      {show1 ? (
+                        <FaEyeSlash
+                          className="modsignup-toggleEye"
+                          onClick={handleShow1}
+                        />
+                      ) : (
+                        <FaRegEye
+                          className="modsignup-toggleEye"
+                          onClick={handleShow1}
+                        />
+                      )}
+                    </InputGroup.Text>
+                  </InputGroup>
                 </div>
                 <div>
                   <label className="moderator-register-label mt-4">
                     Re-enter Password
                   </label>
-                  <input
+                  {/* <input
                     type="password"
                     placeholder="Re-enter Password"
                     className="moderator-register-textbox mt-2"
                     value={data.repassword}
                     name="repassword"
                     onChange={handleChange}
-                  />
+                  /> */}
+
+                  <InputGroup className="mod-signup-password-box ">
+                    <Form.Control
+                      className="mod-signup-password-inp"
+                      type={show2 ? "password" : "text"}
+                      placeholder="Re-enter Password"
+                      value={data.repassword}
+                      name="repassword"
+                      onChange={handleChange}
+                      aria-label="password"
+                      aria-describedby="basic-addon1"
+                    />
+                    <InputGroup.Text
+                      id="basic-addon1"
+                      className="modsignup-eye-box"
+                    >
+                      {show2 ? (
+                        <FaEyeSlash
+                          className="modsignup-toggleEye"
+                          onClick={handleShow2}
+                        />
+                      ) : (
+                        <FaRegEye
+                          className="modsignup-toggleEye"
+                          onClick={handleShow2}
+                        />
+                      )}
+                    </InputGroup.Text>
+                  </InputGroup>
                 </div>
                 <div>
                   <label className="moderator-register-label mt-4">
@@ -314,16 +384,16 @@ function ModeratorRegister() {
                 <label>Are you Existing User?</label>
                 {/* <p className="moderator-register-link">
                 </p> */}
-                  <span
-                    className="fw-bold ms-1 text-primary"
-                    style={{ cursor: "pointer" }}
-                    onClick={() => {
-                      navigate("/moderator/login");
-                    }}
-                  >
-                    {" "}
-                    Login Now
-                  </span>
+                <span
+                  className="fw-bold ms-1 text-primary"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    navigate("/moderator/login");
+                  }}
+                >
+                  {" "}
+                  Login Now
+                </span>
               </div>
             </div>
           </form>

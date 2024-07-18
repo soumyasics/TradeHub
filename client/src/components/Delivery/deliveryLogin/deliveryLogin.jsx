@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "./deliveryLogin.css";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaRegEye } from "react-icons/fa";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 import img1 from "../../../assets/images/agentphoto.png";
 import { Link, useNavigate } from "react-router-dom";
 import MainNav from "../../homeComponents/Navbar/MainNav";
@@ -10,10 +14,15 @@ import axiosInstance from "../../../apis/axiosInstance";
 import UserNavbar from "../../homeComponents/Navbar/UserNavbar";
 
 function DeliveryAgentLogin() {
+  const[show,setShow]= useState(true)
   const [data, setData] = useState({
     email: "",
     password: "",
   });
+  const handleShow = () =>
+    {
+      setShow(!show)
+    }
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prevData) => ({
@@ -104,10 +113,10 @@ function DeliveryAgentLogin() {
                 <form onSubmit={handleSubmit}>
                   <div className="deliveryagent-inputs">
                     <label className="deliveryagent-login ms-2">
-                      User name
+                      Email
                     </label>
                     <input
-                      className="deliveryagent-login-textbox ms-3 px-3"
+                      className="deliveryagent-login-textbox  px-3"
                       type="text"
                       name="email"
                       value={data.email}
@@ -115,18 +124,46 @@ function DeliveryAgentLogin() {
                       onChange={handleChange}
                     />
                   </div>
-                  <div>
-                    <label className="deliveryagent-login mt-5 ms-2">
+                  <div className="d-flex">
+                    <label className="deliveryagent-login mt-4 ms-2">
                       Password
                     </label>
-                    <input
+                    {/* <input
                       className="deliveryagent-login-textbox-pass ms-4 px-3"
-                      type="password"
+                      type={show?"password":"text"}
                       value={data.password}
                       name="password"
                       placeholder="Enter Password"
                       onChange={handleChange}
-                    />
+                    /> */}
+                     <InputGroup className="user-login-password-box ms-2 ps-3 ">
+                      <Form.Control
+                        className="user-login-password-inp"
+                        type={show?"password":"text"}
+                        value={data.password}
+                        name="password"
+                        placeholder="Enter Password"
+                        onChange={handleChange}
+                        aria-label="password"
+                        aria-describedby="basic-addon1"
+                      />
+                      <InputGroup.Text
+                        id="basic-addon1"
+                        className="userlogin-eye-box"
+                      >
+                        {show ? (
+                          <FaEyeSlash
+                            className="userLogin-toggleEye"
+                            onClick={handleShow}
+                          />
+                        ) : (
+                          <FaRegEye
+                            className="userLogin-toggleEye"
+                            onClick={handleShow}
+                          />
+                        )}
+                      </InputGroup.Text>
+                    </InputGroup>
                   </div>
                   <div className="mt-3 deliveryagent-login-link container">
                     <Link to="/agentforgotpassword" href="#">
