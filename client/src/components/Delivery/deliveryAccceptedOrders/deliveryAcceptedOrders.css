@@ -76,7 +76,7 @@
   .deliveryAcceptOrder-outer-box
   {
     width: 90%;
-    height: 61%;
+    padding-bottom: 20px;
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: 0px 3.38px 3.38px 0px rgba(0, 0, 0, 0.1);
     margin-left: 5%;

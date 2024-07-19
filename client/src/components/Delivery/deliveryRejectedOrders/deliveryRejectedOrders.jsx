@@ -2,11 +2,28 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import img1 from "../../../assets/images/airpods1.png";
 import { BASE_URL } from "../../../apis/baseURL";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 export const DeliveryRejectedOrders = () => {
   const [rejectData, setRejectData] = useState([]);
+  const [deliveryAgentId, setDeliveryAgentId] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let id = localStorage.getItem("trade-hub-DAId") || null;
+    if (id) {
+      setDeliveryAgentId(id);
+    } else {
+      toast.error("Please login again.");
+      navigate("/delivery/login");
+    }
+  }, []);
+
   const getData = async () => {
     try {
-      const response = await axiosInstance.get("/getAllRejectedDelivery");
+      const response = await axiosInstance.get(
+        `getAllRejectedOrdersByDeliveryAgentId/${deliveryAgentId}`
+      );
       if (response.status == 200) {
         setRejectData(response.data.data);
       }
@@ -15,8 +32,10 @@ export const DeliveryRejectedOrders = () => {
     }
   };
   useEffect(() => {
-    getData();
-  });
+    if (deliveryAgentId) {
+      getData();
+    }
+  }, [deliveryAgentId]);
   return (
     <div>
       <div className="delivery-viewItems-body">

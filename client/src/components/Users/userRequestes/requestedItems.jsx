@@ -102,6 +102,11 @@ export const RequestedItems = () => {
                           <td>{buyerProduct?.description}</td>
                         </tr>
                         <tr>
+                          <td style={{ fontWeight: "600" }}>Quantity</td>
+                          <td>:</td>
+                          <td>{buyerProduct?.quantity}</td>
+                        </tr>
+                        <tr>
                           <td>
                             <div className="productCard-points-box d-flex ">
                               <img src={coinImg} alt="coin" />
@@ -153,6 +158,11 @@ export const RequestedItems = () => {
                           <td style={{ fontWeight: "600" }}>Description</td>
                           <td>:</td>
                           <td>{sellerProduct.description} </td>
+                        </tr>
+                        <tr>
+                          <td style={{ fontWeight: "600" }}>Quantity</td>
+                          <td>:</td>
+                          <td>{sellerProduct?.quantity}</td>
                         </tr>
                         <tr>
                           <td>

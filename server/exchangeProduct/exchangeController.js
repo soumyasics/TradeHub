@@ -1,7 +1,8 @@
 const { ExchangeProductModel } = require("./exchangeProductSchema");
 const { ItemModel } = require("../Item/itemSchema");
 const { default: mongoose } = require("mongoose");
-
+const Item = require("../Item/itemSchema");
+const { DeliveryModel } = require("../delivery/deliverySchema");
 const sendExchangeRequest = async (req, res) => {
   try {
     const { buyerId, sellerId, buyerProductId, sellerProductId } = req.body;
@@ -138,6 +139,23 @@ const acceptRequestById = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({ msg: "Invalid ID" });
     }
+    const exchangeReq = await ExchangeProductModel.findById(id);
+    const buyerProduct = await Item.findById(exchangeReq.buyerProductId);
+    const sellerProduct = await Item.findById(exchangeReq.sellerProductId);
+
+    if (!buyerProduct.isActive) {
+      return res.status(400).json({
+        msg: "Receiving product is not available right now. It might be already accepted another offer",
+      });
+    }
+    if (!sellerProduct.isActive) {
+      return res.status(400).json({
+        msg: "Your proudct is not available right now. It might be already accepted another offer",
+      });
+    }
+    buyerProduct.isActive = false;
+    sellerProduct.isActive = false;
+
     const newRequest = await ExchangeProductModel.findByIdAndUpdate(
       id,
       {
@@ -145,6 +163,9 @@ const acceptRequestById = async (req, res) => {
       },
       { new: true }
     );
+
+    await buyerProduct.save();
+    await sellerProduct.save();
 
     return res
       .status(200)
@@ -210,11 +231,94 @@ const getAllAcceptedDelivery = async (req, res) => {
       .populate("sellerId")
       .exec();
 
-      console.log("allr req", allReqs)
-
     return res
       .status(200)
       .json({ msg: "All exchange requests", data: allReqs });
+  } catch (error) {
+    return res.status(500).json({ error: error.message, msg: "server Error" });
+  }
+};
+
+const getAllAcceptedOrdersByDeliveryAgentId = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ msg: "Invalid delivery agent ID" });
+    }
+
+    const deliveryAgent = await DeliveryModel.findById(id);
+
+    if (!deliveryAgent) {
+      return res.status(404).json({ msg: "Delivery agent not found" });
+    }
+
+    if (
+      !deliveryAgent.acceptedOrders ||
+      deliveryAgent.acceptedOrders.length === 0
+    ) {
+      return res
+        .status(200)
+        .json({ data: [], msg: "No accepted orders found" });
+    }
+
+    const acceptedOrders = await ExchangeProductModel.find({
+      _id: { $in: deliveryAgent.acceptedOrders },
+    })
+      .populate("buyerProductId")
+      .populate("sellerProductId")
+      .populate("buyerId")
+      .populate("sellerId")
+      .exec();
+
+    return res
+      .status(200)
+      .json({
+        data: acceptedOrders,
+        msg: "all accepted orders by delivery agent id",
+      });
+  } catch (error) {
+    return res.status(500).json({ error: error.message, msg: "server Error" });
+  }
+};
+const getAllRejectedOrdersByDeliveryAgentId = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ msg: "Invalid delivery agent ID" });
+    }
+
+    const deliveryAgent = await DeliveryModel.findById(id);
+
+    if (!deliveryAgent) {
+      return res.status(404).json({ msg: "Delivery agent not found" });
+    }
+
+    if (
+      !deliveryAgent.rejectedOrders ||
+      deliveryAgent.rejectedOrders.length === 0
+    ) {
+      return res
+        .status(200)
+        .json({ data: [], msg: "No rejected orders found" });
+    }
+
+    const rejectedOrders = await ExchangeProductModel.find({
+      _id: { $in: deliveryAgent.rejectedOrders },
+    })
+      .populate("buyerProductId")
+      .populate("sellerProductId")
+      .populate("buyerId")
+      .populate("sellerId")
+      .exec();
+
+    return res
+      .status(200)
+      .json({
+        data: rejectedOrders,
+        msg: "All rejected orders by delivery agent id",
+      });
   } catch (error) {
     return res.status(500).json({ error: error.message, msg: "server Error" });
   }
@@ -223,7 +327,7 @@ const getAllRejectedDelivery = async (req, res) => {
   try {
     const allReqs = await ExchangeProductModel.find({
       sellerResponseStatus: "accepted",
-      deliveryStatus: "rejected", 
+      deliveryStatus: "rejected",
       isExchangeRequestActive: true,
     })
       .populate("buyerProductId")
@@ -243,20 +347,40 @@ const getAllRejectedDelivery = async (req, res) => {
 const acceptDeliveryReqById = async (req, res) => {
   try {
     const { id } = req.params;
+    const { deliveryAgentId } = req.body;
+    if (!deliveryAgentId) {
+      return res.status(400).json({ msg: "Delivery agent id is required." });
+    }
+
+    if (!mongoose.Types.ObjectId.isValid(deliveryAgentId)) {
+      return res.status(400).json({ msg: "Invalid delivery agent" });
+    }
+
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({ msg: "Invalid ID" });
     }
-    console.log("id",id)
+
+    const deliveryAgent = await DeliveryModel.findById(deliveryAgentId);
+    if (!deliveryAgent) {
+      return res.status(400).json({ msg: "Delivery agent not found" });
+    }
     const newRequest = await ExchangeProductModel.findByIdAndUpdate(
       id,
       {
         deliveryStatus: "accepted",
+        deliveryAgentId,
       },
       { new: true }
     );
 
+    if (!deliveryAgent.acceptedOrders) {
+      deliveryAgent.acceptedOrders = [];
+    }
 
-    console.log("new",newRequest)
+    deliveryAgent.acceptedOrders.push(newRequest._id);
+    await deliveryAgent.save();
+
+    console.log("new", newRequest);
     return res
       .status(200)
       .json({ msg: "Request accepted successfully", data: newRequest });
@@ -270,17 +394,43 @@ const rejectDeliveryReqById = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({ msg: "Invalid ID" });
     }
-    const newRequest = await ExchangeProductModel.findByIdAndUpdate(
-      id,
-      {
-        deliveryStatus: "rejected",
-      },
-      { new: true }
-    );
+    const { deliveryAgentId } = req.body;
+    if (!deliveryAgentId) {
+      return res.status(400).json({ msg: "Delivery agent id is required." });
+    }
 
-    return res
-      .status(200)
-      .json({ msg: "Delivery request rejected successfully", data: newRequest });
+    
+    if (!mongoose.Types.ObjectId.isValid(deliveryAgentId)) {
+      return res.status(400).json({ msg: "Invalid delivery agent" });
+    }
+
+    const deliveryAgent = await DeliveryModel.findById(deliveryAgentId);
+    if (!deliveryAgent) {
+      return res.status(400).json({ msg: "Delivery agent not found" });
+    }
+
+    const newRequest = await ExchangeProductModel.findById(id);
+  
+
+    // const newRequest = await ExchangeProductModel.findByIdAndUpdate(
+    //   id,
+    //   {
+    //     deliveryStatus: "rejected",
+    //   },
+    //   { new: true }
+    // );
+
+    if (!deliveryAgent.rejectedOrders) {
+      deliveryAgent.rejectedOrders = [];
+    }
+
+    deliveryAgent.rejectedOrders.push(newRequest._id);
+    await deliveryAgent.save();
+
+    return res.status(200).json({
+      msg: "Delivery request rejected successfully",
+      data: newRequest,
+    });
   } catch (error) {
     return res.status(500).json({ msg: "Server error", error: error.message });
   }
@@ -299,4 +449,6 @@ module.exports = {
   rejectDeliveryReqById,
   getAllAcceptedDelivery,
   getAllRejectedDelivery,
+  getAllAcceptedOrdersByDeliveryAgentId,
+  getAllRejectedOrdersByDeliveryAgentId
 };

@@ -13,7 +13,6 @@ export const ModExchangeProduct = () => {
     try {
       const response = await axiosInstance.get("getAllExchangeRequests");
       if (response.status == 200) {
-        console.log("fdgd", response.data.data);
         setRequestData(response.data.data);
       }
     } catch (error) {
@@ -134,19 +133,21 @@ export const ModExchangeProduct = () => {
                     </div>
                   </div>
 
-                  <div className="modTransaction-center-image d-flex">
-                      <div className="modExchange-delivery-status d-flex">
-                        Seller response status : 
-                        {e?.sellerResponseStatus === "pending" ? (
-                          <p className="text-warning">Pending</p>
-                        ) : e?.sellerResponseStatus == "accepted" ? (
-                          <p className="text-success">Accepted</p>
-                        ) : (
-                          <p className="text-danger">Rejected</p>
-                        )}
-                      </div>
-                    <img src={img3} alt="" />
-                    <div className="modExchange-delivery-status d-flex">
+                  <div className="d-flex  mt-5 justify-content-between">
+                    <div className=" d-flex">
+                      Seller response status :
+                      {e?.sellerResponseStatus === "pending" ? (
+                        <p className="text-warning">Pending</p>
+                      ) : e?.sellerResponseStatus == "accepted" ? (
+                        <p className="text-success">Accepted</p>
+                      ) : (
+                        <p className="text-danger">Rejected</p>
+                      )}
+                    </div>
+                    <div style={{ width: "30px", height: "30px" }}>
+                      <img src={img3} alt="icon" className="w-100" />
+                    </div>
+                    <div className="d-flex">
                       Delivery status :
                       {e?.deliveryStatus === "pending" ? (
                         <p className="text-warning">Pending</p>

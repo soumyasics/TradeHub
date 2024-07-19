@@ -4,17 +4,29 @@ import axiosInstance from "../../../apis/axiosInstance";
 import { Table } from "react-bootstrap";
 import { FcCheckmark } from "react-icons/fc";
 import { FaXmark } from "react-icons/fa6";
-import toast from "react-hot-toast";
+import {toast} from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export const DeliveryDeliveryPending = () => {
   const [data, setData] = useState([]);
+  const [deliveryAgentId, setDeliveryAgentId] = useState("");
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    let id = localStorage.getItem("trade-hub-DAId") || null;
+    if (id) {
+      setDeliveryAgentId(id);
+    }else {
+      toast.error("Please login again.");
+      navigate("/delivery/login");
+    }
+  }, [])
   const getAllPendingRequest = async () => {
     try {
       const response = await axiosInstance.get("getAllPendingDelivery");
       console.log("response", response);
       if (response.status === 200) {
-        console.log("fgf",response);
+        console.log("fgf",response);  
         setData(response.data.data);
       }
     } catch (error) {
@@ -25,7 +37,9 @@ export const DeliveryDeliveryPending = () => {
   const toApprove = async (id) => {
     try {
       const response = await axiosInstance.patch(
-        `acceptDeliveryReqById/${id}`
+        `acceptDeliveryReqById/${id}`, {
+          deliveryAgentId
+        }
       );
 
       console.log("res2",response)
@@ -40,13 +54,15 @@ export const DeliveryDeliveryPending = () => {
   };
 
   const toReject = async (id) => {
-    const response = await axiosInstance.patch(`rejectDeliveryReqById/${id}`);
     try {
+      const response = await axiosInstance.patch(`rejectDeliveryReqById/${id}`, {
+        deliveryAgentId
+      });
       if (response.status == 200) {
         toast.success("Rejected sucessfully");
       }
     } catch (error) {
-      console.log(error);
+      console.log("error on reject",error);
     } finally {
       getAllPendingRequest();
     }
