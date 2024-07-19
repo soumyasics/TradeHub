@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaRegEye } from "react-icons/fa";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 import userforget from "../../assets/images/userforget.jpg";
 import { useNavigate } from "react-router-dom";
 import MainNav from "../homeComponents/Navbar/MainNav";
@@ -7,6 +11,9 @@ import axiosInstance from "../../apis/axiosInstance";
 import UserNavbar from "../homeComponents/Navbar/UserNavbar";
 import toast from "react-hot-toast";
 function Userforget() {
+  const [show1, setShow1] = useState(true);
+  const [show2, setShow2] = useState(true);
+
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -18,6 +25,12 @@ function Userforget() {
     password: "",
     confirmpassword: "",
   });
+  const handleShow1 = () => {
+    setShow1(!show1);
+  };
+  const handleShow2 = () => {
+    setShow2(!show2);
+  };
 
   const Navigate = useNavigate();
 
@@ -66,16 +79,13 @@ function Userforget() {
         .post("/forgotPasswordUser", data)
         .then((res) => {
           console.log(res);
-         
-          if(res.data.status==200)
-            {
-              Navigate("/user/login");
-              toast.success(res.data.msg);
-            }
-            else
-            {
-              toast.error(res.data.msg);
-            }
+
+          if (res.data.status == 200) {
+            Navigate("/user/login");
+            toast.success(res.data.msg);
+          } else {
+            toast.error(res.data.msg);
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -83,7 +93,6 @@ function Userforget() {
         });
     }
   };
-
   return (
     <div>
       <UserNavbar />
@@ -114,14 +123,43 @@ function Userforget() {
                   )}
                 </div>
                 <div>
-                  <input
+                  {/* <input
                     type="password"
                     className="user-forget-textbox mt-5"
                     placeholder="Enter new Password"
                     name="password"
                     value={data.password}
                     onChange={handleInputChange}
-                  />
+                  /> */}
+                  <InputGroup className="user-forget-password-box ">
+                    <Form.Control
+                      className="user-forget-password-inp"
+                      type={show1 ? "password" : "text"}
+                      name="password"
+                      value={data.password}
+                      onChange={handleInputChange}
+                      aria-label="password"
+                      placeholder="password"
+                      aria-describedby="basic-addon1"
+                    />
+                    <InputGroup.Text
+                      id="basic-addon1"
+                      className="user-forget-eye-box"
+                    >
+                      {show1 ? (
+                        <FaEyeSlash
+                          className="user-forget-toggleEye"
+                          onClick={handleShow1}
+                        />
+                      ) : (
+                        <FaRegEye
+                          className="user-forget-toggleEye"
+                          onClick={handleShow1}
+                        />
+                      )}
+                    </InputGroup.Text>
+                  </InputGroup>
+
                   {errors.password && (
                     <div className="user-forget-div text-danger">
                       {errors.password}
@@ -129,14 +167,44 @@ function Userforget() {
                   )}
                 </div>
                 <div>
-                  <input
+                  {/* <input
                     type="password"
                     className="user-forget-textbox mt-5"
                     placeholder="Re-Enter new Password"
                     name="confirmpassword"
                     value={data.confirmpassword}
                     onChange={handleInputChange}
-                  />
+                  /> */}
+
+                  <InputGroup className="user-forget-password-box ">
+                    <Form.Control
+                      className="user-forget-password-inp"
+                      type={show2 ? "password" : "text"}
+                      placeholder="Re-Enter new Password"
+                    name="confirmpassword"
+                    value={data.confirmpassword}
+                    onChange={handleInputChange}
+                      aria-label="password"
+                      aria-describedby="basic-addon1"
+                    />
+                    <InputGroup.Text
+                      id="basic-addon1"
+                      className="user-forget-eye-box"
+                    >
+                      {show2 ? (
+                        <FaEyeSlash
+                          className="user-forget-toggleEye"
+                          onClick={handleShow2}
+                        />
+                      ) : (
+                        <FaRegEye
+                          className="user-forget-toggleEye"
+                          onClick={handleShow2}
+                        />
+                      )}
+                    </InputGroup.Text>
+                  </InputGroup>
+
                   {errors.confirmpassword && (
                     <div className="user-forget-div text-danger">
                       {errors.confirmpassword}

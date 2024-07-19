@@ -104,7 +104,7 @@ function UserMainNav() {
             <Dropdown.Toggle
               as="div"
               onClick={toggleDropdown}
-              className="custom-dropdown-toggle"
+              className="custom-dropdown-toggle userNavbar-arrow "
             >
               <Nav.Link className="" style={{ marginRight: "90px" }}>
                 <IoMdContact className="usermain-navbar-iconloop mt-3" />

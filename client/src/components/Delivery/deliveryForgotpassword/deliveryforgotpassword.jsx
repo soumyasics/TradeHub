@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "./deliveryforgotpassword.css";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaRegEye } from "react-icons/fa";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 import img1 from "../../../assets/images/passwordImg.png";
 import MainNav from "../../homeComponents/Navbar/MainNav";
 import Footer from "../../Footer/Footer";
@@ -9,6 +13,8 @@ import axiosInstance from "../../../apis/axiosInstance";
 import UserNavbar from "../../homeComponents/Navbar/UserNavbar";
 
 function Deliveryforgotpassword() {
+  const [show1, setShow1] = useState(true);
+  const [show2, setShow2] = useState(true);
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -20,6 +26,12 @@ function Deliveryforgotpassword() {
     confirmPassword: "",
   });
   const Navigate = useNavigate();
+  const handleShow1 = () => {
+    setShow1(!show1);
+  };
+  const handleShow2 = () => {
+    setShow2(!show2);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -116,14 +128,43 @@ function Deliveryforgotpassword() {
                     )}
                   </div>
                   <div>
-                    <input
+                    {/* <input
                       type="password"
                       className="deliveryagent-forgot-textbox mt-5"
                       placeholder="Enter new Password"
                       name="password"
                       value={data.password}
                       onChange={handleChange}
-                    />
+                    /> */}
+                    <InputGroup className="del-forget-password-box ">
+                      <Form.Control
+                        className="del-forget-password-inp"
+                        type={show1 ? "password" : "text"}
+                        name="password"
+                        value={data.password}
+                        onChange={handleChange}
+                        aria-label="password"
+                        placeholder="password"
+                        aria-describedby="basic-addon1"
+                      />
+                      <InputGroup.Text
+                        id="basic-addon1"
+                        className="del-forget-eye-box"
+                      >
+                        {show1 ? (
+                          <FaEyeSlash
+                            className="del-forget-toggleEye"
+                            onClick={handleShow1}
+                          />
+                        ) : (
+                          <FaRegEye
+                            className="del-forget-toggleEye"
+                            onClick={handleShow1}
+                          />
+                        )}
+                      </InputGroup.Text>
+                    </InputGroup>
+
                     {error.password && (
                       <div className="user-forget-div text-danger">
                         {error.password}
@@ -132,13 +173,42 @@ function Deliveryforgotpassword() {
                   </div>
                 </div>
                 <div>
-                  <input
+                  {/* <input
                     type="password"
                     className="deliveryagent-forgot-textbox mt-5"
                     placeholder="Re-Enter new Password"
                     name="confirmPassword"
                     onChange={handleChange}
-                  />
+                  /> */}
+
+                  <InputGroup className="del-forget-password-box ">
+                    <Form.Control
+                      className="user-forget-password-inp"
+                      type={show2 ? "password" : "text"}
+                      placeholder="Re-Enter new Password"
+                      name="confirmPassword"
+                      onChange={handleChange}
+                      value={data.confirmPassword}
+                      aria-label="password"
+                      aria-describedby="basic-addon1"
+                    />
+                    <InputGroup.Text
+                      id="basic-addon1"
+                      className="user-forget-eye-box"
+                    >
+                      {show2 ? (
+                        <FaEyeSlash
+                          className="del-forget-toggleEye"
+                          onClick={handleShow2}
+                        />
+                      ) : (
+                        <FaRegEye
+                          className="del-forget-toggleEye"
+                          onClick={handleShow2}
+                        />
+                      )}
+                    </InputGroup.Text>
+                  </InputGroup>
 
                   {error.confirmPassword && (
                     <div className="user-forget-div text-danger">

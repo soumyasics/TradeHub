@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "./Moderator.css";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaRegEye } from "react-icons/fa";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 import MainNav from "../homeComponents/Navbar/MainNav";
 import Footer from "../Footer/Footer";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,11 +13,19 @@ import axiosInstance from "../../apis/axiosInstance";
 import toast, { Toast } from "react-hot-toast";
 import UserNavbar from "../homeComponents/Navbar/UserNavbar";
 function Moderatorforget() {
+  const [show1, setShow1] = useState(true);
+  const [show2, setShow2] = useState(true);
   const [data, setData] = useState({
     email: "",
     password: "",
     confirmpassword: "",
   });
+  const handleShow1 = () => {
+    setShow1(!show1);
+  };
+  const handleShow2 = () => {
+    setShow2(!show2);
+  };
 
   const [errors, setErrors] = useState({
     email: "",
@@ -63,20 +75,23 @@ function Moderatorforget() {
     setErrors(errors);
 
     if (formValid) {
-      axiosInstance
-        .post("/forgotPasswordUserModerators", data)
-        .then((res) => {
+      axiosInstance.post("/forgotPasswordUserModerators", data)
+      .then((res) => {
+        if(res.data.status == 200)
+        {
+        
           console.log(res);
           toast.success(res.data.msg);
           Navigate("/moderator/login");
+        }
         })
         .catch((err) => {
           console.log(err);
           alert(err);
         });
+        
     }
   };
-
 
   return (
     <div>
@@ -122,14 +137,44 @@ function Moderatorforget() {
                     </div>
                   </div>
                   <div>
-                    <input
+                    {/* <input
                       type="password"
                       className="moderator-forget-textbox mt-5"
                       placeholder="Enter new Password"
                       name="password"
                       value={data.password}
                       onChange={handleInputChange}
-                    />
+                    /> */}
+
+                    <InputGroup className="mod-forget-password-box ">
+                      <Form.Control
+                        className="mod-forget-password-inp"
+                        type={show1 ? "password" : "text"}
+                        name="password"
+                        value={data.password}
+                        onChange={handleInputChange}
+                        aria-label="password"
+                        placeholder="password"
+                        aria-describedby="basic-addon1"
+                      />
+                      <InputGroup.Text
+                        id="basic-addon1"
+                        className="user-forget-eye-box"
+                      >
+                        {show1 ? (
+                          <FaEyeSlash
+                            className="mod-forget-toggleEye"
+                            onClick={handleShow1}
+                          />
+                        ) : (
+                          <FaRegEye
+                            className="mod-forget-toggleEye"
+                            onClick={handleShow1}
+                          />
+                        )}
+                      </InputGroup.Text>
+                    </InputGroup>
+
                     <div className="text-center mt-2">
                       {errors.password && (
                         <div className="moderator-forget-div text-danger">
@@ -139,14 +184,43 @@ function Moderatorforget() {
                     </div>
                   </div>
                   <div>
-                    <input
+                    {/* <input
                       type="password"
                       className="moderator-forget-textbox mt-5"
                       placeholder="Re-Enter new Password"
                       name="confirmpassword"
                       value={data.confirmpassword}
                       onChange={handleInputChange}
-                    />
+                    /> */}
+
+                    <InputGroup className="mod-forget-password-box ">
+                      <Form.Control
+                        className="user-forget-password-inp"
+                        type={show2 ? "password" : "text"}
+                        placeholder="Re-Enter new Password"
+                        name="confirmpassword"
+                        value={data.confirmpassword}
+                        onChange={handleInputChange}
+                        aria-label="password"
+                        aria-describedby="basic-addon1"
+                      />
+                      <InputGroup.Text
+                        id="basic-addon1"
+                        className="user-forget-eye-box"
+                      >
+                        {show2 ? (
+                          <FaEyeSlash
+                            className="mod-forget-toggleEye"
+                            onClick={handleShow2}
+                          />
+                        ) : (
+                          <FaRegEye
+                            className="mod-forget-toggleEye"
+                            onClick={handleShow2}
+                          />
+                        )}
+                      </InputGroup.Text>
+                    </InputGroup>
                     <div className="text-center mt-2">
                       {errors.confirmpassword && (
                         <div className="moderator-forget-div text-danger">

@@ -25,10 +25,12 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
   const toggleDA = () => {
     setdropdownMod(false);
     setdropdownDA(!dropdownDA);
+    setdropdownGuide(false)
   };
 
   const toggleMod = () => {
     setdropdownDA(false);
+    setdropdownGuide(false)
     setdropdownMod(!dropdownMod);
   };
 
