@@ -196,6 +196,57 @@ const rejectRequestById = async (req, res) => {
   }
 };
 
+const getAllApprovedExchangesBySellerId = async (req, res) => {
+  try {
+    const sellerId = req.params.id;
+
+    if (!mongoose.Types.ObjectId.isValid(sellerId)) {
+      return res.status(400).json({ msg: "invalid seller ID" });
+    }
+    const allReqs = await ExchangeProductModel.find({
+      sellerResponseStatus: "accepted",
+      sellerId,
+      isExchangeRequestActive: true,
+    })
+      .populate("buyerProductId")
+      .populate("sellerProductId")
+      .populate("buyerId")
+      .populate("sellerId")
+      .exec();
+
+    return res
+      .status(200)
+      .json({ msg: "All approved exchanges by seller id", data: allReqs });
+  } catch (error) {
+    return res.status(500).json({ error: error.message, msg: "server Error" });
+  }
+};
+const getAllApprovedExchangesByBuyerId = async (req, res) => {
+  try {
+    const buyerId = req.params.id;
+
+    if (!mongoose.Types.ObjectId.isValid(buyerId)) {
+      return res.status(400).json({ msg: "invalid buyer ID" });
+    }
+    const allReqs = await ExchangeProductModel.find({
+      sellerResponseStatus: "accepted",
+      buyerId,
+      isExchangeRequestActive: true,
+    })
+      .populate("buyerProductId")
+      .populate("sellerProductId")
+      .populate("buyerId")
+      .populate("sellerId")
+      .exec();
+
+    return res
+      .status(200)
+      .json({ msg: "All approved exchanges by seller id", data: allReqs });
+  } catch (error) {
+    return res.status(500).json({ error: error.message, msg: "server Error" });
+  }
+};
+
 // deliveries
 
 const getAllPendingDelivery = async (req, res) => {
@@ -271,12 +322,10 @@ const getAllAcceptedOrdersByDeliveryAgentId = async (req, res) => {
       .populate("sellerId")
       .exec();
 
-    return res
-      .status(200)
-      .json({
-        data: acceptedOrders,
-        msg: "all accepted orders by delivery agent id",
-      });
+    return res.status(200).json({
+      data: acceptedOrders,
+      msg: "all accepted orders by delivery agent id",
+    });
   } catch (error) {
     return res.status(500).json({ error: error.message, msg: "server Error" });
   }
@@ -313,12 +362,10 @@ const getAllRejectedOrdersByDeliveryAgentId = async (req, res) => {
       .populate("sellerId")
       .exec();
 
-    return res
-      .status(200)
-      .json({
-        data: rejectedOrders,
-        msg: "All rejected orders by delivery agent id",
-      });
+    return res.status(200).json({
+      data: rejectedOrders,
+      msg: "All rejected orders by delivery agent id",
+    });
   } catch (error) {
     return res.status(500).json({ error: error.message, msg: "server Error" });
   }
@@ -399,7 +446,6 @@ const rejectDeliveryReqById = async (req, res) => {
       return res.status(400).json({ msg: "Delivery agent id is required." });
     }
 
-    
     if (!mongoose.Types.ObjectId.isValid(deliveryAgentId)) {
       return res.status(400).json({ msg: "Invalid delivery agent" });
     }
@@ -410,7 +456,6 @@ const rejectDeliveryReqById = async (req, res) => {
     }
 
     const newRequest = await ExchangeProductModel.findById(id);
-  
 
     // const newRequest = await ExchangeProductModel.findByIdAndUpdate(
     //   id,
@@ -450,5 +495,7 @@ module.exports = {
   getAllAcceptedDelivery,
   getAllRejectedDelivery,
   getAllAcceptedOrdersByDeliveryAgentId,
-  getAllRejectedOrdersByDeliveryAgentId
+  getAllRejectedOrdersByDeliveryAgentId,
+  getAllApprovedExchangesBySellerId,
+  getAllApprovedExchangesByBuyerId,
 };

@@ -170,4 +170,12 @@ router.patch(
   exchangeProductController.rejectDeliveryReqById
 );
 
+router.get(
+  "getAllApprovedExchangesByBuyerId/:id",
+  exchangeProductController.getAllApprovedExchangesByBuyerId
+);
+router.get(
+  "getAllApprovedExchangesBySellerId/:id",
+  exchangeProductController.getAllApprovedExchangesBySellerId
+);
 module.exports = router;
