@@ -30,6 +30,7 @@ export const AdmineViewGuideline = () => {
       </p>
       <button className="adminViewGuideline-button " onClick={()=>{navigate("/admin/update-guideline")}}>update</button>
 
-    </div>
+</div>
+
   );
 };

@@ -1,21 +1,18 @@
 import img1 from "../../../assets/images/itemDetailsPoints.png";
 import img2 from "../../../assets/images/userTransactionImage.png";
 import img3 from "../../../assets/images/userTransactionImage2.svg";
-import { PiHandCoins } from "react-icons/pi";
-import Form from "react-bootstrap/Form";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import { GiConsoleController } from "react-icons/gi";
 import { BASE_URL } from "../../../apis/baseURL";
-import "./adminTransaction.css";
+import "./approvedExchangeProduct.css"
 
-export const AdminTransaction = () => {
+export const ApprovedExchangeProduct = () => {
   const [requestData, setRequestData] = useState([]);
   const getRequest = async () => {
     try {
       const response = await axiosInstance.get("getAllExchangeRequests");
       if (response.status == 200) {
-        console.log("fdgd", response.data.data);
         setRequestData(response.data.data);
       }
     } catch (error) {
@@ -30,29 +27,9 @@ export const AdminTransaction = () => {
 
   return (
     <div className="userTransaction-main">
-      <div className="d-flex admin-transaction-search-box">
-        <p>Search by item name :</p>
-        <input type="search" />
-        <button>search</button>
-      </div>
+      <div className="userViewTransaction-heading-box">
+Approved Exchange product      </div>
 
-      <Form.Select
-        aria-label="Default select example "
-        className=" admin-transaction-select"
-      >
-        <option>Filter</option>
-        <option value="Books">Books</option>
-        <option value="Electronics">Electronics</option>
-        <option value="Jewellery">Jewellery</option>
-        <option value="Home Appliances">Home Appliances</option>
-        <option value="clothing">Clothing</option>
-        <option value="Furniture">Furniture</option>
-      </Form.Select>
-
-      <div className="adminTransaction-heading-box d-flex">
-        <PiHandCoins />
-        Transaction
-      </div>
       {requestData.map((e) => {
         const buyer = e?.buyerId;
         const buyerProduct = e?.buyerProductId;
@@ -155,7 +132,7 @@ export const AdminTransaction = () => {
                     </div>
                   </div>
 
-                  <div className="d-flex mt-5 justify-content-between d-flex">
+                  <div className="d-flex  mt-5 justify-content-between">
                     <div className=" d-flex">
                       Seller response status :
                       {e?.sellerResponseStatus === "pending" ? (

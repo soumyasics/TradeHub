@@ -5,6 +5,8 @@ import { GiReceiveMoney } from "react-icons/gi";
 import { TbTruckDelivery } from "react-icons/tb";
 import "../Admin.css";
 import axiosInstance from "../../../apis/axiosInstance";
+import { AdminRecentMOdReq } from "../adminRecentModReq/adminRecentModReq";
+import { AdminRecentddReq } from "../adminRecentddReq/adminRecentddReq";
 export const AdminOverview = () => {
   const [users, setUsers] = useState([]);
   const [moderator, setModerator] = useState([]);
@@ -129,6 +131,8 @@ export const AdminOverview = () => {
           </section>
         </div>
       </div>
+      {/* <AdminRecentMOdReq/>
+      <AdminRecentddReq/> */}
     </div>
   );
 };

@@ -72,7 +72,6 @@ export const ModNavbar = ({ hamActive, setHamActive }) => {
         >
           <div className={styles.navLinksWrapper}>
             <div className={styles.verticalLine}> </div>
-            <p className={`${styles.nav} center`}>View Products</p>
             <p
               className={`${styles.nav} center`}
               onClick={redirectModViewUsers}

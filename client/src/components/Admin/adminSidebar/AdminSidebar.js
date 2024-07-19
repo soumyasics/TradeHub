@@ -41,8 +41,8 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
   };
 
   return (
-    <div>
-      <div className="admin-sidebar-color2">
+    
+      <div className="admin-sidebar-color3">
         <div className="admin-sidebar-logotext d-flex  align-items-center">
           <img
             className="admin-sidebar-img"
@@ -81,7 +81,7 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
                     Delivery agent request
                   </li>
                   <li
-                    className="text-dark admin-dd-item"
+                    className="text-dark admin-dd-item "
                     onClick={() => {
                       changeSelectedPage("view-active-DA");
                     }}
@@ -89,9 +89,9 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
                     {" "}
                     View all delivery agent{" "}
                   </li>
-                  <li className="text-dark admin-dd-item" onClick={() => {}}>
+                  <li className="text-dark admin-dd-item " onClick={() => {}}>
                     {" "}
-                    View all delivery details{" "}
+                    View all delivery {" "}
                   </li>
                 </div>
               )}
@@ -163,6 +163,6 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
           </ol>
         </div>
       </div>
-    </div>
+    
   );
 };

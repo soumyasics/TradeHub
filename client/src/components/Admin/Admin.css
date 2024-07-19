@@ -45,10 +45,10 @@
 }
 
 
-/* Admin Sidebar */
-.admin-sidebar-color2 {
+/* Admin Sidebar2 */
+.admin-sidebar-color3 {
   background-color: #6e3799;
-  height: 100vh;
+  height: 130vh;
   width: 275px;
 }
 .admin-sidebar-img {
@@ -173,6 +173,7 @@
 .admin-dd-item {
   background-color: #eee;
   height: 30px;
+  font-size: 15px !important;
 }
 .admin-dd-item:hover {
   background-color: #d4d1d7;

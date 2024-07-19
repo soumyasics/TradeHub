@@ -66,6 +66,7 @@ import { DeliveryDeliveryPending } from "./components/Delivery/deliveryDeliveryP
 import { DeliveryAcceptedOrders } from "./components/Delivery/deliveryAccceptedOrders/deliveryAcceptedOrders";
 import { DeliveryRejectedOrders } from "./components/Delivery/deliveryRejectedOrders/deliveryRejectedOrders";
 import { UserViewGuideline } from "./components/Users/userViewGuideline/userViewGuideline";
+import { ApprovedExchangeProduct } from "./components/Users/approvedExchangeProduct/approvedExchangeProduct";
 const App = () => {
   return (
     <div className="App">
@@ -109,6 +110,7 @@ const App = () => {
           <Route path="/view-category/:category" element={<ViewByCategory />} />
           <Route path="/user/requests" element={<UserRequestes />} />
           <Route path="/user/view-guideline" element={<UserViewGuideline/>} />
+          <Route path="/user/exchange-product" element={<ApprovedExchangeProduct/>} />
           {/* moderators  */} 
           <Route path="/moderator/register" element={<ModeratorRegister />} />
           <Route path="/moderator/login" element={<Moderatorlogin />} />
