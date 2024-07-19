@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaRegEye } from "react-icons/fa";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 import userreg from "../../assets/images/userreg.jpg";
 import MainNav from "../homeComponents/Navbar/MainNav";
 import Footer from "../Footer/Footer";
@@ -11,7 +15,9 @@ import UserNavbar from "../homeComponents/Navbar/UserNavbar";
 
 function UserRegister() {
   const navigate = useNavigate();
-
+  const [show1, setShow1] = useState(true);
+  const [show2, setShow2] = useState(true);
+  const [profileImage, setProfileImage] = useState(null);
   const [data, setData] = useState({
     firstname: "",
     lastname: "",
@@ -24,7 +30,12 @@ function UserRegister() {
     checkbox: false,
   });
 
-  const [profileImage, setProfileImage] = useState(null);
+  const handleShow1 = () => {
+    setShow1(!show1);
+  };
+  const handleShow2 = () => {
+    setShow2(!show2);
+  };
 
   const handleChange = (e) => {
     const { name, value, files, type } = e.target;
@@ -190,7 +201,7 @@ function UserRegister() {
 
   return (
     <div>
-     <UserNavbar />
+      <UserNavbar />
       <div className="user-register-box container mb-5 mt-4 pb-5">
         <div className="row">
           <div className="col-5">
@@ -299,27 +310,85 @@ function UserRegister() {
                   </div>
                   <div className="mt-4">
                     <label className="user-register-label mt-3">Password</label>
-                    <input
+                    {/* <input
                       type="password"
                       placeholder="Password"
                       className="user-register-textbox mt-2"
                       value={data.password}
                       name="password"
                       onChange={handleChange}
-                    />
+                    /> */}
+
+                    <InputGroup className="user-signup-password-box ">
+                      <Form.Control
+                        className="user-signup-password-inp"
+                        type={show1 ? "password" : "text"}
+                        name="password"
+                        value={data.password}
+                        onChange={handleChange}
+                        aria-label="password"
+                        placeholder="password"
+                        aria-describedby="basic-addon1"
+                      />
+                      <InputGroup.Text
+                        id="basic-addon1"
+                        className="usersignup-eye-box"
+                      >
+                        {show1 ? (
+                          <FaEyeSlash
+                            className="usersignup-toggleEye"
+                            onClick={handleShow1}
+                          />
+                        ) : (
+                          <FaRegEye
+                            className="usersignup-toggleEye"
+                            onClick={handleShow1}
+                          />
+                        )}
+                      </InputGroup.Text>
+                    </InputGroup>
                   </div>
                   <div>
                     <label className="user-register-label mt-4">
                       Re-enter Password
                     </label>
-                    <input
+                    {/* <input
                       type="password"
                       placeholder="Re-enter Password"
                       className="user-register-textbox mt-2"
                       value={data.repassword}
                       name="repassword"
                       onChange={handleChange}
-                    />
+                    /> */}
+
+                    <InputGroup className="user-signup-password-box ">
+                      <Form.Control
+                        className="user-signup-password-inp"
+                        type={show2 ? "password" : "text"}
+                        placeholder="Re-enter Password"
+                        value={data.repassword}
+                        name="repassword"
+                        onChange={handleChange}
+                        aria-label="password"
+                        aria-describedby="basic-addon1"
+                      />
+                      <InputGroup.Text
+                        id="basic-addon1"
+                        className="usersignup-eye-box"
+                      >
+                        {show2 ? (
+                          <FaEyeSlash
+                            className="usersignup-toggleEye"
+                            onClick={handleShow2}
+                          />
+                        ) : (
+                          <FaRegEye
+                            className="usersignup-toggleEye"
+                            onClick={handleShow2}
+                          />
+                        )}
+                      </InputGroup.Text>
+                    </InputGroup>
                   </div>
                 </div>
                 <div
@@ -338,6 +407,9 @@ function UserRegister() {
                     <label
                       className="form-check-label label-user-register"
                       for="flexCheckChecked"
+                      onClick={() => {
+                        navigate("/user/view-guideline");
+                      }}
                     >
                       Agree to Terms and Condition
                     </label>

@@ -49,6 +49,36 @@
   text-decoration: underline;
 }
 
+.modsignup-eye-box
+{
+  
+  background-color:white !important;
+  border: 2px solid black !important;
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+  border-left: 0 solid !important;
+
+ }
+ .mod-signup-password-inp
+{
+  
+  border: 2px solid black !important;
+  border-right: 0 solid !important;
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}
+.mod-signup-password-box
+{
+  height: 50px;
+  width: 99% !important;
+  border-radius: 14px;
+  border-right:0 !important;
+  margin-top: 4.5px;
+}
+.modsign-toggleEye{
+ z-index: 1;
+}
+
 /* Moderator Login */
 
 .moderator-login-box {
@@ -74,6 +104,7 @@
   width: 70%;
   border-radius: 10px;
   border-color: black;
+  margin-left: 10%;
 }
 .moderator-login-forget {
   color: #6d3698;
@@ -91,6 +122,35 @@
   margin-left: 290px;
 }
 
+.modlogin-eye-box
+{
+  
+  background-color:white !important;
+  border: 2px solid black !important;
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+  border-left: 0 solid !important;
+
+ }
+ .mod-login-password-inp
+{
+  
+  border: 2px solid black !important;
+  border-right: 0 solid !important;
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}
+.modLogin-toggleEye{
+ z-index: 1;
+}
+.mod-login-password-box
+{
+  height: 50px;
+  width: 72% !important;
+  border-radius: 14px;
+  border-right:0 !important;
+  margin-top:20px;
+}
 /* Moderator Forget */
 
 .moderator-forget-link {
@@ -117,7 +177,7 @@
   width: 70%;
   border-radius: 10px;
   border-color: black;
-  margin-left: 100px;
+  margin-left: 16%;
   color: grey;
   padding-left: 25px;
 }
@@ -130,3 +190,34 @@
   border-radius: 20px;
   font-size: 20px;
 }
+.mod-forget-eye-box
+{
+  
+  background-color:white !important;
+  border: 2px solid black !important;
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+  border-left: 0 solid !important;
+
+ }
+ .mod-forget-password-inp
+{
+  
+  border: 2px solid black !important;
+  border-right: 0 solid !important;
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}
+.mod-forget-password-box
+{
+  height: 50px;
+  width: 70% !important;
+  border-radius: 14px;
+  border-right:0 !important;
+  margin-top: 5%;
+  margin-left: 16%;
+}
+.mod-forget-toggleEye{
+ z-index: 1;
+}
+

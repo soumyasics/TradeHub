@@ -23,9 +23,10 @@ const createGuideline = async (req, res) => {
 const viewGuideline = async (req, res) => {
   try {
     const guideline = await GuidelineModel.find();
+    const finalGuideline = guideline[guideline.length -1]
     return res.json({
       status: 200,
-      data: guideline[0],
+      data: finalGuideline,
     });
   } catch (error) {
     return res.status(500).json({

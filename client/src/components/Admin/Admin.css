@@ -27,11 +27,12 @@
 .admin-login {
   font-size: 20px;
 }
-.admin-login-textbox {
+.admin-login-textbox1 {
   height: 50px;
   width: 70%;
   border-radius: 10px;
   border-color: black;
+  margin-left: 10%;
 }
 .admin-login-btn {
   background: #6d3698;
@@ -43,10 +44,11 @@
   margin-left: 290px;
 }
 
-/* Admin Sidebar */
-.admin-sidebar-color2 {
+
+/* Admin Sidebar2 */
+.admin-sidebar-color3 {
   background-color: #6e3799;
-  height: 100vh;
+  height: 130vh;
   width: 275px;
 }
 .admin-sidebar-img {
@@ -171,6 +173,7 @@
 .admin-dd-item {
   background-color: #eee;
   height: 30px;
+  font-size: 15px !important;
 }
 .admin-dd-item:hover {
   background-color: #d4d1d7;

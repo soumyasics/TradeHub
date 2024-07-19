@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "./Moderator.css";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaRegEye } from "react-icons/fa";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 import MainNav from "../homeComponents/Navbar/MainNav";
 import Footer from "../Footer/Footer";
 import moderatorlogin from "../../assets/images/moderatorlogin.jpg";
@@ -9,12 +13,16 @@ import axiosInstance from "../../apis/axiosInstance";
 import UserNavbar from "../homeComponents/Navbar/UserNavbar";
 
 function Moderatorlogin() {
+  const[show,setShow]= useState(true)
   const [data, setData] = useState({
     email: "",
     password: "",
   });
   const navigate = useNavigate();
-
+  const handleShow = () =>
+    {
+      setShow(!show)
+    }
   const checkValidity = () => {
     const { email, password } = data;
     if (!email) {
@@ -95,26 +103,55 @@ function Moderatorlogin() {
               <div>
                 <form onSubmit={handleSubmit}>
                   <div>
-                    <label className="moderator-login mt-5 ms-5">Email</label>
+                    <label className="moderator-login mt-5 ms-5 ">Email</label>
                     <input
-                      className="moderator-login-textbox ms-5"
+                      className="moderator-login-textbox ps-3"
                       type="email"
                       name="email"
                       value={data.email}
                       onChange={handleChange}
+                      placeholder="Enter your email"
                     />
                   </div>
-                  <div>
-                    <label className="moderator-login mt-5 ms-5">
+                  <div className="d-flex">
+                    <label className="moderator-login mt-4 ms-5">
                       Password
                     </label>
-                    <input
+                    {/* <input
                       className="moderator-login-textbox ms-2"
-                      type="password"
+                      type={show?"password":"text"}
                       name="password"
                       value={data.password}
                       onChange={handleChange}
-                    />
+                    /> */}
+                    <InputGroup className="mod-login-password-box ms-2 ps-3 ">
+                      <Form.Control
+                        className="mod-login-password-inp"
+                        type={show?"password":"text"}
+                      name="password"
+                      value={data.password}
+                      onChange={handleChange}
+                        aria-label="password"
+                        placeholder="password"
+                        aria-describedby="basic-addon1"
+                      />
+                      <InputGroup.Text
+                        id="basic-addon1"
+                        className="modlogin-eye-box"
+                      >
+                        {show ? (
+                          <FaEyeSlash
+                            className="modLogin-toggleEye"
+                            onClick={handleShow}
+                          />
+                        ) : (
+                          <FaRegEye
+                            className="modLogin-toggleEye"
+                            onClick={handleShow}
+                          />
+                        )}
+                      </InputGroup.Text>
+                    </InputGroup>
                   </div>
                   <div className="mt-3 moderator-login-link container">
                     <Link

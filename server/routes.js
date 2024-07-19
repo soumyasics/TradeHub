@@ -171,11 +171,11 @@ router.patch(
 );
 
 router.get(
-  "getAllApprovedExchangesByBuyerId/:id",
+  "/getAllApprovedExchangesByBuyerId/:id",
   exchangeProductController.getAllApprovedExchangesByBuyerId
 );
 router.get(
-  "getAllApprovedExchangesBySellerId/:id",
+  "/getAllApprovedExchangesBySellerId/:id",
   exchangeProductController.getAllApprovedExchangesBySellerId
 );
 module.exports = router;

@@ -2,12 +2,12 @@ import img1 from "../../../assets/images/itemDetailsPoints.png";
 import img2 from "../../../assets/images/userTransactionImage.png";
 import img3 from "../../../assets/images/userTransactionImage2.svg";
 import { PiHandCoins } from "react-icons/pi";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import { GiConsoleController } from "react-icons/gi";
 import { BASE_URL } from "../../../apis/baseURL";
-import "./adminTransaction.css"
+import "./adminTransaction.css";
 
 export const AdminTransaction = () => {
   const [requestData, setRequestData] = useState([]);
@@ -29,27 +29,28 @@ export const AdminTransaction = () => {
   }, []);
 
   return (
-  
     <div className="userTransaction-main">
-        <div className="d-flex admin-transaction-search-box">
-            <p>Search by order id :</p>
-           <input type="search" />
-           <button>search</button>
-        </div>
+      <div className="d-flex admin-transaction-search-box">
+        <p>Search by item name :</p>
+        <input type="search" />
+        <button>search</button>
+      </div>
 
-        <Form.Select aria-label="Default select example " className=" admin-transaction-select">
-      <option>Filter</option>
-      <option value="Books">Books</option>
-      <option value="Electronics">Electronics</option>
-      <option value="Jewellery">Jewellery</option>
-      <option value="Home Appliances">Home Appliances</option>
-      <option value="clothing">Clothing</option>
-      <option value="Furniture">Furniture</option>
-    </Form.Select>
-
+      <Form.Select
+        aria-label="Default select example "
+        className=" admin-transaction-select"
+      >
+        <option>Filter</option>
+        <option value="Books">Books</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Jewellery">Jewellery</option>
+        <option value="Home Appliances">Home Appliances</option>
+        <option value="clothing">Clothing</option>
+        <option value="Furniture">Furniture</option>
+      </Form.Select>
 
       <div className="adminTransaction-heading-box d-flex">
-      <PiHandCoins />
+        <PiHandCoins />
         Transaction
       </div>
       {requestData.map((e) => {
@@ -154,19 +155,21 @@ export const AdminTransaction = () => {
                     </div>
                   </div>
 
-                  <div className="modTransaction-center-image d-flex">
-                      <div className="modExchange-delivery-status d-flex">
-                        Seller response status : 
-                        {e?.sellerResponseStatus === "pending" ? (
-                          <p className="text-warning">Pending</p>
-                        ) : e?.sellerResponseStatus == "accepted" ? (
-                          <p className="text-success">Accepted</p>
-                        ) : (
-                          <p className="text-danger">Rejected</p>
-                        )}
-                      </div>
-                    <img src={img3} alt="" />
-                    <div className="modExchange-delivery-status d-flex">
+                  <div className="d-flex mt-5 justify-content-between d-flex">
+                    <div className=" d-flex">
+                      Seller response status :
+                      {e?.sellerResponseStatus === "pending" ? (
+                        <p className="text-warning">Pending</p>
+                      ) : e?.sellerResponseStatus == "accepted" ? (
+                        <p className="text-success">Accepted</p>
+                      ) : (
+                        <p className="text-danger">Rejected</p>
+                      )}
+                    </div>
+                    <div style={{ width: "30px", height: "30px" }}>
+                      <img src={img3} alt="icon" className="w-100" />
+                    </div>
+                    <div className="d-flex">
                       Delivery status :
                       {e?.deliveryStatus === "pending" ? (
                         <p className="text-warning">Pending</p>

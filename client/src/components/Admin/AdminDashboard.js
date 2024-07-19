@@ -15,6 +15,11 @@ export const AdminDashboard = () => {
   const changeSelectedPage = (value) => {
     setSelectedPage(value);
   };
+
+
+  const redirectToGuideline = () => {
+    setSelectedPage("adminViewGuideline")
+  }
   return (
     <div className="d-flex">
       <div>
@@ -27,7 +32,7 @@ export const AdminDashboard = () => {
         {selectedPage === "view-active-DA" && <AdminViewAllActiveDeliveryAgent />}
         {selectedPage === "view-pending-mod" && <AdminViewAllModRequest />}
         {selectedPage === "view-active-mod" && <AdminViewallMods />}
-        {selectedPage === "adminGuideline" && <AdminGuideline/>}
+        {selectedPage === "adminGuideline" && <AdminGuideline redirectToGuideline={redirectToGuideline}/>}
         {selectedPage === "adminViewGuideline" && <AdmineViewGuideline/>}
         {selectedPage === "transaction" && <AdminTransaction/>} 
       </div>

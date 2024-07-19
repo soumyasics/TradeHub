@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import "../Admin.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaRegEye } from "react-icons/fa";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 import adminlogin from "../../../assets/images/adminlogin.jpg";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../Footer/Footer";
@@ -9,6 +13,7 @@ import { AdminNavbar } from "../adminNavbar/adminNavbar";
 import { toast } from "react-hot-toast";
 import UserNavbar from "../../homeComponents/Navbar/UserNavbar";
 function Adminlogin() {
+  const[show,setShow]= useState(true)
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -16,6 +21,12 @@ function Adminlogin() {
 
   let realEmail = "admin@gmail.com";
   let realPassword = "admin@123";
+
+  const handleShow = () =>
+    {
+      setShow(!show)
+    }
+  
 
   const navigate = useNavigate();
 
@@ -65,7 +76,7 @@ function Adminlogin() {
                 <div>
                   <label className="admin-login mt-5 ms-5">Email</label>
                   <input
-                    className="admin-login-textbox ms-5 ps-3"
+                    className="admin-login-textbox1  ps-3"
                     type="email"
                     name="email"
                     value={data.email}
@@ -73,16 +84,44 @@ function Adminlogin() {
                     placeholder="Email"
                   />
                 </div>
-                <div>
-                  <label className="admin-login mt-5 ms-5">Password</label>
-                  <input
+                <div className="d-flex">
+                  <label className="admin-login mt-4 ms-5">Password</label>
+                  {/* <input
                     className="admin-login-textbox ms-2 ps-3"
-                    type="password"
+                    type={show?"password":"text"}
                     name="password"
                     value={data.password}
                     onChange={handleChange}
                     placeholder="Password"
-                  />
+                  /> */}
+                    <InputGroup className="user-login-password-box ms-2 ps-3 ">
+                      <Form.Control
+                        className="user-login-password-inp"
+                        type={show?"password":"text"}
+                        name="password"
+                        value={data.password}
+                        onChange={handleChange}
+                        placeholder="Password"
+                        aria-label="password"
+                        aria-describedby="basic-addon1"
+                      />
+                      <InputGroup.Text
+                        id="basic-addon1"
+                        className="userlogin-eye-box"
+                      >
+                        {show ? (
+                          <FaEyeSlash
+                            className="userLogin-toggleEye"
+                            onClick={handleShow}
+                          />
+                        ) : (
+                          <FaRegEye
+                            className="userLogin-toggleEye"
+                            onClick={handleShow}
+                          />
+                        )}
+                      </InputGroup.Text>
+                    </InputGroup>
                 </div>
                 <button
                   type="submit"
