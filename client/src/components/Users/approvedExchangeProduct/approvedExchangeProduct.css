@@ -4,8 +4,8 @@
   height: 100vh;
   overflow-y: auto;
 }
-.userTransaction-inner-box {
-  height: 620px;
+.exchange-Transaction-inner-box {
+  height: 578px;
   width: 85%;
   border-radius: 18.417px;
   border: 0.921px solid #000;
@@ -29,9 +29,9 @@
   font-size: 17px;
   font-weight: 500;
 }
-.modTransaction-box {
+.exchange-Transaction-box {
   width: 96%;
-  height: 258px;
+  height: 225px;
   border: 2px solid;
   margin: auto;
   border-radius: 20px;
@@ -82,9 +82,9 @@
   line-height: normal;
   text-decoration-line: underline;
 }
-.modTransaction-box2 {
+.exchange-Transaction-box2 {
   width: 96%;
-  height: 258px;
+  height: 235px;
   border: 2px solid;
   margin: auto;
   border-radius: 20px;

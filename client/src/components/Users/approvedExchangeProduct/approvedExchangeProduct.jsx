@@ -5,61 +5,76 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import { GiConsoleController } from "react-icons/gi";
 import { BASE_URL } from "../../../apis/baseURL";
-import "./approvedExchangeProduct.css"
+import "./approvedExchangeProduct.css";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export const ApprovedExchangeProduct = () => {
-  const [requestData, setRequestData] = useState([]);
-  const getRequest = async () => {
+  const [activeUserId, setActiveUserId] = useState("");
+  const [exchangeData, setExchangeData] = useState([]);
+  const Navigate = useNavigate();
+  const getApprovedProduct = async () => {
     try {
-      const response = await axiosInstance.get("getAllExchangeRequests");
+      const response = await axiosInstance.get(
+        `getAllApprovedExchangesBySellerId/${activeUserId}`
+      );
       if (response.status == 200) {
-        setRequestData(response.data.data);
+        console.log(response);
+        setExchangeData(response.data.data);
       }
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(requestData);
 
   useEffect(() => {
-    getRequest();
+    const userId = localStorage.getItem("trade-hub-userId") || null;
+    if (userId) {
+      setActiveUserId(userId);
+    } else {
+      toast.error("Please login again");
+      Navigate("/user/login");
+    }
   }, []);
 
+  useEffect(() => {
+    if (activeUserId) {
+      getApprovedProduct();
+    }
+  }, [activeUserId]);
   return (
     <div className="userTransaction-main">
       <div className="userViewTransaction-heading-box">
-Approved Exchange product      </div>
-
-      {requestData.map((e) => {
-        const buyer = e?.buyerId;
-        const buyerProduct = e?.buyerProductId;
-        const buyerProductFilename = buyerProduct?.itemPhoto?.filename || null;
-        let buyerProductPic =
+        Approved Exchange product{" "}
+      </div>
+      {exchangeData.map((e) => {
+        const buyerProductId = e.buyerProductId;
+        const buyerPic = buyerProductId?.itemPhoto?.filename;
+        let buyerProductUrl =
           "https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg";
-        if (buyerProductFilename) {
-          buyerProductPic = `${BASE_URL}${buyerProductFilename}`;
+
+        if (buyerPic) {
+          buyerProductUrl = `${BASE_URL}${buyerPic}`;
         }
-
-        const seller = e?.sellerId;
-        const sellerProduct = e?.sellerProductId;
-
-        const sellerProductFilename =
-          sellerProduct?.itemPhoto?.filename || null;
-        let sellerProductPic =
+        const sellerProductId = e.sellerProductId;
+        const sellerPic = sellerProductId?.itemPhoto?.filename;
+        let sellerProductUrl =
           "https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg";
-        if (sellerProductFilename) {
-          sellerProductPic = `${BASE_URL}${sellerProductFilename}`;
-        }
 
+        if (sellerPic) {
+          sellerProductUrl = `${BASE_URL}${sellerPic}`;
+        }
         return (
           <div>
-            <div className="userTransaction-inner-box">
+            <div className="exchange-Transaction-inner-box">
               <div>
-                <div className="modTransaction-box">
+                <div className="exchange-Transaction-box " >
                   <div className="userTransaction-boxcontent d-flex">
                     {/* myitems */}
                     <div className="userTransaction-myitems">
-                      <div className="userTransaction-myitems-head">User 1</div>
+                      <div className="userTransaction-myitems-head">
+                        My items
+                      </div>
                       <div className="userTransaction-myitems-photo">
                         {/* <img src={e.productPhoto} alt="Product Image" /> */}
                       </div>
@@ -67,72 +82,40 @@ Approved Exchange product      </div>
                         <table>
                           <tbody>
                             <tr>
-                              <th style={{ fontWeight: "600" }}>Name</th>
+                              <th style={{ fontWeight: "600" }}>item name</th>
                               <td>:</td>
-                              <td>{buyer?.firstname}</td>
+                              <td> {buyerProductId.name}</td>
                             </tr>
                             <tr>
-                              <th style={{ fontWeight: "600" }}>Contact</th>
+                              <th style={{ fontWeight: "600" }}>category</th>
                               <td>:</td>
-                              <td>{buyer?.contact}</td>
+                              <td>{buyerProductId.category} </td>
                             </tr>
                             <tr>
-                              <th style={{ fontWeight: "600" }}>Adress</th>
+                              <th style={{ fontWeight: "600" }}>Description</th>
                               <td>:</td>
-                              <td>{buyerProduct?.address}</td>
+                              <td> {buyerProductId.description}</td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
                     </div>
 
-                    {/* receiveditem */}
-
                     <div className="userTransaction-receiveditems">
-                      <div className="userTransaction-receiveditems-head">
-                        Product details
-                      </div>
                       <div className="userTransaction-receiveditems-photo">
                         {/* <img src={e.productPhoto} alt="Product Image" /> */}
                       </div>
-                      <div className="userTransaction-receiveditems-detail">
-                        <table>
-                          <tbody>
-                            <tr>
-                              <th style={{ fontWeight: "600" }}>Item name</th>
-                              <td>:</td>
-                              <td>{buyerProduct?.name}</td>
-                            </tr>
-                            <tr>
-                              <th style={{ fontWeight: "600" }}>Category</th>
-                              <td>:</td>
-                              <td>{buyerProduct?.category}</td>
-                            </tr>
-                            <tr>
-                              <th style={{ fontWeight: "600" }}>Condition</th>
-                              <td>:</td>
-                              <td> {buyerProduct?.condition}</td>
-                            </tr>
-                            <tr>
-                              <th style={{ fontWeight: "600" }}>Points</th>
-                              <td>:</td>
-                              <td>
-                                <div className="userTransaction-point-box d-flex">
-                                  <img src={img1} alt="" />
-                                  <p>{buyerProduct?.point}</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </div>
                     <div className="modTransaction-right-image">
-                      <img src={buyerProductPic} alt="" />
+                      <img src={buyerProductUrl} alt="" />
                     </div>
                   </div>
+                  {/* <div style={{ width: "30px", height: "30px" }} >
+                  <img src={img3} alt="icon" className="w-100" />
+                </div> */}
 
-                  <div className="d-flex  mt-5 justify-content-between">
+                 
+<div className="d-flex mt-5 justify-content-between d-flex">
                     <div className=" d-flex">
                       Seller response status :
                       {e?.sellerResponseStatus === "pending" ? (
@@ -159,11 +142,13 @@ Approved Exchange product      </div>
                   </div>
                 </div>
 
-                <div className="modTransaction-box2">
+                <div className="exchange-Transaction-box2">
                   <div className="userTransaction-boxcontent d-flex">
                     {/* myitems */}
                     <div className="userTransaction-myitems">
-                      <div className="userTransaction-myitems-head">User 2</div>
+                      <div className="userTransaction-myitems-head">
+                        Received request
+                      </div>
                       <div className="userTransaction-myitems-photo">
                         {/* <img src={e.productPhoto} alt="Product Image" /> */}
                       </div>
@@ -171,63 +156,28 @@ Approved Exchange product      </div>
                         <table>
                           <tbody>
                             <tr>
-                              <th style={{ fontWeight: "600" }}>Name</th>
+                              <th style={{ fontWeight: "600" }}>item name</th>
                               <td>:</td>
-                              <td>{seller?.firstname}</td>
+                              <td>{sellerProductId.name} </td>
                             </tr>
                             <tr>
-                              <th style={{ fontWeight: "600" }}>Contact</th>
+                              <th style={{ fontWeight: "600" }}>Category</th>
                               <td>:</td>
-                              <td>{seller?.contact}</td>
+                              <td>{sellerProductId.category}</td>
                             </tr>
                             <tr>
-                              <th style={{ fontWeight: "600" }}>Adress</th>
+                              <th style={{ fontWeight: "600" }}>Description</th>
                               <td>:</td>
-                              <td>{sellerProduct?.address}</td>
+                              <td>{sellerProductId.description}</td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
                     </div>
                     {/* receiveditem */}
-                    <div className="userTransaction-receiveditems ">
-                      <div className="userTransaction-receiveditems-head">
-                        Product details
-                      </div>
-                      <div className="userTransaction-receiveditems-detail">
-                        <table>
-                          <tbody>
-                            <tr>
-                              <th style={{ fontWeight: "600" }}>Item name</th>
-                              <td>:</td>
-                              <td>{sellerProduct?.name}</td>
-                            </tr>
-                            <tr>
-                              <th style={{ fontWeight: "600" }}>Category</th>
-                              <td>:</td>
-                              <td>{sellerProduct.category}</td>
-                            </tr>
-                            <tr>
-                              <th style={{ fontWeight: "600" }}>Condition</th>
-                              <td>:</td>
-                              <td> {sellerProduct?.condition}</td>
-                            </tr>
-                            <tr>
-                              <th style={{ fontWeight: "600" }}>Points</th>
-                              <td>:</td>
-                              <td>
-                                <div className="userTransaction-point-box d-flex">
-                                  <img src={img1} alt="" />
-                                  <p>{sellerProduct.point}</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>{" "}
+                    <div className="userTransaction-receiveditems "></div>{" "}
                     <div className="modTransaction-right-image">
-                      <img src={sellerProductPic} alt="" />
+                      <img src={sellerProductUrl} alt="" />
                     </div>
                   </div>
                 </div>
