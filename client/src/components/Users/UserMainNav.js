@@ -104,7 +104,7 @@ function UserMainNav() {
             <Dropdown.Toggle
               as="div"
               onClick={toggleDropdown}
-              className="custom-dropdown-toggle"
+              className="custom-dropdown-toggle userNavbar-arrow "
             >
               <Nav.Link className="" style={{ marginRight: "90px" }}>
                 <IoMdContact className="usermain-navbar-iconloop mt-3" />
@@ -117,6 +117,9 @@ function UserMainNav() {
 
               <Link className="dropdown-item" to="/user/wishlist" id="">
                 My wishlist
+              </Link>
+              <Link className="dropdown-item" to="/user/exchange-product" id="">
+                Approved Exchange
               </Link>
               <h6
                 className="dropdown-item text-danger fw-bold"

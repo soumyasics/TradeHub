@@ -6,7 +6,7 @@ export const UserChatNavbar = () =>
     const Navigate = useNavigate()
     return(
         <div className="userChatNavbar-body">
-             <FaArrowLeft className="userChatNavbar-left-arrow" onClick={()=>{Navigate("/user/home")}}/>
+             <FaArrowLeft className="userChatNavbar-left-arrow" onClick={()=>{Navigate(-1)}}/>
         </div>
     )
 }

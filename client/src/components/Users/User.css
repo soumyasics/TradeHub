@@ -101,7 +101,7 @@
   width: 70%;
   border-radius: 10px;
   border-color: black;
-  margin-left: 100px;
+  margin-left: 16%;
   color: grey;
   padding-left: 25px;
 }
@@ -116,6 +116,38 @@
 }
 .user-forget-div {
   margin-left: 100px;
+}
+
+
+.user-forget-eye-box
+{
+  
+  background-color:white !important;
+  border: 2px solid black !important;
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+  border-left: 0 solid !important;
+
+ }
+ .user-forget-password-inp
+{
+  
+  border: 2px solid black !important;
+  border-right: 0 solid !important;
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+}
+.user-forget-password-box
+{
+  height: 50px;
+  width: 70% !important;
+  border-radius: 14px;
+  border-right:0 !important;
+  margin-top: 5%;
+  margin-left: 16%;
+}
+.user-forget-toggleEye{
+ z-index: 1;
 }
 
 /* User Register */
@@ -311,7 +343,10 @@
 }
 
 /* UserMainNavBar */
-
+.userNavbar-arrow::after 
+{
+  border-top: 0em solid transparent !important;
+}
 .usermainnav-page-color {
   background: linear-gradient(
     109.33deg,
@@ -358,6 +393,7 @@
   height: 40px;
   width: 40px;
   border-radius: 50px;
+  
 }
 .user-profile-icon {
   font-size: 16px;

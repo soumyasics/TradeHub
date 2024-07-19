@@ -256,8 +256,10 @@ function DeliveryAgentSignup() {
                     onChange={handlechangeChecked}
                   />
                   <label
-                    className="form-check-label mt-5 label-deliverysignup"
+                    className="form-check-label mt-5 label-deliverysignup text-primary"
                     for="flexCheckChecked"
+                    onClick={() => navigate("/user/view-guideline")}
+
                   >
                     Agree to Terms and Condition
                   </label>

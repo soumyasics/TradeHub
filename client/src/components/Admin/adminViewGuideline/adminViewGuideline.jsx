@@ -5,7 +5,9 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 export const AdmineViewGuideline = () => {
   const [state, setState] = useState("");
+  
   const navigate = useNavigate()
+  
   useEffect(() => {
     axiosInstance
       .get("/viewGuideline")
@@ -28,6 +30,7 @@ export const AdmineViewGuideline = () => {
       </p>
       <button className="adminViewGuideline-button " onClick={()=>{navigate("/admin/update-guideline")}}>update</button>
 
-    </div>
+</div>
+
   );
 };
