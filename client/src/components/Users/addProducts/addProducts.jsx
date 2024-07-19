@@ -260,8 +260,8 @@ export const AddProducts = () => {
                         </option>
                         <option value="flawless">Flawless</option>
                         <option value="no-damage">No Damange</option>
-                        <option value="minner-scratches">
-                          Minner scratches
+                        <option value="minor-scratches">
+                          Minor scratches
                         </option>
                       </select>
                       <Form.Control.Feedback

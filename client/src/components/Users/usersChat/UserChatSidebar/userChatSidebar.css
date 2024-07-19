@@ -3,6 +3,7 @@
   border: 1px solid #6d3698;
   height: 100vh;
   width: 100%;
+  overflow-y: auto;
 }
 .chatSidebar-search {
   display: flex;
