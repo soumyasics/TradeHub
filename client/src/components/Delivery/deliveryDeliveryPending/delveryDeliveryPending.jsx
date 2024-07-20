@@ -84,7 +84,7 @@ export const DeliveryDeliveryPending = () => {
     <div className="pt-5">
       {data.length > 0 && (
         <div className="text-center">
-          <h4 className="mx-auto">Recent deliver requests</h4>
+          <h4 className="mx-auto">Recent Delivery requests</h4>
         </div>
       )}
 

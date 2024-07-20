@@ -67,6 +67,8 @@ import { DeliveryAcceptedOrders } from "./components/Delivery/deliveryAccceptedO
 import { DeliveryRejectedOrders } from "./components/Delivery/deliveryRejectedOrders/deliveryRejectedOrders";
 import { UserViewGuideline } from "./components/Users/userViewGuideline/userViewGuideline";
 import { ApprovedExchangeProduct } from "./components/Users/approvedExchangeProduct/approvedExchangeProduct";
+import { ApprovedRequestProduct } from "./components/Users/approvedExchangeProduct/approvedRequestProduct";
+import { DeliveryStatus } from "./components/Users/approvedExchangeProduct/deliveryStatus";
 const App = () => {
   return (
     <div className="App">
@@ -111,6 +113,8 @@ const App = () => {
           <Route path="/user/requests" element={<UserRequestes />} />
           <Route path="/user/view-guideline" element={<UserViewGuideline/>} />
           <Route path="/user/exchange-product" element={<ApprovedExchangeProduct/>} />
+          <Route path="/user/approved-req-product" element={<ApprovedRequestProduct/>} />
+          <Route path="/user/delivery-status" element={<DeliveryStatus/>} />
           {/* moderators  */} 
           <Route path="/moderator/register" element={<ModeratorRegister />} />
           <Route path="/moderator/login" element={<Moderatorlogin />} />

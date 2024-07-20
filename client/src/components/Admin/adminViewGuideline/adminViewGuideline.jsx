@@ -28,7 +28,9 @@ export const AdmineViewGuideline = () => {
       <p>
         {state.content}
       </p>
-      <button className="adminViewGuideline-button " onClick={()=>{navigate("/admin/update-guideline")}}>update</button>
+      
+      {/* for update the guideline */}
+      {/* <button className="adminViewGuideline-button " onClick={()=>{navigate("/admin/update-guideline")}}>update</button> */}
 
 </div>
 
