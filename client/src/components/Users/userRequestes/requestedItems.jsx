@@ -23,7 +23,9 @@ export const RequestedItems = () => {
         `getAllRequestByBuyerId/${activeUserId}`
       );
       if (res.status == 200) {
-        setRequests(res.data.data);
+        let requestItems = res.data.data
+        requestItems = requestItems.reverse()
+        setRequests(requestItems);
       }
     } catch (error) {
       const status = error?.response.status;

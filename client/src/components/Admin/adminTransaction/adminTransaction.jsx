@@ -11,12 +11,15 @@ import "./adminTransaction.css";
 
 export const AdminTransaction = () => {
   const [requestData, setRequestData] = useState([]);
+  const [fixedData, setfixedData] = useState([]);
   const getRequest = async () => {
     try {
       const response = await axiosInstance.get("getAllExchangeRequests");
       if (response.status == 200) {
         console.log("fdgd", response.data.data);
-        setRequestData(response.data.data);
+        const data = response.data.data;
+        setRequestData(data);
+        setfixedData(data);
       }
     } catch (error) {
       console.log(error);
@@ -28,11 +31,27 @@ export const AdminTransaction = () => {
     getRequest();
   }, []);
 
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    if (value) {
+      const buyerFilterData = fixedData.filter((items) => {
+        return items.buyerProductId.name.toLowerCase().includes(value.toLowerCase());
+      });
+      const sellerFilterData = fixedData.filter((items) => {
+        return items.sellerProductId.name.toLowerCase().includes(value.toLowerCase());
+      });
+      const filterData = buyerFilterData.concat(sellerFilterData);
+      setRequestData(filterData);
+    } else {
+      setRequestData(fixedData);
+    }
+  };
+
   return (
     <div className="userTransaction-main">
       <div className="d-flex admin-transaction-search-box">
         <p>Search by item name :</p>
-        <input type="search" />
+        <input type="search" onChange={handleSearch} />
         <button>search</button>
       </div>
 

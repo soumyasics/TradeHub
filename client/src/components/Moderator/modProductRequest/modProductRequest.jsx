@@ -1,4 +1,8 @@
 import "./modProductRequest.css";
+import Form from "react-bootstrap/Form";
+import { IoSearch } from "react-icons/io5";
+import Button from "react-bootstrap/Button";
+import InputGroup from "react-bootstrap/InputGroup";
 import ModeratorSidebar from "../moderatorSidebar/moderatorSidebar";
 import productImg from "../../../assets/images/productImg.jpeg";
 import { useEffect, useState } from "react";
@@ -7,6 +11,8 @@ import { BASE_URL } from "../../../apis/baseURL";
 import { useNavigate } from "react-router-dom";
 export const ModProductRequest = ({ updateProductId, title = "" }) => {
   const [pendingItems, setPendingItems] = useState([]);
+  const [fixedItems, setFixedItems] = useState([])
+  const [searchCategory, setSearchCategory] = useState("")
   const navigate = useNavigate();
   useEffect(() => {
     getPendingItems();
@@ -18,6 +24,7 @@ export const ModProductRequest = ({ updateProductId, title = "" }) => {
         if (res.status === 200) {
           let data = res?.data?.data || [];
           data.reverse();
+          setFixedItems(data);
           setPendingItems(data);
         } else {
           console.log("view user by id", res);
@@ -28,6 +35,32 @@ export const ModProductRequest = ({ updateProductId, title = "" }) => {
       });
   };
 
+  const searchByName = (e) => {
+    const value = e.target.value;
+    if (value) {
+      const filteredItems = fixedItems.filter((item) => {
+        return item.name.toLowerCase().includes(value.toLowerCase());
+      })
+      setPendingItems(filteredItems)
+    }else {
+      setPendingItems(fixedItems)
+    }
+  }
+
+  const filterByCategory = (e) => {
+    const category = e.target.value;
+    if (category) {
+      const filteredItems = fixedItems.filter((item) => {
+        return item.category === category
+      })
+      setPendingItems(filteredItems)
+
+    }else {
+      setPendingItems(fixedItems)
+    }
+  }
+
+
   return (
     <div>
       <div className="productrequest-main">
@@ -37,6 +70,38 @@ export const ModProductRequest = ({ updateProductId, title = "" }) => {
           ) : (
             <h2>{title}</h2>
           )}
+        </div>
+        <div className="justify-content-between d-flex">
+          <Form.Select
+            aria-label="Default select example"
+            className="mod-product-request-category"
+            onChange={filterByCategory}
+          >
+            <option value="">Filter by category</option>
+            <option value="Books">Books</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Jewellery">Jewellery</option>
+            <option value="Home Appliances">Home Appliances</option>
+            <option value="Clothing">Clothing</option>
+          </Form.Select>
+
+          <InputGroup className="mod-product-request-box ms-2 ps-3 ">
+            <Form.Control
+              className="mod-product-request-inp"
+              type="text"
+              name="search"
+              aria-label="search"
+              placeholder="Search product"
+              onChange={searchByName}
+              aria-describedby="basic-addon1"
+            />
+            <InputGroup.Text
+              id="basic-addon1"
+              className="modproduct-req-search-box"
+            >
+            <IoSearch  className="mod-product-request-search-icon" />
+            </InputGroup.Text>
+          </InputGroup>
         </div>
         <div
           className="container"

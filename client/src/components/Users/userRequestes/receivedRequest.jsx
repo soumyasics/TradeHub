@@ -23,9 +23,10 @@ export const ReceivedRequest = () => {
         `getAllRequestBySellerId/${activeUserId}`
       );
       if (res.status == 200) {
-        const pendingReqs = res.data.data.filter(
+        let pendingReqs = res.data.data.filter(
           (e) => e?.sellerResponseStatus === "pending"
         );
+        pendingReqs=  pendingReqs.reverse()
 
         setRequests(pendingReqs);
       }

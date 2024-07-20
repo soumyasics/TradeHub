@@ -15,6 +15,7 @@ import { toast } from "react-hot-toast";
 
 export const UserProductExchange = () => {
   const [product, setProduct] = useState(null);
+  const [ownerDetails, setOwnerDetails] = useState();
   const [wishList, setWhishList] = useState(false);
   const [show, setShow] = useState(false);
   const [activeUserId, setActiveUserId] = useState("");
@@ -31,6 +32,10 @@ export const UserProductExchange = () => {
       const res = await axiosInstance.get(`viewItemById/${id}`);
       if (res.data.status === 200) {
         setProduct(res.data.data);
+        console.log("data", res.data.data);
+        setOwnerDetails(res.data.data.userId);
+        console.log("owner details", ownerDetails);
+        
       } else {
         console.log("!get product details", res);
       }
@@ -69,7 +74,7 @@ export const UserProductExchange = () => {
       buyerId: activeUserId,
     };
 
-    const {  sellerProductId, sellerId, buyerId } = data;
+    const { sellerProductId, sellerId, buyerId } = data;
     if (!buyerProductId || !sellerProductId || !sellerId || !buyerId) {
       toast.error("Please refresh the page and try again.");
       return;
@@ -86,6 +91,7 @@ export const UserProductExchange = () => {
         toast.success("Product exchange requeset sent successfully.");
         setShow(false);
         // todo => navigate to request page
+        navigate("/user/requests");
       }
     } catch (error) {
       const status = error?.response?.status;
@@ -96,6 +102,7 @@ export const UserProductExchange = () => {
         status === 500
       ) {
         toast.error(error?.response?.data?.msg || "Something went wrong.");
+        navigate("/user/requests");
       } else {
         toast.error("Network error");
       }
@@ -177,8 +184,35 @@ export const UserProductExchange = () => {
                   </tr>
                 </table>
               </div>
+              <h4>Owner details</h4>
+              <div className="Exchange-owner-details row">
+             <div className="col-3 mt-3">
+             <img style={{height:"100px", width:"100px"}}
+                          src={`${BASE_URL}${ownerDetails?.profile?.filename}`}
+                          alt=""
+                        />
+             </div>
+                <div className="col-9">
+                <table style={{width:"50%", height:"75%"}} className="mt-3">
+                  <tbody>
+                    <tr>
+                     
+                      <td>Name</td>
+                      <td>:</td>
+                      <td>{ownerDetails?.firstname}</td>
+                    </tr>
+                    <tr>
+                      <td>contact</td>
+                      <td>:</td>
+                      <td>{ownerDetails?.contact}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                </div>
+              </div>
             </div>
           </div>
+
           <div className=" mt-5">
             <button onClick={openMyProducts} className="user-xchange-now-btn">
               Exchange Now

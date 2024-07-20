@@ -34,6 +34,7 @@ export const NewArrivalProducts = () => {
     }
   };
 
+
   const addItemToWishlist = async (itemId) => {
     if (!activeUserId || !itemId) {
       console.log("Error in addItemToWishlist", activeUserId, itemId);
@@ -88,7 +89,6 @@ export const NewArrivalProducts = () => {
       <div className="container text-center">
         <div className="row row-cols-4 gap-5 d-flex my-5">
           {approvedItems.map((e) => {
-            console.log("e user id", e.userId, activeUserId);
             if (e?.userId._id === activeUserId) {
               return null;
             }

@@ -11,14 +11,14 @@ import { useNavigate } from "react-router-dom";
 import UserMainNav from "../UserMainNav";
 import Footer from "../../Footer/Footer";
 
-export const ApprovedExchangeProduct = () => {
+export const ApprovedRequestProduct = () => {
   const [activeUserId, setActiveUserId] = useState("");
   const [exchangeData, setExchangeData] = useState([]);
   const Navigate = useNavigate();
   const getApprovedProduct = async () => {
     try {
       const response = await axiosInstance.get(
-        `getAllApprovedExchangesBySellerId/${activeUserId}`
+        `/getAllApprovedExchangesByBuyerId/${activeUserId}`
       );
       if (response.status == 200) {
         console.log(response);
@@ -49,16 +49,6 @@ export const ApprovedExchangeProduct = () => {
       <UserMainNav />
 
       <div className="userTransaction-main">
-        <div className="userViewTransaction-heading-box "
-        onClick={()=>{Navigate("/user/delivery-status")}}
-        >
-         <p           
-         > Status of requested exchanges{" "}</p>
-        </div>
-        <h1 style={{textAlign:"center"}}>Status of accepted exchange
-         
-        </h1>
-
         {exchangeData.map((e) => {
           const buyerProductId = e.buyerProductId;
           const buyerPic = buyerProductId?.itemPhoto?.filename;

@@ -1,5 +1,9 @@
 import { FaChevronRight } from "react-icons/fa";
 import img1 from "../../../assets/images/productCardImage.png";
+import Form from "react-bootstrap/Form";
+import { IoSearch } from "react-icons/io5";
+import Button from "react-bootstrap/Button";
+import InputGroup from "react-bootstrap/InputGroup";
 import img2 from "../../../assets/images/itemDetailsPoints.png";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
@@ -11,7 +15,9 @@ import toast from "react-hot-toast";
 import UserMainNav from "../UserMainNav";
 import Footer from "../../Footer/Footer";
 import "./viewAllItems.css";
+
 export const ViewAllItems = () => {
+  const [fixedData, setFixedData] = useState([]);
   const [approvedItems, setApprovedItems] = useState([]);
   const [activeUserId, setActiveUserId] = useState(null);
   const navigate = useNavigate();
@@ -30,7 +36,9 @@ export const ViewAllItems = () => {
     try {
       const res = await axiosInstance.get("viewAllApproveItems");
       if (res.status === 200) {
-        setApprovedItems(res.data.data);
+        const data = res.data.data;
+        setApprovedItems(data);
+        setFixedData(data);
       }
     } catch (error) {
       console.log("Error in getAllApprovedItems", error);
@@ -83,9 +91,68 @@ export const ViewAllItems = () => {
       getAllApprovedItems();
     }
   };
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    if (value) {
+      const filteredItems = fixedData.filter((items) => {
+        return items.name.toLowerCase().includes(value.toLowerCase());
+      });
+      setApprovedItems(filteredItems);
+    } else {
+      setApprovedItems(fixedData);
+    }
+  };
+  const filterByCategory = (e) => {
+    const category = e.target.value;
+    if(category)
+    {
+      const filteredItems = fixedData.filter((items) => {
+        return items.category == category;
+      });
+      setApprovedItems(filteredItems);
+    }
+    else
+    {
+      setApprovedItems(fixedData)
+    }
+  };
   return (
     <>
       <UserMainNav />
+
+      <div className="justify-content-between d-flex mt-4">
+        <Form.Select
+          aria-label="Default select example"
+          className="mod-product-request-category"
+          onChange={filterByCategory}
+        >
+          <option value="">Filter by category</option>
+          <option value="Books">Books</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Jewellery">Jewellery</option>
+          <option value="Home Appliances">Home Appliances</option>
+          <option value="Clothing">Clothing</option>
+        </Form.Select>
+
+        <InputGroup className="mod-product-request-box ms-2 ps-3 ">
+          <Form.Control
+            className="mod-product-request-inp"
+            type="text"
+            name="search"
+            aria-label="search"
+            placeholder="Search product"
+            aria-describedby="basic-addon1"
+            onChange={handleSearch}
+          />
+          <InputGroup.Text
+            id="basic-addon1"
+            className="modproduct-req-search-box"
+          >
+            <IoSearch className="mod-product-request-search-icon" />
+          </InputGroup.Text>
+        </InputGroup>
+      </div>
+
       <div className="productCard-body">
         {/* <h5 className="user-wishlist-heading2">New Arrivals</h5> */}
         <div className="container text-center">
@@ -147,9 +214,9 @@ export const ViewAllItems = () => {
                         {e?.name?.substring(0, 25)}{" "}
                       </h6>
                       <span className="card-text">
-                        {e?.description?.length > 30
-                          ? e?.description?.substring(0, 30) + "..."
-                          : e?.description}
+                        {e?.category?.length > 30
+                          ? e?.category?.substring(0, 30) + "..."
+                          : e?.category}
                       </span>
                     </div>
                     <div className="productCard-points-box d-flex ">
