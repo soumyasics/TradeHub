@@ -61,7 +61,7 @@ router.get("/rejectModById/:id", Moderator.rejectModById);
 router.post("/deactivateModeratorById/:id", Moderator.deactivateModeratorById);
 router.post("/activateModeratorById/:id", Moderator.activateModeratorById);
 router.post("/resetPasswordModeratorUser/:id", Moderator.resetPassword);
-
+router.patch("/addTestScore/:id", Moderator.addTestScore);
 // delivery
 
 router.post(

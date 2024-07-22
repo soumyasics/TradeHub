@@ -11,6 +11,7 @@ import { MdLogout } from "react-icons/md";
 import { IoMdArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { IoChevronBackSharp } from "react-icons/io5";
+import { MdOutlineQuiz } from "react-icons/md";
 function ModeratorSidebar({ changeSelectedPage }) {
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -102,6 +103,14 @@ function ModeratorSidebar({ changeSelectedPage }) {
                 <GiCardExchange />
               </span>
               Exchanged Items
+            </li>
+
+            <li onClick={()=>{
+              changeSelectedPage("quiz")
+            }}>
+              <span className="contentIcons">
+              <MdOutlineQuiz />              </span>
+               Take a test
             </li>
             <li onClick={handleLogout} className="text-danger fw-bold ">
               <span className="contentIcons">

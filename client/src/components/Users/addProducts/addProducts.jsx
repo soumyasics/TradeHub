@@ -259,7 +259,7 @@ export const AddProducts = () => {
                           Select
                         </option>
                         <option value="flawless">Flawless</option>
-                        <option value="no-damage">No Damange</option>
+                        <option value="no-damage">No Damage</option>
                         <option value="minor-scratches">
                           Minor scratches
                         </option>

@@ -429,6 +429,37 @@ const requireAuth = (req, res, next) => {
   });
 };
 
+const addTestScore = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { score } = req.body;
+    const mod = await Moderator.findById(id);
+    if (!mod) {
+      return res.status(404).json({ msg: "Moderator not found", data: null });
+    }
+    let passed = false;
+
+    if (score >= 0 && score <= 10) {
+      if (score >= 5) {
+        passed = true;
+      }
+      const updatedMod = await Moderator.findByIdAndUpdate(
+        id,
+        { score: score, isTestTaken: true, isTestPassed: passed },
+        { new: true }
+      );
+      return res.status(200).json({
+        msg: "Moderator evaluation score added successfully",
+        data: updatedMod,
+      });
+    } else {
+      return res.status(400).json({ msg: "Invalid score", data: null });
+    }
+  } catch (error) {
+    return res.status(500).json({ msg: "Server Error", error: error.message });
+  }
+};
+
 module.exports = {
   registerModerator,
   login,
@@ -444,5 +475,5 @@ module.exports = {
   resetPassword,
   upload,
   approveModById,
-  rejectModById,
+  rejectModById,addTestScore
 };
