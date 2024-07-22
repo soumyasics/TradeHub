@@ -33,6 +33,7 @@ export const AdminTransaction = () => {
 
   const handleSearch = (e) => {
     const value = e.target.value;
+    console.log(value);
     if (value) {
       const buyerFilterData = fixedData.filter((items) => {
         return items.buyerProductId.name.toLowerCase().includes(value.toLowerCase());
@@ -46,6 +47,7 @@ export const AdminTransaction = () => {
       setRequestData(fixedData);
     }
   };
+  
 
   return (
     <div className="userTransaction-main">
