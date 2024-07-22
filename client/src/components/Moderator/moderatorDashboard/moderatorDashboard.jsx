@@ -8,6 +8,7 @@ import { ModProductDetails } from "../modProductRequest/modProductDetails";
 import { ModRejectedProduct } from "../modProductRequest/modRejectedProduct";
 import { ModApprovedProduct } from "../modProductRequest/modApprovedProduct";
 import { ModExchangeProduct } from "../modExchangeProduct/modExhangeProduct";
+import ModeratorQuiz from "../moderatorQuiz/moderatorQuiz";
 
 export const ModeratorDashboard = () => {
   const [selectpage, setSelectpage] = useState("overview");
@@ -43,6 +44,7 @@ export const ModeratorDashboard = () => {
           <ModProductDetails productId={activeProductId} />
         )}
         {selectpage == "exchangeItem" && (<ModExchangeProduct/>)}
+        {selectpage == "quiz" && (<ModeratorQuiz/>)}ad
       </div>
     </div>
   );

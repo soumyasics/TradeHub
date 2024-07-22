@@ -5,8 +5,13 @@ import { Table } from "react-bootstrap";
 import { FcCheckmark } from "react-icons/fc";
 import { FaXmark } from "react-icons/fa6";
 import { toast } from "react-hot-toast";
+import Form from "react-bootstrap/Form";
+import { IoSearch } from "react-icons/io5";
+import InputGroup from "react-bootstrap/InputGroup";
+import { RxValue } from "react-icons/rx";
 export const AdminViewAllActiveDeliveryAgent = () => {
   const [data, setData] = useState([]);
+  const [fixedData, setFixedData] = useState([]);
 
   const handleActive = (id) => {
     axiosInstance
@@ -46,7 +51,9 @@ export const AdminViewAllActiveDeliveryAgent = () => {
       .get("/allAcceptDelivery")
       .then((res) => {
         if (res.status === 200) {
-          setData(res.data?.data || []);
+          const data = res?.data?.data || [];
+          setData(data);
+          setFixedData(data);
         } else {
           setData([]);
         }
@@ -70,6 +77,25 @@ export const AdminViewAllActiveDeliveryAgent = () => {
 
   console.log("pending data", data);
 
+
+  const handleSearch = (e) =>
+    {
+      const value = e.target.value
+      if(value)
+      {
+        const filterData = fixedData.filter((items)=>
+          {
+            const name = `${items.firstname} ${items.lastname}`
+            return name?.toLowerCase().includes(value.toLowerCase())
+          })
+          setData(filterData)
+      }
+      else
+      {
+        setData(fixedData)
+      }
+    }
+
   return (
     <div className="pt-5">
       {data.length > 0 && (
@@ -77,6 +103,25 @@ export const AdminViewAllActiveDeliveryAgent = () => {
           <h4 className="mx-auto">View all delivery agents</h4>
         </div>
       )}
+
+<InputGroup className="mod-product-request-box1 ms-2 ps-3 ">
+        <Form.Control
+          className="mod-product-request-inp"
+          type="text"
+          name="search"
+          aria-label="search"
+          placeholder="Search product"
+          aria-describedby="basic-addon1"
+          onChange={handleSearch}
+        />
+        <InputGroup.Text
+          id="basic-addon1"
+          className="modproduct-req-search-box"
+        >
+          <IoSearch className="mod-product-request-search-icon" />
+        </InputGroup.Text>
+      </InputGroup>
+
 
       {data.length !== 0 ? (
         <div
@@ -131,9 +176,7 @@ export const AdminViewAllActiveDeliveryAgent = () => {
         </div>
       ) : (
         <div>
-          <h3 className="text-center">
-            Delivery agents not found.
-          </h3>
+          <h3 className="text-center">Delivery agents not found.</h3>
         </div>
       )}
     </div>

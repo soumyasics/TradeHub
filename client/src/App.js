@@ -69,6 +69,9 @@ import { UserViewGuideline } from "./components/Users/userViewGuideline/userView
 import { ApprovedExchangeProduct } from "./components/Users/approvedExchangeProduct/approvedExchangeProduct";
 import { ApprovedRequestProduct } from "./components/Users/approvedExchangeProduct/approvedRequestProduct";
 import { DeliveryStatus } from "./components/Users/approvedExchangeProduct/deliveryStatus";
+import { ModTakeTest } from "./components/Moderator/modTakeTest/modTakeTest";
+import { AdminViewExchange } from "./components/Admin/adminViewExchange/adminViewExchange";
+import ModeratorQuiz from "./components/Moderator/moderatorQuiz/moderatorQuiz";
 const App = () => {
   return (
     <div className="App">
@@ -101,7 +104,7 @@ const App = () => {
           <Route path="/user/product-details" element={<ItemDetails />} />
           <Route path="/user/product-card" element={<ProductCard />} />
           <Route path="/user/edit/profle" element={<UsereditProfileCard />} />
-          
+
           <Route path="/user/chatSidebar" element={<UserChatSidebar />} />
           <Route path="/no/user/selected" element={<NoUserSelected />} />
           <Route path="/users/chat" element={<UserChatDashboard />} />
@@ -111,11 +114,17 @@ const App = () => {
           <Route path="user/chat/footer" element={<UserChatFooter />} />
           <Route path="/view-category/:category" element={<ViewByCategory />} />
           <Route path="/user/requests" element={<UserRequestes />} />
-          <Route path="/user/view-guideline" element={<UserViewGuideline/>} />
-          <Route path="/user/exchange-product" element={<ApprovedExchangeProduct/>} />
-          <Route path="/user/approved-req-product" element={<ApprovedRequestProduct/>} />
-          <Route path="/user/delivery-status" element={<DeliveryStatus/>} />
-          {/* moderators  */} 
+          <Route path="/user/view-guideline" element={<UserViewGuideline />} />
+          <Route
+            path="/user/exchange-product"
+            element={<ApprovedExchangeProduct />}
+          />
+          <Route
+            path="/user/approved-req-product"
+            element={<ApprovedRequestProduct />}
+          />
+          <Route path="/user/delivery-status" element={<DeliveryStatus />} />
+          {/* moderators  */}
           <Route path="/moderator/register" element={<ModeratorRegister />} />
           <Route path="/moderator/login" element={<Moderatorlogin />} />
           <Route path="/moderator/home" element={<ModeratorHome />} />
@@ -133,8 +142,9 @@ const App = () => {
             path="/moderator/forget-password"
             element={<Moderatorforget />}
           />
-<Route path="/moderator/exchange" element={<ModExchangeProduct/>} />
 
+          <Route path="/moderator/exchange" element={<ModExchangeProduct />} />
+          <Route path="/moderator/quiz" element={<ModeratorQuiz/>} />
           {/* new-1 */}
           <Route path="/delivery/login" element={<DeliveryAgentLogin />} />
           <Route path="/delivery/signup" element={<DeliveryAgentSignup />} />
@@ -148,9 +158,18 @@ const App = () => {
           <Route path="/moderator/dashboard" element={<ModeratorDashboard />} />
 
           <Route path="/delivery/dashboard" element={<DeliveryDashboard />} />
-          <Route path="/delivery/pending" element={<DeliveryDeliveryPending/>} />
-          <Route path="/delivery/accepted-orders" element={<DeliveryAcceptedOrders/>} />
-          <Route path="/delivery/rejected-orders" element={<DeliveryRejectedOrders/>} />
+          <Route
+            path="/delivery/pending"
+            element={<DeliveryDeliveryPending />}
+          />
+          <Route
+            path="/delivery/accepted-orders"
+            element={<DeliveryAcceptedOrders />}
+          />
+          <Route
+            path="/delivery/rejected-orders"
+            element={<DeliveryRejectedOrders />}
+          />
           {/* Admin */}
           <Route path="/admin/login" element={<Adminlogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
@@ -166,6 +185,8 @@ const App = () => {
             path="/admin/update-guideline"
             element={<AdminUpdateGuideline />}
           />
+          <Route path="admin/view-exchange" element={<AdminViewExchange />} />
+
           {/* admin components  */}
 
           {/* reusable components  */}
@@ -182,6 +203,7 @@ const App = () => {
             path="/moderator/exchangePage"
             element={<ExchangeProductPage />}
           />
+          <Route path="/moderator/taketest" element={<ModTakeTest />} />
           <Route path="/*" element={<h1> 404 </h1>} />
         </Routes>
       </BrowserRouter>

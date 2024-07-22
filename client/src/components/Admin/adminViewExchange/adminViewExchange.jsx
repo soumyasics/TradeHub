@@ -1,25 +1,19 @@
+import "./adminViewExchange.css";
 import img1 from "../../../assets/images/itemDetailsPoints.png";
 import img2 from "../../../assets/images/userTransactionImage.png";
 import img3 from "../../../assets/images/userTransactionImage2.svg";
-import { PiHandCoins } from "react-icons/pi";
-import Form from "react-bootstrap/Form";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import { GiConsoleController } from "react-icons/gi";
 import { BASE_URL } from "../../../apis/baseURL";
-import "./adminTransaction.css";
 
-export const AdminTransaction = () => {
+export const AdminViewExchange = () => {
   const [requestData, setRequestData] = useState([]);
-  const [fixedData, setfixedData] = useState([]);
   const getRequest = async () => {
     try {
       const response = await axiosInstance.get("getAllExchangeRequests");
       if (response.status == 200) {
-        console.log("fdgd", response.data.data);
-        const data = response.data.data;
-        setRequestData(data);
-        setfixedData(data);
+        setRequestData(response.data.data);
       }
     } catch (error) {
       console.log(error);
@@ -31,73 +25,12 @@ export const AdminTransaction = () => {
     getRequest();
   }, []);
 
-  const handleSearch = (e) => {
-    const value = e.target.value;
-    console.log(value);
-    if (value) {
-      const buyerFilterData = fixedData.filter((items) => {
-        return items.buyerProductId.name.toLowerCase().includes(value.toLowerCase());
-      });
-      const sellerFilterData = fixedData.filter((items) => {
-        return items.sellerProductId.name.toLowerCase().includes(value.toLowerCase());
-      });
-      const filterData = buyerFilterData.concat(sellerFilterData);
-      setRequestData(filterData);
-    } else {
-      setRequestData(fixedData);
-    }
-  };
-  const filterByCategory = (e) =>
-  {
-    const category = e.target.value
-    if (category)
-    {
-  const buyerfilterData = fixedData.filter((items) =>
-  {
-    return items.buyerProductId.category == category
-  })
-  const sellerfilterData = fixedData.filter((items) =>
-  {
-    return items.sellerProductId.category == category
-  })
-  const filterData = buyerfilterData.concat(sellerfilterData)
-  setRequestData(filterData);
-  }
-  
-    else
-    {
-      setRequestData(fixedData)
-    }
-    
-  }
-  
-
   return (
     <div className="userTransaction-main">
-      <div className="d-flex admin-transaction-search-box">
-        <p>Search by item name :</p>
-        <input type="search" onChange={handleSearch} />
-        <button>search</button>
+      <div className="userTransaction-heading-box">
+        Product exchange request
       </div>
 
-      <Form.Select
-        aria-label="Default select example "
-        className=" admin-transaction-select"
-        onChange={filterByCategory}
-      >
-        <option value="">Filter</option>
-        <option value="Books">Books</option>
-        <option value="Electronics">Electronics</option>
-        <option value="Jewellery">Jewellery</option>
-        <option value="Home Appliances">Home-Appliances</option>
-        <option value="clothing">Clothing</option>
-        <option value="Furniture">Furniture</option>
-      </Form.Select>
-
-      <div className="adminTransaction-heading-box d-flex">
-        <PiHandCoins />
-        Transaction
-      </div>
       {requestData.map((e) => {
         const buyer = e?.buyerId;
         const buyerProduct = e?.buyerProductId;
@@ -200,7 +133,7 @@ export const AdminTransaction = () => {
                     </div>
                   </div>
 
-                  <div className="d-flex mt-5 justify-content-between d-flex">
+                  <div className="d-flex  mt-5 justify-content-between">
                     <div className=" d-flex">
                       Seller response status :
                       {e?.sellerResponseStatus === "pending" ? (
