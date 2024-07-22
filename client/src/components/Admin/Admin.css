@@ -196,3 +196,21 @@
 #adm-table-container thead tr th {
   background-color: #e9c9f1 !important;
 }
+
+/* search  */
+
+.mod-product-request-search-icon{
+  z-index: 1;
+  font-size: 23px;
+ }
+ .modproduct-req-search-box
+ {
+   
+   background-color:white !important;
+   border: 1.147px solid rgba(0, 0, 0, 0.50) !important;
+ 
+   border-top-right-radius: 30px !important;
+   border-bottom-right-radius: 30px !important;
+   border-left: 0 solid !important;
+ 
+  }

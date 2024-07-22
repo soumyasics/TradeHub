@@ -9,6 +9,7 @@ import { AdminViewAllModRequest } from "./viewAllUserMods/AdminViewAllModeReques
 import { AdminGuideline } from "./admineGuideline/adminGuideline";
 import { AdmineViewGuideline } from "./adminViewGuideline/adminViewGuideline";
 import { AdminTransaction } from "./adminTransaction/adminTransaction";
+import { AdminViewExchange } from "./adminViewExchange/adminViewExchange";
 export const AdminDashboard = () => {
   const [selectedPage, setSelectedPage] = useState("overview");
 
@@ -35,6 +36,7 @@ export const AdminDashboard = () => {
         {selectedPage === "adminGuideline" && <AdminGuideline redirectToGuideline={redirectToGuideline}/>}
         {selectedPage === "adminViewGuideline" && <AdmineViewGuideline/>}
         {selectedPage === "transaction" && <AdminTransaction/>} 
+        {selectedPage === "ExchangeItems" && <AdminViewExchange/>} 
       </div>
     </div>
   );

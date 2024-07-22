@@ -1,7 +1,8 @@
 .userViewGuideline-body {
   width: 73%;
   position: absolute;
-  left: 15%;
+  left: 15%; 
+  overflow-y: scroll;
 }
 
 .userViewGuideline-heading {
