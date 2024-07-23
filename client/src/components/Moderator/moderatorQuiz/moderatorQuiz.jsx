@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import { toast } from "react-hot-toast";
+import axiosInstance from "../../../apis/axiosInstance";
+import { useNavigate } from "react-router-dom";
 function ModeratorQuiz() {
   const questions = [
     {
@@ -101,7 +103,8 @@ function ModeratorQuiz() {
 
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
-
+  const [modId, setModId] = useState("");
+  const navigate = useNavigate()
   const handleOptionSelect = (questionIndex, selectedAnswer) => {
     const correctAnswer = questions[questionIndex].answer;
 
@@ -179,9 +182,33 @@ function ModeratorQuiz() {
       return;
     }
 
+    sendDataToServer();
+
     console.log("all ", answers);
   };
 
+  useEffect(() => {
+    const id = localStorage.getItem("trade-hub-modId") || null;
+    if (!id) {
+      toast.error("Please login again.");
+      navigate("/moderator/login");
+      return;
+    }
+    setModId(id);
+  }, []);
+  const sendDataToServer = async () => {
+    try {
+      const res = await axiosInstance.patch(`/addTestScore/${modId}`, {score});
+      console.log("res", res);
+      if (res.status === 200) {
+        toast.success("Test submitted successfully.");
+      } 
+    } catch (error) {
+
+      toast.error("Try again later");
+      console.log("Error on send quiz score", error);
+    }
+  };
   return (
     <div
       className="px-5  mt-5"
