@@ -9,9 +9,13 @@ import { BsChatText } from "react-icons/bs";
 import { Dropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import exchangeIcon from "../../assets/svg/exchange-icon.svg";
+import { IoSearch } from "react-icons/io5";
+import Button from "react-bootstrap/Button";
+import InputGroup from "react-bootstrap/InputGroup";
 import "./User.css";
 function UserMainNav() {
   const [showDropdown, setShowDropdown] = useState(false);
+  const [show, setShow] = useState(false);
   const navigate = useNavigate();
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
@@ -35,6 +39,9 @@ function UserMainNav() {
   const redirectToRequest = () => {
     navigate("/user/requests");
   };
+  const handleCategory = () => {
+    setShow(!show);
+  };
   return (
     <div>
       <div className="usermainnav-page-color ">
@@ -55,14 +62,33 @@ function UserMainNav() {
               <span className="usermainnav-page-hub">hub</span>
             </Navbar.Brand>
           </div>
-          <Form className="d-flex">
+          {/* <Form className="d-flex">
             <Form.Control
               type="search"
               placeholder="Search"
               className="me-5"
               aria-label="Search"
+              onClick={handleCategory}
             />
-          </Form>
+            <IoSearch className="userNav-search-icons" />
+          </Form> */}
+
+          <InputGroup className="mod-product-request-box2 ms-2 ps-3 " >
+            <Form.Control
+              className="mod-product-request-inp"
+              type="text"
+              name="search"
+              aria-label="search"
+              placeholder="Search product"
+              aria-describedby="basic-addon1"
+            />
+            <InputGroup.Text
+              id="basic-addon1"
+              className="modproduct-req-search-box"
+            >
+              <IoSearch className="mod-product-request-search-icon" />
+            </InputGroup.Text>
+          </InputGroup>
 
           <p
             className="usermain-navbar-home "

@@ -2,12 +2,12 @@ import img1 from "../../../assets/images/itemDetailsPoints.png";
 import img2 from "../../../assets/images/userTransactionImage.png";
 import img3 from "../../../assets/images/userTransactionImage2.svg";
 import { PiHandCoins } from "react-icons/pi";
-import Form from "react-bootstrap/Form";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import { GiConsoleController } from "react-icons/gi";
 import { BASE_URL } from "../../../apis/baseURL";
 import "./adminTransaction.css";
+import { Form } from "react-router-dom";
 
 export const AdminTransaction = () => {
   const [requestData, setRequestData] = useState([]);

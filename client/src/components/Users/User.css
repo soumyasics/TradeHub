@@ -395,6 +395,48 @@
   border-radius: 50px;
   
 }
+/* usernavbar search */
+
+.mod-product-request-inp
+{
+  
+  border: 1.147px solid rgba(0, 0, 0, 0.50) !important;
+
+  border-right: 0 solid !important;
+  border-top-left-radius: 30px !important;
+  border-bottom-left-radius: 30px !important;
+}
+.mod-product-request-box
+{
+  height: 50px;
+  width: 380px !important;
+  border-radius: 14px;
+  border-right:0 !important;
+  margin-top:20px;
+  margin-right: 50px;
+}
+.mod-product-request-search-icon{
+ z-index: 1;
+ font-size: 23px;
+}
+.modproduct-req-search-box
+{
+  
+  background-color:white !important;
+  border: 1.147px solid rgba(0, 0, 0, 0.50) !important;
+
+  border-top-right-radius: 30px !important;
+  border-bottom-right-radius: 30px !important;
+  border-left: 0 solid !important;
+
+ }
+
+
+
+
+
+
+
 .user-profile-icon {
   font-size: 16px;
   color: #6d3698;
