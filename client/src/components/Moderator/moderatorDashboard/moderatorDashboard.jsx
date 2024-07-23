@@ -44,7 +44,7 @@ export const ModeratorDashboard = () => {
           <ModProductDetails productId={activeProductId} />
         )}
         {selectpage == "exchangeItem" && (<ModExchangeProduct/>)}
-        {selectpage == "quiz" && (<ModeratorQuiz/>)}ad
+        {selectpage == "quiz" && (<ModeratorQuiz/>)}
       </div>
     </div>
   );

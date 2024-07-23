@@ -36,10 +36,14 @@ export const AdminTransaction = () => {
     console.log(value);
     if (value) {
       const buyerFilterData = fixedData.filter((items) => {
-        return items.buyerProductId.name.toLowerCase().includes(value.toLowerCase());
+        return items.buyerProductId.name
+          .toLowerCase()
+          .includes(value.toLowerCase());
       });
       const sellerFilterData = fixedData.filter((items) => {
-        return items.sellerProductId.name.toLowerCase().includes(value.toLowerCase());
+        return items.sellerProductId.name
+          .toLowerCase()
+          .includes(value.toLowerCase());
       });
       const filterData = buyerFilterData.concat(sellerFilterData);
       setRequestData(filterData);
@@ -47,30 +51,21 @@ export const AdminTransaction = () => {
       setRequestData(fixedData);
     }
   };
-  const filterByCategory = (e) =>
-  {
-    const category = e.target.value
-    if (category)
-    {
-  const buyerfilterData = fixedData.filter((items) =>
-  {
-    return items.buyerProductId.category == category
-  })
-  const sellerfilterData = fixedData.filter((items) =>
-  {
-    return items.sellerProductId.category == category
-  })
-  const filterData = buyerfilterData.concat(sellerfilterData)
-  setRequestData(filterData);
-  }
-  
-    else
-    {
-      setRequestData(fixedData)
+  const filterByCategory = (e) => {
+    const category = e.target.value;
+    if (category) {
+      const buyerfilterData = fixedData.filter((items) => {
+        return items.buyerProductId.category == category;
+      });
+      const sellerfilterData = fixedData.filter((items) => {
+        return items.sellerProductId.category == category;
+      });
+      const filterData = buyerfilterData.concat(sellerfilterData);
+      setRequestData(filterData);
+    } else {
+      setRequestData(fixedData);
     }
-    
-  }
-  
+  };
 
   return (
     <div className="userTransaction-main">
@@ -89,8 +84,8 @@ export const AdminTransaction = () => {
         <option value="Books">Books</option>
         <option value="Electronics">Electronics</option>
         <option value="Jewellery">Jewellery</option>
-        <option value="Home Appliances">Home-Appliances</option>
-        <option value="clothing">Clothing</option>
+        <option value="Home-Appliances">Home-Appliances</option>
+        <option value="Clothing">Clothing</option>
         <option value="Furniture">Furniture</option>
       </Form.Select>
 

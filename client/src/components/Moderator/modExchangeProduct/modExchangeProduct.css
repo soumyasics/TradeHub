@@ -202,3 +202,46 @@
     font-size: 17px;
     font-weight: 500;
 }
+/* search */
+.admin-transaction-search-box p {
+  color: #000;
+  font-family: Poppins;
+  font-size: 19.808px;
+  font-weight: 500;
+  padding-left: 20px;
+  margin-right: 20px;
+}
+.admin-transaction-search-box input
+{
+  width: 214px;
+    height: 39px;
+    flex-shrink: 0;
+    background: #D8C1EB;
+}
+.admin-transaction-search-box button
+{
+background: #6D3698;
+color: #FFF;
+font-family: Poppins;
+font-size: 15.808px;
+font-weight: 500;
+height: 39px;
+width: 100px;
+margin-left: 20px;}
+.admin-transaction-search-box
+{
+  margin-top: 27px;
+  margin-left: 67px;
+}
+.admin-transaction-select
+{
+padding: 10px 39px 10px 33px;
+align-items: center;
+width: 19% !important;
+color: #FFF;
+font-family: Poppins;
+font-size: 25.808px;
+font-weight: 500;
+margin-left:35%;
+margin-top: 20px;
+}
