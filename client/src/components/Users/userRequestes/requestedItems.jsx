@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
 import coinImg from "../../../assets/images/itemDetailsPoints.png";
+import { BsChatText } from "react-icons/bs";
+
 import "./requests.css";
 export const RequestedItems = () => {
   const [requests, setRequests] = useState([]);
@@ -201,12 +203,12 @@ export const RequestedItems = () => {
                     <p className="m-0 text-danger"> Rejected</p>
                   )}
                 </div>
-                {/* <div className="exchangeProduct-chat-btn">
-                  <button>
-                    <img src={chat_img} alt="icon" />
+                <div className="exchangeProduct-chat-btn">
+                  <button style={{marginRight:"10px"}}>
+                  <BsChatText /> &nbsp; 
                     Chat
                   </button>
-                </div> */}
+                </div>
               </div>
             </div>
           );

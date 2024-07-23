@@ -70,14 +70,14 @@
   border-top-left-radius: 30px !important;
   border-bottom-left-radius: 30px !important;
 }
-.mod-product-request-box
+.mod-product-request-box2
 {
-  height: 50px;
-  width: 380px !important;
+  height: 40px;
+  width: 250px !important;
   border-radius: 14px;
   border-right:0 !important;
-  margin-top:20px;
   margin-right: 50px;
+  margin-bottom: 15px;
 }
 .mod-product-request-search-icon{
  z-index: 1;

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
 import coinImg from "../../../assets/images/itemDetailsPoints.png";
+import { BsChatText } from "react-icons/bs";
 import "./requests.css";
 export const ReceivedRequest = () => {
   const [requests, setRequests] = useState([]);
@@ -235,12 +236,12 @@ export const ReceivedRequest = () => {
                   <input type="radio" />
                   Pending
                 </div>
-                {/* <div className="exchangeProduct-chat-btn">
+                <div className="exchangeProduct-chat-btn">
                   <button>
-                    <img src={chat_img} alt="icon" />
-                    Chat
+                  <BsChatText /> &nbsp; 
+                  Chat
                   </button>
-                </div> */}
+                </div>
               </div>
               <span className="justify-content-center mt-2 d-flex">
                 <button

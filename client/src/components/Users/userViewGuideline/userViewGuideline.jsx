@@ -27,7 +27,7 @@ export const UserViewGuideline = () => {
     <UserChatNavbar/>
      <div style={{ minHeight: "100vh" }} className="userViewGuideline-body">
       <h1 className="userViewGuideline-heading">{state.title}</h1>
-      <h3>Content</h3>
+      {/* <h3>Content</h3> */}
       <p>
         {state.content}
       </p>

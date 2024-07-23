@@ -23,7 +23,7 @@ export const ModRejectedProduct = ({ updateProductId }) => {
           let data = res?.data?.data || [];
           data.reverse();
           setRejectedItems(data);
-          setFixedData(data)
+          setFixedData(data);
         } else {
           console.log("view user by id", res);
         }
@@ -32,7 +32,6 @@ export const ModRejectedProduct = ({ updateProductId }) => {
         console.log(err);
       });
   };
-
 
   const handlechange = (e) => {
     const value = e.target.value;
@@ -49,35 +48,32 @@ export const ModRejectedProduct = ({ updateProductId }) => {
     }
   };
 
-
   return (
     <div>
       <div className="productrequest-main">
         <div className="productrequest-head text-center">
-
-       
           {rejectedItems.length === 0 ? (
             <h2>No rejected product found.</h2>
           ) : (
             <div>
-            <h2>Rejected products</h2>
-            <InputGroup className="mod-product-request-box1 ms-2 ps-3 ">
-        <Form.Control
-          className="mod-product-request-inp"
-          type="text"
-          name="search"
-          aria-label="search"
-          placeholder="Search moderator"
-          aria-describedby="basic-addon1"
-          onChange={handlechange}
-        />
-        <InputGroup.Text
-          id="basic-addon1"
-          className="modproduct-req-search-box"
-        >
-          <IoSearch className="mod-product-request-search-icon" />
-        </InputGroup.Text>
-      </InputGroup>
+              <h2>Rejected products</h2>
+              <InputGroup className="mod-product-request-box1 ms-2 ps-3 ">
+                <Form.Control
+                  className="mod-product-request-inp"
+                  type="text"
+                  name="search"
+                  aria-label="search"
+                  placeholder="Search moderator"
+                  aria-describedby="basic-addon1"
+                  onChange={handlechange}
+                />
+                <InputGroup.Text
+                  id="basic-addon1"
+                  className="modproduct-req-search-box"
+                >
+                  <IoSearch className="mod-product-request-search-icon" />
+                </InputGroup.Text>
+              </InputGroup>
             </div>
           )}
         </div>
@@ -107,34 +103,32 @@ export const ModRejectedProduct = ({ updateProductId }) => {
                   </div>
                   <div className="productDetails2">
                     <table className="w-100">
-                        <tbody>
-
-                        
-                      <tr>
-                        <td>Item name</td>
-                        <td>:</td>
-                        <td>{e?.name?.substring(0, 30)}</td>
-                      </tr>
-                      <tr>
-                        <td>Category</td>
-                        <td>:</td>
-                        <td>{e?.category}</td>
-                      </tr>
-                      <tr>
-                        <td>Description</td>
-                        <td>:</td>
-                        <td>{e?.description?.substring(0, 30)}</td>
-                      </tr>
-                      <tr>
-                        <td>Conditon</td>
-                        <td>:</td>
-                        <td>{e?.condition}</td>
-                      </tr>
+                      <tbody>
+                        <tr>
+                          <td>Item name</td>
+                          <td>:</td>
+                          <td>{e?.name?.substring(0, 30)}</td>
+                        </tr>
+                        <tr>
+                          <td>Category</td>
+                          <td>:</td>
+                          <td>{e?.category}</td>
+                        </tr>
+                        <tr>
+                          <td>Description</td>
+                          <td>:</td>
+                          <td>{e?.description?.substring(0, 30)}</td>
+                        </tr>
+                        <tr>
+                          <td>Conditon</td>
+                          <td>:</td>
+                          <td>{e?.condition}</td>
+                        </tr>
                       </tbody>
                     </table>
-                      <div className="mx-auto mt-3 w-100 d-flex justify-content-center">
-                        <RejectedBtn />
-                      </div>
+                    <div className="mx-auto mt-3 w-100 d-flex justify-content-center">
+                      <RejectedBtn />
+                    </div>
                   </div>
                 </div>
               );
