@@ -106,7 +106,7 @@ function ModeratorSidebar({ changeSelectedPage }) {
             </li>
 
             <li onClick={()=>{
-              changeSelectedPage("quiz")
+              changeSelectedPage("test")
             }}>
               <span className="contentIcons">
               <MdOutlineQuiz />              </span>

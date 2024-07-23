@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import axiosInstance from "../../../apis/axiosInstance";
 import { useNavigate } from "react-router-dom";
-function ModeratorQuiz() {
+function ModeratorQuiz({navigateToOverview}) {
   const questions = [
     {
       question:
@@ -184,7 +184,7 @@ function ModeratorQuiz() {
 
     sendDataToServer();
 
-    console.log("all ", answers);
+    console.log("end ", answers);
   };
 
   useEffect(() => {
@@ -202,6 +202,7 @@ function ModeratorQuiz() {
       console.log("res", res);
       if (res.status === 200) {
         toast.success("Test submitted successfully.");
+        navigateToOverview()
       } 
     } catch (error) {
 

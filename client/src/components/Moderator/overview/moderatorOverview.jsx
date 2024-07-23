@@ -7,7 +7,7 @@ import { TbTruckDelivery } from "react-icons/tb";
 import "../Moderator.css";
 import axiosInstance from "../../../apis/axiosInstance";
 import { ModProductRequest } from "../modProductRequest/modProductRequest";
-export const ModeratorOverview = ({ updateProductId }) => {
+export const ModeratorOverview = ({ updateProductId, modData }) => {
   const [users, setUsers] = useState([]);
   const [moderator, setModerator] = useState([]);
   const [products, setProducts] = useState([]);
@@ -61,7 +61,7 @@ export const ModeratorOverview = ({ updateProductId }) => {
   };
 
   return (
-    <div style={{overflow: "scroll", height: "100vh"}}>
+    <div style={{ overflow: "scroll", height: "100vh" }}>
       <div className="container">
         <div className="admin-dash-div1">
           <section className="pt-5">
@@ -128,9 +128,14 @@ export const ModeratorOverview = ({ updateProductId }) => {
         </div>
       </div>
 
-      <div>
-        <ModProductRequest updateProductId={updateProductId} title="Recent product request" />
-      </div>
+      {modData.adminApproved === "approve" && (
+        <div>
+          <ModProductRequest
+            updateProductId={updateProductId}
+            title="Recent product request"
+          />
+        </div>
+      )}
     </div>
   );
 };

@@ -12,6 +12,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 export const AdminViewAllModRequest = () => {
   const [data, setData] = useState([]);
   const [fixedData, setFixedData] = useState([]);
+  console.log('test ', data);
 
   const hanldeApprove = (id) => {
     axiosInstance
@@ -64,9 +65,7 @@ export const AdminViewAllModRequest = () => {
   };
   const handlechange = (e) => {
     const value = e.target.value;
-    console.log("value", value);
 
-    console.log("fix", fixedData);
     if (value) {
       const filterData = fixedData.filter((items) => {
         const name  = `${items.firstname} ${items.lastname}`
@@ -129,7 +128,7 @@ export const AdminViewAllModRequest = () => {
                 <th>Gender</th>
                 <th>Email</th>
                 <th>Phone Number</th>
-                {/* <th>Address</th> */}
+                <th>Test score</th>
                 <th>Approve/Reject</th>
               </tr>
             </thead>
@@ -143,6 +142,7 @@ export const AdminViewAllModRequest = () => {
                   <td>{users.gender}</td>
                   <td>{users.email}</td>
                   <td>{users.contact}</td>
+                  <td>{users.score}</td>
                   {/* <td>{users.address}</td> */}
                   <td id="approval-btn-containers">
                     <button
