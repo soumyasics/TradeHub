@@ -1,14 +1,9 @@
 .mod-take-test-box {
-  width: 65%;
-  height: 243px;
+  width: 100%;
+  margin: auto;
   border-radius: 25.954px;
   background: #fff;
   box-shadow: 0px 6.391px 6.391px 0px rgba(0, 0, 0, 0.25);
-  position: absolute;
-  top: 42%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* text */
   color: #000;
   font-family: Poppins;
   font-size: 27.954px;
@@ -16,12 +11,14 @@
   font-weight: 500;
   line-height: normal;
   text-align: center;
-padding-top: 42px;}
+  padding-top: 42px;
+}
 .mod-take-test-box button {
   border-radius: 31.954px;
   background: #6d3698;
   display: inline-flex;
-  padding: 11.574px 36.391px 11.495px 41.724px;  align-items: center;
+  padding: 11.574px 36.391px 11.495px 41.724px;
+  align-items: center;
   color: #fff;
   font-family: Poppins;
   font-size: 20.345px;
