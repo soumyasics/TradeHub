@@ -53,9 +53,9 @@ export const ApprovedExchangeProduct = () => {
         onClick={()=>{Navigate("/user/delivery-status")}}
         >
          <p           
-         > Status of requested exchanges{" "}</p>
+         > My requested exchanges{" "}</p>
         </div>
-        <h1 style={{textAlign:"center"}}>Status of accepted exchange
+        <h1 style={{textAlign:"center"}}>Status of accepted exchanges
          
         </h1>
 

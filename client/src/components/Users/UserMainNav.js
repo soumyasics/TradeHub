@@ -145,7 +145,7 @@ function UserMainNav() {
                 My wishlist
               </Link>
               <Link className="dropdown-item" to="/user/exchange-product" id="">
-                Approved Exchange
+                My Exchanges
               </Link>
               <h6
                 className="dropdown-item text-danger fw-bold"
