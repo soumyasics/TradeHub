@@ -1,17 +1,20 @@
-import Footer from "../../Footer/Footer";
-import UserNavbar from "../../homeComponents/Navbar/UserNavbar";
 import "./modTakeTest.css";
-export const ModTakeTest = () => {
+export const ModTakeTest = ({ setIsTakeTestClicked }) => {
   return (
-    <div>
-      <UserNavbar/>
-    <div style={{minHeight:"65vh"}}>
-      <div className="mod-take-test-box ">
+    <div
+      className="d-flex justify-content-center align-items-center"
+      style={{ height: "400px" }}
+    >
+      <div className="mod-take-test-box p-5">
         <p>Take a exam to check you eligblity to become a moderator</p>
-        <button>Take a test</button>
+        <button
+          onClick={() => {
+            setIsTakeTestClicked(true);
+          }}
+        >
+          Take a test
+        </button>
       </div>
-    </div>
-    <Footer/>
     </div>
   );
 };

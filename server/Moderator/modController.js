@@ -378,12 +378,12 @@ const login = (req, res) => {
         });
       }
 
-      if (user.adminApproved === "pending") {
-        return res.json({
-          status: 410,
-          msg: "Your account is not approved by admin yet.",
-        });
-      }
+      // if (user.adminApproved === "pending") {
+      //   return res.json({
+      //     status: 410,
+      //     msg: "Your account is not approved by admin yet.",
+      //   });
+      // }
       if (user.adminApproved === "reject") {
         return res.json({
           status: 410,

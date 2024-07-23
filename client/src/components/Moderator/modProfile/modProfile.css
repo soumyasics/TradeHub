@@ -7,7 +7,6 @@
   left: 132px;
   gap: 0px;
   border: 1px 0px 0px 0px;
-
   border: 1px solid #6d3698;
   box-shadow: 0px 4px 4px 0px #00000040;
 }
@@ -509,7 +508,6 @@
   border-radius: 16px;
   font-size: 25px;
 }
-.moderator-profile-firstName
-{
-margin-left: 44%;
+.moderator-profile-firstName {
+  margin-left: 44%;
 }
