@@ -110,7 +110,7 @@ export const AdminViewAllActiveDeliveryAgent = () => {
           type="text"
           name="search"
           aria-label="search"
-          placeholder="Search product"
+          placeholder="Search delivery agent"
           aria-describedby="basic-addon1"
           onChange={handleSearch}
         />

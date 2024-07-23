@@ -105,7 +105,7 @@ const [fixedData,setFixedData] = useState([])
           type="text"
           name="search"
           aria-label="search"
-          placeholder="Search product"
+          placeholder="Search user"
           aria-describedby="basic-addon1"
           onChange={handleSearch}
         />

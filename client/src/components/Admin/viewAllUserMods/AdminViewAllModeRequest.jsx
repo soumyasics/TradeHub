@@ -5,8 +5,13 @@ import { Table } from "react-bootstrap";
 import { FcCheckmark } from "react-icons/fc";
 import { FaXmark } from "react-icons/fa6";
 import { toast } from "react-hot-toast";
+import Form from "react-bootstrap/Form";
+import { IoSearch } from "react-icons/io5";
+import Button from "react-bootstrap/Button";
+import InputGroup from "react-bootstrap/InputGroup";
 export const AdminViewAllModRequest = () => {
   const [data, setData] = useState([]);
+  const [fixedData, setFixedData] = useState([]);
 
   const hanldeApprove = (id) => {
     axiosInstance
@@ -46,7 +51,9 @@ export const AdminViewAllModRequest = () => {
       .get("/allPendingMods")
       .then((res) => {
         if (res.status === 200) {
-          setData(res.data?.data || []);
+          const data = res?.data?.data;
+          setData(data || []);
+          setFixedData(data || []);
         } else {
           setData([]);
         }
@@ -55,6 +62,22 @@ export const AdminViewAllModRequest = () => {
         console.log("Error", err);
       });
   };
+  const handlechange = (e) => {
+    const value = e.target.value;
+    console.log("value", value);
+
+    console.log("fix", fixedData);
+    if (value) {
+      const filterData = fixedData.filter((items) => {
+        const name  = `${items.firstname} ${items.lastname}`
+        return name?.toLowerCase().includes(value.toLowerCase());
+      });
+      setData(filterData);
+    } else {
+      return setData(fixedData);
+    }
+  };
+
   useEffect(() => {
     getAllPendingRequest();
   }, []);
@@ -69,13 +92,37 @@ export const AdminViewAllModRequest = () => {
         </div>
       )}
 
+      <InputGroup className="mod-product-request-box1 ms-2 ps-3 ">
+        <Form.Control
+          className="mod-product-request-inp"
+          type="text"
+          name="search"
+          aria-label="search"
+          placeholder="Search moderator"
+          aria-describedby="basic-addon1"
+          onChange={handlechange}
+        />
+        <InputGroup.Text
+          id="basic-addon1"
+          className="modproduct-req-search-box"
+        >
+          <IoSearch className="mod-product-request-search-icon" />
+        </InputGroup.Text>
+      </InputGroup>
+
       {data.length !== 0 ? (
         <div
           className="table-container"
           style={{ overflowY: "scroll", height: "80vh" }}
         >
-          <Table striped hover className="table" responsive id="adm-table-container">
-            <thead >
+          <Table
+            striped
+            hover
+            className="table"
+            responsive
+            id="adm-table-container"
+          >
+            <thead>
               <tr>
                 <th>S.No</th>
                 <th>Full Name</th>
@@ -124,9 +171,7 @@ export const AdminViewAllModRequest = () => {
         </div>
       ) : (
         <div>
-          <h3 className="text-center">
-            Moderator pending request not found.
-          </h3>
+          <h3 className="text-center">Moderator pending request not found.</h3>
         </div>
       )}
     </div>

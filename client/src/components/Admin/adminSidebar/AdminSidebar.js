@@ -88,7 +88,7 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
                   {" "}
                   View all delivery agent{" "}
                 </li>
-                <li
+                {/* <li
                   className="text-dark admin-dd-item "
                   onClick={() => {
                     changeSelectedPage("ExchangeItems");
@@ -96,7 +96,7 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
                 >
                   {" "}
                   Exchange items{" "}
-                </li>
+                </li> */}
               </div>
             )}
           </li>

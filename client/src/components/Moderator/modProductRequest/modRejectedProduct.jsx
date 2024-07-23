@@ -3,9 +3,15 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
 import { useNavigate } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import { IoSearch } from "react-icons/io5";
+import Button from "react-bootstrap/Button";
+import InputGroup from "react-bootstrap/InputGroup";
 import { RejectedBtn } from "../../common/approvedBtn/approvedBtn";
 export const ModRejectedProduct = ({ updateProductId }) => {
   const [rejectedItems, setRejectedItems] = useState([]);
+  const [fixedData, setFixedData] = useState([]);
+
   useEffect(() => {
     getRejectedItems();
   }, []);
@@ -17,6 +23,7 @@ export const ModRejectedProduct = ({ updateProductId }) => {
           let data = res?.data?.data || [];
           data.reverse();
           setRejectedItems(data);
+          setFixedData(data)
         } else {
           console.log("view user by id", res);
         }
@@ -26,14 +33,52 @@ export const ModRejectedProduct = ({ updateProductId }) => {
       });
   };
 
+
+  const handlechange = (e) => {
+    const value = e.target.value;
+    console.log("value", value);
+
+    console.log("fix", fixedData);
+    if (value) {
+      const filterData = fixedData.filter((items) => {
+        return items?.name?.toLowerCase().includes(value.toLowerCase());
+      });
+      setRejectedItems(filterData);
+    } else {
+      return setRejectedItems(fixedData);
+    }
+  };
+
+
   return (
     <div>
       <div className="productrequest-main">
         <div className="productrequest-head text-center">
+
+       
           {rejectedItems.length === 0 ? (
             <h2>No rejected product found.</h2>
           ) : (
+            <div>
             <h2>Rejected products</h2>
+            <InputGroup className="mod-product-request-box1 ms-2 ps-3 ">
+        <Form.Control
+          className="mod-product-request-inp"
+          type="text"
+          name="search"
+          aria-label="search"
+          placeholder="Search moderator"
+          aria-describedby="basic-addon1"
+          onChange={handlechange}
+        />
+        <InputGroup.Text
+          id="basic-addon1"
+          className="modproduct-req-search-box"
+        >
+          <IoSearch className="mod-product-request-search-icon" />
+        </InputGroup.Text>
+      </InputGroup>
+            </div>
           )}
         </div>
         <div

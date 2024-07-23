@@ -66,7 +66,7 @@ export const ModViewallUser = () => {
       .then((res) => {
         if (res.data.status === 200) {
           console.log(res);
-          const data = res.data.data;
+          const data = res?.data?.data;
           setData(data || []);
           setFixedData(data || []);
         } else {

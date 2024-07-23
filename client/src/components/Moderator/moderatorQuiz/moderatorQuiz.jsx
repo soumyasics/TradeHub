@@ -238,6 +238,7 @@ import React, { useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Form from "react-bootstrap/Form";
 
+
 function ModeratorQuiz() {
     const questions =        
       [
@@ -340,7 +341,7 @@ function ModeratorQuiz() {
   return (
     <div>
       {questions.map((question, index) => (
-        <Accordion key={index}>
+        <Accordion key={index} style={{paddingRight:"30px", paddingLeft:"20px"}}>
           <Accordion.Item eventKey={String(index)}>
             <Accordion.Header>Question {index + 1}</Accordion.Header>
             <Accordion.Body>
