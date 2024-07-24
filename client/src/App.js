@@ -72,6 +72,9 @@ import { DeliveryStatus } from "./components/Users/approvedExchangeProduct/deliv
 import { ModTakeTest } from "./components/Moderator/modTakeTest/modTakeTest";
 import { AdminViewExchange } from "./components/Admin/adminViewExchange/adminViewExchange";
 import ModeratorQuiz from "./components/Moderator/moderatorQuiz/moderatorQuiz";
+import { AdminWebinar } from "./components/Admin/adminWebinar/adminWebinar";
+import { AdminTransaction } from "./components/Admin/adminTransaction/adminTransaction";
+import ModViewWebinar from "./components/Moderator/modViewWebinar/modViewWebinar";
 const App = () => {
   return (
     <div className="App">
@@ -145,6 +148,7 @@ const App = () => {
 
           <Route path="/moderator/exchange" element={<ModExchangeProduct />} />
           <Route path="/moderator/quiz" element={<ModeratorQuiz/>} />
+          <Route path="/moerator/view-webinar" element={<ModViewWebinar/>} />
           {/* new-1 */}
           <Route path="/delivery/login" element={<DeliveryAgentLogin />} />
           <Route path="/delivery/signup" element={<DeliveryAgentSignup />} />
@@ -186,6 +190,7 @@ const App = () => {
             element={<AdminUpdateGuideline />}
           />
           <Route path="admin/view-exchange" element={<AdminViewExchange />} />
+          <Route path="/admin/webinar" element={<AdminWebinar/>} />
 
           {/* admin components  */}
 

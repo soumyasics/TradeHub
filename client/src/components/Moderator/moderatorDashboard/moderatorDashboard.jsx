@@ -13,6 +13,7 @@ import { ModTestContainer } from "../moderatorQuiz/modTestContainer";
 import axiosInstance from "../../../apis/axiosInstance";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import ModViewWebinar from "../modViewWebinar/modViewWebinar";
 export const ModeratorDashboard = () => {
   const [selectpage, setSelectpage] = useState("overview");
   const [modData, setModData] = useState({});
@@ -107,6 +108,7 @@ export const ModeratorDashboard = () => {
         {selectpage == "test" && (
           <ModTestContainer navigateToOverview={navigateToOverview} />
         )}
+        {selectpage == "webinar" && <ModViewWebinar />} 
       </div>
     </div>
   );

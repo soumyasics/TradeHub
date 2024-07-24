@@ -12,6 +12,8 @@ import { TbNotes } from "react-icons/tb";
 import { MdLogout } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { IoLogoWebComponent } from "react-icons/io5";
+
 export const AdminSidebar = ({ changeSelectedPage }) => {
   const [dropdownDA, setdropdownDA] = useState(false);
   const [dropdownMod, setdropdownMod] = useState(false);
@@ -60,9 +62,10 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
           <li onClick={() => changeSelectedPage("view-all-user")}>
             <MdPeopleAlt /> View User
           </li>
-          <li onClick={() => changeSelectedPage("transaction")}>
+          {/* transaction error */}
+          {/* <li onClick={() => changeSelectedPage("transaction")}>
             <GiReceiveMoney /> Transaction
-          </li>
+          </li> */}
           <li onClick={toggleDA}>
             <TbTrolley /> Delivery Agent
             {dropdownDA && (
@@ -160,6 +163,10 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
               </div>
             )}
           </li>
+             <li onClick={() => changeSelectedPage("webinar")}>
+             <IoLogoWebComponent style={{marginRight:"9px"}}/>
+             Webinar
+          </li> 
           <li onClick={handleAdminLogout} className="text-danger fw-bold ">
             <MdLogout />
             <span className="shadow ms-1">Logout</span>
