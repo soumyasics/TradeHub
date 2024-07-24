@@ -75,6 +75,7 @@ import ModeratorQuiz from "./components/Moderator/moderatorQuiz/moderatorQuiz";
 import { AdminWebinar } from "./components/Admin/adminWebinar/adminWebinar";
 import { AdminTransaction } from "./components/Admin/adminTransaction/adminTransaction";
 import ModViewWebinar from "./components/Moderator/modViewWebinar/modViewWebinar";
+import { AdminUploadVideo } from "./components/Admin/adminUploadVideo/adminUploadVideo";
 const App = () => {
   return (
     <div className="App">
@@ -191,7 +192,7 @@ const App = () => {
           />
           <Route path="admin/view-exchange" element={<AdminViewExchange />} />
           <Route path="/admin/webinar" element={<AdminWebinar/>} />
-
+          <Route path="/admin/upload-video" element={<AdminUploadVideo/>} />
           {/* admin components  */}
 
           {/* reusable components  */}

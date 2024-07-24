@@ -8,7 +8,17 @@ import axiosInstance from "../../../apis/axiosInstance";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 export const AdminWebinar = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState(
+    {
+      topic:"",
+      speakers:"",
+      date:"",
+      time:"",
+      duration:"",
+      description:"",
+      webinarLink:"",
+    }
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,7 +28,7 @@ export const AdminWebinar = () => {
     try {
       const response = await axiosInstance.post("/createWebinar", data);
       if (response.status == 200) {
-        toast.success("sucessfully");
+        toast.success("Updated successfully");
       }
     } catch (error) {
       console.log(error);
