@@ -7,6 +7,8 @@ const GuidelineRoute = require("./guidelines/guidelineController");
 const UserChatRoute = require("./chat-users/chatUsersController");
 const wishlistController = require("./wishlist/wishlistController");
 const exchangeProductController = require("./exchangeProduct/exchangeController");
+const webinarController = require("./webinar/webinarController");
+const videoTutorialController = require("./trainingVideos/trainingVideosController");
 //user routes
 router.post("/registerUser", user.upload, user.registerUser);
 router.post("/viewUserById/:id", user.viewUserById);
@@ -36,6 +38,7 @@ router.post("/viewActiveItems", items.viewActiveItems);
 router.get("/viewAllitemsByUserId/:id", items.viewAllitemsByUserId);
 router.get("/viewAllActiveitemsByUserId/:id", items.viewAllActiveitemsByUserId);
 router.delete("/deleteItemById/:id", items.deleteItemById);
+
 router.get(
   "/getApprovedItemsByCategory/:category",
   items.getApprovedItemsByCategory
@@ -178,4 +181,18 @@ router.get(
   "/getAllApprovedExchangesBySellerId/:id",
   exchangeProductController.getAllApprovedExchangesBySellerId
 );
+
+// rotues
+router.post("/createWebinar", webinarController.createWebinar);
+router.get("/allWebinars", webinarController.allWebinars);
+
+// video tutorials
+router.post(
+  "/createVideoTutorial",
+  videoTutorialController.uploadVideo,
+  videoTutorialController.addTutorial
+);
+router.get("/allVideoTutorials", videoTutorialController.getAllTutorials);
+router.get("/getTutorialById/:id", videoTutorialController.getTutorialById);
+
 module.exports = router;

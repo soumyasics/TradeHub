@@ -12,6 +12,8 @@ import { IoMdArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { IoChevronBackSharp } from "react-icons/io5";
 import { MdOutlineQuiz } from "react-icons/md";
+import { IoLogoWebComponent } from "react-icons/io5";
+
 function ModeratorSidebar({ changeSelectedPage }) {
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -35,7 +37,9 @@ function ModeratorSidebar({ changeSelectedPage }) {
             src={moderatorsidebarimg}
             style={{ width: "30px", height: "30px" }}
             alt="img"
-            onClick={()=>{navigate("/moderator/profile")}}
+            onClick={() => {
+              navigate("/moderator/profile");
+            }}
           ></img>
           &nbsp; &nbsp;
           <div className="mt-3">Moderator </div>
@@ -96,22 +100,32 @@ function ModeratorSidebar({ changeSelectedPage }) {
               </span>
               Users
             </li>
-            <li onClick={()=>{
-              changeSelectedPage("exchangeItem")
-            }}>
+            <li
+              onClick={() => {
+                changeSelectedPage("exchangeItem");
+              }}
+            >
               <span className="contentIcons">
                 <GiCardExchange />
               </span>
               Exchanged Items
             </li>
 
-            <li onClick={()=>{
-              changeSelectedPage("test")
-            }}>
+            <li
+              onClick={() => {
+                changeSelectedPage("test");
+              }}
+            >
               <span className="contentIcons">
-              <MdOutlineQuiz />              </span>
-               Take a test
+                <MdOutlineQuiz />{" "}
+              </span>
+              Take a test
             </li>
+            <li onClick={() => changeSelectedPage("webinar")}>
+              <IoLogoWebComponent style={{ marginRight: "9px" }} />
+              Webinar
+            </li>
+
             <li onClick={handleLogout} className="text-danger fw-bold ">
               <span className="contentIcons">
                 <MdLogout />
