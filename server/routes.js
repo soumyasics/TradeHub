@@ -7,6 +7,7 @@ const GuidelineRoute = require("./guidelines/guidelineController");
 const UserChatRoute = require("./chat-users/chatUsersController");
 const wishlistController = require("./wishlist/wishlistController");
 const exchangeProductController = require("./exchangeProduct/exchangeController");
+const webinarController = require("./webinar/webinarController");
 //user routes
 router.post("/registerUser", user.upload, user.registerUser);
 router.post("/viewUserById/:id", user.viewUserById);
@@ -36,6 +37,7 @@ router.post("/viewActiveItems", items.viewActiveItems);
 router.get("/viewAllitemsByUserId/:id", items.viewAllitemsByUserId);
 router.get("/viewAllActiveitemsByUserId/:id", items.viewAllActiveitemsByUserId);
 router.delete("/deleteItemById/:id", items.deleteItemById);
+
 router.get(
   "/getApprovedItemsByCategory/:category",
   items.getApprovedItemsByCategory
@@ -178,4 +180,8 @@ router.get(
   "/getAllApprovedExchangesBySellerId/:id",
   exchangeProductController.getAllApprovedExchangesBySellerId
 );
+
+// rotues 
+router.post("/createWebinar", webinarController.createWebinar);
+router.get("/allWebinars", webinarController.allWebinars);
 module.exports = router;
