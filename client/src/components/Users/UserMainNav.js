@@ -14,6 +14,7 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import "./User.css";
 function UserMainNav() {
+  const [searchValue,setSearchValue] = useState("")
   const [showDropdown, setShowDropdown] = useState(false);
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
@@ -42,6 +43,12 @@ function UserMainNav() {
   const handleCategory = () => {
     setShow(!show);
   };
+const handleSearch = (e) =>
+{
+const value = e.target.value
+setSearchValue(value)
+}
+
   return (
     <div>
       <div className="usermainnav-page-color ">
@@ -81,12 +88,15 @@ function UserMainNav() {
               aria-label="search"
               placeholder="Search product"
               aria-describedby="basic-addon1"
+              onChange={handleSearch}
             />
             <InputGroup.Text
               id="basic-addon1"
               className="modproduct-req-search-box"
             >
-              <IoSearch className="mod-product-request-search-icon" />
+              <IoSearch className="mod-product-request-search-icon"
+              onClick={()=>{navigate("/user/view-all-items")}}
+               />
             </InputGroup.Text>
           </InputGroup>
 
