@@ -11,6 +11,7 @@ import { AdmineViewGuideline } from "./adminViewGuideline/adminViewGuideline";
 import { AdminViewExchange } from "./adminViewExchange/adminViewExchange";
 import { AdminWebinar } from "./adminWebinar/adminWebinar";
 import { AdminTransaction } from "./adminTransaction/adminTransaction";
+import { AdminUploadVideo } from "./adminUploadVideo/adminUploadVideo";
 export const AdminDashboard = () => {
   const [selectedPage, setSelectedPage] = useState("overview");
 
@@ -39,6 +40,7 @@ export const AdminDashboard = () => {
         {selectedPage === "transaction" && <AdminTransaction/>} 
         {selectedPage === "ExchangeItems" && <AdminViewExchange/>} 
         {selectedPage === "webinar" && <AdminWebinar/>} 
+        {selectedPage === "uploadTutorial" && <AdminUploadVideo/>} 
       </div>
     </div>
   );

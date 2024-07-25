@@ -12,26 +12,10 @@ export const AdminUploadVideo = () => {
   const [data, setData] = useState({
     title: "",
     description: "",
-    thumbnail: "",
-    video: "",
+    thumbnail: null,
+    video: null,
   });
-  const handleChanges = (e) => {
-    const { name, value, files, type } = e.target;
-    if (type == "file") {
-      const file = files[0] || files[1];
-      setData({ ...data, [name]: file, });
-    } else {
-      setData({ ...data, [name]: value, });
-    }
-    console.log(data);
-  };
-
-  const sentDataToServer = async () => {
-    const formData = new FormData();
-    formData.append("title", data.title);
-    formData.append("description", data.description);
-    formData.append("file", data.thumbnail);
-    formData.append("file", data.video);
+  const sentDataToServer = async (data) => {
     try {
       const response = await axiosMultipartInstance.post(
         "/createVideoTutorial",
@@ -46,13 +30,45 @@ export const AdminUploadVideo = () => {
   };
 
   const handleSubmit = (event) => {
+
     event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.stopPropagation();
     }
     setValidated(true);
-    sentDataToServer();
+
+    const { title, description, thumbnail, video } = data;
+    const validateField = () => {
+      if (!title) {
+        toast.error("enter title");
+        return false;
+      }
+      if (!description) {
+        toast.error("enter Description");
+        return false;
+      }
+      if (!thumbnail) {
+        toast.error("thumbnail required");
+        return false;
+      }
+      if (!video) {
+        toast.error("video required");
+      }
+      return true;
+    };
+
+    if (!validateField()) {
+      return;
+    }
+    const formData = new FormData();
+    formData.append("title", data.title);
+    formData.append("description", data.description);
+    formData.append("file", data.thumbnail);
+    formData.append("file", data.video);
+    console.log("formdata", formData);
+
+    sentDataToServer(formData);
   };
   return (
     <div style={{ marginTop: "80px" }}>
@@ -66,7 +82,7 @@ export const AdminUploadVideo = () => {
               width: "90%",
               height: "81%",
               marginLeft: "50%",
-              marginTop: "10%",
+              marginTop: "8%",
             }}
           />
         </div>
@@ -87,7 +103,9 @@ export const AdminUploadVideo = () => {
                 <Form.Control
                   type="text"
                   name="title"
-                  onChange={handleChanges}
+                  onChange={(e) => {
+                    setData({ ...data, [e.target.name]: e.target.value });
+                  }}
                   placeholder="Tutorial title"
                   required
                 />
@@ -101,12 +119,14 @@ export const AdminUploadVideo = () => {
                 <Form.Control
                   as="input"
                   name="description"
-                  onChange={handleChanges}
-                  type="text"
                   placeholder="Tutorial Description"
                   required
                   min="0"
                   max="100000000"
+                  onChange={(e) => {
+                    setData({ ...data, [e.target.name]: e.target.value });
+                  }}
+                  type="text"
                 />
                 <Form.Control.Feedback type="invalid" className="">
                   Please provide description.
@@ -119,9 +139,12 @@ export const AdminUploadVideo = () => {
                 <Form.Label>Tutorail Thumbnail</Form.Label>
                 <Form.Control
                   type="file"
+                  accept="image/*"
                   placeholder="Tutorail Thumbnail"
-                  name="Thumbnail"
-                  onChange={handleChanges}
+                  name="thumbnail"
+                  onChange={(e) => {
+                    setData({ ...data, [e.target.name]: e.target.files[0]});
+                  }}
                   required
                 />
 
@@ -134,15 +157,18 @@ export const AdminUploadVideo = () => {
                 <Form.Control
                   as="input"
                   name="video"
-                  onChange={handleChanges}
+                  accept="video/*"
                   type="file"
                   placeholder="Tutorail Video"
                   required
                   min="0"
                   max="100000000"
+                  onChange={(e) => {
+                    setData({ ...data, [e.target.name]: e.target.files[0]});
+                  }}
                 />
                 <Form.Control.Feedback type="invalid" className="">
-                  Please provide thumbnail.
+                  Please provide video.
                 </Form.Control.Feedback>
               </Form.Group>
             </Row>
