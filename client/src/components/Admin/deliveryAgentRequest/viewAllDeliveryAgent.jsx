@@ -97,7 +97,7 @@ export const AdminViewAllActiveDeliveryAgent = () => {
     }
 
   return (
-    <div className="pt-5">a
+    <div className="pt-5">
       {data.length > 0 && (
         <div className="text-center">
           <h4 className="mx-auto">View all delivery agents</h4>
