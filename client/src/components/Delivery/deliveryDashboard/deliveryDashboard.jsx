@@ -4,9 +4,11 @@ import { useState } from "react";
 import { DeliveryViewallUser } from "../viewAllUsers/deliveryViewAllusers";
 import { DeliveryProfile } from "../deliveryProfile/deliveryProfile";
 import { MyDelivery } from "../myDelivery/myDelivery";
-import { DeliveryDeliveryPending } from "../deliveryDeliveryPending/delveryDeliveryPending";
+import {  DeliveryRequest } from "../deliveryDeliveryPending/delveryDeliveryPending";
 import { DeliveryAcceptedOrders } from "../deliveryAccceptedOrders/deliveryAcceptedOrders";
 import { DeliveryRejectedOrders } from "../deliveryRejectedOrders/deliveryRejectedOrders";
+import { DeliveryPending } from "../deliveryPending/deliveryPending";
+import { DeliveredOrders } from "../deliveredOrders/deliveredOrders";
 export const DeliveryDashboard = () => {
     const [selectedPage, setSelectedPage] = useState("overview");
   
@@ -23,9 +25,11 @@ export const DeliveryDashboard = () => {
           {selectedPage === "view-users" && <DeliveryViewallUser />}
           {selectedPage === "profile" && <DeliveryProfile />}
           {selectedPage === "MyDeliveries" && <MyDelivery />}
-          {selectedPage === "deliveryPending" && <DeliveryDeliveryPending/>}
+          {selectedPage === "deliveryRequest" && <DeliveryRequest/>}
           {selectedPage === "acceptedOrders" && <DeliveryAcceptedOrders/>}
           {selectedPage === "rejectedOrders" && <DeliveryRejectedOrders/>}
+          {selectedPage === "deliveryPending" && <DeliveryPending/>} 
+          {selectedPage === "deliveredOrders" && <DeliveredOrders/>} 
         </div>
       </div>
     );

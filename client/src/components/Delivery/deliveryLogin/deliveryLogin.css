@@ -19,14 +19,12 @@
 
 .deliveryagent-inputs {
   margin-top: 10%;
-  margin-right: 5%;
 }
 .deliveryagent-login-textbox {
   height: 50px;
-  width: 73%;
+  width: 70%;
   border-radius: 10px;
   border-color: black;
-  margin-left: 11%;
 }
 .deliveryagent-login-textbox-pass {
   width: 67%;
@@ -48,7 +46,7 @@
   width: 150px;
   border-radius: 20px;
   border: none;
-  margin-left: 290px;
+  margin-left: 43%;
 }
 .delLogin-toggleEye{
   position:absolute;
@@ -79,8 +77,12 @@ right: 15%; z-index: 1;
 .del-login-password-box
 {
   height: 50px;
-  width: 72% !important;
+  width: 70% !important;
   border-radius: 14px;
   border-right:0 !important;
-  margin-top:20px;
+}
+.del-login-label-box
+{
+  height:100px ;
+  width: 150px;
 }

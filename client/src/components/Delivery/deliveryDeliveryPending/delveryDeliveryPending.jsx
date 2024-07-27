@@ -7,7 +7,7 @@ import { FaXmark } from "react-icons/fa6";
 import {toast} from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-export const DeliveryDeliveryPending = () => {
+export const DeliveryRequest = () => {
   const [data, setData] = useState([]);
   const [deliveryAgentId, setDeliveryAgentId] = useState("");
   const navigate = useNavigate();

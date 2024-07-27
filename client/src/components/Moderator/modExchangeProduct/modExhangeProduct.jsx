@@ -72,13 +72,13 @@ export const ModExchangeProduct = () => {
 
   return (
     <div className="userTransaction-main">
-       <div className="d-flex admin-transaction-search-box">
+       <div className="d-flex  admin-transaction-search-box">
         <p>Search by item name :</p>
-        <input type="search" onChange={handleSearch} />
-        <button>search</button>
-      </div>
+        <input type="search" 
+        placeholder="Search"
+        onChange={handleSearch} />
 
-      <Form.Select
+        <Form.Select
         aria-label="Default select example "
         className=" admin-transaction-select"
         onChange={filterByCategory}
@@ -91,6 +91,9 @@ export const ModExchangeProduct = () => {
         <option value="Clothing">Clothing</option>
         <option value="Furniture">Furniture</option>
       </Form.Select>
+      </div>
+
+     
       <div className="userTransaction-heading-box">
         Product exchange request
       </div>

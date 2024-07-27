@@ -12,6 +12,7 @@ import { AdminViewExchange } from "./adminViewExchange/adminViewExchange";
 import { AdminWebinar } from "./adminWebinar/adminWebinar";
 import { AdminTransaction } from "./adminTransaction/adminTransaction";
 import { AdminUploadVideo } from "./adminUploadVideo/adminUploadVideo";
+import { ModVideoContainer } from "../Moderator/modViewTutorial/modTutorialCard/modContainer";
 export const AdminDashboard = () => {
   const [selectedPage, setSelectedPage] = useState("overview");
 
@@ -22,6 +23,10 @@ export const AdminDashboard = () => {
 
   const redirectToGuideline = () => {
     setSelectedPage("adminViewGuideline")
+  }
+  const redirectToViewTutorial = () =>
+  {
+    setSelectedPage("viewTutorial")
   }
   return (
     <div className="d-flex">
@@ -40,7 +45,8 @@ export const AdminDashboard = () => {
         {selectedPage === "transaction" && <AdminTransaction/>} 
         {selectedPage === "ExchangeItems" && <AdminViewExchange/>} 
         {selectedPage === "webinar" && <AdminWebinar/>} 
-        {selectedPage === "uploadTutorial" && <AdminUploadVideo/>} 
+        {selectedPage === "uploadTutorial" && <AdminUploadVideo redirectToViewTutorial={redirectToViewTutorial}/>} 
+        {selectedPage === "viewTutorial" && <ModVideoContainer/>} 
       </div>
     </div>
   );

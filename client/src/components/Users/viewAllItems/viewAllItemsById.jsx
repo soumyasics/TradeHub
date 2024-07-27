@@ -15,11 +15,11 @@ import toast from "react-hot-toast";
 import UserMainNav from "../UserMainNav";
 import Footer from "../../Footer/Footer";
 import "./viewAllItems.css";
-
-export const ViewAllItems = () => {
+export const ViewAllItemsById = () => {
   const [fixedData, setFixedData] = useState([]);
   const [approvedItems, setApprovedItems] = useState([]);
   const [activeUserId, setActiveUserId] = useState(null);
+  const {item} = useParams()
   const navigate = useNavigate();
   useEffect(() => {
     const userId = localStorage.getItem("trade-hub-userId") || null;
@@ -91,6 +91,19 @@ export const ViewAllItems = () => {
       getAllApprovedItems();
     }
   };
+
+  useEffect(() => {
+    console.log(item,"bb");
+    if (item) {
+      const filteredItems = fixedData.filter((items) => {
+        return items.name.toLowerCase().includes(item.toLowerCase());
+      });
+      setApprovedItems(filteredItems);
+      console.log(filteredItems,"filtr");
+    } else {
+      setApprovedItems(fixedData);
+    }
+  }, [item])
   const handleSearch = (e) => {
     const value = e.target.value;
     if (value) {
@@ -116,6 +129,8 @@ export const ViewAllItems = () => {
       setApprovedItems(fixedData)
     }
   };
+
+  console.log('apro', approvedItems)
   return (
     <>
       <UserMainNav />
@@ -158,7 +173,6 @@ export const ViewAllItems = () => {
         <div className="container text-center">
           <div className="row row-cols-4 gap-5 d-flex my-5">
             {approvedItems.map((e) => {
-              console.log("e user id", e.userId, activeUserId);
               if (e?.userId._id === activeUserId) {
                 return null;
               }

@@ -1,4 +1,5 @@
 import Form from "react-bootstrap/Form";
+import "./adminUploadVideo.css"
 import img1 from "../../../assets/images/totoriaImage.jpeg";
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
@@ -7,7 +8,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
 import toast from "react-hot-toast";
 import { axiosMultipartInstance } from "../../../apis/axiosMultipartInstance";
-export const AdminUploadVideo = () => {
+export const AdminUploadVideo = ({redirectToViewTutorial}) => {
   const [validated, setValidated] = useState(false);
   const [data, setData] = useState({
     title: "",
@@ -26,11 +27,14 @@ export const AdminUploadVideo = () => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setData("");
+      redirectToViewTutorial()
+
     }
   };
 
   const handleSubmit = (event) => {
-
     event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -69,6 +73,8 @@ export const AdminUploadVideo = () => {
     console.log("formdata", formData);
 
     sentDataToServer(formData);
+
+    setData("");
   };
   return (
     <div style={{ marginTop: "80px" }}>
@@ -82,17 +88,18 @@ export const AdminUploadVideo = () => {
               width: "90%",
               height: "81%",
               marginLeft: "50%",
-              marginTop: "8%",
+              marginTop: "10%",
             }}
           />
         </div>
-        <div className="col-9">
+        <div className="col-9 ">
           <Form
             style={{
               boxShadow:
                 "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
+                
             }}
-            className="w-50 p-4 mx-auto "
+            className="adminUploadVideo-for-box p-4 mx-auto "
             noValidate
             validated={validated}
             onSubmit={handleSubmit}
@@ -143,7 +150,7 @@ export const AdminUploadVideo = () => {
                   placeholder="Tutorail Thumbnail"
                   name="thumbnail"
                   onChange={(e) => {
-                    setData({ ...data, [e.target.name]: e.target.files[0]});
+                    setData({ ...data, [e.target.name]: e.target.files[0] });
                   }}
                   required
                 />
@@ -164,7 +171,7 @@ export const AdminUploadVideo = () => {
                   min="0"
                   max="100000000"
                   onChange={(e) => {
-                    setData({ ...data, [e.target.name]: e.target.files[0]});
+                    setData({ ...data, [e.target.name]: e.target.files[0] });
                   }}
                 />
                 <Form.Control.Feedback type="invalid" className="">
@@ -174,7 +181,7 @@ export const AdminUploadVideo = () => {
             </Row>
 
             <div className="d-flex justify-content-center">
-              <Button className="mx-auto w-25" type="submit">
+              <Button className="mx-auto w-25 my-4" type="submit">
                 Upload
               </Button>
             </div>

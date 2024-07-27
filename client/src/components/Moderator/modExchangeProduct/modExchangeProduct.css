@@ -213,10 +213,10 @@
 }
 .admin-transaction-search-box input
 {
-  width: 214px;
-    height: 39px;
-    flex-shrink: 0;
+  width: 215px;
+    height: 33px;
     background: #D8C1EB;
+    padding-left: 18px;
 }
 .admin-transaction-search-box button
 {
@@ -230,18 +230,17 @@ width: 100px;
 margin-left: 20px;}
 .admin-transaction-search-box
 {
-  margin-top: 27px;
+  margin-top: 30px !important;
   margin-left: 67px;
 }
 .admin-transaction-select
 {
 padding: 10px 39px 10px 33px;
 align-items: center;
-width: 19% !important;
+width: 250px !important;
 color: #FFF;
 font-family: Poppins;
 font-size: 25.808px;
 font-weight: 500;
-margin-left:35%;
-margin-top: 20px;
+margin-left:33%;
 }

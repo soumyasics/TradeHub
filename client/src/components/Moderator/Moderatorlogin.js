@@ -13,16 +13,15 @@ import axiosInstance from "../../apis/axiosInstance";
 import UserNavbar from "../homeComponents/Navbar/UserNavbar";
 
 function Moderatorlogin() {
-  const[show,setShow]= useState(true)
+  const [show, setShow] = useState(true);
   const [data, setData] = useState({
     email: "",
     password: "",
   });
   const navigate = useNavigate();
-  const handleShow = () =>
-    {
-      setShow(!show)
-    }
+  const handleShow = () => {
+    setShow(!show);
+  };
   const checkValidity = () => {
     const { email, password } = data;
     if (!email) {
@@ -102,10 +101,14 @@ function Moderatorlogin() {
               </div>
               <div>
                 <form onSubmit={handleSubmit}>
-                  <div>
-                    <label className="moderator-login mt-5 ms-5 ">Email</label>
+                  <div className="d-flex">
+                    <div className="mod-login-label-box">
+                      <label className="moderator-login mt-4 ms-4 ">
+                        Email
+                      </label>
+                    </div>
                     <input
-                      className="moderator-login-textbox ps-3"
+                      className="moderator-login-textbox ps-3  mt-4"
                       type="email"
                       name="email"
                       value={data.email}
@@ -114,9 +117,11 @@ function Moderatorlogin() {
                     />
                   </div>
                   <div className="d-flex">
-                    <label className="moderator-login mt-4 ms-5">
-                      Password
-                    </label>
+                    <div className="mod-login-label-box">
+                      <label className="moderator-login mt-4 ms-4">
+                        Password
+                      </label>
+                    </div>
                     {/* <input
                       className="moderator-login-textbox ms-2"
                       type={show?"password":"text"}
@@ -124,13 +129,13 @@ function Moderatorlogin() {
                       value={data.password}
                       onChange={handleChange}
                     /> */}
-                    <InputGroup className="mod-login-password-box ms-2 ps-3 ">
+                    <InputGroup className="mod-login-password-box mt-3">
                       <Form.Control
                         className="mod-login-password-inp"
-                        type={show?"password":"text"}
-                      name="password"
-                      value={data.password}
-                      onChange={handleChange}
+                        type={show ? "password" : "text"}
+                        name="password"
+                        value={data.password}
+                        onChange={handleChange}
                         aria-label="password"
                         placeholder="password"
                         aria-describedby="basic-addon1"

@@ -14,6 +14,9 @@ import axiosInstance from "../../../apis/axiosInstance";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import ModViewWebinar from "../modViewWebinar/modViewWebinar";
+import { ModTutorialCard } from "../modViewTutorial/modTutorialCard/modTutorialCard";
+import { ModTutorialDetails } from "../modViewTutorial/modTutorialDetails/modTutorialDetails";
+import { ModVideoContainer } from "../modViewTutorial/modTutorialCard/modContainer";
 export const ModeratorDashboard = () => {
   const [selectpage, setSelectpage] = useState("overview");
   const [modData, setModData] = useState({});
@@ -76,6 +79,11 @@ export const ModeratorDashboard = () => {
     fetchModData(modId);
   }, []);
 
+  const reDirectToViewTutorial=()=>
+  {
+    setSelectpage("viewTutorialDetails")
+  }
+
   return (
     <div className="d-flex">
       <div>
@@ -109,6 +117,8 @@ export const ModeratorDashboard = () => {
           <ModTestContainer navigateToOverview={navigateToOverview} />
         )}
         {selectpage == "webinar" && <ModViewWebinar />} 
+        {selectpage == "tutorial" && <ModVideoContainer id=""/>} 
+        {/* {selectpage == "viewTutorialDetails" && <ModVideoContainer />}  */}
       </div>
     </div>
   );

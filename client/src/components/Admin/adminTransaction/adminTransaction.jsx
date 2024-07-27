@@ -7,7 +7,7 @@ import axiosInstance from "../../../apis/axiosInstance";
 import { GiConsoleController } from "react-icons/gi";
 import { BASE_URL } from "../../../apis/baseURL";
 import "./adminTransaction.css";
-import { Form } from "react-router-dom";
+import { Form } from "react-bootstrap";
 
 export const AdminTransaction = () => {
   const [requestData, setRequestData] = useState([]);

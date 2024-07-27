@@ -63,9 +63,9 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
             <MdPeopleAlt /> View User
           </li>
           {/* transaction error */}
-          {/* <li onClick={() => changeSelectedPage("transaction")}>
+          <li onClick={() => changeSelectedPage("transaction")}>
             <GiReceiveMoney /> Transaction
-          </li> */}
+          </li>
           <li onClick={toggleDA}>
             <TbTrolley /> Delivery Agent
             {dropdownDA && (

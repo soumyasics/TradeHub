@@ -16,6 +16,7 @@ export const AdminOverview = () => {
   useEffect(() => {
     getAllUsers();
     getAllMods()
+    getAllDelivery()
   }, []);
 
   const getAllUsers = async () => {
@@ -45,6 +46,19 @@ export const AdminOverview = () => {
       console.log("all users", error);
     }
   };
+
+  const getAllDelivery = async() =>
+    {
+      try {
+        const response = await axiosInstance.get("/getAllDeliveredOrders")
+        if (response.status == 200)
+        {
+          setDelivery(response.data.data)
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
 
   return (
     <div>
