@@ -66,15 +66,19 @@ export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
             <li onClick={() => changeSelectedPage("overview")}>
               <RxDashboard className="delivery-sidebar-icon" /> Dashboard
             </li>
-            <li onClick={() => changeSelectedPage("MyDeliveries")}>
+            {/* <li onClick={() => changeSelectedPage("MyDeliveries")}>
               <LiaDropbox className="delivery-sidebar-icon" />
               My deliveries
-            </li>
-            <li onClick={() => changeSelectedPage("deliveryPending")}>
+            </li> */}
+            <li onClick={() => changeSelectedPage("deliveryRequest")}>
               <CiDeliveryTruck className="delivery-sidebar-icon" /> Delivery
               request
             </li>
-            <li>
+            <li
+              onClick={() => {
+                changeSelectedPage("deliveryPending");
+              }}
+            >
               <MdOutlinePendingActions className="delivery-sidebar-icon" />
               Delivery pending
             </li>
@@ -87,15 +91,34 @@ export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
                   style={{ fontSize: "12px" }}
                   className="ps-3 bg-light dd-container "
                 >
-                  <li className="text-dark admin-dd-item" onClick={()=>{changeSelectedPage("acceptedOrders")}}> Accepted orders </li>
-                  <li className="text-dark admin-dd-item" onClick={()=>{changeSelectedPage("rejectedOrders")}}> Rejected orders </li>
+                  <li
+                    className="text-dark admin-dd-item"
+                    onClick={() => {
+                      changeSelectedPage("acceptedOrders");
+                    }}
+                  >
+                    {" "}
+                    Accepted orders{" "}
+                  </li>
+                  <li
+                    className="text-dark admin-dd-item"
+                    onClick={() => {
+                      changeSelectedPage("rejectedOrders");
+                    }}
+                  >
+                    {" "}
+                    Rejected orders{" "}
+                  </li>
                 </div>
               )}
             </li>
-
-            <li>
+            <li
+              onClick={() => {
+                changeSelectedPage("deliveredOrders");
+              }}
+            >
               <BsBoxArrowInRight className="delivery-sidebar-icon" />
-              delivery orders
+              Delivered orders
             </li>
 
             <li onClick={handleDeliveryLogout} className="text-danger fw-bold ">

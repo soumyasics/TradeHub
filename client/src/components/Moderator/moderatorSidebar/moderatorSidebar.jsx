@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { IoChevronBackSharp } from "react-icons/io5";
 import { MdOutlineQuiz } from "react-icons/md";
 import { IoLogoWebComponent } from "react-icons/io5";
+import { MdOndemandVideo } from "react-icons/md";
 
 function ModeratorSidebar({ changeSelectedPage }) {
   const navigate = useNavigate();
@@ -124,6 +125,11 @@ function ModeratorSidebar({ changeSelectedPage }) {
             <li onClick={() => changeSelectedPage("webinar")}>
               <IoLogoWebComponent style={{ marginRight: "9px" }} />
               Webinar
+            </li>
+            <li onClick={() => changeSelectedPage("tutorial")}>
+            <MdOndemandVideo 
+            style={{ marginRight: "9px" }} />
+              Tutorial
             </li>
 
             <li onClick={handleLogout} className="text-danger fw-bold ">

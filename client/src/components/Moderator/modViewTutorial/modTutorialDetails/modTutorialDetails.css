@@ -1,0 +1,25 @@
+.modTutorial-details-view-video {
+  width: 80%;
+  height: 450px;
+  background-color: black;
+  margin: auto;
+  text-align: center;
+  margin-top: 15px;
+}
+.modTutorial-description {
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.modTutorial-title
+{
+    text-transform:capitalize;
+
+}
+.modTutorial-left-arrow
+{
+  font-size: 30px;
+  margin-left: 20px;
+}

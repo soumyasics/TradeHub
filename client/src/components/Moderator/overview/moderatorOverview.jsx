@@ -17,6 +17,7 @@ export const ModeratorOverview = ({ updateProductId, modData }) => {
     getAllUsers();
     getAllMods();
     getAllProducts();
+    getAllDelivery()
   }, []);
 
   const getAllUsers = async () => {
@@ -45,6 +46,7 @@ export const ModeratorOverview = ({ updateProductId, modData }) => {
     } catch (error) {
       console.log("all users", error);
     }
+    
   };
   const getAllProducts = async () => {
     try {
@@ -59,6 +61,20 @@ export const ModeratorOverview = ({ updateProductId, modData }) => {
       console.log("products !", error);
     }
   };
+
+  const getAllDelivery = async() =>
+  {
+    try {
+      const response = await axiosInstance.get("/getAllDeliveredOrders")
+      if (response.status == 200)
+      {
+        setDelivery(response.data.data)
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   return (
     <div style={{ overflow: "scroll", height: "100vh" }}>

@@ -59,6 +59,11 @@ const dSchema = mongoose.Schema(
       ref: "exchangeProduct",
       default: [],
     },
+    myCollectedOrders: {
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: "exchangeProduct",
+      default: [],
+    },
     myDeliveredOrders: {
       type: [mongoose.Schema.Types.ObjectId],
       ref: "exchangeProduct",

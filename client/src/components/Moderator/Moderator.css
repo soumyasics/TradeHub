@@ -84,9 +84,7 @@
 .moderator-login-box {
   width: 100%;
   height: 606px;
-  top: 166px;
-  left: 132px;
-  gap: 0px;
+  
   border: 1px 0px 0px 0px;
 
   border: 1px solid #6d3698;
@@ -104,7 +102,6 @@
   width: 70%;
   border-radius: 10px;
   border-color: black;
-  margin-left: 10%;
 }
 .moderator-login-forget {
   color: #6d3698;
@@ -146,11 +143,17 @@
 .mod-login-password-box
 {
   height: 50px;
-  width: 72% !important;
+  width: 70% !important;
   border-radius: 14px;
   border-right:0 !important;
-  margin-top:20px;
 }
+
+.mod-login-label-box
+{
+  width: 150px;
+  height: 100px;
+}
+
 /* Moderator Forget */
 
 .moderator-forget-link {

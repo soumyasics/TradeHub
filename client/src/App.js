@@ -62,7 +62,6 @@ import { ViewByCategory } from "./components/Users/viewByCategory/viewBycategory
 import { UserProductExchange } from "./components/Users/productExchange/userProductExchange";
 import { UserRequestes } from "./components/Users/userRequestes/userRequestes";
 import { ModExchangeProduct } from "./components/Moderator/modExchangeProduct/modExhangeProduct";
-import { DeliveryDeliveryPending } from "./components/Delivery/deliveryDeliveryPending/delveryDeliveryPending";
 import { DeliveryAcceptedOrders } from "./components/Delivery/deliveryAccceptedOrders/deliveryAcceptedOrders";
 import { DeliveryRejectedOrders } from "./components/Delivery/deliveryRejectedOrders/deliveryRejectedOrders";
 import { UserViewGuideline } from "./components/Users/userViewGuideline/userViewGuideline";
@@ -76,6 +75,9 @@ import { AdminWebinar } from "./components/Admin/adminWebinar/adminWebinar";
 import { AdminTransaction } from "./components/Admin/adminTransaction/adminTransaction";
 import ModViewWebinar from "./components/Moderator/modViewWebinar/modViewWebinar";
 import { AdminUploadVideo } from "./components/Admin/adminUploadVideo/adminUploadVideo";
+import { DeliveryPending } from "./components/Delivery/deliveryPending/deliveryPending";
+import { DeliveredOrders } from "./components/Delivery/deliveredOrders/deliveredOrders";
+import { ViewAllItemsById } from "./components/Users/viewAllItems/viewAllItemsById";
 const App = () => {
   return (
     <div className="App">
@@ -105,6 +107,7 @@ const App = () => {
             element={<UserProductExchange />}
           />
           <Route path="/user/view-all-items" element={<ViewAllItems />} />
+          <Route path="/user/view-all-items/:item" element={<ViewAllItemsById />} />
           <Route path="/user/product-details" element={<ItemDetails />} />
           <Route path="/user/product-card" element={<ProductCard />} />
           <Route path="/user/edit/profle" element={<UsereditProfileCard />} />
@@ -150,6 +153,7 @@ const App = () => {
           <Route path="/moderator/exchange" element={<ModExchangeProduct />} />
           <Route path="/moderator/quiz" element={<ModeratorQuiz/>} />
           <Route path="/moerator/view-webinar" element={<ModViewWebinar/>} />
+
           {/* new-1 */}
           <Route path="/delivery/login" element={<DeliveryAgentLogin />} />
           <Route path="/delivery/signup" element={<DeliveryAgentSignup />} />
@@ -163,10 +167,7 @@ const App = () => {
           <Route path="/moderator/dashboard" element={<ModeratorDashboard />} />
 
           <Route path="/delivery/dashboard" element={<DeliveryDashboard />} />
-          <Route
-            path="/delivery/pending"
-            element={<DeliveryDeliveryPending />}
-          />
+          
           <Route
             path="/delivery/accepted-orders"
             element={<DeliveryAcceptedOrders />}
@@ -175,6 +176,8 @@ const App = () => {
             path="/delivery/rejected-orders"
             element={<DeliveryRejectedOrders />}
           />
+          <Route path="/delivery/pending" element={<DeliveryPending/>} />
+          <Route path="/delivered/orders" element={<DeliveredOrders/>} />
           {/* Admin */}
           <Route path="/admin/login" element={<Adminlogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />

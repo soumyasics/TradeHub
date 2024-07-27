@@ -157,6 +157,14 @@ router.get(
   exchangeProductController.getAllAcceptedOrdersByDeliveryAgentId
 );
 router.get(
+  "/getAllDeliveredOrdersByDeliveryAgentId/:id",
+  exchangeProductController.getAllDeliveredOrdersByDeliveryAgentId
+);
+router.get(
+  "/getAllDeliveredOrders",
+  exchangeProductController.getAllDeliveredOrders
+);
+router.get(
   "/getAllRejectedOrdersByDeliveryAgentId/:id",
   exchangeProductController.getAllRejectedOrdersByDeliveryAgentId
 );
@@ -167,6 +175,10 @@ router.get(
 router.patch(
   "/acceptDeliveryReqById/:id",
   exchangeProductController.acceptDeliveryReqById
+);
+router.patch(
+  "/deliveredProduct/:id",
+  exchangeProductController.deliveredProduct
 );
 router.patch(
   "/rejectDeliveryReqById/:id",

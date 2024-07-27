@@ -14,15 +14,14 @@ import axiosInstance from "../../../apis/axiosInstance";
 import UserNavbar from "../../homeComponents/Navbar/UserNavbar";
 
 function DeliveryAgentLogin() {
-  const[show,setShow]= useState(true)
+  const [show, setShow] = useState(true);
   const [data, setData] = useState({
     email: "",
     password: "",
   });
-  const handleShow = () =>
-    {
-      setShow(!show)
-    }
+  const handleShow = () => {
+    setShow(!show);
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prevData) => ({
@@ -111,10 +110,10 @@ function DeliveryAgentLogin() {
               </div>
               <div>
                 <form onSubmit={handleSubmit}>
-                  <div className="deliveryagent-inputs">
-                    <label className="deliveryagent-login ms-2">
-                      Email
-                    </label>
+                  <div className="deliveryagent-inputs d-flex">
+                    <div className="del-login-label-box">
+                      <label className="deliveryagent-login ">Email</label>
+                    </div>
                     <input
                       className="deliveryagent-login-textbox  px-3"
                       type="text"
@@ -125,9 +124,9 @@ function DeliveryAgentLogin() {
                     />
                   </div>
                   <div className="d-flex">
-                    <label className="deliveryagent-login mt-4 ms-2">
-                      Password
-                    </label>
+                    <div className="del-login-label-box">
+                      <label className="deliveryagent-login ">Password</label>
+                    </div>
                     {/* <input
                       className="deliveryagent-login-textbox-pass ms-4 px-3"
                       type={show?"password":"text"}
@@ -136,10 +135,10 @@ function DeliveryAgentLogin() {
                       placeholder="Enter Password"
                       onChange={handleChange}
                     /> */}
-                     <InputGroup className="user-login-password-box ms-2 ps-3 ">
+                    <InputGroup className="del-login-password-box ">
                       <Form.Control
-                        className="user-login-password-inp"
-                        type={show?"password":"text"}
+                        className="del-login-password-inp"
+                        type={show ? "password" : "text"}
                         value={data.password}
                         name="password"
                         placeholder="Enter Password"

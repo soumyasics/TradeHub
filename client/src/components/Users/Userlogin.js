@@ -104,8 +104,11 @@ function Userlogin() {
               <Col>
                 <h2 className="user-login-h2">User Login</h2>
                 <form onSubmit={handleSubmit}>
-                  <div>
-                    <label className="user-login mt-4 ms-4">Email</label>
+                  <div className="d-flex">
+                    <div className="login-label-box">
+                      {" "}
+                      <label className="user-login mt-4 ms-4">Email</label>
+                    </div>
                     <input
                       className="user-login-textbox  ps-3"
                       placeholder="Email"
@@ -116,7 +119,10 @@ function Userlogin() {
                     />
                   </div>
                   <div className="d-flex">
-                    <label className="user-login mt-4 ms-4">Password</label>
+                    <div className="login-label-box">
+                      {" "}
+                      <label className="user-login mt-2 ms-4">Password</label>
+                    </div>
                     {/* <input
                       className="user-login-textbox ms-2 ps-3"
                       placeholder="Password"
@@ -125,7 +131,7 @@ function Userlogin() {
                       value={data.password}
                       onChange={handleChange}
                     /> */}
-                    <InputGroup className="user-login-password-box ms-2 ps-3 ">
+                    <InputGroup className="user-login-password-box   ">
                       <Form.Control
                         className="user-login-password-inp"
                         type={show ? "password" : "text"}

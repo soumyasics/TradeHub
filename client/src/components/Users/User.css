@@ -30,8 +30,7 @@
   width: 69%;
   border-radius: 10px;
   border-color: black;
-    margin-left: 10% ;
-  
+  margin-top: 20px;
 }
 
 .user-login-btn {
@@ -69,13 +68,18 @@
 .user-login-password-box
 {
   height: 50px;
-  width: 72% !important;
+  width: 70% !important;
   border-radius: 14px;
   border-right:0 !important;
-  margin-top:20px;
 }
 .userLogin-toggleEye{
  z-index: 1;
+}
+
+.login-label-box
+{
+  width: 150px;
+  height: 100px;
 }
 
 /* User Forget Password */

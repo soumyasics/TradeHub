@@ -1,0 +1,117 @@
+.delivery-viewItems-body {
+    height: 100vh;
+    overflow-y: auto;
+  }
+  .delivery-viewItems-heading {
+    color: #6d3698;
+    font-family: Poppins;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 1%;
+    margin-right: 63%;
+  }
+  .delivery-pending-viewItems-box {
+    min-height: 190px;
+    width: 95%;
+    border-radius: 18.487px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 3.38px 3.38px 0px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    margin-top: 2%;
+  }
+  .delivery-viewItems-left-box img {
+    margin: auto;
+    height: 150px;
+    width: 250px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  .delivery-viewItems-middle-box table {
+    min-width: 60%;
+    height: 85%;
+    margin-top: 3.5%;
+    padding-top: 10px;
+    text-align: justify;
+  }
+  .delivery-viewItems-middle-box td {
+    margin-left: 20px;
+    color: rgba(0, 0, 0, 0.8);
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .delivery-view_Items-data {
+    padding-left: 20px;
+    text-align: left;
+  }
+  
+  .deliveryItemView-pending {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin-top: 4px;
+    margin-right: 4%;
+    background-color: 16A72D;
+  }
+  .deliveryView-right-inner-box2 {
+    margin-top: 20%;
+    color: #6D3698;
+font-family: Poppins;
+font-size: 18px;
+font-weight: 500;
+  }
+  .delivery-viewItems-right-box img {
+    margin-top: 30%;
+    margin-left: 80%;
+  }
+  .delivery-view-item-acceted {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .deliveryAcceptOrder-outer-box {
+    width: 90%;
+    padding-bottom: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 3.38px 3.38px 0px rgba(0, 0, 0, 0.1);
+    margin-left: 5%;
+    margin-top: 3%;
+    border-radius: 20px;
+  }
+  .delivery-pending-delivered-button {
+    border-radius: 13.99px;
+    border: 1.399px solid #16a72d;
+    box-shadow: 0px 2.798px 2.798px 0px rgba(0, 0, 0, 0.25);
+    color: #16a72d;
+    font-family: Poppins;
+    font-size: 16.788px;
+    font-weight: 500;
+    padding: 8px 10px 8px 10px;
+    margin-left: 40%;
+    margin-top: 15px;
+  }
+  .myDelivered-Delivered-box {
+    height: 35.271px;
+    border-radius: 13.99px;
+    border: 1.399px solid #16a72d;
+    box-shadow: 0px 1.798px 1.798px 0px rgba(0, 0, 0, 0.25);
+    width: 120px;
+    color: #16a72d;
+    font-family: Poppins;
+    font-size: 14.788px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-left: 13px;
+    padding-top: 5px;
+    margin-top:45%;
+  }
+  .mydelivered-delivered-icon 
+  {
+    font-size: 25px;
+    margin-left: 3px;
+    
+  }
