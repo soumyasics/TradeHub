@@ -10,6 +10,7 @@ export const UserchatInterFace = ({ receiverId, senderId }) => {
   const [allMessages, setAllMessages] = useState([]);
   const messagesEndRef = useRef(null);
 
+  console.log("recie", receiverId)
   useEffect(() => {
     if (receiverId && senderId) {
       getAllMessages();
@@ -21,6 +22,7 @@ export const UserchatInterFace = ({ receiverId, senderId }) => {
         senderId,
         receiverId,
       });
+      console.log("respon", res)
       if (res.status === 200) {
         setAllMessages(res.data.data);
       }

@@ -69,7 +69,7 @@ export const RequestedItems = () => {
           if (buyerProductFilename) {
             buyProductPic = `${BASE_URL}${buyerProductFilename}`;
           }
-
+console.log(e,"123");
           const sellerProduct = e?.sellerProductId;
           const sellerProductFilename =
             sellerProduct?.itemPhoto?.filename || null;
@@ -204,7 +204,11 @@ export const RequestedItems = () => {
                   )}
                 </div>
                 <div className="exchangeProduct-chat-btn">
-                  <button style={{marginRight:"10px"}}>
+                  <button style={{marginRight:"10px"}}
+                  onClick={()=>
+                  {navigate(`/user/chat-dashboard-params/${e?.sellerId?._id}`)}
+                  }
+                  >
                   <BsChatText /> &nbsp; 
                     Chat
                   </button>
