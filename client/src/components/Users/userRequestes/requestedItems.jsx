@@ -123,7 +123,7 @@ console.log(e,"123");
                     <span className="viewmore">
                       <button
                         onClick={() => {
-                          navigateToMyProductDetails(buyerProduct._id);
+                          navigateToMyProductDetails(buyerProduct?._id);
                         }}
                       >
                         View more
@@ -151,17 +151,17 @@ console.log(e,"123");
                         <tr>
                           <td style={{ fontWeight: "600" }}>Item name</td>
                           <td>:</td>
-                          <td>{sellerProduct.name}</td>
+                          <td>{sellerProduct?.name}</td>
                         </tr>
                         <tr>
                           <td style={{ fontWeight: "600" }}>Category</td>
                           <td>:</td>
-                          <td>{sellerProduct.category}</td>
+                          <td>{sellerProduct?.category}</td>
                         </tr>
                         <tr>
                           <td style={{ fontWeight: "600" }}>Description</td>
                           <td>:</td>
-                          <td>{sellerProduct.description} </td>
+                          <td>{sellerProduct?.description} </td>
                         </tr>
                         <tr>
                           <td style={{ fontWeight: "600" }}>Quantity</td>
@@ -181,7 +181,7 @@ console.log(e,"123");
                     <span className="viewmore">
                       <button
                         onClick={() => {
-                          navigateToOtherUserProductDetails(sellerProduct._id);
+                          navigateToOtherUserProductDetails(sellerProduct?._id);
                         }}
                       >
                         View more

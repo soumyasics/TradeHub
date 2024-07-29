@@ -109,7 +109,10 @@ const viewAllPendingItems = async (req, res) => {
 };
 const viewAllApproveItems = async (req, res) => {
   try {
-    const items = await Item.find({ isModApproved: "approve" })
+    const items = await Item.find({
+      isModApproved: "approve",
+      $or: [{ isDeleted: false }, { isDeleted: { $exists: false } }],
+    })
       .populate("userId")
       .exec();
     return res.status(200).json({ msg: "View approved items", data: items });
@@ -137,7 +140,9 @@ const getApprovedItemsByCategory = async (req, res) => {
       })
         .populate("userId")
         .exec();
-      return res.status(200).json({ msg: "View approved items by "+ category, data: items });
+      return res
+        .status(200)
+        .json({ msg: "View approved items by " + category, data: items });
     } else {
       return res.status(400).json({ msg: "Invalid category" });
     }

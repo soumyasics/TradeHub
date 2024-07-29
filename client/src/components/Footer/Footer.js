@@ -6,7 +6,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaPinterest } from "react-icons/fa";
 function Footer() {
   return (
-    <div>
+    <div className="mt-5">
       <div className="footer-page">
         <div className="container">
           <div className="row">
