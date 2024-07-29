@@ -55,9 +55,9 @@ export const ApprovedExchangeProduct = () => {
          <p           
          > My requested exchanges{" "}</p>
         </div>
-        <h1 style={{textAlign:"center"}}>Status of accepted exchanges
+        <h3 style={{textAlign:"center"}} className="mt-3">Status of accepted exchanges
          
-        </h1>
+        </h3>
 
         {exchangeData.map((e) => {
           const buyerProductId = e.buyerProductId;

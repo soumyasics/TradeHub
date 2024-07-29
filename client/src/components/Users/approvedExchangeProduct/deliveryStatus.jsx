@@ -53,7 +53,7 @@ export const DeliveryStatus = () => {
         onClick={()=>{Navigate("/user/exchange-product")}}>
           Status of accepted exchange{" "} 
         </div>
-        <h1 style={{textAlign:"center"}}> Status of requested exchanges</h1>
+        <h2 className="mt-3" style={{textAlign:"center"}}> Status of requested exchanges</h2>
         {exchangeData.map((e) => {
           const buyerProductId = e.buyerProductId;
           const buyerPic = buyerProductId?.itemPhoto?.filename;

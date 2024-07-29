@@ -199,7 +199,6 @@ const rejectRequestById = async (req, res) => {
 const getAllApprovedExchangesBySellerId = async (req, res) => {
   try {
     const sellerId = req.params.id;
-    console.log("sell", sellerId);
 
     if (!mongoose.Types.ObjectId.isValid(sellerId)) {
       return res.status(400).json({ msg: "invalid seller ID" });
