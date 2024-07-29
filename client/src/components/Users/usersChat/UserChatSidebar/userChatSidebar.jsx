@@ -2,7 +2,7 @@ import axiosInstance from "../../../../apis/axiosInstance";
 import { BASE_URL } from "../../../../apis/baseURL";
 import { useEffect, useState } from "react";
 import "./userChatSidebar.css";
-export const UserChatSidebar = ({ senderId, selectingUser }) => {
+export const UserChatSidebar = ({ senderId, selectingUser,selectedUser }) => {
   const [data, setData] = useState([{ profile: { filename: "" } }]);
   const [fixedUsers, setFixedUsers] = useState([]);
   const [searchUser, setSearchUser] = useState("");
@@ -49,7 +49,7 @@ export const UserChatSidebar = ({ senderId, selectingUser }) => {
             onClick={() => {
               selectingUser(e._id);
             }}
-            className="chatSidebar-view-users d-flex"
+            className={`chatSidebar-view-users d-flex ${e._id === selectedUser && 'active-user-style'}`}
           >
             <img src={`${BASE_URL}${e?.profile?.filename}`} alt="" />
             <p>{e.firstname}</p>

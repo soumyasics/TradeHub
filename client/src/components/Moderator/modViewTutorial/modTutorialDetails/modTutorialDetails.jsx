@@ -4,11 +4,11 @@ import axiosInstance from "../../../../apis/axiosInstance";
 import { BASE_URL } from "../../../../apis/baseURL";
 import { FaArrowLeft } from "react-icons/fa";
 
-export const ModTutorialDetails = ({selectedVideoId, changeSelected}) => {
-  const [data, setData] = useState(null);  // Initialize with null
+export const ModTutorialDetails = ({ selectedVideoId, changeSelected }) => {
+  const [data, setData] = useState(null); // Initialize with null
   const [videoUrl, setVideoUrl] = useState();
 
-  console.log("select", selectedVideoId)
+  console.log("select", selectedVideoId);
   useEffect(() => {
     getData();
   }, []);
@@ -33,9 +33,11 @@ export const ModTutorialDetails = ({selectedVideoId, changeSelected}) => {
 
   const getData = async () => {
     try {
-      const response = await axiosInstance.get(`/getTutorialById/${selectedVideoId}`);
+      const response = await axiosInstance.get(
+        `/getTutorialById/${selectedVideoId}`
+      );
       if (response.status === 200) {
-        setData(response.data.data);  // Ensure response.data.data is correctly accessed
+        setData(response.data.data); // Ensure response.data.data is correctly accessed
       }
     } catch (error) {
       console.log(error);
@@ -43,7 +45,7 @@ export const ModTutorialDetails = ({selectedVideoId, changeSelected}) => {
   };
 
   function isValidVideoURL(url) {
-    if (typeof url !== 'string') return false;  // Check if url is a string
+    if (typeof url !== "string") return false; // Check if url is a string
     const videoExtensions = [
       ".mp4",
       ".avi",
@@ -65,13 +67,14 @@ export const ModTutorialDetails = ({selectedVideoId, changeSelected}) => {
       <div className="text-center justify-content-center mt-5">
         <h2 className="modTutorial-title">{data?.title}</h2>
       </div>
-      
-      <FaArrowLeft 
-className="modTutorial-left-arrow"
-     onClick={() => {
-       changeSelected("")
-     }} />
-      
+
+      <FaArrowLeft
+        className="modTutorial-left-arrow"
+        onClick={() => {
+          changeSelected("");
+        }}
+      />
+
       <div className="modTutorial-details-view-video">
         <iframe
           width="70%"

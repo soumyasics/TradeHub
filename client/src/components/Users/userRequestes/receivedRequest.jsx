@@ -107,6 +107,7 @@ export const ReceivedRequest = () => {
           if (buyerProductFilename) {
             buyProductPic = `${BASE_URL}${buyerProductFilename}`;
           }
+          console.log(e,"chatid");
 
           const sellerProduct = e?.sellerProductId;
           const sellerProductFilename =
@@ -237,7 +238,11 @@ export const ReceivedRequest = () => {
                   Pending
                 </div>
                 <div className="exchangeProduct-chat-btn">
-                  <button>
+                  <button
+                  onClick={()=>
+                    {navigate(`/user/chat-dashboard-params/${e?.buyerId?._id}`)}
+                    }
+                  >
                   <BsChatText /> &nbsp; 
                   Chat
                   </button>

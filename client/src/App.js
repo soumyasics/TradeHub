@@ -78,6 +78,7 @@ import { AdminUploadVideo } from "./components/Admin/adminUploadVideo/adminUploa
 import { DeliveryPending } from "./components/Delivery/deliveryPending/deliveryPending";
 import { DeliveredOrders } from "./components/Delivery/deliveredOrders/deliveredOrders";
 import { ViewAllItemsById } from "./components/Users/viewAllItems/viewAllItemsById";
+import { UserChatDashboardParams } from "./components/Users/usersChat/userChatDashboard/userChatDashboardParams";
 const App = () => {
   return (
     <div className="App">
@@ -131,6 +132,7 @@ const App = () => {
             element={<ApprovedRequestProduct />}
           />
           <Route path="/user/delivery-status" element={<DeliveryStatus />} />
+          <Route path="/user/chat-dashboard-params/:id" element={<UserChatDashboardParams/>} />
           {/* moderators  */}
           <Route path="/moderator/register" element={<ModeratorRegister />} />
           <Route path="/moderator/login" element={<Moderatorlogin />} />
