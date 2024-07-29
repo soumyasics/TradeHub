@@ -24,6 +24,9 @@ const viewGuideline = async (req, res) => {
   try {
     const guideline = await GuidelineModel.find();
     const finalGuideline = guideline[guideline.length -1]
+    if (!finalGuideline) {
+      return res.status(201).json({status: 201})
+    }
     return res.json({
       status: 200,
       data: finalGuideline,

@@ -79,6 +79,8 @@ import { DeliveryPending } from "./components/Delivery/deliveryPending/deliveryP
 import { DeliveredOrders } from "./components/Delivery/deliveredOrders/deliveredOrders";
 import { ViewAllItemsById } from "./components/Users/viewAllItems/viewAllItemsById";
 import { UserChatDashboardParams } from "./components/Users/usersChat/userChatDashboard/userChatDashboardParams";
+import { UserDeliveredProducts } from "./components/Users/exchangePage/userDeliveredProducts/userDeliveredProducts";
+import { UserPersonalisedSuggestion } from "./components/Users/userPersonalised suggestion/userPersonalisedSuggestion";
 const App = () => {
   return (
     <div className="App">
@@ -133,6 +135,9 @@ const App = () => {
           />
           <Route path="/user/delivery-status" element={<DeliveryStatus />} />
           <Route path="/user/chat-dashboard-params/:id" element={<UserChatDashboardParams/>} />
+          <Route path="/user/delivered-products" element={<UserDeliveredProducts/>} />
+          <Route path="/user/personalised-sugggestion" element={<UserPersonalisedSuggestion/>} />
+
           {/* moderators  */}
           <Route path="/moderator/register" element={<ModeratorRegister />} />
           <Route path="/moderator/login" element={<Moderatorlogin />} />

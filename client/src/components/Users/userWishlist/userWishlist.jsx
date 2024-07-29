@@ -69,7 +69,7 @@ export const UserWishlist = () => {
         <div className="container text-center">
           {wishlist.length == 0 && (
             <div>
-              <h3>You have not added any wishlist items</h3>
+              <h3 className="mt-5">You have not added any wishlist items</h3>
             </div>
           )}
           <div className="row row-cols-4">

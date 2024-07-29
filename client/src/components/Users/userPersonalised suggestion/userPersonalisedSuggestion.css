@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.productCard-body {
+  min-height: 140vh;
+}
+.user-wishlist-heading3 {
+  color: black;
+  font-family: Poppins;
+  font-size: 34px;
+  font-weight: 500;
+}
+.productCard-box2 {
+  margin-top: 25px;
+  padding: 8px;
+  border: 1px solid #6d3698;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  text-align: left;
+  height: 330px !important;
+}
+.productCard-button2 {
+  border-radius: 9px;
+  background: #6d3698;
+  width: 60%;
+  height: 35px;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 15px;
+  font-weight: 500;
+}
+.productCard-points-box {
+  height: 28px;
+  width: 85px;
+  border-radius: 24.286px;
+  border: 1.214px solid rgba(0, 0, 0, 0.5);
+  background: #fff;
+  margin-left: 5%;
+  margin-top: 8%;
+}
+.productCard-points-box p {
+  color: #000;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 400;
+  padding-left: 3px;
+}
+.productCard-points-box img {
+  height: 20px;
+  width: 30px;
+  padding-left: 10px;
+  margin-top: 2px;
+}
+.user-wishlist-fill-heart {
+  z-index: 2;
+  position: absolute;
+  top: 10%;
+  left: 80%;
+  color: red;
+  font-size: 29px;
+}
+.user-wish-list-heart {
+  z-index: 2;
+  position: absolute;
+  top: 10%;
+  left: 80%;
+  font-size: 34px;
+  color: red;
+}
+
+
+/* modifications  */
+.wishlist-heart-icon {
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* modifications  */
+.user-view-more-btn button {
+  border: 1px solid #6d3698;
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 5px;
+  color: #6d3698;
+  font-weight: 500;
+  background: #fff;
+}
+
+.user-view-more-btn button:hover {
+  background: #6d3698;
+  color: #fff;
+}

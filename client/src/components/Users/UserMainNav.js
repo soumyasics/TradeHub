@@ -157,6 +157,9 @@ function UserMainNav() {
               <Link className="dropdown-item" to="/user/exchange-product" id="">
                 My Exchanges
               </Link>
+              <Link className="dropdown-item" to="/user/delivered-products" id="">
+              product delivered
+              </Link>
               <h6
                 className="dropdown-item text-danger fw-bold"
                 style={{ cursor: "pointer" }}
