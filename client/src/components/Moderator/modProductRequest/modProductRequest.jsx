@@ -81,7 +81,7 @@ export const ModProductRequest = ({ updateProductId, title = "" }) => {
             <option value="Books">Books</option>
             <option value="Electronics">Electronics</option>
             <option value="Jewellery">Jewellery</option>
-            <option value="Home Appliances">Home Appliances</option>
+            <option value="Home-Appliances">Home Appliances</option>
             <option value="Clothing">Clothing</option>
           </Form.Select>
 

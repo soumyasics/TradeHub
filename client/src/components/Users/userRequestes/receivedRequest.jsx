@@ -134,22 +134,22 @@ export const ReceivedRequest = () => {
                         <tr>
                           <td style={{ fontWeight: "600" }}>Item name</td>
                           <td>:</td>
-                          <td>{sellerProduct.name}</td>
+                          <td>{sellerProduct?.name}</td>
                         </tr>
                         <tr>
                           <td style={{ fontWeight: "600" }}>Category</td>
                           <td>:</td>
-                          <td>{sellerProduct.category}</td>
+                          <td>{sellerProduct?.category}</td>
                         </tr>
                         <tr>
                           <td style={{ fontWeight: "600" }}>Quantity</td>
                           <td>:</td>
-                          <td>{sellerProduct.quantity}</td>
+                          <td>{sellerProduct?.quantity}</td>
                         </tr>
                         <tr>
                           <td style={{ fontWeight: "600" }}>Description</td>
                           <td>:</td>
-                          <td>{sellerProduct.description} </td>
+                          <td>{sellerProduct?.description} </td>
                         </tr>
                         <tr>
                           <td>
@@ -165,7 +165,7 @@ export const ReceivedRequest = () => {
                     <span className="viewmore">
                       <button
                         onClick={() => {
-                          navigateToMyProductDetails(sellerProduct._id);
+                          navigateToMyProductDetails(sellerProduct?._id);
                         }}
                       >
                         View more
@@ -204,7 +204,7 @@ export const ReceivedRequest = () => {
                         <tr>
                           <td style={{ fontWeight: "600" }}>Quantity</td>
                           <td>:</td>
-                          <td>{buyerProduct.quantity}</td>
+                          <td>{buyerProduct?.quantity}</td>
                         </tr>
                         <tr>
                           <td style={{ fontWeight: "600" }}>Description</td>

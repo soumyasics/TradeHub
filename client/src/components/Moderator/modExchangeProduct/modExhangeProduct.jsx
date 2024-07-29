@@ -18,27 +18,28 @@ export const ModExchangeProduct = () => {
       if (response.status == 200) {
         const data = response.data.data;
         setRequestData(data);
-        setfixedData(data);  
-        console.log("12346",data);
-          }
+        setfixedData(data);;
+      }
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(requestData);
 
   useEffect(() => {
     getRequest();
   }, []);
   const handleSearch = (e) => {
     const value = e.target.value;
-    console.log(value);
     if (value) {
       const buyerFilterData = fixedData.filter((items) => {
-        return items.buyerProductId.name.toLowerCase().includes(value.toLowerCase());
+        return items.buyerProductId.name
+          .toLowerCase()
+          .includes(value.toLowerCase());
       });
       const sellerFilterData = fixedData.filter((items) => {
-        return items.sellerProductId.name.toLowerCase().includes(value.toLowerCase());
+        return items.sellerProductId.name
+          .toLowerCase()
+          .includes(value.toLowerCase());
       });
       const filterData = buyerFilterData.concat(sellerFilterData);
       setRequestData(filterData);
@@ -46,54 +47,43 @@ export const ModExchangeProduct = () => {
       setRequestData(fixedData);
     }
   };
-  const filterByCategory = (e) =>
-  {
-    const category = e.target.value
-    if (category)
-    {
-  const buyerfilterData = fixedData.filter((items) =>
-  {
-    return items.buyerProductId.category == category
-  })
-  const sellerfilterData = fixedData.filter((items) =>
-  {
-    return items.sellerProductId.category == category
-  })
-  const filterData = buyerfilterData.concat(sellerfilterData)
-  setRequestData(filterData);
-  }
-  
-    else
-    {
-      setRequestData(fixedData)
+  const filterByCategory = (e) => {
+    const category = e.target.value;
+    if (category) {
+      const buyerfilterData = fixedData.filter((items) => {
+        return items?.buyerProductId?.category == category;
+      });
+      const sellerfilterData = fixedData.filter((items) => {
+        return items?.sellerProductId?.category == category;
+      });
+      const filterData = buyerfilterData.concat(sellerfilterData);
+      setRequestData(filterData);
+    } else {
+      setRequestData(fixedData);
     }
-    
-  }
+  };
 
   return (
     <div className="userTransaction-main">
-       <div className="d-flex  admin-transaction-search-box">
+      <div className="d-flex  admin-transaction-search-box">
         <p>Search by item name :</p>
-        <input type="search" 
-        placeholder="Search"
-        onChange={handleSearch} />
+        <input type="search" placeholder="Search" onChange={handleSearch} />
 
         <Form.Select
-        aria-label="Default select example "
-        className=" admin-transaction-select"
-        onChange={filterByCategory}
-      >
-        <option value="">Filter</option>
-        <option value="Books">Books</option>
-        <option value="Electronics">Electronics</option>
-        <option value="Jewellery">Jewellery</option>
-        <option value="Home-Appliances">Home-Appliances</option>
-        <option value="Clothing">Clothing</option>
-        <option value="Furniture">Furniture</option>
-      </Form.Select>
+          aria-label="Default select example "
+          className=" admin-transaction-select"
+          onChange={filterByCategory}
+        >
+          <option value="">Filter by category</option>
+          <option value="Books">Books</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Jewellery">Jewellery</option>
+          <option value="Home-Appliances">Home-Appliances</option>
+          <option value="Clothing">Clothing</option>
+          <option value="Furniture">Furniture</option>
+        </Form.Select>
       </div>
 
-     
       <div className="userTransaction-heading-box">
         Product exchange request
       </div>
@@ -215,19 +205,19 @@ export const ModExchangeProduct = () => {
                       <img src={img3} alt="icon" className="w-100" />
                     </div>
                     <div className="d-flex">
-                        Delivery status :
-                        {e?.deliveryStatus === "pending" ? (
-                          <p className="text-warning">Pending</p>
-                        ) : e?.deliveryStatus == "accepted" ? (
-                          <p className="text-success">Accepted</p>
-                        ) : e?.deliveryStatus == "delivered" ? (
-                          <p>
-                            <p className="text-success">Delivered</p>
-                          </p>
-                        ): (
-                          <p className="text-danger">Rejected</p>
-                        )}
-                      </div>
+                      Delivery status :
+                      {e?.deliveryStatus === "pending" ? (
+                        <p className="text-warning">Pending</p>
+                      ) : e?.deliveryStatus == "accepted" ? (
+                        <p className="text-success">Accepted</p>
+                      ) : e?.deliveryStatus == "delivered" ? (
+                        <p>
+                          <p className="text-success">Delivered</p>
+                        </p>
+                      ) : (
+                        <p className="text-danger">Rejected</p>
+                      )}
+                    </div>
                   </div>
                 </div>
 
@@ -277,7 +267,7 @@ export const ModExchangeProduct = () => {
                             <tr>
                               <th style={{ fontWeight: "600" }}>Category</th>
                               <td>:</td>
-                              <td>{sellerProduct.category}</td>
+                              <td>{sellerProduct?.category}</td>
                             </tr>
                             <tr>
                               <th style={{ fontWeight: "600" }}>Condition</th>
@@ -290,7 +280,7 @@ export const ModExchangeProduct = () => {
                               <td>
                                 <div className="userTransaction-point-box d-flex">
                                   <img src={img1} alt="" />
-                                  <p>{sellerProduct.point}</p>
+                                  <p>{sellerProduct?.point}</p>
                                 </div>
                               </td>
                             </tr>

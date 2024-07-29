@@ -104,16 +104,13 @@ export const ViewAllItems = () => {
   };
   const filterByCategory = (e) => {
     const category = e.target.value;
-    if(category)
-    {
+    if (category) {
       const filteredItems = fixedData.filter((items) => {
         return items.category == category;
       });
       setApprovedItems(filteredItems);
-    }
-    else
-    {
-      setApprovedItems(fixedData)
+    } else {
+      setApprovedItems(fixedData);
     }
   };
   return (
@@ -130,7 +127,7 @@ export const ViewAllItems = () => {
           <option value="Books">Books</option>
           <option value="Electronics">Electronics</option>
           <option value="Jewellery">Jewellery</option>
-          <option value="Home Appliances">Home Appliances</option>
+          <option value="Home-Appliances">Home Appliances</option>
           <option value="Clothing">Clothing</option>
         </Form.Select>
 

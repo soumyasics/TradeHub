@@ -53,7 +53,7 @@ export const DeliveryStatus = () => {
         onClick={()=>{Navigate("/user/exchange-product")}}>
           Status of accepted exchange{" "} 
         </div>
-        <h1 style={{textAlign:"center"}}> Status of requested exchanges</h1>
+        <h2 className="mt-3" style={{textAlign:"center"}}> Status of requested exchanges</h2>
         {exchangeData.map((e) => {
           const buyerProductId = e.buyerProductId;
           const buyerPic = buyerProductId?.itemPhoto?.filename;
@@ -91,19 +91,19 @@ export const DeliveryStatus = () => {
                               <tr>
                                 <th style={{ fontWeight: "600" }}>item name</th>
                                 <td>:</td>
-                                <td> {buyerProductId.name}</td>
+                                <td> {buyerProductId?.name}</td>
                               </tr>
                               <tr>
                                 <th style={{ fontWeight: "600" }}>category</th>
                                 <td>:</td>
-                                <td>{buyerProductId.category} </td>
+                                <td>{buyerProductId?.category} </td>
                               </tr>
                               <tr>
                                 <th style={{ fontWeight: "600" }}>
                                   Description
                                 </th>
                                 <td>:</td>
-                                <td> {buyerProductId.description}</td>
+                                <td> {buyerProductId?.description}</td>
                               </tr>
                             </tbody>
                           </table>
@@ -170,19 +170,19 @@ export const DeliveryStatus = () => {
                               <tr>
                                 <th style={{ fontWeight: "600" }}>item name</th>
                                 <td>:</td>
-                                <td>{sellerProductId.name} </td>
+                                <td>{sellerProductId?.name} </td>
                               </tr>
                               <tr>
                                 <th style={{ fontWeight: "600" }}>Category</th>
                                 <td>:</td>
-                                <td>{sellerProductId.category}</td>
+                                <td>{sellerProductId?.category}</td>
                               </tr>
                               <tr>
                                 <th style={{ fontWeight: "600" }}>
                                   Description
                                 </th>
                                 <td>:</td>
-                                <td>{sellerProductId.description}</td>
+                                <td>{sellerProductId?.description}</td>
                               </tr>
                             </tbody>
                           </table>

@@ -192,15 +192,15 @@
   height: 130px;
 }
 .modTransaction-center-image img {
-  margin-left:12%;
+  margin-left: 12%;
   margin-top: 3%;
   margin-right: 40px;
 }
-.modExchange-delivery-status{
-    color: #000;
-    font-family: Poppins;
-    font-size: 17px;
-    font-weight: 500;
+.modExchange-delivery-status {
+  color: #000;
+  font-family: Poppins;
+  font-size: 17px;
+  font-weight: 500;
 }
 /* search */
 .admin-transaction-search-box p {
@@ -211,36 +211,32 @@
   padding-left: 20px;
   margin-right: 20px;
 }
-.admin-transaction-search-box input
-{
+.admin-transaction-search-box input {
   width: 215px;
-    height: 33px;
-    background: #D8C1EB;
-    padding-left: 18px;
+  height: 33px;
+  background: #d8c1eb;
+  padding-left: 18px;
 }
-.admin-transaction-search-box button
-{
-background: #6D3698;
-color: #FFF;
-font-family: Poppins;
-font-size: 15.808px;
-font-weight: 500;
-height: 39px;
-width: 100px;
-margin-left: 20px;}
-.admin-transaction-search-box
-{
+.admin-transaction-search-box button {
+  background: #6d3698;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 15.808px;
+  font-weight: 500;
+  height: 39px;
+  width: 100px;
+  margin-left: 20px;
+}
+.admin-transaction-search-box {
   margin-top: 30px !important;
   margin-left: 67px;
 }
-.admin-transaction-select
-{
-padding: 10px 39px 10px 33px;
-align-items: center;
-width: 250px !important;
-color: #FFF;
-font-family: Poppins;
-font-size: 25.808px;
-font-weight: 500;
-margin-left:33%;
+.admin-transaction-select {
+  padding: 10px 39px 10px 33px;
+  align-items: center;
+  width: 250px !important;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 25.808px;
+  font-weight: 500;
 }

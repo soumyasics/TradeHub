@@ -54,10 +54,10 @@ function UserMainNav() {
         <Navbar
           collapseOnSelect
           expand="lg"
-          className="d-flex justify-content-between pe-5"
+          className="d-flex justify-content-between"
           id="navfixed"
         >
-          <div className="col-2">
+          <div className="col-2 mb-3">
             <Navbar.Brand
               onClick={navigateUserHome}
               style={{ cursor: "pointer" }}
@@ -92,11 +92,11 @@ function UserMainNav() {
             <InputGroup.Text
               id="basic-addon1"
               onClick={() => {
-                navigate(`/user/view-all-items/${searchValue}`)
+                navigate(`/user/view-all-items/${searchValue}`);
               }}
-              className="modproduct-req-search-box" >
-              
-                <IoSearch className="mod-product-request-search-icon" />
+              className="modproduct-req-search-box"
+            >
+              <IoSearch className="mod-product-request-search-icon" />
             </InputGroup.Text>
           </InputGroup>
 
@@ -111,7 +111,7 @@ function UserMainNav() {
           <p className="usermain-navbar-home" onClick={userViewItems}>
             My Items
           </p>
-          <Link to="/users/chat" className="me-5">
+          <Link to="/users/chat" className="me-3">
             <p className="usermain-navbar-chat">
               <BsChatText /> &nbsp; Chat
             </p>
@@ -146,7 +146,7 @@ function UserMainNav() {
                 <IoMdContact className="usermain-navbar-iconloop mt-3" />
               </Nav.Link>
             </Dropdown.Toggle>
-            <Dropdown.Menu id="drop-down-basic">
+            <Dropdown.Menu id="drop-down-basic" style={{left: "-75px"}}>
               <Link className="dropdown-item" to="/user/user-profile" id="">
                 View Profile
               </Link>
@@ -157,8 +157,12 @@ function UserMainNav() {
               <Link className="dropdown-item" to="/user/exchange-product" id="">
                 My Exchanges
               </Link>
-              <Link className="dropdown-item" to="/user/delivered-products" id="">
-              product delivered
+              <Link
+                className="dropdown-item"
+                to="/user/delivered-products"
+                id=""
+              >
+                Delivered Products
               </Link>
               <h6
                 className="dropdown-item text-danger fw-bold"

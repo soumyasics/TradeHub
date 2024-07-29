@@ -111,10 +111,10 @@ export const DeliveryRequest = () => {
             </thead>
             <tbody>
               {data.map((users, index) => {
-                const buyerId = users.buyerId;
-                const buyerProductId = users.buyerProductId;
-                const sellerId = users.sellerId;
-                const sellerProductId = users.sellerProductId;
+                const buyerId = users?.buyerId;
+                const buyerProductId = users?.buyerProductId;
+                const sellerId = users?.sellerId;
+                const sellerProductId = users?.sellerProductId;
                 return (
                   <>
                     <React.Fragment key={users._id}>
@@ -122,12 +122,12 @@ export const DeliveryRequest = () => {
                         <td rowSpan={2} className="py-4">
                           {index + 1}
                         </td>
-                        <td>{buyerProductId.name}</td>
+                        <td>{buyerProductId?.name}</td>
                         <td>
                           {buyerId.firstname} {users.lastname}
                         </td>
                         <td>{buyerId.contact}</td>
-                        <td>{buyerProductId.address}</td>
+                        <td>{buyerProductId?.address}</td>
                         <td rowSpan={2} id="delivery-approval-btn-containers">
                           <button
                             className="text-success"
@@ -146,12 +146,12 @@ export const DeliveryRequest = () => {
                         </td>
                       </tr>
                       <tr>
-                        <td>{sellerProductId.name}</td>
+                        <td>{sellerProductId?.name}</td>
                         <td>
-                          {sellerId.firstname} {sellerId.lastname}
+                          {sellerId?.firstname} {sellerId?.lastname}
                         </td>
-                        <td>{sellerId.contact}</td>
-                        <td>{sellerProductId.address}</td>
+                        <td>{sellerId?.contact}</td>
+                        <td>{sellerProductId?.address}</td>
                         <td></td>
                       </tr>
                     </React.Fragment>

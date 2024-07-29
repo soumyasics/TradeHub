@@ -23,7 +23,7 @@ function UserNavbar({ goToAboutSection = null}) {
                   style={{ width: "30px", height: "30px" }}
                   className="logoimg ms-3"
                   alt="img"
-                ></img>
+                />
                 <span className="usernav-page-trade">trade</span>{" "}
                 <span className="usernav-page-hub">hub</span>
               </div>

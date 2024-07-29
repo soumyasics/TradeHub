@@ -61,6 +61,14 @@ const sSchema = mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    isExchanged: {
+      type: Boolean,
+      default: false,
+    },
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
     point: {
       type: Number,
       default: 0,

@@ -5,16 +5,21 @@
 .user-wishlist-heading3 {
   color: black;
   font-family: Poppins;
-  font-size: 34px;
+  font-size: 20px;
   font-weight: 500;
 }
+.user-wishlist-heading4 {
+  font-size: 18px;
+  font-family: Poppins;
+  font-weight: 500;
+}
+
 .productCard-box3 {
   padding: 8px;
   border: 1px solid #6d3698;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   text-align: left;
   height: 330px !important;
-  width: 45% !important;
 }
 .productCard-button2 {
   border-radius: 9px;
@@ -26,28 +31,15 @@
   font-size: 15px;
   font-weight: 500;
 }
-.productCard-points-box {
+.productCard-points-box2 {
   height: 28px;
-  width: 85px;
   border-radius: 24.286px;
-  border: 1.214px solid rgba(0, 0, 0, 0.5);
+  /* border: 1.214px solid rgba(0, 0, 0, 0.5); */
   background: #fff;
-  margin-left: 5%;
-  margin-top: 8%;
+  width: 28px;
+  
 }
-.productCard-points-box p {
-  color: #000;
-  font-family: Poppins;
-  font-size: 18px;
-  font-weight: 400;
-  padding-left: 3px;
-}
-.productCard-points-box img {
-  height: 20px;
-  width: 30px;
-  padding-left: 10px;
-  margin-top: 2px;
-}
+
 .user-wishlist-fill-heart {
   z-index: 2;
   position: absolute;
@@ -64,7 +56,6 @@
   font-size: 34px;
   color: red;
 }
-
 
 /* modifications  */
 .wishlist-heart-icon {
@@ -87,18 +78,19 @@
   background: #6d3698;
   color: #fff;
 }
-.userDeliverdProducts-viewmore
-
-{
-    background-color: white;
-    border: none;
-    color: blue;
-    text-decoration: underline;
+.userDeliverdProducts-viewmore {
+  background-color: white;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
 }
-.userDeliveryProduct-box
-{
-    width: 88%  !important;
-   padding: 10px 12px 10px ;
-    margin-top: 50px !important;
-    border-radius: 15px;
+.userDeliveryProduct-box {
+  width: 95% !important;
+  padding: 10px 12px 10px;
+  margin-top: 50px !important;
+  border-radius: 15px;
+}
+
+#user-delivered-container h6 {
+  font-size: 14px;
 }

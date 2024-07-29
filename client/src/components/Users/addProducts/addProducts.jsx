@@ -38,7 +38,7 @@ export const AddProducts = () => {
   });
   const navigate = useNavigate();
   const handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -127,18 +127,18 @@ export const AddProducts = () => {
     formData.append("pincode", productData.pincode);
     formData.append("location", productData.location);
     formData.append("itemPhoto", productData.itemPhoto);
-    console.log("form data", formData)
+    console.log("form data", formData);
     sendDataToServer(formData);
   };
 
   const sendDataToServer = async (formData) => {
     try {
-      const res =await  axiosMultipartInstance.post("/registerItem", formData);
+      const res = await axiosMultipartInstance.post("/registerItem", formData);
       if (res.status === 200) {
         toast.success("Item added successfully");
         navigate("/user/view-items");
-      }else {
-        console.log("error", res);  
+      } else {
+        console.log("error", res);
       }
     } catch (err) {
       console.log(err);
@@ -183,9 +183,9 @@ export const AddProducts = () => {
 
   useEffect(() => {
     let id = localStorage.getItem("trade-hub-userId") || null;
-    console.log("iddd", id)
+    console.log("iddd", id);
     if (id) {
-      // id = 
+      // id =
       setProductData({
         ...productData,
         userId: id,
@@ -222,6 +222,7 @@ export const AddProducts = () => {
                         name="category"
                         className="userproduct-select-inp"
                         onChange={handleChanges}
+                        style={{ fontSize: "14px" }}
                       >
                         <option value="" defaultValue={""} selected>
                           Select Category
@@ -254,15 +255,14 @@ export const AddProducts = () => {
                         aria-label="Default select example"
                         onChange={handleChanges}
                         name="condition"
+                        style={{ fontSize: "14px" }}
                       >
                         <option value="" defaultValue={""}>
                           Select
                         </option>
                         <option value="flawless">Flawless</option>
                         <option value="no-damage">No Damage</option>
-                        <option value="minor-scratches">
-                          Minor scratches
-                        </option>
+                        <option value="minor-scratches">Minor scratches</option>
                       </select>
                       <Form.Control.Feedback
                         type="invalid"
@@ -286,6 +286,7 @@ export const AddProducts = () => {
                         onChange={handleChanges}
                         className="form-select userproduct-select-inp"
                         aria-label="Default select example"
+                        style={{fontSize: "14px"}}
                       >
                         <option value="" defaultValue={""} selected>
                           Select Quantity

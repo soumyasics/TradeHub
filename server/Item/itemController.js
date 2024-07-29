@@ -109,7 +109,10 @@ const viewAllPendingItems = async (req, res) => {
 };
 const viewAllApproveItems = async (req, res) => {
   try {
-    const items = await Item.find({ isModApproved: "approve" })
+    const items = await Item.find({
+      isModApproved: "approve",
+      $or: [{ isDeleted: false }, { isDeleted: { $exists: false } }],
+    })
       .populate("userId")
       .exec();
     return res.status(200).json({ msg: "View approved items", data: items });
@@ -128,12 +131,18 @@ const getApprovedItemsByCategory = async (req, res) => {
       category === "Home-Appliances" ||
       category === "Clothing" ||
       category === "Furniture" ||
-      category === "Beauty" 
+      category === "Beauty"
     ) {
-      const items = await Item.find({ isModApproved: "approve", category })
+      const items = await Item.find({
+        isModApproved: "approve",
+        category,
+        isDeleted: false,
+      })
         .populate("userId")
         .exec();
-      return res.status(200).json({ msg: "View approved items by "+ category, data: items });
+      return res
+        .status(200)
+        .json({ msg: "View approved items by " + category, data: items });
     } else {
       return res.status(400).json({ msg: "Invalid category" });
     }
@@ -211,7 +220,10 @@ const viewAllitemsByUserId = async (req, res) => {
       return res.status(400).json({ msg: "Invalid userId", id });
     }
 
-    const items = await Item.find({ userId: id });
+    const items = await Item.find({
+      userId: id,
+      $or: [{ isDeleted: false }, { isDeleted: { $exists: false } }],
+    });
     return res
       .status(200)
       .json({ msg: "Data obtained successfully", data: items });
@@ -226,7 +238,11 @@ const viewAllActiveitemsByUserId = async (req, res) => {
       return res.status(400).json({ msg: "Invalid userId", id });
     }
 
-    const items = await Item.find({ userId: id, isActive: true, isModApproved: "approve" });
+    const items = await Item.find({
+      userId: id,
+      isActive: true,
+      isModApproved: "approve",
+    });
     return res
       .status(200)
       .json({ msg: "Data obtained successfully", data: items });
@@ -425,5 +441,5 @@ module.exports = {
   itemApproveById,
   itemRejectById,
   addPointToItem,
-  getApprovedItemsByCategory
+  getApprovedItemsByCategory,
 };

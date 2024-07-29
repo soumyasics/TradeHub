@@ -12,6 +12,7 @@ function UserHome() {
       <Landingpage />
       <HomeCategories />
       <NewArrivalProducts />
+      
       <Footer />
     </div>
   );

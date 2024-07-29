@@ -55,12 +55,12 @@ export const ApprovedExchangeProduct = () => {
          <p           
          > My requested exchanges{" "}</p>
         </div>
-        <h1 style={{textAlign:"center"}}>Status of accepted exchanges
+        <h3 style={{textAlign:"center"}} className="mt-3">Status of accepted exchanges
          
-        </h1>
+        </h3>
 
         {exchangeData.map((e) => {
-          const buyerProductId = e.buyerProductId;
+          const buyerProductId = e?.buyerProductId;
           const buyerPic = buyerProductId?.itemPhoto?.filename;
           let buyerProductUrl =
             "https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg";
@@ -68,7 +68,7 @@ export const ApprovedExchangeProduct = () => {
           if (buyerPic) {
             buyerProductUrl = `${BASE_URL}${buyerPic}`;
           }
-          const sellerProductId = e.sellerProductId;
+          const sellerProductId = e?.sellerProductId;
           const sellerPic = sellerProductId?.itemPhoto?.filename;
           let sellerProductUrl =
             "https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg";
@@ -96,19 +96,19 @@ export const ApprovedExchangeProduct = () => {
                               <tr>
                                 <th style={{ fontWeight: "600" }}>item name</th>
                                 <td>:</td>
-                                <td> {buyerProductId.name}</td>
+                                <td> {buyerProductId?.name}</td>
                               </tr>
                               <tr>
                                 <th style={{ fontWeight: "600" }}>category</th>
                                 <td>:</td>
-                                <td>{buyerProductId.category} </td>
+                                <td>{buyerProductId?.category} </td>
                               </tr>
                               <tr>
                                 <th style={{ fontWeight: "600" }}>
                                   Description
                                 </th>
                                 <td>:</td>
-                                <td> {buyerProductId.description}</td>
+                                <td> {buyerProductId?.description}</td>
                               </tr>
                             </tbody>
                           </table>
@@ -175,19 +175,19 @@ export const ApprovedExchangeProduct = () => {
                               <tr>
                                 <th style={{ fontWeight: "600" }}>item name</th>
                                 <td>:</td>
-                                <td>{sellerProductId.name} </td>
+                                <td>{sellerProductId?.name} </td>
                               </tr>
                               <tr>
                                 <th style={{ fontWeight: "600" }}>Category</th>
                                 <td>:</td>
-                                <td>{sellerProductId.category}</td>
+                                <td>{sellerProductId?.category}</td>
                               </tr>
                               <tr>
                                 <th style={{ fontWeight: "600" }}>
                                   Description
                                 </th>
                                 <td>:</td>
-                                <td>{sellerProductId.description}</td>
+                                <td>{sellerProductId?.description}</td>
                               </tr>
                             </tbody>
                           </table>
