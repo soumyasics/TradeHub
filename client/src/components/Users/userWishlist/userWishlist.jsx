@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 export const UserWishlist = () => {
   const [wishlist, setWishlist] = useState([]);
   const [activeUserId, setActiveUserId] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const userWishlist = async () => {
     try {
       const res = await axiosInstance.get(
@@ -72,9 +72,9 @@ export const UserWishlist = () => {
               <h3 className="mt-5">You have not added any wishlist items</h3>
             </div>
           )}
-          <div className="row row-cols-4">
+          <div className="d-flex justify-content-start gap-5 w-100  flex-wrap">
             {wishlist.map((e) => {
-              const item = e.itemId;
+              const item = e?.itemId;
               const itemFilename = item?.itemPhoto?.filename || null;
               let itemPicUrl =
                 "https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg";
@@ -98,7 +98,7 @@ export const UserWishlist = () => {
                       <div
                         className="wishlist-heart-icon"
                         onClick={() => {
-                          removeItemFromWishlist(item._id);
+                          removeItemFromWishlist(item?._id);
                         }}
                       >
                         <FaHeart className="user-wishlist-fill-heart" />
@@ -126,7 +126,7 @@ export const UserWishlist = () => {
                     <button
                       className="productCard-button"
                       onClick={() => {
-                        navigate(`/user/exchange-items/${item._id}`);
+                        navigate(`/user/exchange-items/${item?._id}`);
                       }}
                     >
                       Exchange Now <FaChevronRight />

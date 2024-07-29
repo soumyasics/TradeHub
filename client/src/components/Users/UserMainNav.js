@@ -146,7 +146,7 @@ function UserMainNav() {
                 <IoMdContact className="usermain-navbar-iconloop mt-3" />
               </Nav.Link>
             </Dropdown.Toggle>
-            <Dropdown.Menu id="drop-down-basic">
+            <Dropdown.Menu id="drop-down-basic" style={{left: "-75px"}}>
               <Link className="dropdown-item" to="/user/user-profile" id="">
                 View Profile
               </Link>

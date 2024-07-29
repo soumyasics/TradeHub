@@ -103,7 +103,6 @@ export const UserDeliveredProducts = () => {
                 <div className=" userDeliveryProduct-box shadow row">
                   <div
                     className="card productCard-box3  col-5"
-                    style={{ width: "18rem" }}
                   >
                     <img
                       src={buyerProductPic}
@@ -114,7 +113,7 @@ export const UserDeliveredProducts = () => {
                       <Row className="mt-3">
                         <Col>
                           <h6 className="card-text text-center   text-capitalize">
-                            {buyerProduct.name}{" "}
+                            {buyerProduct?.name}{" "}
                           </h6>
                         </Col>
                       </Row>
@@ -133,7 +132,7 @@ export const UserDeliveredProducts = () => {
                             className="ms-3"
                           />
 
-                          <h6 className="mt-2 ms-1">{buyerProduct.point}</h6>
+                          <h6 className="mt-2 ms-1">{buyerProduct?.point}</h6>
                         </Col>
                       </Row>
                       <Row className="mt-2">
@@ -145,7 +144,7 @@ export const UserDeliveredProducts = () => {
                         <Col xs={1}>: </Col>
                         <Col className="">
                           <h6 className="card-text text-center   text-capitalize">
-                            {buyerProduct.category}
+                            {buyerProduct?.category}
                           </h6>
                         </Col>
                       </Row>
@@ -158,7 +157,7 @@ export const UserDeliveredProducts = () => {
                           navigate(`/user/exchange-items`);
                         }}
                       >
-                        view more
+                        View more
                       </button>
                     </div>
                   </div>
@@ -173,7 +172,6 @@ export const UserDeliveredProducts = () => {
                   <div
                     className="card productCard-box3 col-5"
                     key=""
-                    style={{ width: "18rem" }}
                   >
                     <img
                       src={sellerProductPic}
@@ -184,7 +182,7 @@ export const UserDeliveredProducts = () => {
                       <Row className="mt-3">
                         <Col>
                           <h6 className="card-text text-center   text-capitalize">
-                            {sellerProduct.name}{" "}
+                            {sellerProduct?.name}{" "}
                           </h6>
                         </Col>
                       </Row>
@@ -203,7 +201,7 @@ export const UserDeliveredProducts = () => {
                             className="ms-3"
                           />
 
-                          <h6 className="mt-2 ms-1">{sellerProduct.point}</h6>
+                          <h6 className="mt-2 ms-1">{sellerProduct?.point}</h6>
                         </Col>
                       </Row>
                       <Row className="mt-2">
@@ -215,7 +213,7 @@ export const UserDeliveredProducts = () => {
                         <Col xs={1}>: </Col>
                         <Col className="">
                           <h6 className="card-text text-center   text-capitalize">
-                            {sellerProduct.category}
+                            {sellerProduct?.category}
                           </h6>
                         </Col>
                       </Row>
@@ -267,14 +265,13 @@ export const UserDeliveredProducts = () => {
           }
           return (
             <div
-              className="container text-center col-6 "
+              className="container text-center col-5 me-3 "
               id="user-delivered-container"
             >
               <div className="row">
-                <div className=" userDeliveryProduct-box shadow row">
+                <div className=" userDeliveryProduct-box shadow row d-flex flex-nowrap">
                   <div
                     className="card productCard-box3  col-5"
-                    style={{ width: "18rem" }}
                   >
                     <img
                       src={buyerProductPic}
@@ -285,7 +282,7 @@ export const UserDeliveredProducts = () => {
                       <Row className="mt-3">
                         <Col>
                           <h6 className="card-text text-center   text-capitalize">
-                            {buyerProduct.name}{" "}
+                            {buyerProduct?.name}{" "}
                           </h6>
                         </Col>
                       </Row>
@@ -304,7 +301,7 @@ export const UserDeliveredProducts = () => {
                             className="ms-3"
                           />
 
-                          <h6 className="mt-2 ms-1">{buyerProduct.point}</h6>
+                          <h6 className="mt-2 ms-1">{buyerProduct?.point}</h6>
                         </Col>
                       </Row>
                       <Row className="mt-2">
@@ -316,7 +313,7 @@ export const UserDeliveredProducts = () => {
                         <Col xs={1}>: </Col>
                         <Col className="">
                           <h6 className="card-text text-center   text-capitalize">
-                            {buyerProduct.category}
+                            {buyerProduct?.category}
                           </h6>
                         </Col>
                       </Row>
@@ -344,7 +341,6 @@ export const UserDeliveredProducts = () => {
                   <div
                     className="card productCard-box3 col-5"
                     key=""
-                    style={{ width: "18rem" }}
                   >
                     <img
                       src={sellerProductPic}
@@ -355,7 +351,7 @@ export const UserDeliveredProducts = () => {
                       <Row className="mt-3">
                         <Col>
                           <h6 className="card-text text-center   text-capitalize">
-                            {sellerProduct.name}{" "}
+                            {sellerProduct?.name}{" "}
                           </h6>
                         </Col>
                       </Row>
@@ -374,7 +370,7 @@ export const UserDeliveredProducts = () => {
                             className="ms-3"
                           />
 
-                          <h6 className="mt-2 ms-1">{sellerProduct.point}</h6>
+                          <h6 className="mt-2 ms-1">{sellerProduct?.point}</h6>
                         </Col>
                       </Row>
                       <Row className="mt-2">
@@ -386,7 +382,7 @@ export const UserDeliveredProducts = () => {
                         <Col xs={1}>: </Col>
                         <Col className="">
                           <h6 className="card-text text-center   text-capitalize">
-                            {sellerProduct.category}
+                            {sellerProduct?.category}
                           </h6>
                         </Col>
                       </Row>
