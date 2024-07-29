@@ -42,8 +42,6 @@ export const DeliveryPending = () => {
   }, [deliveryAgentId]);
 
   const handleDelivery = (exchangeId) => {
-    let id = localStorage.getItem("trade-hub-DAId") || null;
-    setDeliveryAgentId(id);
     confirmDelivery(exchangeId);
   };
 

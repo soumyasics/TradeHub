@@ -138,7 +138,11 @@ export const ApprovedRequestProduct = () => {
                           <p className="text-warning">Pending</p>
                         ) : e?.deliveryStatus == "accepted" ? (
                           <p className="text-success">Accepted</p>
-                        ) : (
+                        ) : e?.deliveryStatus == "delivered" ? (
+                          <p>
+                            <p className="text-success">Delivered</p>
+                          </p>
+                        ): (
                           <p className="text-danger">Rejected</p>
                         )}
                       </div>

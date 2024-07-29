@@ -70,6 +70,7 @@ function ModeratorRegister() {
       repassword,
       checkbox,
       gender,
+      address
     } = data;
     if (!firstname) {
       toast.error("Please enter your first name");
@@ -121,6 +122,11 @@ function ModeratorRegister() {
     }
     if (password !== repassword) {
       toast.error("Passwords do not match");
+      return false;
+    }
+    if(!address)
+    {
+      toast.error("Please enter your address");
       return false;
     }
 

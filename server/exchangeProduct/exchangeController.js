@@ -521,7 +521,6 @@ const deliveredProduct = async (req, res) => {
       id,
       {
         deliveryStatus: "delivered",
-        deliveryAgentId,
       },
       { new: true }
     );

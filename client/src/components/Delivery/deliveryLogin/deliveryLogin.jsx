@@ -112,7 +112,7 @@ function DeliveryAgentLogin() {
                 <form onSubmit={handleSubmit}>
                   <div className="deliveryagent-inputs d-flex">
                     <div className="del-login-label-box">
-                      <label className="deliveryagent-login ">Email</label>
+                      <label className="deliveryagent-login mt-2">Email</label>
                     </div>
                     <input
                       className="deliveryagent-login-textbox  px-3"
@@ -125,7 +125,7 @@ function DeliveryAgentLogin() {
                   </div>
                   <div className="d-flex">
                     <div className="del-login-label-box">
-                      <label className="deliveryagent-login ">Password</label>
+                      <label className="deliveryagent-login mt-2 ">Password</label>
                     </div>
                     {/* <input
                       className="deliveryagent-login-textbox-pass ms-4 px-3"

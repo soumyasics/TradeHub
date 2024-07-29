@@ -148,15 +148,19 @@ export const AdminViewExchange = () => {
                       <img src={img3} alt="icon" className="w-100" />
                     </div>
                     <div className="d-flex">
-                      Delivery status :
-                      {e?.deliveryStatus === "pending" ? (
-                        <p className="text-warning">Pending</p>
-                      ) : e?.deliveryStatus == "accepted" ? (
-                        <p className="text-success">Accepted</p>
-                      ) : (
-                        <p className="text-danger">Rejected</p>
-                      )}
-                    </div>
+                        Delivery status :
+                        {e?.deliveryStatus === "pending" ? (
+                          <p className="text-warning">Pending</p>
+                        ) : e?.deliveryStatus == "accepted" ? (
+                          <p className="text-success">Accepted</p>
+                        ) : e?.deliveryStatus == "delivered" ? (
+                          <p>
+                            <p className="text-success">Delivered</p>
+                          </p>
+                        ): (
+                          <p className="text-danger">Rejected</p>
+                        )}
+                      </div>
                   </div>
                 </div>
 
