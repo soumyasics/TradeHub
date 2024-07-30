@@ -1,5 +1,5 @@
 import { Profiler, useEffect, useState } from "react";
-import img3 from "../../../assets/images/adminlogin.jpg"
+import img3 from "../../../assets/images/adminlogin.jpg";
 import "./userEditProfileCard.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -15,7 +15,7 @@ import { axiosMultipartInstance } from "../../../apis/axiosMultipartInstance";
 export const UsereditProfileCard = ({ getNewData }) => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
-const[profilePic,setProfilePic] = useState({})
+  const [profilePic, setProfilePic] = useState({});
   const [edit, setEdit] = useState({
     firstname: "",
     lastname: "",
@@ -34,20 +34,19 @@ const[profilePic,setProfilePic] = useState({})
       .then((res) => {
         if (res.data?.status === 200) {
           const userData = res.data.data;
-         setProfilePic(`${BASE_URL}${userData?.profile?.filename}`) 
+          setProfilePic(`${BASE_URL}${userData?.profile?.filename}`);
           setEdit({
             email: userData.email,
             contact: userData.contact,
             firstname: userData.firstname,
             lastname: userData.lastname,
           });
-
         }
       })
       .catch((err) => {
         console.log(err);
       });
-      console.log("photo",edit);
+    console.log("photo", edit);
   };
 
   useEffect(() => {
@@ -107,7 +106,10 @@ const[profilePic,setProfilePic] = useState({})
 
   const sendDataToServer = async () => {
     try {
-      const res = await axiosMultipartInstance.post(`editUserById/${userId}`, edit);
+      const res = await axiosMultipartInstance.post(
+        `editUserById/${userId}`,
+        edit
+      );
       if (res.status === 200) {
         toast.success("Update successfull");
       }
@@ -156,18 +158,17 @@ const[profilePic,setProfilePic] = useState({})
 
           <div className="d-flex justify-content-center align-item-center">
             <div className="userEditProfile-image-upload">
-
-            <img src={profilePic}
-             alt="profile"
-             name="profile"
-             onChange={handleChange}
+              <img
+                src={profilePic}
+                alt="profile"
+                name="profile"
+                onChange={handleChange}
               />
-            <FaRegEdit
-              className="userEditProfile-upload-icon"
-              // onChange={handleFileChange}
-              />
-
-            </div>           
+              {/* <FaRegEdit
+                className="userEditProfile-upload-icon"
+                // onChange={handleFileChange}
+              /> */}
+            </div>
           </div>
           <Modal.Body>
             <Form onSubmit={handleSubmit}>

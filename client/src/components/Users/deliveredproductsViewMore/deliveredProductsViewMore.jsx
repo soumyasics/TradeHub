@@ -13,8 +13,9 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 export const DeliveredProductsViewMore = () => {
-  const [product, setProduct] = useState(null);
-  const [ownerDetails, setOwnerDetails] = useState();
+  const [product, setProduct] = useState({});
+  const [userId, setUserId] = useState("");
+  const [ownerDetails, setOwnerDetails] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -31,6 +32,15 @@ export const DeliveredProductsViewMore = () => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    const id = localStorage.getItem("trade-hub-userId") || null;
+    if (id) {
+      setUserId(id);
+    } else {
+      toast.error("login again");
+    }
+  });
   console.log(product, "dsf");
 
   useEffect(() => {
@@ -102,35 +112,39 @@ export const DeliveredProductsViewMore = () => {
                   </tr>
                 </table>
               </div>
-              <h4>Owner details</h4>
-              <div className="Exchange-owner-details row">
-                <div className="col-3 mt-3">
-                  <img
-                    style={{ height: "100px", width: "100px" }}
-                    src={`${BASE_URL}${ownerDetails?.profile?.filename}`}
-                    alt=""
-                  />
-                </div>
-                <div className="col-9">
-                  <table
-                    style={{ width: "50%", height: "75%" }}
-                    className="mt-3"
-                  >
-                    <tbody>
-                      <tr>
-                        <td>Name</td>
-                        <td>:</td>
-                        <td>{ownerDetails?.firstname}</td>
-                      </tr>
-                      <tr>
-                        <td>contact</td>
-                        <td>:</td>
-                        <td>{ownerDetails?.contact}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+              {userId !== ownerDetails?._id && (
+                <>
+                  <h4>Owner details</h4>
+                  <div className="Exchange-owner-details row">
+                    <div className="col-3 my-3">
+                      <img
+                        style={{ height: "100px", width: "100px" }}
+                        src={`${BASE_URL}${ownerDetails?.profile?.filename}`}
+                        alt=""
+                      />
+                    </div>
+                    <div className="col-9">
+                      <table
+                        style={{ width: "50%", height: "75%" }}
+                        className="mt-3"
+                      >
+                        <tbody>
+                          <tr>
+                            <td>Name</td>
+                            <td>:</td>
+                            <td>{ownerDetails?.firstname}</td>
+                          </tr>
+                          <tr>
+                            <td>contact</td>
+                            <td>:</td>
+                            <td>{ownerDetails?.contact}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
 

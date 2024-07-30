@@ -35,7 +35,7 @@ export const UserDeliveredProducts = () => {
   const getRequestByBuyerId = async () => {
     try {
       const response = await axiosInstance.get(
-        `getAllRequestByBuyerId/${activeUserId}`
+        `getAllDeliveredRequestByBuyerId/${activeUserId}`
       );
       if (response.status == 200) {
         const data = response.data.data;
@@ -48,7 +48,7 @@ export const UserDeliveredProducts = () => {
   const getRequestBySellerId = async () => {
     try {
       const response = await axiosInstance.get(
-        `getAllRequestBySellerId/${activeUserId}`
+        `getAllDeliveredRequestBySellerId/${activeUserId}`
       );
       if (response.status == 200) {
         console.log("fdgd", response.data.data);
@@ -378,7 +378,7 @@ export const UserDeliveredProducts = () => {
                           navigate(`/user/exchange-items`);
                         }}
                       >
-                        view more
+                        View more
                       </button>
                     </div>
                   </div>

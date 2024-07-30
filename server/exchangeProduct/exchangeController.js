@@ -92,6 +92,54 @@ const getAllRequestBySellerId = async (req, res) => {
   }
 };
 
+const getAllDeliveredRequestByBuyerId = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ msg: "Invalid ID" });
+    }
+
+    const exchangeProducts = await ExchangeProductModel.find({
+      buyerId: id,
+      deliveryStatus: "delivered",
+    })
+      .populate("buyerProductId")
+      .populate("sellerProductId")
+      .populate("buyerId")
+      .populate("sellerId")
+      .exec();
+    return res
+      .status(200)
+      .json({ msg: "All requests by buyer id", data: exchangeProducts });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+};
+
+const getAllDeliveredRequestBySellerId = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ msg: "Invalid ID" });
+    }
+
+    const exchangeProducts = await ExchangeProductModel.find({
+      sellerId: id, 
+      deliveryStatus: "delivered",
+    })
+      .populate("buyerProductId")
+      .populate("sellerProductId")
+      .populate("buyerId")
+      .populate("sellerId")
+      .exec();
+    return res
+      .status(200)
+      .json({ msg: "All requests by seller id", data: exchangeProducts });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+};
+
 const getAllExchangeRequests = async (req, res) => {
   try {
     const allReqs = await ExchangeProductModel.find({})
@@ -372,10 +420,8 @@ const getAllDeliveredOrdersByDeliveryAgentId = async (req, res) => {
 };
 const getAllDeliveredOrders = async (req, res) => {
   try {
-
-
     const deliveredOrders = await ExchangeProductModel.find({
-      deliveryStatus: "delivered"
+      deliveryStatus: "delivered",
     })
       .populate("buyerProductId")
       .populate("sellerProductId")
@@ -614,5 +660,9 @@ module.exports = {
   getAllRejectedOrdersByDeliveryAgentId,
   getAllApprovedExchangesBySellerId,
   getAllApprovedExchangesByBuyerId,
-  deliveredProduct,getAllDeliveredOrdersByDeliveryAgentId,getAllDeliveredOrders
+  deliveredProduct,
+  getAllDeliveredOrdersByDeliveryAgentId,
+  getAllDeliveredOrders,
+  getAllDeliveredRequestBySellerId,
+  getAllDeliveredRequestByBuyerId,
 };
