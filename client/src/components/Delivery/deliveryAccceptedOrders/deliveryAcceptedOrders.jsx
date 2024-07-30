@@ -87,7 +87,7 @@ export const DeliveryAcceptedOrders = () => {
                               <td>Items name</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {buyerProductId.name}
+                                {buyerProductId?.name}
                               </td>
                             </tr>
                           </thead>
@@ -96,21 +96,21 @@ export const DeliveryAcceptedOrders = () => {
                               <td>Customer name</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {buyerId.firstname} {buyerId.lastname}
+                                {buyerId?.firstname} {buyerId?.lastname}
                               </td>
                             </tr>
                             <tr>
                               <td>Phone number</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {buyerId.contact}
+                                {buyerId?.contact}
                               </td>
                             </tr>
                             <tr>
                               <td>Condition</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {buyerProductId.condition}
+                                {buyerProductId?.condition}
                               </td>
                             </tr>
                           </tbody>
@@ -121,7 +121,7 @@ export const DeliveryAcceptedOrders = () => {
                           <div className="deliveryItemView-pending bg-success"></div>
                           <p className="delivery-view-item-acceted">Accepted</p>
                         </div>
-                      </div>
+                      </div>  
                     </div>
                   </div>
                 </div>
@@ -145,7 +145,7 @@ export const DeliveryAcceptedOrders = () => {
                               <td>Items name</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {sellerProductId.name}
+                                {sellerProductId?.name}
                               </td>
                             </tr>
                           </thead>
@@ -154,21 +154,21 @@ export const DeliveryAcceptedOrders = () => {
                               <td>Customer name</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {sellerId.firstname} {sellerId.lastname}
+                                {sellerId?.firstname} {sellerId?.lastname}
                               </td>
                             </tr>
                             <tr>
                               <td>Phone number</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {sellerId.contact}
+                                {sellerId?.contact}
                               </td>
                             </tr>
                             <tr>
                               <td>Condition</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {sellerProductId.condition}
+                                {sellerProductId?.condition}
                               </td>
                             </tr>
                           </tbody>

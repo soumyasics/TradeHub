@@ -534,7 +534,6 @@ const acceptDeliveryReqById = async (req, res) => {
     deliveryAgent.acceptedOrders.push(newRequest._id);
     await deliveryAgent.save();
 
-    console.log("new", newRequest);
     return res
       .status(200)
       .json({ msg: "Request accepted successfully", data: newRequest });

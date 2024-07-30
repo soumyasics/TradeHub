@@ -82,7 +82,7 @@ export const DeliveryRejectedOrders = () => {
                               <td>Items name</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {buyerProductId.name}
+                                {buyerProductId?.name}
                               </td>
                             </tr>
                           </thead>
@@ -91,21 +91,21 @@ export const DeliveryRejectedOrders = () => {
                               <td>Customer name</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {buyerId.firstname} {buyerId.lastname}
+                                {buyerId?.firstname} {buyerId?.lastname}
                               </td>
                             </tr>
                             <tr>
                               <td>Phone number</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {buyerId.contact}
+                                {buyerId?.contact}
                               </td>
                             </tr>
                             <tr>
                               <td>Condition</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {buyerId.condition}
+                                {buyerId?.condition}
                               </td>
                             </tr>
                           </tbody>
@@ -140,8 +140,8 @@ export const DeliveryRejectedOrders = () => {
                               <td>Items name</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {sellerProductId.firstname}{" "}
-                                {sellerProductId.lastname}
+                                {sellerProductId?.firstname}{" "}
+                                {sellerProductId?.lastname}
                               </td>
                             </tr>
                           </thead>
@@ -155,14 +155,14 @@ export const DeliveryRejectedOrders = () => {
                               <td>Phone number</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {sellerId.contact}
+                                {sellerId?.contact}
                               </td>
                             </tr>
                             <tr>
                               <td>Condition</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {sellerProductId.condition}
+                                {sellerProductId?.condition}
                               </td>
                             </tr>
                           </tbody>

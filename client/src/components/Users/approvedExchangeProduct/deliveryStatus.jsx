@@ -21,9 +21,8 @@ export const DeliveryStatus = () => {
         `getAllApprovedExchangesByBuyerId/${activeUserId}`
       );
       if (response.status == 200) {
-        console.log(response);
-        const data = response.data.data
-        data.reverse()
+        const data = response.data.data;
+        data.reverse();
         setExchangeData(data);
       }
     } catch (error) {
@@ -51,11 +50,18 @@ export const DeliveryStatus = () => {
       <UserMainNav />
 
       <div className="userTransaction-main">
-        <div className="userViewTransaction-heading-box"
-        onClick={()=>{Navigate("/user/exchange-product")}}>
-          Status of accepted exchange{" "} 
+        <div
+          className="userViewTransaction-heading-box"
+          onClick={() => {
+            Navigate("/user/exchange-product");
+          }}
+        >
+          Status of accepted exchange{" "}
         </div>
-        <h2 className="mt-3" style={{textAlign:"center"}}> Status of requested exchanges</h2>
+        <h2 className="mt-3" style={{ textAlign: "center" }}>
+          {" "}
+          Status of requested exchanges
+        </h2>
         {exchangeData.map((e) => {
           const buyerProductId = e.buyerProductId;
           const buyerPic = buyerProductId?.itemPhoto?.filename;
@@ -149,7 +155,7 @@ export const DeliveryStatus = () => {
                           <p>
                             <p className="text-success">Delivered</p>
                           </p>
-                        ): (
+                        ) : (
                           <p className="text-danger">Rejected</p>
                         )}
                       </div>

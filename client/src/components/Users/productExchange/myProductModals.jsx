@@ -113,7 +113,7 @@ export const MyProductModals = ({ show, setShow, handleConfirmExchange }) => {
           className="userConfirmExchange-button"
           onClick={handleConfirmExchangeFromModal}
         >
-          Confirm Exchange
+          Sent Exchange Request
         </Button>{" "}
       </Modal.Body>
     </Modal>

@@ -27,7 +27,8 @@ export const NewArrivalProducts = () => {
     try {
       const res = await axiosInstance.get("viewAllApproveItems");
       if (res.status === 200) {
-        setApprovedItems(res.data.data);
+        const rev = res.data.data.reverse();
+        setApprovedItems(rev);
       }
     } catch (error) {
       console.log("Error in getAllApprovedItems", error);
@@ -84,7 +85,7 @@ export const NewArrivalProducts = () => {
   return (
     <div className="productCard-body">
       <div className="d-flex justify-content-center mt-5">
-        <h6 className="user-wishlist-heading3">Products You Might Like</h6>
+        <h6 className="user-wishlist-heading3">Products you might like</h6>
       </div>
       <div className="container text-center">
         <div className="row row-cols-4 gap-5 d-flex my-5">

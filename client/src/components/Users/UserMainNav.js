@@ -155,7 +155,7 @@ function UserMainNav() {
                 My wishlist
               </Link>
               <Link className="dropdown-item" to="/user/exchange-product" id="">
-                My Exchanges
+                Accepted Exchanges
               </Link>
               <Link
                 className="dropdown-item"

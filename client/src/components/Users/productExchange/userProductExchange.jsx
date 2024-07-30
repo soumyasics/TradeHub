@@ -35,7 +35,6 @@ export const UserProductExchange = () => {
         console.log("data", res.data.data);
         setOwnerDetails(res.data.data.userId);
         console.log("owner details", ownerDetails);
-        
       } else {
         console.log("!get product details", res);
       }
@@ -186,28 +185,31 @@ export const UserProductExchange = () => {
               </div>
               <h4>Owner details</h4>
               <div className="Exchange-owner-details row">
-             <div className="col-3 mt-3">
-             <img style={{height:"100px", width:"100px"}}
-                          src={`${BASE_URL}${ownerDetails?.profile?.filename}`}
-                          alt=""
-                        />
-             </div>
+                <div className="col-3 mt-3">
+                  <img
+                    style={{ height: "100px", width: "100px" }}
+                    src={`${BASE_URL}${ownerDetails?.profile?.filename}`}
+                    alt=""
+                  />
+                </div>
                 <div className="col-9">
-                <table style={{width:"50%", height:"75%"}} className="mt-3">
-                  <tbody>
-                    <tr>
-                     
-                      <td>Name</td>
-                      <td>:</td>
-                      <td>{ownerDetails?.firstname}</td>
-                    </tr>
-                    <tr>
-                      <td>contact</td>
-                      <td>:</td>
-                      <td>{ownerDetails?.contact}</td>
-                    </tr>
-                  </tbody>
-                </table>
+                  <table
+                    style={{ width: "50%", height: "75%" }}
+                    className="mt-3"
+                  >
+                    <tbody>
+                      <tr>
+                        <td>Name</td>
+                        <td>:</td>
+                        <td>{ownerDetails?.firstname}</td>
+                      </tr>
+                      <tr>
+                        <td>contact</td>
+                        <td>:</td>
+                        <td>{ownerDetails?.contact}</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>

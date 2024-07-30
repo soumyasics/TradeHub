@@ -38,7 +38,7 @@ export const UserPersonalisedSuggestion = () => {
   return (
     <div className="productCard-body">
       <div className="d-flex justify-content-center mt-5">
-        <h6 className="user-wishlist-heading3">Products You Might Like</h6>
+        <h6 className="user-wishlist-heading3">Products you might like</h6>
       </div>
       <div className="container text-center">
         <div className="row row-cols-4 gap-5 d-flex my-5">

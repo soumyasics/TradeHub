@@ -114,7 +114,7 @@ export const DeliveryPending = () => {
                               <td>Items name</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {buyerProductId.name}
+                                {buyerProductId?.name}
                               </td>
                             </tr>
                           </thead>
@@ -123,21 +123,21 @@ export const DeliveryPending = () => {
                               <td>Customer name</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {buyerId.firstname} {buyerId.lastname}
+                                {buyerId?.firstname} {buyerId?.lastname}
                               </td>
                             </tr>
                             <tr>
                               <td>Phone number</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {buyerId.contact}
+                                {buyerId?.contact}
                               </td>
                             </tr>
                             <tr>
                               <td>Condition</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {buyerProductId.condition}
+                                {buyerProductId?.condition}
                               </td>
                             </tr>
                           </tbody>
@@ -180,7 +180,7 @@ export const DeliveryPending = () => {
                               <td>Items name</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {sellerProductId.name}
+                                {sellerProductId?.name}
                               </td>
                             </tr>
                           </thead>
@@ -203,7 +203,7 @@ export const DeliveryPending = () => {
                               <td>Condition</td>
                               <td>:</td>
                               <td className="delivery-view_Items-data">
-                                {sellerProductId.condition}
+                                {sellerProductId?.condition}
                               </td>
                             </tr>
                           </tbody>

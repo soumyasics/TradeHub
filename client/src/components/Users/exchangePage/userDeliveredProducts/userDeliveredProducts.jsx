@@ -19,6 +19,7 @@ export const UserDeliveredProducts = () => {
 
   useEffect(() => {
     const userId = localStorage.getItem("trade-hub-userId") || null;
+
     if (userId) {
       setActiveUserId(userId);
     } else {
@@ -53,7 +54,7 @@ export const UserDeliveredProducts = () => {
       if (response.status == 200) {
         console.log("fdgd", response.data.data);
         const data = response.data.data;
-        setRequestSentByMeExchanges(data);
+        setReceivedRequestExchanges(data);
       }
     } catch (error) {
       console.log(error);
@@ -92,16 +93,13 @@ export const UserDeliveredProducts = () => {
             sellerProductPic = `${BASE_URL}${sellerProductFilename}`;
           }
           return (
-            <div
-              className="container text-center col-6 "
-              id="user-delivered-container"
-            >
+            <div className=" user-delivered-container container text-center mx-0 col-6 ">
               <div className="row">
                 <div className=" userDeliveryProduct-box shadow row">
                   <div className="card productCard-box3  col-5">
                     <img
                       src={buyerProductPic}
-                      className="card-img-top w-100 h-50"
+                      className="card-img-top w-75 h-50 ms-3"
                       alt="..."
                     />
                     <div className="" style={{ height: "120px" }}>
@@ -130,26 +128,15 @@ export const UserDeliveredProducts = () => {
                           <h6 className="mt-2 ms-1">{buyerProduct?.point}</h6>
                         </Col>
                       </Row>
-                      <Row className="mt-2">
-                        <Col>
-                          <h6 className="card-text text-left   text-capitalize">
-                            Category
-                          </h6>
-                        </Col>
-                        <Col xs={1}>: </Col>
-                        <Col className="">
-                          <h6 className="card-text text-center   text-capitalize">
-                            {buyerProduct?.category}
-                          </h6>
-                        </Col>
-                      </Row>
                     </div>
 
                     <div className="d-flex justify-content-center">
                       <button
                         className="userDeliverdProducts-viewmore"
                         onClick={() => {
-                          navigate(`/delivered/products-viewmore/${buyerProduct._id}`);
+                          navigate(
+                            `/delivered/products-viewmore/${buyerProduct._id}`
+                          );
                         }}
                       >
                         View more
@@ -167,7 +154,7 @@ export const UserDeliveredProducts = () => {
                   <div className="card productCard-box3 col-5" key="">
                     <img
                       src={sellerProductPic}
-                      className="card-img-top w-100 h-50"
+                      className="card-img-top w-75 h-50 ms-3"
                       alt="..."
                     />
                     <div className="" style={{ height: "120px" }}>
@@ -196,25 +183,14 @@ export const UserDeliveredProducts = () => {
                           <h6 className="mt-2 ms-1">{sellerProduct?.point}</h6>
                         </Col>
                       </Row>
-                      <Row className="mt-2">
-                        <Col>
-                          <h6 className="card-text text-left   text-capitalize">
-                            Category
-                          </h6>
-                        </Col>
-                        <Col xs={1}>: </Col>
-                        <Col className="">
-                          <h6 className="card-text text-center   text-capitalize">
-                            {sellerProduct?.category}
-                          </h6>
-                        </Col>
-                      </Row>
                     </div>
                     <div className="d-flex justify-content-center">
                       <button
                         className="userDeliverdProducts-viewmore"
                         onClick={() => {
-                          navigate(`/delivered/products-viewmore/${sellerProduct._id}`);
+                          navigate(
+                            `/delivered/products-viewmore/${sellerProduct._id}`
+                          );
                         }}
                       >
                         view more
@@ -253,16 +229,13 @@ export const UserDeliveredProducts = () => {
             sellerProductPic = `${BASE_URL}${sellerProductFilename}`;
           }
           return (
-            <div
-              className="container text-center col-5 me-3 "
-              id="user-delivered-container"
-            >
+            <div className="user-delivered-container container text-center col-6  ">
               <div className="row">
                 <div className=" userDeliveryProduct-box shadow row d-flex flex-nowrap">
                   <div className="card productCard-box3  col-5">
                     <img
                       src={buyerProductPic}
-                      className="card-img-top w-100 h-50"
+                      className="card-img-top w-75 h-50 ms-3"
                       alt="..."
                     />
                     <div className="" style={{ height: "120px" }}>
@@ -291,19 +264,6 @@ export const UserDeliveredProducts = () => {
                           <h6 className="mt-2 ms-1">{buyerProduct?.point}</h6>
                         </Col>
                       </Row>
-                      <Row className="mt-2">
-                        <Col>
-                          <h6 className="card-text text-left   text-capitalize">
-                            Category
-                          </h6>
-                        </Col>
-                        <Col xs={1}>: </Col>
-                        <Col className="">
-                          <h6 className="card-text text-center   text-capitalize">
-                            {buyerProduct?.category}
-                          </h6>
-                        </Col>
-                      </Row>
                     </div>
 
                     <div className="d-flex justify-content-center">
@@ -328,7 +288,7 @@ export const UserDeliveredProducts = () => {
                   <div className="card productCard-box3 col-5" key="">
                     <img
                       src={sellerProductPic}
-                      className="card-img-top w-100 h-50"
+                      className="card-img-top w-75 h-50 ms-3"
                       alt="..."
                     />
                     <div className="" style={{ height: "120px" }}>
@@ -355,19 +315,6 @@ export const UserDeliveredProducts = () => {
                           />
 
                           <h6 className="mt-2 ms-1">{sellerProduct?.point}</h6>
-                        </Col>
-                      </Row>
-                      <Row className="mt-2">
-                        <Col>
-                          <h6 className="card-text text-left   text-capitalize">
-                            Category
-                          </h6>
-                        </Col>
-                        <Col xs={1}>: </Col>
-                        <Col className="">
-                          <h6 className="card-text text-center   text-capitalize">
-                            {sellerProduct?.category}
-                          </h6>
                         </Col>
                       </Row>
                     </div>

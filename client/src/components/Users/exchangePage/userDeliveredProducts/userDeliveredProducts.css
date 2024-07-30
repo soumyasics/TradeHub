@@ -19,7 +19,7 @@
   border: 1px solid #6d3698;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   text-align: left;
-  height: 330px !important;
+  height: 250px !important;
 }
 .productCard-button2 {
   border-radius: 9px;
@@ -91,6 +91,6 @@
   border-radius: 15px;
 }
 
-#user-delivered-container h6 {
+.user-delivered-container h6 {
   font-size: 13px;
 }
