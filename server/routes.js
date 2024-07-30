@@ -153,6 +153,19 @@ router.get(
   exchangeProductController.getAllAcceptedDelivery
 );
 router.get(
+  "/getAllDeliveredRequestBySellerId/:id",
+  exchangeProductController.getAllDeliveredRequestBySellerId
+);
+router.get(
+  "/getAllDeliveredRequestBySellerId/:id",
+  exchangeProductController.getAllDeliveredRequestBySellerId
+);
+router.get(
+  "/getAllDeliveredRequestByBuyerId/:id",
+  exchangeProductController.getAllDeliveredRequestByBuyerId
+);
+
+router.get(
   "/getAllAcceptedOrdersByDeliveryAgentId/:id",
   exchangeProductController.getAllAcceptedOrdersByDeliveryAgentId
 );
