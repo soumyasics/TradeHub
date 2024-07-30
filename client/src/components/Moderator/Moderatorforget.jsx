@@ -75,21 +75,19 @@ function Moderatorforget() {
     setErrors(errors);
 
     if (formValid) {
-      axiosInstance.post("/forgotPasswordUserModerators", data)
-      .then((res) => {
-        if(res.data.status == 200)
-        {
-        
-          console.log(res);
-          toast.success(res.data.msg);
-          Navigate("/moderator/login");
-        }
+      axiosInstance
+        .post("/forgotPasswordUserModerators", data)
+        .then((res) => {
+          if (res.data.status == 200) {
+            console.log(res);
+            toast.success(res.data.msg);
+            Navigate("/moderator/login");
+          }
         })
         .catch((err) => {
           console.log(err);
           alert(err);
         });
-        
     }
   };
 
@@ -154,7 +152,7 @@ function Moderatorforget() {
                         value={data.password}
                         onChange={handleInputChange}
                         aria-label="password"
-                        placeholder="password"
+                        placeholder="Password"
                         aria-describedby="basic-addon1"
                       />
                       <InputGroup.Text

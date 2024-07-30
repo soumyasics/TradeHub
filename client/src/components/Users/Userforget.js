@@ -139,7 +139,7 @@ function Userforget() {
                       value={data.password}
                       onChange={handleInputChange}
                       aria-label="password"
-                      placeholder="password"
+                      placeholder="Password"
                       aria-describedby="basic-addon1"
                     />
                     <InputGroup.Text
@@ -181,9 +181,9 @@ function Userforget() {
                       className="user-forget-password-inp"
                       type={show2 ? "password" : "text"}
                       placeholder="Re-Enter new Password"
-                    name="confirmpassword"
-                    value={data.confirmpassword}
-                    onChange={handleInputChange}
+                      name="confirmpassword"
+                      value={data.confirmpassword}
+                      onChange={handleInputChange}
                       aria-label="password"
                       aria-describedby="basic-addon1"
                     />

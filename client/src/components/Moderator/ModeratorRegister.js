@@ -70,7 +70,7 @@ function ModeratorRegister() {
       repassword,
       checkbox,
       gender,
-      address
+      address,
     } = data;
     if (!firstname) {
       toast.error("Please enter your first name");
@@ -124,8 +124,7 @@ function ModeratorRegister() {
       toast.error("Passwords do not match");
       return false;
     }
-    if(!address)
-    {
+    if (!address) {
       toast.error("Please enter your address");
       return false;
     }
@@ -288,7 +287,7 @@ function ModeratorRegister() {
                       value={data.password}
                       onChange={handleChange}
                       aria-label="password"
-                      placeholder="password"
+                      placeholder="Password"
                       aria-describedby="basic-addon1"
                     />
                     <InputGroup.Text

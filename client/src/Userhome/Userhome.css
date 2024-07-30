@@ -18,13 +18,13 @@
   cursor: pointer;
   text-align: center;
 }
-.home-category-electronics-box h3 {
+.home-category-electronics-box h4 {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: black;
-  font-size: 28px;
+  font-size: 18px;
   font-weight: 600;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -32,6 +32,6 @@
 .home-category-electronics-box:hover img {
   opacity: 0.7;
 }
-.home-category-electronics-box:hover h3 {
+.home-category-electronics-box:hover h4 {
   opacity: 1;
 }

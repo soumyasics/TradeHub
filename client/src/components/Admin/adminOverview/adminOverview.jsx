@@ -93,7 +93,7 @@ export const AdminOverview = () => {
                     <div className="col-7">
                       <span>
                         <p className="admin-dash-span">
-                          Total number<br></br>of moderator
+                          Total number of moderator
                         </p>
                       </span>
                       <span className="admin-dash-length">
@@ -112,7 +112,7 @@ export const AdminOverview = () => {
                     <div className="col-7">
                       <span>
                         <p className="admin-dash-span">
-                          Total number<br></br>of transaction
+                          Total number of transaction
                         </p>
                       </span>
                       <span className="admin-dash-length">
@@ -131,7 +131,7 @@ export const AdminOverview = () => {
                     <div className="col-7">
                       <span>
                         <p className="admin-dash-span">
-                          Total number<br></br>of deliveries
+                          Total number of deliveries
                         </p>
                       </span>
                       <span className="admin-dash-length">

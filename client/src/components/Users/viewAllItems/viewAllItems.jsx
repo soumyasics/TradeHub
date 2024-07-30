@@ -155,7 +155,6 @@ export const ViewAllItems = () => {
         <div className="container text-center">
           <div className="row row-cols-4 gap-5 d-flex my-5">
             {approvedItems.map((e) => {
-              console.log("e user id", e.userId, activeUserId);
               if (e?.userId._id === activeUserId) {
                 return null;
               }

@@ -11,7 +11,6 @@ import toast from "react-hot-toast";
 import Footer from "../../Footer/Footer";
 import UserNavbar from "../../homeComponents/Navbar/UserNavbar";
 
-
 function DeliveryAgentSignup() {
   const navigate = useNavigate();
   const [show1, setShow1] = useState(true);
@@ -84,7 +83,7 @@ function DeliveryAgentSignup() {
       toast.error("Please enter a valid email address");
       return false;
     }
-    
+
     if (!contact) {
       toast.error("Please enter your contact number");
       return false;
@@ -103,8 +102,6 @@ function DeliveryAgentSignup() {
         "Password must contain at least one number, one special character, and one capital letter"
       );
       return false;
-
-     
     }
     if (!repassword) {
       toast.error("Please re-enter your password");
@@ -116,7 +113,7 @@ function DeliveryAgentSignup() {
     }
     if (!address) {
       toast.error("Please enter your address");
-       return false;
+      return false;
     }
     if (!data.profile) {
       toast.error("Please upload your profile picture");
@@ -129,25 +126,25 @@ function DeliveryAgentSignup() {
     return true;
   };
 
-  const handleSubmit =  (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!checkValidity()) {
       return;
     }
 
-    const formData = new FormData ();
-    formData.append("firstname",data.firstname);
-    formData.append("lastname",data.lastname);
-    formData.append("email",data.email);
-    formData.append("contact",data.contact);
-    formData.append("password",data.password)
-    formData.append("gender",data.gender)
-    formData.append("profile",data.profile)
+    const formData = new FormData();
+    formData.append("firstname", data.firstname);
+    formData.append("lastname", data.lastname);
+    formData.append("email", data.email);
+    formData.append("contact", data.contact);
+    formData.append("password", data.password);
+    formData.append("gender", data.gender);
+    formData.append("profile", data.profile);
 
-    sendDataToServer(formData)
+    sendDataToServer(formData);
   };
-  
+
   const sendDataToServer = async () => {
     try {
       const res = await axiosMultipartInstance.post("/deliverySignup", data);
@@ -157,16 +154,16 @@ function DeliveryAgentSignup() {
         navigate("/delivery/login");
       }
     } catch (err) {
-      const status = err.response?.status; 
+      const status = err.response?.status;
       if (status === 400 || status === 409) {
-        const msg = err.response?.data?.msg || "Please check your network"
+        const msg = err.response?.data?.msg || "Please check your network";
         toast.error(`Registeration is failed : ${msg}`);
       } else {
         toast.error(`Registeration is failed : ${err.response?.data?.msg}`);
       }
       console.log(err);
     }
-  }
+  };
   return (
     <div>
       <div>
@@ -205,8 +202,6 @@ function DeliveryAgentSignup() {
                   value="male"
                   onChange={handlechange}
                   checked={data.gender === "male"}
-
-
                 />
                 <label className="user-register-label ms-2">Male</label>
                 <input
@@ -216,8 +211,6 @@ function DeliveryAgentSignup() {
                   value="female"
                   onChange={handlechange}
                   checked={data.gender === "female"}
-
-
                 />
                 <label className="user-register-label ms-2">Female</label>
                 <br></br>
@@ -230,7 +223,6 @@ function DeliveryAgentSignup() {
                     name="email"
                     onChange={handlechange}
                     value={data.email}
-
                   />
                 </div>
                 <div>
@@ -252,14 +244,12 @@ function DeliveryAgentSignup() {
                     type="checkbox"
                     name="checkbox"
                     value={data.checkbox}
-
                     onChange={handlechangeChecked}
                   />
                   <label
                     className="form-check-label mt-5 label-deliverysignup text-primary"
                     for="flexCheckChecked"
                     onClick={() => navigate("/user/view-guideline")}
-
                   >
                     Agree to Terms and Condition
                   </label>
@@ -278,8 +268,7 @@ function DeliveryAgentSignup() {
                     value={data.password}
                   /> */}
 
-
-<InputGroup className="del-signup-password-box ">
+                  <InputGroup className="del-signup-password-box ">
                     <Form.Control
                       className="del-signup-password-inp"
                       type={show1 ? "password" : "text"}
@@ -287,7 +276,7 @@ function DeliveryAgentSignup() {
                       value={data.password}
                       onChange={handlechange}
                       aria-label="password"
-                      placeholder="password"
+                      placeholder="Password"
                       aria-describedby="basic-addon1"
                     />
                     <InputGroup.Text
@@ -307,7 +296,6 @@ function DeliveryAgentSignup() {
                       )}
                     </InputGroup.Text>
                   </InputGroup>
-
                 </div>
                 <div>
                   <label className="deliverysignup-label mt-4">
@@ -322,7 +310,7 @@ function DeliveryAgentSignup() {
                     value={data.repassword}
                   /> */}
 
-<InputGroup className="del-signup-password-box ">
+                  <InputGroup className="del-signup-password-box ">
                     <Form.Control
                       className="del-signup-password-inp"
                       type={show2 ? "password" : "text"}
@@ -350,7 +338,6 @@ function DeliveryAgentSignup() {
                       )}
                     </InputGroup.Text>
                   </InputGroup>
-
                 </div>
                 <div>
                   <label className="deliverysignup-label mt-4">Address</label>
@@ -397,7 +384,7 @@ function DeliveryAgentSignup() {
         </div>
       </div>
       <div>
-       <Footer/>
+        <Footer />
       </div>
     </div>
   );

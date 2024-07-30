@@ -144,7 +144,7 @@ function Deliveryforgotpassword() {
                         value={data.password}
                         onChange={handleChange}
                         aria-label="password"
-                        placeholder="password"
+                        placeholder="Password"
                         aria-describedby="basic-addon1"
                       />
                       <InputGroup.Text

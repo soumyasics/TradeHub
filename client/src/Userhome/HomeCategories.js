@@ -31,7 +31,7 @@ function HomeCategories() {
               alt="img"
             ></img>
             <div className="home-catogory-hover-box">
-              <h3>Electronics </h3>
+              <h4>Electronics </h4>
             </div>
           </div>
           <div
@@ -45,7 +45,7 @@ function HomeCategories() {
               src={books}
               alt="img"
             ></img>
-            <h3>Books</h3>
+            <h4>Books</h4>
           </div>
           <div
             className="col home-category-electronics-box"
@@ -58,7 +58,7 @@ function HomeCategories() {
               src={jewels}
               alt="img"
             ></img>
-            <h3>Jewellery</h3>
+            <h4>Jewellery</h4>
           </div>
           <div
             className="col home-category-electronics-box"
@@ -71,7 +71,7 @@ function HomeCategories() {
               src={homeappliances}
               alt="img"
             ></img>
-            <h3>Home Appliances</h3>
+            <h4>Home Appliances</h4>
           </div>
           <div
             className="col home-category-electronics-box"
@@ -84,7 +84,7 @@ function HomeCategories() {
               src={cloths}
               alt="img"
             ></img>
-            <h3>Clothing</h3>
+            <h4>Clothing</h4>
           </div>
           <div
             className="col home-category-electronics-box"
@@ -97,7 +97,7 @@ function HomeCategories() {
               src={furniture}
               alt="img"
             ></img>
-            <h3>Furniture</h3>
+            <h4>Furniture</h4>
           </div>
           <div className="userhome-category"></div>
         </div>

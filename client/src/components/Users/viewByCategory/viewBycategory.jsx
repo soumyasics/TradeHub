@@ -98,7 +98,6 @@ export const ViewByCategory = () => {
       <div className="container text-center" style={{ minHeight: "600px" }}>
         <div className="row row-cols-4 gap-5 d-flex my-5">
           {Items.map((e) => {
-            console.log("e user id", e.userId, activeUserId);
             if (e?.userId._id === activeUserId) {
               return null;
             }
