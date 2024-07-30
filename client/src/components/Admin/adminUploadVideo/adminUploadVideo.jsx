@@ -1,5 +1,5 @@
 import Form from "react-bootstrap/Form";
-import "./adminUploadVideo.css"
+import "./adminUploadVideo.css";
 import img1 from "../../../assets/images/totoriaImage.jpeg";
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
@@ -8,7 +8,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
 import toast from "react-hot-toast";
 import { axiosMultipartInstance } from "../../../apis/axiosMultipartInstance";
-export const AdminUploadVideo = ({redirectToViewTutorial}) => {
+export const AdminUploadVideo = ({ redirectToViewTutorial }) => {
   const [validated, setValidated] = useState(false);
   const [data, setData] = useState({
     title: "",
@@ -23,14 +23,18 @@ export const AdminUploadVideo = ({redirectToViewTutorial}) => {
         data
       );
       if (response.status == 200) {
-        toast.success("Uploaded sucessfully");
+        toast.success("Tutorial Uploaded sucessfully");
       }
     } catch (error) {
       console.log(error);
     } finally {
-      setData("");
-      redirectToViewTutorial()
-
+      setData({
+        title: "",
+        description: "",
+        thumbnail: null,
+        video: null,
+      });
+      redirectToViewTutorial();
     }
   };
 
@@ -45,19 +49,20 @@ export const AdminUploadVideo = ({redirectToViewTutorial}) => {
     const { title, description, thumbnail, video } = data;
     const validateField = () => {
       if (!title) {
-        toast.error("enter title");
+        toast.error("Please enter title");
         return false;
       }
       if (!description) {
-        toast.error("enter Description");
+        toast.error("Please enter description");
         return false;
       }
       if (!thumbnail) {
-        toast.error("thumbnail required");
+        toast.error("Tutorial thumbnail required");
         return false;
       }
       if (!video) {
-        toast.error("video required");
+        toast.error("Please upload video ");
+        return false;
       }
       return true;
     };
@@ -74,7 +79,7 @@ export const AdminUploadVideo = ({redirectToViewTutorial}) => {
 
     sentDataToServer(formData);
 
-    setData("");
+  
   };
   return (
     <div style={{ marginTop: "80px" }}>
@@ -87,7 +92,7 @@ export const AdminUploadVideo = ({redirectToViewTutorial}) => {
             style={{
               width: "90%",
               height: "81%",
-              marginLeft: "50%",
+              marginLeft: "20%",
               marginTop: "10%",
             }}
           />
@@ -97,7 +102,6 @@ export const AdminUploadVideo = ({redirectToViewTutorial}) => {
             style={{
               boxShadow:
                 "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
-                
             }}
             className="adminUploadVideo-for-box p-4 mx-auto "
             noValidate

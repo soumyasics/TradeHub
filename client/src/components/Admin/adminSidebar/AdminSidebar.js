@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { IoLogoWebComponent } from "react-icons/io5";
 import { FaCloudUploadAlt } from "react-icons/fa";
+import { FaVideo } from "react-icons/fa6";
 export const AdminSidebar = ({ changeSelectedPage }) => {
   const [dropdownDA, setdropdownDA] = useState(false);
   const [dropdownMod, setdropdownMod] = useState(false);
@@ -126,7 +127,7 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
                   }}
                 >
                   {" "}
-                  View active{" "}
+                  View all moderators{" "}
                 </li>
               </div>
             )}
@@ -166,12 +167,20 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
 
           <li onClick={() => changeSelectedPage("webinar")}>
             <IoLogoWebComponent style={{ marginRight: "9px" }} />
-            Webinar
+            Add Webinar
+          </li>
+          <li onClick={() => changeSelectedPage("view-webinar")}>
+            <IoLogoWebComponent style={{ marginRight: "9px" }} />
+            View Webinar
           </li>
 
           <li onClick={() => changeSelectedPage("uploadTutorial")}>
             <FaCloudUploadAlt style={{ marginRight: "9px" }} />
             Upload Tutorial
+          </li>
+          <li onClick={() => changeSelectedPage("viewTutorial")}>
+            <FaVideo style={{ marginRight: "9px" }} />
+            View Tutorials
           </li>
           <li onClick={handleAdminLogout} className="text-danger fw-bold ">
             <MdLogout />

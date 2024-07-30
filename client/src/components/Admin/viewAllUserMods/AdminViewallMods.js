@@ -89,7 +89,7 @@ export const AdminViewallMods = () => {
     console.log("fix", fixedData);
     if (value) {
       const filterData = fixedData.filter((items) => {
-        const name  = `${items.firstname} ${items.lastname}`
+        const name = `${items.firstname} ${items.lastname}`;
         return name?.toLowerCase().includes(value.toLowerCase());
       });
       setData(filterData);
@@ -101,11 +101,10 @@ export const AdminViewallMods = () => {
   return (
     <div>
       {data.length > 0 && (
-        <h3 className="mt-2 text-center"> View moderators </h3>
+        <h3 className="mt-4 text-center"> View moderators </h3>
       )}
 
-
-<InputGroup className="mod-product-request-box1 ms-2 ps-3 ">
+      <InputGroup className="mod-product-request-box1 ms-2 ps-3 ">
         <Form.Control
           className="mod-product-request-inp"
           type="text"

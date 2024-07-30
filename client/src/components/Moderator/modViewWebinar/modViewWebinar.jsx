@@ -7,9 +7,8 @@ function ModViewWebinar() {
   const getData = async () => {
     try {
       const response = await axiosInstance.get("/allWebinars");
-      if (response.status) {
-        setData(response.data.webinars
-        );
+      if (response.status === 200) {
+        setData(response.data.webinars);
       }
     } catch (error) {
       console.log(error);
@@ -17,14 +16,13 @@ function ModViewWebinar() {
   };
   console.log(data);
 
-
   useEffect(() => {
     getData();
   }, []);
   return (
     <div>
-        <h2 className="modViewWebinar-heading">WEBINAR</h2>
-      <Table striped bordered hover size="sm" className="modViewWWebinar">
+      <h2 className="modViewWebinar-heading">WEBINAR</h2>
+      <Table striped bordered hover  className="modViewWWebinar">
         <thead>
           <tr>
             <th>#</th>
@@ -37,22 +35,21 @@ function ModViewWebinar() {
             <th>Webinar Link</th>
           </tr>
         </thead>
-        {data.map((e, index) =>
-         {          
-         return(
+        {data.map((e, index) => {
+          return (
             <tbody key={index}>
-            <tr>
-              <td>{index+1}</td>
-              <td>{e.topic}</td>
-              <td>{e.speakers}</td>
-              <td>{e.date}</td>
-              <td>{e.time}</td>
-              <td>{e.duration}</td>
-              <td>{e.description}</td>
-              <td>{e.webinarLink}</td>
-            </tr>
-          </tbody>
-         )
+              <tr>
+                <td>{index + 1}</td>
+                <td>{e.topic}</td>
+                <td>{e.speakers}</td>
+                <td>{e.date}</td>
+                <td>{e.time}</td>
+                <td>{e.duration}</td>
+                <td>{e.description}</td>
+                <td>{e.webinarLink}</td>
+              </tr>
+            </tbody>
+          );
         })}
       </Table>
     </div>

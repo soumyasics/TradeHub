@@ -13,6 +13,7 @@ import { AdminWebinar } from "./adminWebinar/adminWebinar";
 import { AdminTransaction } from "./adminTransaction/adminTransaction";
 import { AdminUploadVideo } from "./adminUploadVideo/adminUploadVideo";
 import { ModVideoContainer } from "../Moderator/modViewTutorial/modTutorialCard/modContainer";
+import ModViewWebinar from "../Moderator/modViewWebinar/modViewWebinar";
 export const AdminDashboard = () => {
   const [selectedPage, setSelectedPage] = useState("overview");
 
@@ -20,14 +21,15 @@ export const AdminDashboard = () => {
     setSelectedPage(value);
   };
 
-
   const redirectToGuideline = () => {
-    setSelectedPage("adminViewGuideline")
-  }
-  const redirectToViewTutorial = () =>
-  {
-    setSelectedPage("viewTutorial")
-  }
+    setSelectedPage("adminViewGuideline");
+  };
+  const redirectToViewTutorial = () => {
+    setSelectedPage("viewTutorial");
+  };
+  const redirectToViewWebinar = () => {
+    setSelectedPage("view-webinar");
+  };
   return (
     <div className="d-flex">
       <div>
@@ -37,16 +39,25 @@ export const AdminDashboard = () => {
         {selectedPage === "overview" && <AdminOverview />}
         {selectedPage === "view-all-user" && <AdminViewallUser />}
         {selectedPage === "view-pending-DA" && <AdminViewAllDelRequest />}
-        {selectedPage === "view-active-DA" && <AdminViewAllActiveDeliveryAgent />}
+        {selectedPage === "view-active-DA" && (
+          <AdminViewAllActiveDeliveryAgent />
+        )}
         {selectedPage === "view-pending-mod" && <AdminViewAllModRequest />}
         {selectedPage === "view-active-mod" && <AdminViewallMods />}
-        {selectedPage === "adminGuideline" && <AdminGuideline redirectToGuideline={redirectToGuideline}/>}
-        {selectedPage === "adminViewGuideline" && <AdmineViewGuideline/>}
-        {selectedPage === "transaction" && <AdminTransaction/>} 
-        {selectedPage === "ExchangeItems" && <AdminViewExchange/>} 
-        {selectedPage === "webinar" && <AdminWebinar/>} 
-        {selectedPage === "uploadTutorial" && <AdminUploadVideo redirectToViewTutorial={redirectToViewTutorial}/>} 
-        {selectedPage === "viewTutorial" && <ModVideoContainer/>} 
+        {selectedPage === "adminGuideline" && (
+          <AdminGuideline redirectToGuideline={redirectToGuideline} />
+        )}
+        {selectedPage === "adminViewGuideline" && <AdmineViewGuideline />}
+        {selectedPage === "transaction" && <AdminTransaction />}
+        {selectedPage === "ExchangeItems" && <AdminViewExchange />}
+        {selectedPage === "webinar" && (
+          <AdminWebinar redirectToViewWebinar={redirectToViewWebinar} />
+        )}
+        {selectedPage == "view-webinar" && <ModViewWebinar />}
+        {selectedPage === "uploadTutorial" && (
+          <AdminUploadVideo redirectToViewTutorial={redirectToViewTutorial} />
+        )}
+        {selectedPage === "viewTutorial" && <ModVideoContainer />}
       </div>
     </div>
   );

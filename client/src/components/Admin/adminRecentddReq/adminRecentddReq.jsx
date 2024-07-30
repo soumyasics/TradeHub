@@ -124,7 +124,7 @@ export const AdminRecentddReq = () => {
         </div>
       ) : (
         <div>
-          <h3 className="text-center">
+          <h3 className="text-center mt-5">
             Delivery agent pending request not found.
           </h3>
         </div>

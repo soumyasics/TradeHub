@@ -16,21 +16,17 @@
   color: #6d3698;
   font-weight: 500;
   text-decoration: underline;
-  
 }
-.modTutorialCard-description
-{
-    text-align: center;
-    padding-top: 10px;
+.modTutorialCard-description {
+  text-align: center;
+  padding-top: 10px;
 }
-.modTutorial-button
-{
+.modTutorial-button {
   background-color: white;
   border: none;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
-.tutorial-card-body
-{
+.tutorial-card-body {
   height: 98vh;
   overflow-y: scroll;
 }

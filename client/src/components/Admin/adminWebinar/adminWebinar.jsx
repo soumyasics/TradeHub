@@ -7,18 +7,16 @@ import "./adminWebinar.css";
 import axiosInstance from "../../../apis/axiosInstance";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-export const AdminWebinar = () => {
-  const [data, setData] = useState(
-    {
-      topic:"",
-      speakers:"",
-      date:"",
-      time:"",
-      duration:"",
-      description:"",
-      webinarLink:"",
-    }
-  );
+export const AdminWebinar = ({redirectToViewWebinar}) => {
+  const [data, setData] = useState({
+    topic: "",
+    speakers: "",
+    date: "",
+    time: "",
+    duration: "",
+    description: "",
+    webinarLink: "",
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,6 +27,16 @@ export const AdminWebinar = () => {
       const response = await axiosInstance.post("/createWebinar", data);
       if (response.status == 200) {
         toast.success("Updated successfully");
+        redirectToViewWebinar()
+        setData({
+          topic: "",
+          speakers: "",
+          date: "",
+          time: "",
+          duration: "",
+          description: "",
+          webinarLink: "",
+        });
       }
     } catch (error) {
       console.log(error);
@@ -36,13 +44,8 @@ export const AdminWebinar = () => {
   };
 
   const checkValidity = () => {
-    const { topic,
-        speakers,
-        date,
-        time,
-        duration,
-        description,
-        webinarLink, } = data;
+    const { topic, speakers, date, time, duration, description, webinarLink } =
+      data;
 
     if (!topic) {
       toast.error("Topic is required");
@@ -68,7 +71,7 @@ export const AdminWebinar = () => {
       toast.error("Link required");
       return false;
     }
-   
+
     if (!description) {
       toast.error("Description is required");
       return false;
@@ -76,7 +79,7 @@ export const AdminWebinar = () => {
     return true;
   };
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!checkValidity()) {
       return;
     }
@@ -95,10 +98,11 @@ export const AdminWebinar = () => {
                 name="topic"
                 placeholder="Topic"
                 onChange={handleChange}
+                required
+                value={data.topic}
               />
             </Form.Group>
 
-            
             <Form.Group as={Col} controlId="formGridEmail">
               <Form.Label>Speakers</Form.Label>
               <Form.Control
@@ -106,23 +110,31 @@ export const AdminWebinar = () => {
                 placeholder="Speakers"
                 name="speakers"
                 onChange={handleChange}
+                required
+                value={data.speakers}
               />
             </Form.Group>
           </Row>
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridPassword">
               <Form.Label>Date</Form.Label>
-              <Form.Control type="date" name="date" onChange={handleChange} />
+              <Form.Control
+                type="date"
+                name="date"
+                value={data.date}
+                onChange={handleChange}
+              />
             </Form.Group>
             <Form.Group as={Col} controlId="formGridPassword">
               <Form.Label>Time</Form.Label>
-              <Form.Control type="time" name="time" onChange={handleChange} />
+              <Form.Control
+                type="time"
+                name="time"
+                value={data.time}
+                onChange={handleChange}
+              />
             </Form.Group>
-
-           
-           
-         </Row>
-         
+          </Row>
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridPassword">
               <Form.Label>Duration</Form.Label>
@@ -131,8 +143,9 @@ export const AdminWebinar = () => {
                 name="duration"
                 placeholder="Duration"
                 onChange={handleChange}
+                value={data.duration}
               />
-            </Form.Group> 
+            </Form.Group>
             <Form.Group as={Col} controlId="formGridPassword">
               <Form.Label>Link</Form.Label>
               <Form.Control
@@ -140,10 +153,9 @@ export const AdminWebinar = () => {
                 name="webinarLink"
                 placeholder="Link"
                 onChange={handleChange}
+                value={data.webinarLink}
               />
-            </Form.Group> 
-
-
+            </Form.Group>
           </Row>
           <Form.Label>Description</Form.Label>
           <FloatingLabel
@@ -156,6 +168,7 @@ export const AdminWebinar = () => {
               placeholder="Leave a comment here"
               name="description"
               onChange={handleChange}
+              value={data.description}
             />
           </FloatingLabel>
           <Button type="submit" variant="primary">
