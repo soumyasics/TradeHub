@@ -28,7 +28,7 @@ export const UserDeliveredProducts = () => {
   useEffect(() => {
     if (activeUserId) {
       getRequestByBuyerId();
-      getRequestBySellerId()
+      getRequestBySellerId();
     }
   }, [activeUserId]);
 
@@ -69,10 +69,7 @@ export const UserDeliveredProducts = () => {
       <div className="d-flex justify-content-center mt-5">
         <p className="user-wishlist-heading4">Exchange Requests Sent by Me</p>
       </div>
-      <div
-        className="row mx-auto"
-        style={{ minHeight: "250px", width: "95%" }}
-      >
+      <div className="row mx-auto" style={{ minHeight: "250px", width: "95%" }}>
         {requestSentByMeExchanges.map((e) => {
           const buyer = e?.buyerId;
           const buyerProduct = e?.buyerProductId;
@@ -101,9 +98,7 @@ export const UserDeliveredProducts = () => {
             >
               <div className="row">
                 <div className=" userDeliveryProduct-box shadow row">
-                  <div
-                    className="card productCard-box3  col-5"
-                  >
+                  <div className="card productCard-box3  col-5">
                     <img
                       src={buyerProductPic}
                       className="card-img-top w-100 h-50"
@@ -154,7 +149,7 @@ export const UserDeliveredProducts = () => {
                       <button
                         className="userDeliverdProducts-viewmore"
                         onClick={() => {
-                          navigate(`/user/exchange-items`);
+                          navigate(`/delivered/products-viewmore/${buyerProduct._id}`);
                         }}
                       >
                         View more
@@ -169,10 +164,7 @@ export const UserDeliveredProducts = () => {
                     <img src={img3} alt="icon" className="w-100" />
                   </div>
 
-                  <div
-                    className="card productCard-box3 col-5"
-                    key=""
-                  >
+                  <div className="card productCard-box3 col-5" key="">
                     <img
                       src={sellerProductPic}
                       className="card-img-top w-100 h-50"
@@ -222,7 +214,7 @@ export const UserDeliveredProducts = () => {
                       <button
                         className="userDeliverdProducts-viewmore"
                         onClick={() => {
-                          navigate(`/user/exchange-items`);
+                          navigate(`/delivered/products-viewmore/${sellerProduct._id}`);
                         }}
                       >
                         view more
@@ -238,10 +230,7 @@ export const UserDeliveredProducts = () => {
       <div className="d-flex justify-content-center mt-5">
         <p className="user-wishlist-heading4">Received Exchange Requests</p>
       </div>
-      <div
-        className="row mx-auto"
-        style={{ minHeight: "250px", width: "95%" }}
-      >
+      <div className="row mx-auto" style={{ minHeight: "250px", width: "95%" }}>
         {receivedRequestExchanges.map((e) => {
           const buyer = e?.buyerId;
           const buyerProduct = e?.buyerProductId;
@@ -270,9 +259,7 @@ export const UserDeliveredProducts = () => {
             >
               <div className="row">
                 <div className=" userDeliveryProduct-box shadow row d-flex flex-nowrap">
-                  <div
-                    className="card productCard-box3  col-5"
-                  >
+                  <div className="card productCard-box3  col-5">
                     <img
                       src={buyerProductPic}
                       className="card-img-top w-100 h-50"
@@ -338,10 +325,7 @@ export const UserDeliveredProducts = () => {
                     <img src={img3} alt="icon" className="w-100" />
                   </div>
 
-                  <div
-                    className="card productCard-box3 col-5"
-                    key=""
-                  >
+                  <div className="card productCard-box3 col-5" key="">
                     <img
                       src={sellerProductPic}
                       className="card-img-top w-100 h-50"
