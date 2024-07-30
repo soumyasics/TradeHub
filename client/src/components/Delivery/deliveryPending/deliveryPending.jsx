@@ -160,7 +160,7 @@ export const DeliveryPending = () => {
                   handleDelivery(exchangeId);
                 }}
               >
-                Confirm delivery
+                Items delivered
               </button>
               <div style={{ cursor: "pointer" }}>
                 <div className="delivery-pending-viewItems-box">

@@ -162,7 +162,7 @@ function UserMainNav() {
                 to="/user/delivered-products"
                 id=""
               >
-                Delivered Products
+                Delivered Items
               </Link>
               <h6
                 className="dropdown-item text-danger fw-bold"

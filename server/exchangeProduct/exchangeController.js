@@ -588,7 +588,6 @@ const deliveredProduct = async (req, res) => {
     deliveryAgent.myDeliveredOrders.push(newRequest._id);
     await deliveryAgent.save();
 
-    console.log("delivered orders", newRequest);
     return res
       .status(200)
       .json({ msg: "Request accepted successfully", data: newRequest });
@@ -617,7 +616,9 @@ const rejectDeliveryReqById = async (req, res) => {
     }
 
     const newRequest = await ExchangeProductModel.findById(id);
-
+    if (!newRequest) {
+      return res.status(400).json({ msg: "Request not found" });
+    }
     // const newRequest = await ExchangeProductModel.findByIdAndUpdate(
     //   id,
     //   {

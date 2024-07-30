@@ -4,11 +4,14 @@ import axiosInstance from "../../../apis/axiosInstance";
 import { Table } from "react-bootstrap";
 import { FcCheckmark } from "react-icons/fc";
 import { FaXmark } from "react-icons/fa6";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 export const DeliveryRequest = () => {
   const [data, setData] = useState([]);
+  const [deliveryAgent, setDeliveryAgent] = useState({});
+  const [filterData, setFilterData] = useState([]);
+  const [myRejectedDeliveries, setMyRejectedDeliveries] = useState([]);
   const [deliveryAgentId, setDeliveryAgentId] = useState("");
   const navigate = useNavigate();
 
@@ -16,33 +19,49 @@ export const DeliveryRequest = () => {
     let id = localStorage.getItem("trade-hub-DAId") || null;
     if (id) {
       setDeliveryAgentId(id);
-    }else {
+    } else {
       toast.error("Please login again.");
       navigate("/delivery/login");
     }
-  }, [])
+  }, []);
   const getAllPendingRequest = async () => {
     try {
       const response = await axiosInstance.get("getAllPendingDelivery");
-      console.log("response", response);
       if (response.status === 200) {
-        console.log("fgf",response);  
         setData(response.data.data);
       }
     } catch (error) {
       console.log(error);
     }
   };
+  const getAllMyRejectedOrders = async () => {
+    try {
+      const res = await axiosInstance.get(
+        `viewDeliveryById/${deliveryAgentId}`
+      );
+      if (res.status == 200) {
+        const data = res?.data?.data || null;
+        if (data) {
+          setDeliveryAgent(res.data.data);
+          setMyRejectedDeliveries(data?.rejectedOrders || []);
+        }
+      }
+    } catch (err) {
+      console.log("err on get my rejected orders", err);
+    }
+  };
+  console.log("my rjected deliveries", myRejectedDeliveries);
 
   const toApprove = async (id) => {
     try {
       const response = await axiosInstance.patch(
-        `acceptDeliveryReqById/${id}`, {
-          deliveryAgentId
+        `acceptDeliveryReqById/${id}`,
+        {
+          deliveryAgentId,
         }
       );
 
-      console.log("res2",response)
+      console.log("res2", response);
       if (response.status == 200) {
         toast.success("Approved sucessfully");
       }
@@ -55,22 +74,29 @@ export const DeliveryRequest = () => {
 
   const toReject = async (id) => {
     try {
-      const response = await axiosInstance.patch(`rejectDeliveryReqById/${id}`, {
-        deliveryAgentId
-      });
+      const response = await axiosInstance.patch(
+        `rejectDeliveryReqById/${id}`,
+        {
+          deliveryAgentId,
+        }
+      );
       if (response.status == 200) {
         toast.success("Rejected sucessfully");
       }
     } catch (error) {
-      console.log("error on reject",error);
+      console.log("error on reject", error);
     } finally {
       getAllPendingRequest();
+      getAllMyRejectedOrders();
     }
   };
 
   useEffect(() => {
     getAllPendingRequest();
-  }, []);
+    if (deliveryAgentId) {
+      getAllMyRejectedOrders();
+    }
+  }, [deliveryAgentId]);
 
   const handleApprove = (id) => {
     toApprove(id);
@@ -80,18 +106,27 @@ export const DeliveryRequest = () => {
     toReject(id);
   };
 
+  useEffect(() => {
+    if (data.length > 0 && myRejectedDeliveries.length > 0) {
+      const newData = data.filter((item) => {
+        return !myRejectedDeliveries.includes(item._id);
+      });
+      setFilterData(newData);
+    } else {
+      setFilterData(data);
+    }
+  }, [data, myRejectedDeliveries]);
+
   return (
     <div className="pt-5">
-      {data.length > 0 && (
+      {filterData.length > 0 && (
         <div className="text-center">
           <h4 className="mx-auto">Recent Delivery requests</h4>
         </div>
       )}
 
-      {data.length !== 0 ? (
-        <div
-          style={{ overflowY: "scroll", height: "80vh", width: "95%" }}
-        >
+      {filterData.length !== 0 ? (
+        <div style={{ overflowY: "scroll", height: "80vh", width: "95%" }}>
           <Table
             striped
             hover
@@ -110,7 +145,7 @@ export const DeliveryRequest = () => {
               </tr>
             </thead>
             <tbody>
-              {data.map((users, index) => {
+              {filterData.map((users, index) => {
                 const buyerId = users?.buyerId;
                 const buyerProductId = users?.buyerProductId;
                 const sellerId = users?.sellerId;
@@ -131,14 +166,18 @@ export const DeliveryRequest = () => {
                         <td rowSpan={2} id="delivery-approval-btn-containers">
                           <button
                             className="text-success"
-                            onClick={()=>{handleApprove(users._id)}}
+                            onClick={() => {
+                              handleApprove(users._id);
+                            }}
                           >
                             {" "}
                             <FcCheckmark />{" "}
                           </button>
                           <button
                             className="text-danger"
-                            onClick={()=>{handleReject(users._id)}}
+                            onClick={() => {
+                              handleReject(users._id);
+                            }}
                           >
                             {" "}
                             <FaXmark />{" "}

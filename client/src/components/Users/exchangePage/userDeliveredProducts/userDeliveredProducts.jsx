@@ -65,13 +65,165 @@ export const UserDeliveredProducts = () => {
     <div className="productCard-body">
       <UserMainNav />
       <div className="d-flex justify-content-center mt-5">
-        <h6 className="user-wishlist-heading3">Delivered Products</h6>
+        <h6 className="user-wishlist-heading3">Delivered items</h6>
       </div>
-      <div className="d-flex justify-content-center mt-5">
-        <p className="user-wishlist-heading4">Exchange Requests Sent by Me</p>
+      {[...requestSentByMeExchanges, ...receivedRequestExchanges].length > 0 ? (
+        <>
+         
+          <div
+            className="row mx-auto"
+            style={{ minHeight: "500px", width: "95%" }}
+          >
+            {[...requestSentByMeExchanges, ...receivedRequestExchanges].map((e) => {
+              const buyer = e?.buyerId;
+              const buyerProduct = e?.buyerProductId;
+              const buyerProductFilename =
+                buyerProduct?.itemPhoto?.filename || null;
+              let buyerProductPic =
+                "https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg";
+              if (buyerProductFilename) {
+                buyerProductPic = `${BASE_URL}${buyerProductFilename}`;
+              }
+
+              const seller = e?.sellerId;
+              const sellerProduct = e?.sellerProductId;
+
+              const sellerProductFilename =
+                sellerProduct?.itemPhoto?.filename || null;
+              let sellerProductPic =
+                "https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg";
+              if (sellerProductFilename) {
+                sellerProductPic = `${BASE_URL}${sellerProductFilename}`;
+              }
+              return (
+                <div className=" user-delivered-container container text-center mx-0 col-6 ">
+                  <div className="row">
+                    <div className=" userDeliveryProduct-box shadow row">
+                      <div className="card productCard-box3  col-5">
+                        <img
+                          src={buyerProductPic}
+                          className="card-img-top w-75 h-50 ms-3"
+                          alt="..."
+                        />
+                        <div className="" style={{ height: "120px" }}>
+                          <Row className="mt-3">
+                            <Col>
+                              <h6 className="card-text text-center   text-capitalize">
+                                {buyerProduct?.name}{" "}
+                              </h6>
+                            </Col>
+                          </Row>
+                          <Row className="mt-3">
+                            <Col>
+                              <h6 className="card-text text-left   text-capitalize">
+                                Points
+                              </h6>
+                            </Col>
+                            <Col xs={1}>:</Col>
+                            <Col className="productCard-points-box2  border-1 d-flex align-items-center juatify-content-center ">
+                              <img
+                                style={{ width: "20px" }}
+                                src={img2}
+                                alt="coin"
+                                className="ms-3"
+                              />
+
+                              <h6 className="mt-2 ms-1">
+                                {buyerProduct?.point}
+                              </h6>
+                            </Col>
+                          </Row>
+                        </div>
+
+                        <div className="d-flex justify-content-center">
+                          <button
+                            className="userDeliverdProducts-viewmore"
+                            onClick={() => {
+                              navigate(
+                                `/delivered/products-viewmore/${buyerProduct._id}`
+                              );
+                            }}
+                          >
+                            View more
+                          </button>
+                        </div>
+                      </div>
+
+                      <div
+                        style={{
+                          width: "50px",
+                          height: "50px",
+                          marginTop: "25%",
+                        }}
+                        className="col-1"
+                      >
+                        <img src={img3} alt="icon" className="w-100" />
+                      </div>
+
+                      <div className="card productCard-box3 col-5" key="">
+                        <img
+                          src={sellerProductPic}
+                          className="card-img-top w-75 h-50 ms-3"
+                          alt="..."
+                        />
+                        <div className="" style={{ height: "120px" }}>
+                          <Row className="mt-3">
+                            <Col>
+                              <h6 className="card-text text-center   text-capitalize">
+                                {sellerProduct?.name}{" "}
+                              </h6>
+                            </Col>
+                          </Row>
+                          <Row className="mt-3">
+                            <Col>
+                              <h6 className="card-text text-left   text-capitalize">
+                                Points
+                              </h6>
+                            </Col>
+                            <Col xs={1}>:</Col>
+                            <Col className="productCard-points-box2  border-1 d-flex align-items-center juatify-content-center ">
+                              <img
+                                style={{ width: "20px" }}
+                                src={img2}
+                                alt="coin"
+                                className="ms-3"
+                              />
+
+                              <h6 className="mt-2 ms-1">
+                                {sellerProduct?.point}
+                              </h6>
+                            </Col>
+                          </Row>
+                        </div>
+                        <div className="d-flex justify-content-center">
+                          <button
+                            className="userDeliverdProducts-viewmore"
+                            onClick={() => {
+                              navigate(
+                                `/delivered/products-viewmore/${sellerProduct._id}`
+                              );
+                            }}
+                          >
+                            view more
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      ): <div>
+          <h1 className="text-center">No exchanges</h1>
+        </div>}
+
+      {/* <div className="d-flex justify-content-center mt-5">
+        <p className="user-wishlist-heading4">Received Exchange Requests</p>
       </div>
       <div className="row mx-auto" style={{ minHeight: "250px", width: "95%" }}>
-        {requestSentByMeExchanges.map((e) => {
+        {receivedRequestExchanges.map((e) => {
           const buyer = e?.buyerId;
           const buyerProduct = e?.buyerProductId;
           const buyerProductFilename =
@@ -93,9 +245,62 @@ export const UserDeliveredProducts = () => {
             sellerProductPic = `${BASE_URL}${sellerProductFilename}`;
           }
           return (
-            <div className=" user-delivered-container container text-center mx-0 col-6 ">
+            <div className="user-delivered-container container text-center col-6  ">
               <div className="row">
-                <div className=" userDeliveryProduct-box shadow row">
+                <div className=" userDeliveryProduct-box shadow row d-flex flex-nowrap">
+                  <div className="card productCard-box3 col-5" key="">
+                    <img
+                      src={sellerProductPic}
+                      className="card-img-top w-75 h-50 ms-3"
+                      alt="..."
+                    />
+                    <div className="" style={{ height: "120px" }}>
+                      <Row className="mt-3">
+                        <Col>
+                          <h6 className="card-text text-center   text-capitalize">
+                            {sellerProduct?.name}{" "}
+                          </h6>
+                        </Col>
+                      </Row>
+                      <Row className="mt-3">
+                        <Col>
+                          <h6 className="card-text text-left   text-capitalize">
+                            Points
+                          </h6>
+                        </Col>
+                        <Col xs={1}>:</Col>
+                        <Col className="productCard-points-box2  border-1 d-flex align-items-center juatify-content-center ">
+                          <img
+                            style={{ width: "20px" }}
+                            src={img2}
+                            alt="coin"
+                            className="ms-3"
+                          />
+
+                          <h6 className="mt-2 ms-1">{sellerProduct?.point}</h6>
+                        </Col>
+                      </Row>
+                    </div>
+                    <div className="d-flex justify-content-center">
+                      <button
+                        className="userDeliverdProducts-viewmore"
+                        onClick={() => {
+                          navigate(
+                            `/delivered/products-viewmore/${sellerProduct._id}`
+                          );
+                        }}
+                      >
+                        View more
+                      </button>
+                    </div>
+                  </div>
+
+                  <div
+                    style={{ width: "50px", height: "50px", marginTop: "25%" }}
+                    className="col-1"
+                  >
+                    <img src={img3} alt="icon" className="w-100" />
+                  </div>
                   <div className="card productCard-box3  col-5">
                     <img
                       src={buyerProductPic}
@@ -139,60 +344,6 @@ export const UserDeliveredProducts = () => {
                           );
                         }}
                       >
-                        View more
-                      </button>
-                    </div>
-                  </div>
-
-                  <div
-                    style={{ width: "50px", height: "50px", marginTop: "25%" }}
-                    className="col-1"
-                  >
-                    <img src={img3} alt="icon" className="w-100" />
-                  </div>
-
-                  <div className="card productCard-box3 col-5" key="">
-                    <img
-                      src={sellerProductPic}
-                      className="card-img-top w-75 h-50 ms-3"
-                      alt="..."
-                    />
-                    <div className="" style={{ height: "120px" }}>
-                      <Row className="mt-3">
-                        <Col>
-                          <h6 className="card-text text-center   text-capitalize">
-                            {sellerProduct?.name}{" "}
-                          </h6>
-                        </Col>
-                      </Row>
-                      <Row className="mt-3">
-                        <Col>
-                          <h6 className="card-text text-left   text-capitalize">
-                            Points
-                          </h6>
-                        </Col>
-                        <Col xs={1}>:</Col>
-                        <Col className="productCard-points-box2  border-1 d-flex align-items-center juatify-content-center ">
-                          <img
-                            style={{ width: "20px" }}
-                            src={img2}
-                            alt="coin"
-                            className="ms-3"
-                          />
-
-                          <h6 className="mt-2 ms-1">{sellerProduct?.point}</h6>
-                        </Col>
-                      </Row>
-                    </div>
-                    <div className="d-flex justify-content-center">
-                      <button
-                        className="userDeliverdProducts-viewmore"
-                        onClick={() => {
-                          navigate(
-                            `/delivered/products-viewmore/${sellerProduct._id}`
-                          );
-                        }}
-                      >
                         view more
                       </button>
                     </div>
@@ -202,139 +353,7 @@ export const UserDeliveredProducts = () => {
             </div>
           );
         })}
-      </div>
-      <div className="d-flex justify-content-center mt-5">
-        <p className="user-wishlist-heading4">Received Exchange Requests</p>
-      </div>
-      <div className="row mx-auto" style={{ minHeight: "250px", width: "95%" }}>
-        {receivedRequestExchanges.map((e) => {
-          const buyer = e?.buyerId;
-          const buyerProduct = e?.buyerProductId;
-          const buyerProductFilename =
-            buyerProduct?.itemPhoto?.filename || null;
-          let buyerProductPic =
-            "https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg";
-          if (buyerProductFilename) {
-            buyerProductPic = `${BASE_URL}${buyerProductFilename}`;
-          }
-
-          const seller = e?.sellerId;
-          const sellerProduct = e?.sellerProductId;
-
-          const sellerProductFilename =
-            sellerProduct?.itemPhoto?.filename || null;
-          let sellerProductPic =
-            "https://t3.ftcdn.net/jpg/03/45/05/92/360_F_345059232_CPieT8RIWOUk4JqBkkWkIETYAkmz2b75.jpg";
-          if (sellerProductFilename) {
-            sellerProductPic = `${BASE_URL}${sellerProductFilename}`;
-          }
-          return (
-            <div className="user-delivered-container container text-center col-6  ">
-              <div className="row">
-                <div className=" userDeliveryProduct-box shadow row d-flex flex-nowrap">
-                  <div className="card productCard-box3  col-5">
-                    <img
-                      src={buyerProductPic}
-                      className="card-img-top w-75 h-50 ms-3"
-                      alt="..."
-                    />
-                    <div className="" style={{ height: "120px" }}>
-                      <Row className="mt-3">
-                        <Col>
-                          <h6 className="card-text text-center   text-capitalize">
-                            {buyerProduct?.name}{" "}
-                          </h6>
-                        </Col>
-                      </Row>
-                      <Row className="mt-3">
-                        <Col>
-                          <h6 className="card-text text-left   text-capitalize">
-                            Points
-                          </h6>
-                        </Col>
-                        <Col xs={1}>:</Col>
-                        <Col className="productCard-points-box2  border-1 d-flex align-items-center juatify-content-center ">
-                          <img
-                            style={{ width: "20px" }}
-                            src={img2}
-                            alt="coin"
-                            className="ms-3"
-                          />
-
-                          <h6 className="mt-2 ms-1">{buyerProduct?.point}</h6>
-                        </Col>
-                      </Row>
-                    </div>
-
-                    <div className="d-flex justify-content-center">
-                      <button
-                        className="userDeliverdProducts-viewmore"
-                        onClick={() => {
-                          navigate(`/user/exchange-items`);
-                        }}
-                      >
-                        view more
-                      </button>
-                    </div>
-                  </div>
-
-                  <div
-                    style={{ width: "50px", height: "50px", marginTop: "25%" }}
-                    className="col-1"
-                  >
-                    <img src={img3} alt="icon" className="w-100" />
-                  </div>
-
-                  <div className="card productCard-box3 col-5" key="">
-                    <img
-                      src={sellerProductPic}
-                      className="card-img-top w-75 h-50 ms-3"
-                      alt="..."
-                    />
-                    <div className="" style={{ height: "120px" }}>
-                      <Row className="mt-3">
-                        <Col>
-                          <h6 className="card-text text-center   text-capitalize">
-                            {sellerProduct?.name}{" "}
-                          </h6>
-                        </Col>
-                      </Row>
-                      <Row className="mt-3">
-                        <Col>
-                          <h6 className="card-text text-left   text-capitalize">
-                            Points
-                          </h6>
-                        </Col>
-                        <Col xs={1}>:</Col>
-                        <Col className="productCard-points-box2  border-1 d-flex align-items-center juatify-content-center ">
-                          <img
-                            style={{ width: "20px" }}
-                            src={img2}
-                            alt="coin"
-                            className="ms-3"
-                          />
-
-                          <h6 className="mt-2 ms-1">{sellerProduct?.point}</h6>
-                        </Col>
-                      </Row>
-                    </div>
-                    <div className="d-flex justify-content-center">
-                      <button
-                        className="userDeliverdProducts-viewmore"
-                        onClick={() => {
-                          navigate(`/user/exchange-items`);
-                        }}
-                      >
-                        View more
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      </div> */}
       <div style={{ marginTop: "20px" }}>
         <Footer />
       </div>
