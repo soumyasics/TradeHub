@@ -81,6 +81,7 @@ import { ViewAllItemsById } from "./components/Users/viewAllItems/viewAllItemsBy
 import { UserChatDashboardParams } from "./components/Users/usersChat/userChatDashboard/userChatDashboardParams";
 import { UserDeliveredProducts } from "./components/Users/exchangePage/userDeliveredProducts/userDeliveredProducts";
 import { UserPersonalisedSuggestion } from "./components/Users/userPersonalised suggestion/userPersonalisedSuggestion";
+import { DeliveredProductsViewMore } from "./components/Users/deliveredproductsViewMore/deliveredProductsViewMore";
 const App = () => {
   return (
     <div className="App">
@@ -110,7 +111,10 @@ const App = () => {
             element={<UserProductExchange />}
           />
           <Route path="/user/view-all-items" element={<ViewAllItems />} />
-          <Route path="/user/view-all-items/:item" element={<ViewAllItemsById />} />
+          <Route
+            path="/user/view-all-items/:item"
+            element={<ViewAllItemsById />}
+          />
           <Route path="/user/product-details" element={<ItemDetails />} />
           <Route path="/user/product-card" element={<ProductCard />} />
           <Route path="/user/edit/profle" element={<UsereditProfileCard />} />
@@ -134,10 +138,22 @@ const App = () => {
             element={<ApprovedRequestProduct />}
           />
           <Route path="/user/delivery-status" element={<DeliveryStatus />} />
-          <Route path="/user/chat-dashboard-params/:id" element={<UserChatDashboardParams/>} />
-          <Route path="/user/delivered-products" element={<UserDeliveredProducts/>} />
-          <Route path="/user/personalised-sugggestion" element={<UserPersonalisedSuggestion/>} />
-
+          <Route
+            path="/user/chat-dashboard-params/:id"
+            element={<UserChatDashboardParams />}
+          />
+          <Route
+            path="/user/delivered-products"
+            element={<UserDeliveredProducts />}
+          />
+          <Route
+            path="/user/personalised-sugggestion"
+            element={<UserPersonalisedSuggestion />}
+          />
+          <Route
+            path="/delivered/products-viewmore/:id"
+            element={<DeliveredProductsViewMore />}
+          />
           {/* moderators  */}
           <Route path="/moderator/register" element={<ModeratorRegister />} />
           <Route path="/moderator/login" element={<Moderatorlogin />} />
@@ -158,8 +174,8 @@ const App = () => {
           />
 
           <Route path="/moderator/exchange" element={<ModExchangeProduct />} />
-          <Route path="/moderator/quiz" element={<ModeratorQuiz/>} />
-          <Route path="/moerator/view-webinar" element={<ModViewWebinar/>} />
+          <Route path="/moderator/quiz" element={<ModeratorQuiz />} />
+          <Route path="/moerator/view-webinar" element={<ModViewWebinar />} />
 
           {/* new-1 */}
           <Route path="/delivery/login" element={<DeliveryAgentLogin />} />
@@ -174,7 +190,7 @@ const App = () => {
           <Route path="/moderator/dashboard" element={<ModeratorDashboard />} />
 
           <Route path="/delivery/dashboard" element={<DeliveryDashboard />} />
-          
+
           <Route
             path="/delivery/accepted-orders"
             element={<DeliveryAcceptedOrders />}
@@ -183,8 +199,8 @@ const App = () => {
             path="/delivery/rejected-orders"
             element={<DeliveryRejectedOrders />}
           />
-          <Route path="/delivery/pending" element={<DeliveryPending/>} />
-          <Route path="/delivered/orders" element={<DeliveredOrders/>} />
+          <Route path="/delivery/pending" element={<DeliveryPending />} />
+          <Route path="/delivered/orders" element={<DeliveredOrders />} />
           {/* Admin */}
           <Route path="/admin/login" element={<Adminlogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
@@ -201,8 +217,8 @@ const App = () => {
             element={<AdminUpdateGuideline />}
           />
           <Route path="admin/view-exchange" element={<AdminViewExchange />} />
-          <Route path="/admin/webinar" element={<AdminWebinar/>} />
-          <Route path="/admin/upload-video" element={<AdminUploadVideo/>} />
+          <Route path="/admin/webinar" element={<AdminWebinar />} />
+          <Route path="/admin/upload-video" element={<AdminUploadVideo />} />
           {/* admin components  */}
 
           {/* reusable components  */}

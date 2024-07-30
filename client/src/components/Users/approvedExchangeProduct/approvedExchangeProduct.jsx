@@ -22,7 +22,9 @@ export const ApprovedExchangeProduct = () => {
       );
       if (response.status == 200) {
         console.log(response);
-        setExchangeData(response.data.data);
+        const data = response.data.data
+        data.reverse()
+        setExchangeData(data);
       }
     } catch (error) {
       console.log(error);
