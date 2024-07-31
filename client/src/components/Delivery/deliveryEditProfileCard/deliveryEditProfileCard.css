@@ -55,3 +55,30 @@ padding: 11.3px 0px 11.725px 0px;
 justify-content: center;
 align-items: center;
 }
+.userEditProfile-image-upload
+{
+  border-radius: 50%;
+  height: 150px;
+  width:150px;
+  position: absolute;
+  top: 10%;
+}
+.userEditProfile-image-upload img
+{
+  border-radius: 50%;
+  height: 150px;
+  width:150px;
+ 
+}
+.userEditProfile-image-upload input
+{
+  background-color: none;
+
+}
+.userEditProfile-upload-icon
+{
+
+font-size: 30px;
+margin-left:80%;
+margin-top: -100px;
+}

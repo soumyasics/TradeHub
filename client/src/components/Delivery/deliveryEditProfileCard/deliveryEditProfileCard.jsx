@@ -7,11 +7,12 @@ import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
 import toast from "react-hot-toast";
-
+import img2 from "../../../assets/images/adminlogin.jpg"
+import { BASE_URL } from "../../../apis/baseURL";
 export const DeliveryEditProfileCard = ({getNewData}) => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
- 
+  const [profilePic, setProfilePic] = useState({});
   const [edit, setEdit] = useState({
     firstname: "",
     lastname: "",
@@ -30,6 +31,7 @@ export const DeliveryEditProfileCard = ({getNewData}) => {
       .then((res) => {
         if (res.data?.status === 200) {
           const delData = res.data.data;
+          setProfilePic(`${BASE_URL}${delData?.profile?.filename}`);
           setEdit({
             email: delData.email,
             contact: delData.contact,
@@ -137,6 +139,21 @@ export const DeliveryEditProfileCard = ({getNewData}) => {
             </Modal.Title>
           </Modal.Header>
 
+          <div className="d-flex justify-content-center align-item-center">
+            <div className="userEditProfile-image-upload">
+              <img
+                src={profilePic}
+                alt="profile"
+                name="profile"
+                onChange={handleChange}
+              />
+              {/* <FaRegEdit
+                className="userEditProfile-upload-icon"
+                // onChange={handleFileChange}
+              /> */}
+            </div>
+          </div>
+
           <Modal.Body>
             <Form onSubmit={handleSubmit}>
               <Form.Group
@@ -205,6 +222,23 @@ export const DeliveryEditProfileCard = ({getNewData}) => {
                   onChange={handleChange}
                 />
               </Form.Group>
+
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlTextarea1"
+              >
+                <Form.Label className="editProfileCard-Label">
+                  Photo
+                </Form.Label>
+                <Form.Control
+                  type="file"
+                  className="editProfileCard-input"
+                  placeholder="Enter your phone number"
+                  name="contact"
+                  onChange={handleChange}
+                />
+              </Form.Group>
+
               <Button type="submit" className="EditProfileCard-button">
                 Update
               </Button>
