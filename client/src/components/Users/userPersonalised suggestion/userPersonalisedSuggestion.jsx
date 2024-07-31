@@ -10,9 +10,12 @@ import axiosInstance from "../../../apis/axiosInstance";
 import { BASE_URL } from "../../../apis/baseURL";
 import Footer from "../../Footer/Footer";
 import UserMainNav from "../UserMainNav";
+import { Form, InputGroup } from "react-bootstrap";
+import { IoSearch } from "react-icons/io5";
 export const UserPersonalisedSuggestion = () => {
-  const [approvedItems, setApprovedItems] = useState([]);
+  const [recommendedItems, setrecommendedItems] = useState([]);
   const [activeUserId, setActiveUserId] = useState(null);
+  const [fixedData, setFixedData] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
     const userId = localStorage.getItem("trade-hub-userId") || null;
@@ -30,10 +33,34 @@ export const UserPersonalisedSuggestion = () => {
         `personalisedRecommendation/${activeUserId}`
       );
       if (res.status === 200) {
-        setApprovedItems(res.data.data);
+        setrecommendedItems(res.data.data);
+        setFixedData(res.data.data);
       }
     } catch (error) {
       console.log("Error in recommendation", error);
+    }
+  };
+
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    if (value) {
+      const filteredItems = fixedData.filter((items) => {
+        return items.name.toLowerCase().includes(value.toLowerCase());
+      });
+      setrecommendedItems(filteredItems);
+    } else {
+      setrecommendedItems(fixedData);
+    }
+  };
+  const filterByCategory = (e) => {
+    const category = e.target.value;
+    if (category) {
+      const filteredItems = fixedData.filter((items) => {
+        return items.category == category;
+      });
+      setrecommendedItems(filteredItems);
+    } else {
+      setrecommendedItems(fixedData);
     }
   };
 
@@ -43,19 +70,54 @@ export const UserPersonalisedSuggestion = () => {
     }
   }, [activeUserId]);
 
+  console.log("reoc item", recommendedItems);
   return (
     <>
       <UserMainNav />
+
       <div className="productCard-body">
         <div className="d-flex justify-content-center mt-5">
           <h6 className="user-wishlist-heading3">Personalised Suggestions</h6>
         </div>
+        <div className="justify-content-between d-flex mt-4">
+          <Form.Select
+            aria-label="Default select example"
+            className="mod-product-request-category"
+            onChange={filterByCategory}
+          >
+            <option value="">Filter by category</option>
+            <option value="Books">Books</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Jewellery">Jewellery</option>
+            <option value="Home-Appliances">Home Appliances</option>
+            <option value="Clothing">Clothing</option>
+          </Form.Select>
+
+          <InputGroup className="mod-product-request-box ms-2 ps-3 ">
+            <Form.Control
+              className="mod-product-request-inp"
+              type="text"
+              name="search"
+              aria-label="search"
+              placeholder="Search product"
+              aria-describedby="basic-addon1"
+              onChange={handleSearch}
+            />
+            <InputGroup.Text
+              id="basic-addon1"
+              className="modproduct-req-search-box"
+            >
+              <IoSearch className="mod-product-request-search-icon" />
+            </InputGroup.Text>
+          </InputGroup>
+        </div>
         <div className="container text-center">
           <div className="row row-cols-4 gap-5 d-flex my-5">
-            {approvedItems.map((e) => {
-              if (e?.userId._id === activeUserId) {
+            {recommendedItems.map((e, i) => {
+              if (e?.userId?._id === activeUserId) {
                 return null;
               }
+              console.log(i, "e score", e.score)
 
               const itemFilename = e?.itemPhoto?.filename || null;
               let itemPicUrl =

@@ -434,6 +434,7 @@ const personalisedRecommendation = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found", id });
     }
+
     const items = await Item.find({
       isModApproved: "approve",
       $or: [{ isDeleted: false }, { isDeleted: { $exists: false } }],
@@ -441,7 +442,17 @@ const personalisedRecommendation = async (req, res) => {
       .populate("userId")
       .exec();
 
-    return res.status(200).json({ msg: "View approved items", data: items });
+    const interests = user.interests;
+    const scoredItems = items.map((item) => {
+      let score = 0;
+      if (item.category in interests) {
+        score = interests[item.category] * 2;
+      }
+      return { ...item._doc, score };
+    });
+
+    scoredItems.sort((a, b) => b.score - a.score);
+    return res.status(200).json({ msg: "View approved items", data: scoredItems });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -466,5 +477,5 @@ module.exports = {
   itemRejectById,
   addPointToItem,
   getApprovedItemsByCategory,
-  personalisedRecommendation
+  personalisedRecommendation,
 };

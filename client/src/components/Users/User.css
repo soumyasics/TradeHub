@@ -47,37 +47,30 @@
 .user-login-error {
   margin-left: 150px;
 }
-.userlogin-eye-box
-{
-  
-  background-color:white !important;
+.userlogin-eye-box {
+  background-color: white !important;
   border: 2px solid black !important;
   border-top-right-radius: 10px !important;
   border-bottom-right-radius: 10px !important;
   border-left: 0 solid !important;
-
- }
- .user-login-password-inp
-{
-  
+}
+.user-login-password-inp {
   border: 2px solid black !important;
   border-right: 0 solid !important;
   border-top-left-radius: 10px !important;
   border-bottom-left-radius: 10px !important;
 }
-.user-login-password-box
-{
+.user-login-password-box {
   height: 50px;
   width: 70% !important;
   border-radius: 14px;
-  border-right:0 !important;
+  border-right: 0 !important;
 }
-.userLogin-toggleEye{
- z-index: 1;
+.userLogin-toggleEye {
+  z-index: 1;
 }
 
-.login-label-box
-{
+.login-label-box {
   width: 150px;
   height: 100px;
 }
@@ -122,36 +115,29 @@
   margin-left: 100px;
 }
 
-
-.user-forget-eye-box
-{
-  
-  background-color:white !important;
+.user-forget-eye-box {
+  background-color: white !important;
   border: 2px solid black !important;
   border-top-right-radius: 10px !important;
   border-bottom-right-radius: 10px !important;
   border-left: 0 solid !important;
-
- }
- .user-forget-password-inp
-{
-  
+}
+.user-forget-password-inp {
   border: 2px solid black !important;
   border-right: 0 solid !important;
   border-top-left-radius: 10px !important;
   border-bottom-left-radius: 10px !important;
 }
-.user-forget-password-box
-{
+.user-forget-password-box {
   height: 50px;
   width: 70% !important;
   border-radius: 14px;
-  border-right:0 !important;
+  border-right: 0 !important;
   margin-top: 5%;
   margin-left: 16%;
 }
-.user-forget-toggleEye{
- z-index: 1;
+.user-forget-toggleEye {
+  z-index: 1;
 }
 
 /* User Register */
@@ -216,34 +202,28 @@
   margin-left: 30px;
 }
 
-.usersignup-eye-box
-{
-  
-  background-color:white !important;
+.usersignup-eye-box {
+  background-color: white !important;
   border: 2px solid black !important;
   border-top-right-radius: 10px !important;
   border-bottom-right-radius: 10px !important;
   border-left: 0 solid !important;
-
- }
- .user-signup-password-inp
-{
-  
+}
+.user-signup-password-inp {
   border: 2px solid black !important;
   border-right: 0 solid !important;
   border-top-left-radius: 10px !important;
   border-bottom-left-radius: 10px !important;
 }
-.user-signup-password-box
-{
+.user-signup-password-box {
   height: 50px;
   width: 98% !important;
   border-radius: 14px;
-  border-right:0 !important;
+  border-right: 0 !important;
   margin-top: 9px;
 }
-.usersign-toggleEye{
- z-index: 1;
+.usersign-toggleEye {
+  z-index: 1;
 }
 
 /* User Landing Page */
@@ -347,8 +327,7 @@
 }
 
 /* UserMainNavBar */
-.userNavbar-arrow::after 
-{
+.userNavbar-arrow::after {
   border-top: 0em solid transparent !important;
 }
 .usermainnav-page-color {
@@ -397,49 +376,36 @@
   height: 40px;
   width: 40px;
   border-radius: 50px;
-  
 }
 /* usernavbar search */
 
-.mod-product-request-inp
-{
-  
-  border: 1.147px solid rgba(0, 0, 0, 0.50) !important;
+.mod-product-request-inp {
+  border: 1.147px solid rgba(0, 0, 0, 0.5) !important;
 
   border-right: 0 solid !important;
   border-top-left-radius: 30px !important;
   border-bottom-left-radius: 30px !important;
 }
-.mod-product-request-box
-{
-  height: 50px;
+.mod-product-request-box {
+  height: 45px;
   width: 380px !important;
   border-radius: 14px;
-  border-right:0 !important;
-  margin-top:20px;
+  border-right: 0 !important;
+  margin-top: 20px;
   margin-right: 50px;
 }
-.mod-product-request-search-icon{
- z-index: 1;
- font-size: 23px;
+.mod-product-request-search-icon {
+  z-index: 1;
+  font-size: 23px;
 }
-.modproduct-req-search-box
-{
-  
-  background-color:white !important;
-  border: 1.147px solid rgba(0, 0, 0, 0.50) !important;
+.modproduct-req-search-box {
+  background-color: white !important;
+  border: 1.147px solid rgba(0, 0, 0, 0.5) !important;
 
   border-top-right-radius: 30px !important;
   border-bottom-right-radius: 30px !important;
   border-left: 0 solid !important;
-
- }
-
-
-
-
-
-
+}
 
 .user-profile-icon {
   font-size: 16px;
@@ -653,6 +619,6 @@
   border-radius: 16px;
   font-size: 25px;
 }
-.userEdit-cardTitle
-{
-margin-left: 43%;}
+.userEdit-cardTitle {
+  margin-left: 43%;
+}
