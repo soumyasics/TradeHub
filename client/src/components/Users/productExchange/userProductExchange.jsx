@@ -120,7 +120,7 @@ export const UserProductExchange = () => {
       />
 
       <div className="itemDeails-body shadow">
-        <div className="container text-center">
+        <div className="container text-center pb-4">
           <div className="row">
             <div className="col-md-6 d-flex itemDetails-left-box">
               <div

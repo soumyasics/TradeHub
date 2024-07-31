@@ -9,11 +9,11 @@ import { BASE_URL } from "../../../apis/baseURL";
 export const MyProductModals = ({ show, setShow, handleConfirmExchange }) => {
   const [myItems, setMyItems] = useState([]);
   const [selectItem, setSelectedItem] = useState(null);
+  const [itemsCount, setItemsCount] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
     let id = localStorage.getItem("trade-hub-userId") || null;
-    console.log("iddd", id);
     if (id) {
       getItems(id);
     } else {
@@ -27,7 +27,6 @@ export const MyProductModals = ({ show, setShow, handleConfirmExchange }) => {
       .get(`viewAllActiveitemsByUserId/${id}`)
       .then((res) => {
         if (res.status === 200) {
-          console.log("respo", res);
           let data = res?.data?.data || [];
           data.reverse();
           setMyItems(data);
@@ -70,6 +69,11 @@ export const MyProductModals = ({ show, setShow, handleConfirmExchange }) => {
           className="d-flex flex-wrap gap-5 "
           style={{ height: "350px", overflowY: "auto" }}
         >
+          {myItems.length === 0 && (
+            <div className="h-100 w-100 align-items-center d-flex justify-content-center">
+              <h5>No found any of your items for exchange.</h5>
+            </div>
+          )}
           {myItems.map((e) => {
             if (e.isModApproved === "pending") {
               return;

@@ -25,8 +25,8 @@ export const RequestedItems = () => {
         `getAllRequestByBuyerId/${activeUserId}`
       );
       if (res.status == 200) {
-        let requestItems = res.data.data
-        requestItems = requestItems.reverse()
+        let requestItems = res.data.data;
+        requestItems = requestItems.reverse();
         setRequests(requestItems);
       }
     } catch (error) {
@@ -51,7 +51,6 @@ export const RequestedItems = () => {
     }
   }, [activeUserId]);
 
-  console.log("reqpuest", requests);
 
   return (
     <div className="mt-5">
@@ -69,7 +68,6 @@ export const RequestedItems = () => {
           if (buyerProductFilename) {
             buyProductPic = `${BASE_URL}${buyerProductFilename}`;
           }
-console.log(e,"123");
           const sellerProduct = e?.sellerProductId;
           const sellerProductFilename =
             sellerProduct?.itemPhoto?.filename || null;
@@ -193,7 +191,7 @@ console.log(e,"123");
                   className="exchangeProduct-order-pending align-items-center d-flex"
                   style={{ height: "30px" }}
                 >
-                  <input type="radio" />
+                  <input type="radio"  checked={true}/>
                   &nbsp; &nbsp;
                   {e?.sellerResponseStatus === "pending" ? (
                     <p className="m-0 text-warning"> Pending </p>
@@ -204,13 +202,15 @@ console.log(e,"123");
                   )}
                 </div>
                 <div className="exchangeProduct-chat-btn">
-                  <button style={{marginRight:"10px"}}
-                  onClick={()=>
-                  {navigate(`/user/chat-dashboard-params/${e?.sellerId?._id}`)}
-                  }
+                  <button
+                    style={{ marginRight: "10px" }}
+                    onClick={() => {
+                      navigate(
+                        `/user/chat-dashboard-params/${e?.sellerId?._id}`
+                      );
+                    }}
                   >
-                  <BsChatText /> &nbsp; 
-                    Chat
+                    <BsChatText /> &nbsp; Chat
                   </button>
                 </div>
               </div>

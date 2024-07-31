@@ -234,7 +234,7 @@ export const ReceivedRequest = () => {
                   </div>
                 </div>
                 <div className="exchangeProduct-order-pending">
-                  <input type="radio" />
+                  <input type="radio" checked={true} />
                   Pending
                 </div>
                 <div className="exchangeProduct-chat-btn">

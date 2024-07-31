@@ -1,8 +1,9 @@
 const { ExchangeProductModel } = require("./exchangeProductSchema");
-const { ItemModel } = require("../Item/itemSchema");
+const  ItemModel  = require("../Item/itemSchema");
 const { default: mongoose } = require("mongoose");
 const Item = require("../Item/itemSchema");
 const { DeliveryModel } = require("../delivery/deliverySchema");
+const UserModel = require("../User/userModel")
 const sendExchangeRequest = async (req, res) => {
   try {
     const { buyerId, sellerId, buyerProductId, sellerProductId } = req.body;
@@ -33,6 +34,39 @@ const sendExchangeRequest = async (req, res) => {
         .json({ msg: "Same product exchange request already exists" });
     }
 
+    const sellingProduct = await ItemModel.findById(sellerProductId);
+    const category = sellingProduct.category
+      
+    if (!category) {
+      return res.status(400).json({ msg: "Selling product not found" });
+    }
+  
+    const user = await UserModel.findById(buyerId);
+    if (!user) {
+      return res.status(400).json({ msg: "User not found" });
+    }
+
+    if (!user.interests) {
+      user.interests = {
+        Books: 0,
+        Electronics: 0,
+        Jewellery: 0,
+        HomeAppliances: 0,
+        Clothing: 0,
+        Furniture: 0
+      }
+    }
+
+    if (category === "Home-Appliances") {
+      user.interests.HomeAppliances = user.interests.HomeAppliances + 1
+    }else {
+      user.interests[category] = user.interests[category] + 1
+    }
+
+    await user.save()
+
+
+
     const newExchangeProduct = new ExchangeProductModel({
       buyerId,
       sellerId,
@@ -40,6 +74,7 @@ const sendExchangeRequest = async (req, res) => {
       sellerProductId,
     });
     await newExchangeProduct.save();
+
 
     return res.status(201).json({ msg: "Exchange request sent successfully" });
   } catch (error) {
