@@ -2,7 +2,7 @@ const Item = require("./itemSchema");
 const multer = require("multer");
 const mongoose = require("mongoose");
 const ModeratorModal = require("../Moderator/modSchema");
-
+const UserModel = require("../User/userModel");
 // Multer storage configuration
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -423,6 +423,30 @@ const deActivateItemById = (req, res) => {
     });
 };
 
+const personalisedRecommendation = async (req, res) => {
+  try {
+    const id = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "Invalid userId", id });
+    }
+    const user = await UserModel.findById(id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found", id });
+    }
+    const items = await Item.find({
+      isModApproved: "approve",
+      $or: [{ isDeleted: false }, { isDeleted: { $exists: false } }],
+    })
+      .populate("userId")
+      .exec();
+
+    return res.status(200).json({ msg: "View approved items", data: items });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   registerItem,
   viewActiveItems,
@@ -442,4 +466,5 @@ module.exports = {
   itemRejectById,
   addPointToItem,
   getApprovedItemsByCategory,
+  personalisedRecommendation
 };

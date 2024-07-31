@@ -40,6 +40,9 @@ function UserMainNav() {
   const redirectToRequest = () => {
     navigate("/user/requests");
   };
+  const redirectToForYou = () => {
+    navigate("/user/UserPersonalisedSuggestion");
+  };
   const handleCategory = () => {
     setShow(!show);
   };
@@ -153,6 +156,9 @@ function UserMainNav() {
 
               <Link className="dropdown-item" to="/user/wishlist" id="">
                 My wishlist
+              </Link>
+              <Link className="dropdown-item" to="/user/personalised-sugggestion" id="">
+              Only for you
               </Link>
               <Link className="dropdown-item" to="/user/exchange-product" id="">
                 Accepted Exchanges

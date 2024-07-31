@@ -38,7 +38,7 @@ router.post("/viewActiveItems", items.viewActiveItems);
 router.get("/viewAllitemsByUserId/:id", items.viewAllitemsByUserId);
 router.get("/viewAllActiveitemsByUserId/:id", items.viewAllActiveitemsByUserId);
 router.delete("/deleteItemById/:id", items.deleteItemById);
-
+router.get(`/personalisedRecommendation/:id`, items.personalisedRecommendation);
 router.get(
   "/getApprovedItemsByCategory/:category",
   items.getApprovedItemsByCategory
