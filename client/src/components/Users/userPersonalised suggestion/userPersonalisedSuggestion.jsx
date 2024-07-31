@@ -117,7 +117,7 @@ export const UserPersonalisedSuggestion = () => {
               if (e?.userId?._id === activeUserId) {
                 return null;
               }
-              console.log(i, "e score", e.score)
+              console.log(i, "e score", e.score, e?.name)
 
               const itemFilename = e?.itemPhoto?.filename || null;
               let itemPicUrl =

@@ -445,14 +445,18 @@ const personalisedRecommendation = async (req, res) => {
     const interests = user.interests;
     const scoredItems = items.map((item) => {
       let score = 0;
-      if (item.category in interests) {
+      if (item.category === "Home-Appliances") {
+        score = interests["HomeAppliances"] * 2;
+      } else {
         score = interests[item.category] * 2;
       }
       return { ...item._doc, score };
     });
 
     scoredItems.sort((a, b) => b.score - a.score);
-    return res.status(200).json({ msg: "View approved items", data: scoredItems });
+    return res
+      .status(200)
+      .json({ msg: "View approved items", data: scoredItems });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
