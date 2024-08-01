@@ -27,7 +27,7 @@ export const ReceivedRequest = () => {
         let pendingReqs = res.data.data.filter(
           (e) => e?.sellerResponseStatus === "pending"
         );
-        pendingReqs=  pendingReqs.reverse()
+        pendingReqs = pendingReqs.reverse();
 
         setRequests(pendingReqs);
       }
@@ -107,7 +107,7 @@ export const ReceivedRequest = () => {
           if (buyerProductFilename) {
             buyProductPic = `${BASE_URL}${buyerProductFilename}`;
           }
-          console.log(e,"chatid");
+          console.log(e, "chatid");
 
           const sellerProduct = e?.sellerProductId;
           const sellerProductFilename =
@@ -239,12 +239,13 @@ export const ReceivedRequest = () => {
                 </div>
                 <div className="exchangeProduct-chat-btn">
                   <button
-                  onClick={()=>
-                    {navigate(`/user/chat-dashboard-params/${e?.buyerId?._id}`)}
-                    }
+                    onClick={() => {
+                      navigate(
+                        `/user/chat-dashboard-params/${e?.buyerId?._id}`
+                      );
+                    }}
                   >
-                  <BsChatText /> &nbsp; 
-                  Chat
+                    <BsChatText /> &nbsp; Chat
                   </button>
                 </div>
               </div>
@@ -268,6 +269,17 @@ export const ReceivedRequest = () => {
                   Reject
                 </button>
               </span>
+
+              <div
+                className="d-flex justify-content-center  align-items-center"
+                style={{ paddingTop: "10px" }}
+              >
+                <p style={{ fontSize: "14px" }} className="m-0 mb-3">
+                  You can gain{" "}
+                  <span className="fw-bold"> {e?.pointVariation}</span> points
+                  from this this exchange.{" "}
+                </p>
+              </div>
             </div>
           );
         })}
