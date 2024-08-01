@@ -10,13 +10,13 @@ import { AdminRecentddReq } from "../adminRecentddReq/adminRecentddReq";
 export const AdminOverview = () => {
   const [users, setUsers] = useState([]);
   const [moderator, setModerator] = useState([]);
-  const [transaction, setTransaction] = useState([]);
   const [delivery, setDelivery] = useState([]);
-
+  const [agents, setAgents] = useState([])
   useEffect(() => {
     getAllUsers();
-    getAllMods()
-    getAllDelivery()
+    getAllMods();
+    getAllDelivery();
+    getAllDeliveryAgentReqs()
   }, []);
 
   const getAllUsers = async () => {
@@ -33,10 +33,27 @@ export const AdminOverview = () => {
     }
   };
 
+  const getAllDeliveryAgentReqs = () => {
+    axiosInstance
+      .get("/allAcceptDelivery")
+      .then((res) => {
+        if (res.status === 200) {
+          const data = res?.data?.data || [];
+          setAgents(data);
+
+        } else {
+          setAgents([]);
+        }
+      })
+      .catch((err) => {
+        console.log("Error", err);
+      });
+  };
+
   const getAllMods = async () => {
     try {
-      const res = await axiosInstance.post("viewModerators");
-      if (res.data.status === 200) {
+      const res = await axiosInstance.get("allApprovedMods");
+      if (res.status === 200) {
         const data = res.data?.data || [];
         setModerator(data);
       } else {
@@ -47,18 +64,16 @@ export const AdminOverview = () => {
     }
   };
 
-  const getAllDelivery = async() =>
-    {
-      try {
-        const response = await axiosInstance.get("/getAllDeliveredOrders")
-        if (response.status == 200)
-        {
-          setDelivery(response.data.data)
-        }
-      } catch (error) {
-        console.log(error);
+  const getAllDelivery = async () => {
+    try {
+      const response = await axiosInstance.get("/getAllDeliveredOrders");
+      if (response.status == 200) {
+        setDelivery(response.data.data);
       }
+    } catch (error) {
+      console.log(error);
     }
+  };
 
   return (
     <div>
@@ -112,11 +127,11 @@ export const AdminOverview = () => {
                     <div className="col-7">
                       <span>
                         <p className="admin-dash-span">
-                          Total number of transaction
+                          Total delivery agents
                         </p>
                       </span>
                       <span className="admin-dash-length">
-                        {transaction.length}
+                        {agents.length}
                       </span>
                     </div>
                   </div>

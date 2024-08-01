@@ -150,7 +150,7 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
                   }}
                 >
                   {" "}
-                  All Guidelines
+                  Add Guidelines
                 </li>
                 <li
                   className="text-dark admin-dd-item"

@@ -16,7 +16,6 @@ export const AdminTransaction = () => {
     try {
       const response = await axiosInstance.get("getAllExchangeRequests");
       if (response.status == 200) {
-        console.log("fdgd", response.data.data);
         const data = response.data.data;
         setRequestData(data);
         setfixedData(data);
@@ -25,7 +24,6 @@ export const AdminTransaction = () => {
       console.log(error);
     }
   };
-  console.log(requestData);
 
   useEffect(() => {
     getRequest();
@@ -33,15 +31,14 @@ export const AdminTransaction = () => {
 
   const handleSearch = (e) => {
     const value = e.target.value;
-    console.log(value);
     if (value) {
       const buyerFilterData = fixedData.filter((items) => {
-        return items.buyerProductId.name
+        return items?.buyerProductId?.name
           .toLowerCase()
           .includes(value.toLowerCase());
       });
       const sellerFilterData = fixedData.filter((items) => {
-        return items.sellerProductId.name
+        return items?.sellerProductId?.name
           .toLowerCase()
           .includes(value.toLowerCase());
       });
@@ -55,10 +52,10 @@ export const AdminTransaction = () => {
     const category = e.target.value;
     if (category) {
       const buyerfilterData = fixedData.filter((items) => {
-        return items.buyerProductId.category == category;
+        return items?.buyerProductId?.category == category;
       });
       const sellerfilterData = fixedData.filter((items) => {
-        return items.sellerProductId.category == category;
+        return items?.sellerProductId?.category == category;
       });
       const filterData = buyerfilterData.concat(sellerfilterData);
       setRequestData(filterData);
@@ -69,30 +66,30 @@ export const AdminTransaction = () => {
 
   return (
     <div className="userTransaction-main">
+      <div className="adminTransaction-heading-box d-flex">
+        <PiHandCoins />
+        Transactions
+      </div>
       <div className="d-flex admin-transaction-search-box">
         <p>Search by item name :</p>
         <input type="search" onChange={handleSearch} />
         <button>search</button>
+
+        <Form.Select
+          aria-label="Default select example "
+          className=" admin-transaction-select"
+          onChange={filterByCategory}
+        >
+          <option value="">Filter</option>
+          <option value="Books">Books</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Jewellery">Jewellery</option>
+          <option value="Home-Appliances">Home-Appliances</option>
+          <option value="Clothing">Clothing</option>
+          <option value="Furniture">Furniture</option>
+        </Form.Select>
       </div>
 
-      <Form.Select
-        aria-label="Default select example "
-        className=" admin-transaction-select"
-        onChange={filterByCategory}
-      >
-        <option value="">Filter</option>
-        <option value="Books">Books</option>
-        <option value="Electronics">Electronics</option>
-        <option value="Jewellery">Jewellery</option>
-        <option value="Home-Appliances">Home-Appliances</option>
-        <option value="Clothing">Clothing</option>
-        <option value="Furniture">Furniture</option>
-      </Form.Select>
-
-      <div className="adminTransaction-heading-box d-flex">
-        <PiHandCoins />
-        Transaction
-      </div>
       {requestData.map((e) => {
         const buyer = e?.buyerId;
         const buyerProduct = e?.buyerProductId;
@@ -210,19 +207,19 @@ export const AdminTransaction = () => {
                       <img src={img3} alt="icon" className="w-100" />
                     </div>
                     <div className="d-flex">
-                        Delivery status :
-                        {e?.deliveryStatus === "pending" ? (
-                          <p className="text-warning">Pending</p>
-                        ) : e?.deliveryStatus == "accepted" ? (
-                          <p className="text-success">Accepted</p>
-                        ) : e?.deliveryStatus == "delivered" ? (
-                          <p>
-                            <p className="text-success">Delivered</p>
-                          </p>
-                        ): (
-                          <p className="text-danger">Rejected</p>
-                        )}
-                      </div>
+                      Delivery status :
+                      {e?.deliveryStatus === "pending" ? (
+                        <p className="text-warning">Pending</p>
+                      ) : e?.deliveryStatus == "accepted" ? (
+                        <p className="text-success">Accepted</p>
+                      ) : e?.deliveryStatus == "delivered" ? (
+                        <p>
+                          <p className="text-success">Delivered</p>
+                        </p>
+                      ) : (
+                        <p className="text-danger">Rejected</p>
+                      )}
+                    </div>
                   </div>
                 </div>
 
@@ -272,7 +269,7 @@ export const AdminTransaction = () => {
                             <tr>
                               <th style={{ fontWeight: "600" }}>Category</th>
                               <td>:</td>
-                              <td>{sellerProduct.category}</td>
+                              <td>{sellerProduct?.category}</td>
                             </tr>
                             <tr>
                               <th style={{ fontWeight: "600" }}>Condition</th>
@@ -285,7 +282,7 @@ export const AdminTransaction = () => {
                               <td>
                                 <div className="userTransaction-point-box d-flex">
                                   <img src={img1} alt="" />
-                                  <p>{sellerProduct.point}</p>
+                                  <p>{sellerProduct?.point}</p>
                                 </div>
                               </td>
                             </tr>

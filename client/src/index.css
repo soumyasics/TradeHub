@@ -33,3 +33,8 @@ li {
   margin: 10px;
   color: #231f20;
 }
+
+/* Hide the Edge password toggle icon */
+input::-ms-reveal {
+  display: none;
+}

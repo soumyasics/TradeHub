@@ -110,7 +110,7 @@ function Userforget() {
                 <div>
                   <input
                     type="email"
-                    className="user-forget-textbox mt-5"
+                    className="user-forget-textbox mt-5 "
                     placeholder="Enter email"
                     name="email"
                     value={data.email}

@@ -112,10 +112,10 @@ function Deliveryforgotpassword() {
               </div>
               <div>
                 <div>
-                  <div>
+                  <div className="">
                     <input
                       type="email"
-                      className="deliveryagent-forgot-textbox mt-5"
+                      className="user-forget-textbox mt-5"
                       placeholder="Enter email"
                       name="email"
                       value={data.email}

@@ -24,8 +24,7 @@ export const AdmineViewGuideline = () => {
   return (
     <div style={{ minHeight: "100vh" }} className="admineViewGuideline-body">
       <h1 className="admineViewGuideline-heading">{state.title}</h1>
-      <h3>Content</h3>
-      <p>
+      <p style="text-indent: 50px">
         {state.content}
       </p>
       

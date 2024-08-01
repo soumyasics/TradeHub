@@ -58,10 +58,6 @@ function UserRegister() {
     }
   };
 
-  useEffect(() => {
-    console.log("data => ", data);
-  }, [data]);
-
   const handleChangeChecked = (e) => {
     data.checkbox = e.target.checked;
 
@@ -141,8 +137,6 @@ function UserRegister() {
       toast.error("Password is required");
       return false;
     }
-
-    console.log("pass", passwordRegex.test(password));
 
     if (!checkbox) {
       toast.error("You must agree to the terms and conditions.");
@@ -231,9 +225,9 @@ function UserRegister() {
                       onChange={handleChange}
                     />
                   </div>
-                  <div></div>
-                  <div>
-                    <label className="user-register-label mt-5">Gender</label>
+
+                  <div className=" mt-5">
+                    <label className="user-register-label">Gender</label>
                     <input
                       type="radio"
                       className="ms-3"

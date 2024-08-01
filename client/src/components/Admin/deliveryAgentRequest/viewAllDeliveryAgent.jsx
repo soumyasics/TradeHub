@@ -77,24 +77,18 @@ export const AdminViewAllActiveDeliveryAgent = () => {
 
   console.log("pending data", data);
 
-
-  const handleSearch = (e) =>
-    {
-      const value = e.target.value
-      if(value)
-      {
-        const filterData = fixedData.filter((items)=>
-          {
-            const name = `${items.firstname} ${items.lastname}`
-            return name?.toLowerCase().includes(value.toLowerCase())
-          })
-          setData(filterData)
-      }
-      else
-      {
-        setData(fixedData)
-      }
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    if (value) {
+      const filterData = fixedData.filter((items) => {
+        const name = `${items.firstname} ${items.lastname}`;
+        return name?.toLowerCase().includes(value.toLowerCase());
+      });
+      setData(filterData);
+    } else {
+      setData(fixedData);
     }
+  };
 
   return (
     <div className="pt-5">
@@ -104,7 +98,7 @@ export const AdminViewAllActiveDeliveryAgent = () => {
         </div>
       )}
 
-<InputGroup className="mod-product-request-box1 ms-2 ps-3 ">
+      <InputGroup className="mod-product-request-box1 ms-2 ps-3 ">
         <Form.Control
           className="mod-product-request-inp"
           type="text"
@@ -121,7 +115,6 @@ export const AdminViewAllActiveDeliveryAgent = () => {
           <IoSearch className="mod-product-request-search-icon" />
         </InputGroup.Text>
       </InputGroup>
-
 
       {data.length !== 0 ? (
         <div

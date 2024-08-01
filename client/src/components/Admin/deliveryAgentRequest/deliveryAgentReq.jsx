@@ -71,7 +71,7 @@ export const AdminViewAllDelRequest = () => {
     const value = e.target.value;
     if (value) {
       const filterData = fixedData.filter((items) => {
-        const name = `${items.firstname}${items.lastname}`
+        const name = `${items.firstname}${items.lastname}`;
         return name?.toLowerCase().includes(value.toLowerCase());
       });
       setData(filterData);
@@ -166,10 +166,8 @@ export const AdminViewAllDelRequest = () => {
           </Table>
         </div>
       ) : (
-        <div>
-          <h3 className="text-center">
-            Delivery agent pending request not found.
-          </h3>
+        <div className="mt-5">
+          <h3 className="text-center">No delivery agents requests.</h3>
         </div>
       )}
     </div>
