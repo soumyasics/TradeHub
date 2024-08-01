@@ -32,7 +32,6 @@ export const ModNavbar = ({ hamActive, setHamActive }) => {
     }
   };
 
-  console.log("modd", modData);
   useEffect(() => {
     const modId = localStorage.getItem("trade-hub-modId") || null;
     if (!modId) {

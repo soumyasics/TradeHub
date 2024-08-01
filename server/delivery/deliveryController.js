@@ -128,9 +128,17 @@ const updateDelivery = async (req, res) => {
     const updateField = {};
     if (firstname) updateField.firstname = firstname;
     if (lastname) updateField.lastname = lastname;
-    if (email) updateField.email = email;
+    if (email) {
+      const existingUser = await DeliveryModel.findOne({ email });
+      if (existingUser && existingUser._id.toString() !== userId) {
+        return res.status(409).json({ msg: "Email already exists" });
+      }
+      updateField.email = email;
+    }
     if (contact) updateField.contact = contact;
-
+    if (req.file) {
+      updateField.profile = req.file;
+    }
     const newUser = await DeliveryModel.findByIdAndUpdate(userId, updateField, {
       new: true,
     });
@@ -166,7 +174,6 @@ const viewDeliveryById = (req, res) => {
       });
     });
 };
-
 
 const allPendingDelivery = async (req, res) => {
   try {
@@ -319,5 +326,5 @@ module.exports = {
   rejectDeliveryAgentById,
   activeDeliveryAgentById,
   inActiveDeliveryAgentById,
-  viewDeliveryById
+  viewDeliveryById,
 };

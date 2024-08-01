@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../../apis/axiosInstance";
 import toast from "react-hot-toast";
 import { BASE_URL } from "../../../apis/baseURL";
+import { axiosMultipartInstance } from "../../../apis/axiosMultipartInstance";
 
 export const ModEditProfileCard = ({ getNewData }) => {
   const navigate = useNavigate();
@@ -19,12 +20,18 @@ export const ModEditProfileCard = ({ getNewData }) => {
     lastname: "",
     contact: "",
     email: "",
+    profile: null,
   });
   const [modId, setModId] = useState("");
 
   const handleShow = () => {
     setShow(true);
   };
+
+  const handleFileChange = (e) => {
+    setEdit({ ...edit, profile: e.target.files[0] });
+  }
+
   const getModData = (id) => {
     axiosInstance
       .get(`viewModeratorById/${id}`)
@@ -39,6 +46,7 @@ export const ModEditProfileCard = ({ getNewData }) => {
             contact: modData.contact,
             firstname: modData.firstname,
             lastname: modData.lastname,
+            profile: modData.profile,
           });
           console.log(res.data.data);
         }
@@ -48,7 +56,6 @@ export const ModEditProfileCard = ({ getNewData }) => {
       });
   };
 
-  console.log("mod edit ", edit);
   useEffect(() => {
     let id = localStorage.getItem("trade-hub-modId") || null;
     console.log("123", id);
@@ -108,7 +115,7 @@ export const ModEditProfileCard = ({ getNewData }) => {
   const sendDataToServer = async () => {
     try {
       console.log("edit wor", edit);
-      const res = await axiosInstance.post(`/editModeratorById/${modId}`, edit);
+      const res = await axiosMultipartInstance.post(`/editModeratorById/${modId}`, edit);
       if (res.status === 200) {
         toast.success("Update successfull");
       }
@@ -116,12 +123,15 @@ export const ModEditProfileCard = ({ getNewData }) => {
       const status = error?.response?.status;
       if (status === 404) {
         toast.error("Please login again");
+      } else if (status === 409) {
+        toast.error("Email already exists");
       } else {
         toast.error("Network error");
       }
     } finally {
       handleClose();
       getNewData(modId);
+      getModData(modId);
     }
   };
 
@@ -241,8 +251,8 @@ export const ModEditProfileCard = ({ getNewData }) => {
                   type="file"
                   className="editProfileCard-input"
                   placeholder="Enter your phone number"
-                  name="contact"
-                  onChange={handleChange}
+                  name="profile"
+                  onChange={handleFileChange}
                 />
               </Form.Group>
 

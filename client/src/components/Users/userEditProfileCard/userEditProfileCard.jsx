@@ -21,6 +21,7 @@ export const UsereditProfileCard = ({ getNewData }) => {
     lastname: "",
     contact: "",
     email: "",
+    profile: null,
   });
   const [userId, setUserId] = useState("");
 
@@ -40,6 +41,7 @@ export const UsereditProfileCard = ({ getNewData }) => {
             contact: userData.contact,
             firstname: userData.firstname,
             lastname: userData.lastname,
+            profile: userData.profile,
           });
         }
       })
@@ -65,6 +67,9 @@ export const UsereditProfileCard = ({ getNewData }) => {
     setEdit({ ...edit, [name]: value });
   };
 
+  const handleFileChange = (e) => {
+    setEdit({ ...edit, profile: e.target.files[0] });
+  }
   const checkValidate = () => {
     const { firstname, lastname, email, contact } = edit;
     if (!firstname) {
@@ -117,16 +122,19 @@ export const UsereditProfileCard = ({ getNewData }) => {
       const status = error?.response?.status;
       if (status === 404) {
         toast.error("Please login again");
+      }else if (status === 409) {
+        toast.error("Email already exists");
       } else {
         toast.error("Network error");
       }
     } finally {
       handleClose();
+      getUserData(userId)
       getNewData(userId);
     }
   };
   
-
+console.log("edit", edit)
   return (
     <div>
       <div className="d-flex w-100 justify-content-center">
@@ -241,8 +249,8 @@ export const UsereditProfileCard = ({ getNewData }) => {
                   type="file"
                   className="editProfileCard-input"
                   placeholder="Enter your phone number"
-                  name="contact"
-                  onChange={handleChange}
+                  name="profile"
+                  onChange={handleFileChange}
                 />
               </Form.Group>
 

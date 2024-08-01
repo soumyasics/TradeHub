@@ -9,6 +9,7 @@ import axiosInstance from "../../../apis/axiosInstance";
 import toast from "react-hot-toast";
 import img2 from "../../../assets/images/adminlogin.jpg"
 import { BASE_URL } from "../../../apis/baseURL";
+import { axiosMultipartInstance } from "../../../apis/axiosMultipartInstance";
 export const DeliveryEditProfileCard = ({getNewData}) => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
@@ -18,6 +19,7 @@ export const DeliveryEditProfileCard = ({getNewData}) => {
     lastname: "",
     contact: "",
     email: "",
+    profile: null,
   });
   const [delId, setDelId] = useState("");
 
@@ -37,6 +39,7 @@ export const DeliveryEditProfileCard = ({getNewData}) => {
             contact: delData.contact,
             firstname: delData.firstname,
             lastname: delData.lastname,
+            profile: delData.profile,
           });
         }
       })
@@ -51,7 +54,8 @@ export const DeliveryEditProfileCard = ({getNewData}) => {
       getDelData(id);
       setDelId(id);
     } else {
-    
+      toast.error("Please login again.");
+      navigate("/delivery/login");
     }
   }, []);
 
@@ -90,6 +94,9 @@ export const DeliveryEditProfileCard = ({getNewData}) => {
     }
     return true;
   };
+  const handleFileChange = (e) => {
+    setEdit({ ...edit, profile: e.target.files[0] });
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -101,7 +108,7 @@ export const DeliveryEditProfileCard = ({getNewData}) => {
 
   const sendDataToServer = async () => {
     try {
-      const res = await axiosInstance.post(`/updateDeliveryById/${delId}`, edit);
+      const res = await axiosMultipartInstance.post(`/updateDeliveryById/${delId}`, edit);
       if (res.status === 200) {
         toast.success("Update successfull");
       }
@@ -109,17 +116,22 @@ export const DeliveryEditProfileCard = ({getNewData}) => {
       const status = error?.response?.status;
       if (status === 404) {
         toast.error("Please login again");
+      }else if (status === 409) {
+        toast.error("Email already exists");
       } else {
         toast.error("Network error");
       }
     } finally {
       handleClose();
       getNewData(delId);
+      getDelData(delId);
     }
   };
 
   return (
     <div>
+      <div className="d-flex justify-content-center align-item-center">
+
       <Button
         variant="primary"
         onClick={handleShow}
@@ -127,6 +139,7 @@ export const DeliveryEditProfileCard = ({getNewData}) => {
       >
         Edit
       </Button>
+      </div>
       <div className="editProfile-card-body">
         <Modal show={show} onHide={handleClose}>
           <Modal.Header className="userEditProfileCard-header">
@@ -234,8 +247,8 @@ export const DeliveryEditProfileCard = ({getNewData}) => {
                   type="file"
                   className="editProfileCard-input"
                   placeholder="Enter your phone number"
-                  name="contact"
-                  onChange={handleChange}
+                  name="profile"
+                  onChange={handleFileChange}
                 />
               </Form.Group>
 

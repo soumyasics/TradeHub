@@ -116,8 +116,18 @@ const editUserById = async (req, res) => {
     const updateField = {};
     if (firstname) updateField.firstname = firstname;
     if (lastname) updateField.lastname = lastname;
-    if (email) updateField.email = email;
+    if (email) {
+      const existingUser = await User.findOne({ email });
+      if (existingUser && existingUser._id.toString() !== userId) {
+        return res.status(409).json({ msg: "Email already exists" });
+      }
+      updateField.email = email;
+    }
     if (contact) updateField.contact = contact;
+
+    if (req.file) {
+      updateField.profile = req.file;
+    }
 
     const newUser = await User.findByIdAndUpdate(userId, updateField, {
       new: true,

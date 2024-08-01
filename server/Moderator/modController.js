@@ -192,8 +192,18 @@ const editModeratorById = async (req, res) => {
     const updateField = {};
     if (firstname) updateField.firstname = firstname;
     if (lastname) updateField.lastname = lastname;
-    if (email) updateField.email = email;
+    if (email) {
+      const existingUser = await Moderator.findOne({ email });
+      if (existingUser && existingUser._id.toString() !== userId) {
+        return res.status(409).json({ msg: "Email already exists" });
+      }
+      updateField.email = email;
+    }
+   
     if (contact) updateField.contact = contact;
+    if (req.file) {
+      updateField.profile = req.file;
+    }
 
     const newUser = await Moderator.findByIdAndUpdate(userId, updateField, {
       new: true,
@@ -475,5 +485,6 @@ module.exports = {
   resetPassword,
   upload,
   approveModById,
-  rejectModById,addTestScore
+  rejectModById,
+  addTestScore,
 };
