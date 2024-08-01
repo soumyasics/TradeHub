@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/tradehub/static/css/main.e869500a.css",
-    "main.js": "/tradehub/static/js/main.b704b512.js",
+    "main.js": "/tradehub/static/js/main.c18dd89d.js",
     "static/js/453.042b0da8.chunk.js": "/tradehub/static/js/453.042b0da8.chunk.js",
     "static/media/airpods.png": "/tradehub/static/media/airpods.c2e4a2a8a2aab1b3e5ea.png",
     "static/media/carousel-item1.png": "/tradehub/static/media/carousel-item1.c59c30a221df4dfc4365.png",
@@ -46,11 +46,11 @@
     "static/media/userViewItemsDelete.svg": "/tradehub/static/media/userViewItemsDelete.18ff35266dbf2ce2b86b18091d2c4cf7.svg",
     "static/media/product-icon.svg": "/tradehub/static/media/product-icon.53a58fd2c0308ee5c4938d16ddcb079a.svg",
     "main.e869500a.css.map": "/tradehub/static/css/main.e869500a.css.map",
-    "main.b704b512.js.map": "/tradehub/static/js/main.b704b512.js.map",
+    "main.c18dd89d.js.map": "/tradehub/static/js/main.c18dd89d.js.map",
     "453.042b0da8.chunk.js.map": "/tradehub/static/js/453.042b0da8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e869500a.css",
-    "static/js/main.b704b512.js"
+    "static/js/main.c18dd89d.js"
   ]
 }
