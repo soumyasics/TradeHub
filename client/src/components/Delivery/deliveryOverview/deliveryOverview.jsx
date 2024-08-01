@@ -5,11 +5,18 @@ import { GiReceiveMoney } from "react-icons/gi";
 import productSvg from "../../../assets/svg/product-icon.svg";
 import { TbTruckDelivery } from "react-icons/tb";
 import axiosInstance from "../../../apis/axiosInstance";
+import { useNavigate } from "react-router-dom";
+import {toast} from "react-hot-toast";
 export const DeliveryOverview = () => {
   const [users, setUsers] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [delData, setDelData] = useState({});
+  
+  const navigate = useNavigate();
 
   useEffect(() => {
     getAllUsers();
+    getAllProducts();
   }, []);
 
   const getAllUsers = async () => {
@@ -25,6 +32,44 @@ export const DeliveryOverview = () => {
       console.log("all users", error);
     }
   };
+
+  
+  const getAllProducts = async () => {
+    try {
+      const res = await axiosInstance.post("viewActiveItems");
+      if (res.data.status === 200) {
+        const data = res.data?.data || [];
+        setProducts(data);
+      } else {
+        console.log("products", res);
+      }
+    } catch (error) {
+      console.log("products !", error);
+    }
+  };
+
+  const fetchDelData = async (DelId) => {
+    try {
+      const res = await axiosInstance.get(`/viewDeliveryById/${DelId}`);
+      const data = res.data?.data || null;
+      setDelData(data);
+    } catch (error) {
+      console.log("get Del data by id =>", error);
+    }
+  };
+
+  useEffect(() => {
+    const DelId = localStorage.getItem("trade-hub-DAId") || null;
+    if (!DelId) {
+      toast.error("Please login again.");
+      navigate("/delivery/login");
+      return;
+    }
+
+    fetchDelData(DelId);
+  }, []);
+
+
   return (
     <div style={{height: "100vh", overflowY: "scroll"}}>
       <div className="container">
@@ -61,7 +106,9 @@ export const DeliveryOverview = () => {
                           Total number<br></br>of products
                         </p>
                       </span>
-                      <span className="admin-dash-length"></span>
+                      <span className="admin-dash-length">
+                        {products.length}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -79,7 +126,9 @@ export const DeliveryOverview = () => {
                           Total number<br></br>of deliveries
                         </p>
                       </span>
-                      <span className="admin-dash-length"></span>
+                      <span className="admin-dash-length">
+                        {delData?.myDeliveredOrders?.length || 0}
+                      </span>
                     </div>
                   </div>
                 </div>

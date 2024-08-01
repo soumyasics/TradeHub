@@ -11,7 +11,7 @@ import { DeliveryEditProfileCard } from "../deliveryEditProfileCard/deliveryEdit
 
 export const DeliveryProfile = () => {
   const [activeUserId, setActiveUserId] = useState(null);
-  const [delData, setDelData] = useState(null);
+  const [delData, setDelData] = useState({});
   const navigate = useNavigate();
 
   const fetchDelData = async (DelId) => {
