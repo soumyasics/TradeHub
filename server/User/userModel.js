@@ -40,6 +40,10 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    wallet: {
+      type: Number,
+      default: 0,
+    },
     interests: {
       Books: {
         type: Number,

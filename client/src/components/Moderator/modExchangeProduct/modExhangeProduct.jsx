@@ -18,7 +18,7 @@ export const ModExchangeProduct = () => {
       if (response.status == 200) {
         const data = response.data.data;
         setRequestData(data);
-        setfixedData(data);;
+        setfixedData(data);
       }
     } catch (error) {
       console.log(error);
@@ -65,6 +65,9 @@ export const ModExchangeProduct = () => {
 
   return (
     <div className="userTransaction-main">
+      <div className="userTransaction-heading-box">
+        Product exchange request
+      </div>
       <div className="d-flex  admin-transaction-search-box">
         <p>Search by item name :</p>
         <input type="search" placeholder="Search" onChange={handleSearch} />
@@ -82,10 +85,6 @@ export const ModExchangeProduct = () => {
           <option value="Clothing">Clothing</option>
           <option value="Furniture">Furniture</option>
         </Form.Select>
-      </div>
-
-      <div className="userTransaction-heading-box">
-        Product exchange request
       </div>
 
       {requestData.map((e) => {

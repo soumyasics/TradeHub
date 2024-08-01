@@ -3,6 +3,7 @@ const multer = require("multer");
 const mongoose = require("mongoose");
 const ModeratorModal = require("../Moderator/modSchema");
 const UserModel = require("../User/userModel");
+const {WishlistModel} = require("../wishlist/wishlistSchema")
 // Multer storage configuration
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -90,9 +91,18 @@ const deleteItemById = async (req, res) => {
       return res.status(404).json({ message: "Item not found", id });
     }
 
-    await Item.findByIdAndDelete(id);
+    const newData = await Item.findByIdAndUpdate(
+      id,
+      {
+        isDeleted: true,
+      },
+      { new: true }
+    );
+    await WishlistModel.deleteMany({itemId: id});
 
-    return res.status(200).json({ message: "Item deleted successfully", id });
+    return res
+      .status(200)
+      .json({ message: "Item deleted successfully", id, newData });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -111,6 +121,7 @@ const viewAllApproveItems = async (req, res) => {
   try {
     const items = await Item.find({
       isModApproved: "approve",
+      isExchanged: false,
       $or: [{ isDeleted: false }, { isDeleted: { $exists: false } }],
     })
       .populate("userId")
@@ -242,6 +253,7 @@ const viewAllActiveitemsByUserId = async (req, res) => {
       userId: id,
       isActive: true,
       isModApproved: "approve",
+      isDeleted: false
     });
     return res
       .status(200)
@@ -437,6 +449,7 @@ const personalisedRecommendation = async (req, res) => {
 
     const items = await Item.find({
       isModApproved: "approve",
+      isExchanged: false,
       $or: [{ isDeleted: false }, { isDeleted: { $exists: false } }],
     })
       .populate("userId")

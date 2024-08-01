@@ -11,7 +11,7 @@ export const DeleteModal = ({ show, setShow, updateCount, id }) => {
       if (!id) {
         return;
       }
-      const res = await axiosInstance.delete(`deleteItemById/${id}`);
+      const res = await axiosInstance.patch(`deleteItemById/${id}`);
       console.log("r/user/view-itemsespo", res)
       if (res.status === 200) {
         toast.success("Item Deleted Successfully");

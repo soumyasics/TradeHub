@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import axiosInstance from "../../../apis/axiosInstance";
 import { useNavigate } from "react-router-dom";
-function ModeratorQuiz({navigateToOverview}) {
+function ModeratorQuiz({ navigateToOverview }) {
   const questions = [
     {
       question:
@@ -104,7 +104,7 @@ function ModeratorQuiz({navigateToOverview}) {
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
   const [modId, setModId] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleOptionSelect = (questionIndex, selectedAnswer) => {
     const correctAnswer = questions[questionIndex].answer;
 
@@ -198,14 +198,17 @@ function ModeratorQuiz({navigateToOverview}) {
   }, []);
   const sendDataToServer = async () => {
     try {
-      const res = await axiosInstance.patch(`/addTestScore/${modId}`, {score});
+      const res = await axiosInstance.patch(`/addTestScore/${modId}`, {
+        score,
+      });
       console.log("res", res);
       if (res.status === 200) {
         toast.success("Test submitted successfully.");
-        navigateToOverview()
-      } 
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      }
     } catch (error) {
-
       toast.error("Try again later");
       console.log("Error on send quiz score", error);
     }

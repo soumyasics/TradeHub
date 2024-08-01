@@ -58,9 +58,6 @@ export const ViewItems = () => {
 
   const handlechange = (e) => {
     const value = e.target.value;
-    console.log("value", value);
-
-    console.log("fix", fixedData);
     if (value) {
       const filterData = fixedData.filter((items) => {
         return items?.name?.toLowerCase().includes(value.toLowerCase());

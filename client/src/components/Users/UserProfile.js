@@ -74,8 +74,11 @@ function UserProfile() {
                       <label className="mt-5">Phone number</label>
                       <br></br>
                       <label className="mt-5">Gender</label>
+                      <br></br>
+                      <label className="mt-5">Wallet balance</label>
                     </div>
                     <div className="col container">
+                      <label className="mt-5 ms-5">:</label> <br></br>
                       <label className="mt-5 ms-5">:</label> <br></br>
                       <label className="mt-5 ms-5">:</label> <br></br>
                       <label className="mt-5 ms-5">:</label> <br></br>
@@ -86,6 +89,8 @@ function UserProfile() {
                       <label className="mt-5">{data.contact}</label>
                       <br></br>
                       <label className="mt-5">{data.gender}</label>
+                      <br></br>
+                      <label className="mt-5">{data.wallet}</label>
                     </div>
                   </div>
                   <div className="mt-5 text-center">

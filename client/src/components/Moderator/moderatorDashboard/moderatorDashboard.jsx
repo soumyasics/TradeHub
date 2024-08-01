@@ -79,10 +79,9 @@ export const ModeratorDashboard = () => {
     fetchModData(modId);
   }, []);
 
-  const reDirectToViewTutorial=()=>
-  {
-    setSelectpage("viewTutorialDetails")
-  }
+  const reDirectToViewTutorial = () => {
+    setSelectpage("viewTutorialDetails");
+  };
 
   return (
     <div className="d-flex">
@@ -116,8 +115,8 @@ export const ModeratorDashboard = () => {
         {selectpage == "test" && (
           <ModTestContainer navigateToOverview={navigateToOverview} />
         )}
-        {selectpage == "webinar" && <ModViewWebinar />} 
-        {selectpage == "tutorial" && <ModVideoContainer id=""/>} 
+        {selectpage == "webinar" && <ModViewWebinar />}
+        {selectpage == "tutorial" && <ModVideoContainer id="" />}
         {/* {selectpage == "viewTutorialDetails" && <ModVideoContainer />}  */}
       </div>
     </div>

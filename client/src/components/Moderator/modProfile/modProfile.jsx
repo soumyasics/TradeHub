@@ -40,11 +40,10 @@ export const ModProfile = () => {
 
   return (
     <div>
-      <ModNavbar />
       <div className="mt-5 ms-5">
-        <Link to="/moderator/home">
+        <Link to="/moderator/dashboard">
           <FaArrowLeft className="user-profile-icon" />{" "}
-          <span className="user-profile-para ms-3 mt-3"> Home </span>
+          <span className="user-profile-para ms-3 mt-3"> Dashboard </span>
         </Link>
       </div>
       <div className="user-profile-div container">

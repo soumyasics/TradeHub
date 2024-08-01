@@ -62,7 +62,6 @@ function Moderatorlogin() {
   const sendDataToServer = async () => {
     try {
       const res = await axiosInstance.post("/loginModerator", data);
-      console.log("res", res);
       if (res.data.status === 200) {
         const userId = res?.data?.data?._id || null;
 
@@ -71,7 +70,7 @@ function Moderatorlogin() {
         }
         toast.success(res.data.msg);
 
-        navigate("/moderator/home");
+        navigate("/moderator/dashboard");
       } else if (res.data.status === 410 || res.data.status === 405) {
         toast.error(res.data.msg);
       } else {

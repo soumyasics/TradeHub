@@ -17,6 +17,11 @@ const ExchangeProductSchema = Schema(
       ref: "items",
       required: true,
     },
+    // positive for seller or negative for buyer: 
+    pointVariation: {
+      type: Number,
+      default: 0,
+    },
     sellerProductId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "items",

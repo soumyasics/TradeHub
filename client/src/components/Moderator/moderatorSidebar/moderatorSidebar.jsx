@@ -23,15 +23,7 @@ function ModeratorSidebar({ changeSelectedPage }) {
   return (
     <div>
       <div className="moderator-sidebar-color">
-        <div
-          className="text-light fs-5 text-left ms-4 pt-3"
-          style={{ cursor: "pointer" }}
-          onClick={() => {
-            navigate("/moderator/home");
-          }}
-        >
-          <IoChevronBackSharp /> &nbsp;
-        </div>
+       
         <div className="moderator-sidebar-logotext d-flex  align-items-center">
           <img
             className="moderator-sidebar-img"

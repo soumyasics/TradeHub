@@ -83,7 +83,7 @@ export const UserWishlist = () => {
               }
 
               return (
-                <div>
+                <div key={e?._id}>
                   <div
                     className="card productCard-box"
                     style={{ width: "18rem" }}

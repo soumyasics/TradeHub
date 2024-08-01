@@ -104,9 +104,15 @@ const getAllWishlistsByUserId = async (req, res) => {
       .populate("userId")
       .populate("itemId")
       .exec();
+
+      const removeDeltedItems = wishlists.filter((item) => {
+        return item.isDeleted !== true
+      })
+      console.log("remov dele", removeDeltedItems)
+
     return res
       .status(200)
-      .json({ msg: "Data obtained successfully", data: wishlists });
+      .json({ msg: "Data obtained successfully", data: removeDeltedItems });
   } catch (error) {
     return res.status(500).json({ msg: error.message });
   }

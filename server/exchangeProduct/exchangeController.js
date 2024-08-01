@@ -1,9 +1,9 @@
 const { ExchangeProductModel } = require("./exchangeProductSchema");
-const  ItemModel  = require("../Item/itemSchema");
+const ItemModel = require("../Item/itemSchema");
 const { default: mongoose } = require("mongoose");
 const Item = require("../Item/itemSchema");
 const { DeliveryModel } = require("../delivery/deliverySchema");
-const UserModel = require("../User/userModel")
+const UserModel = require("../User/userModel");
 const sendExchangeRequest = async (req, res) => {
   try {
     const { buyerId, sellerId, buyerProductId, sellerProductId } = req.body;
@@ -35,12 +35,14 @@ const sendExchangeRequest = async (req, res) => {
     }
 
     const sellingProduct = await ItemModel.findById(sellerProductId);
-    const category = sellingProduct.category
-      
+    const category = sellingProduct.category;
+
+    const buyingProduct = await ItemModel.findById(buyerProductId);
+
     if (!category) {
       return res.status(400).json({ msg: "Selling product not found" });
     }
-  
+
     const user = await UserModel.findById(buyerId);
     if (!user) {
       return res.status(400).json({ msg: "User not found" });
@@ -53,28 +55,30 @@ const sendExchangeRequest = async (req, res) => {
         Jewellery: 0,
         HomeAppliances: 0,
         Clothing: 0,
-        Furniture: 0
-      }
+        Furniture: 0,
+      };
     }
 
     if (category === "Home-Appliances") {
-      user.interests.HomeAppliances = user.interests.HomeAppliances + 1
-    }else {
-      user.interests[category] = user.interests[category] + 1
+      user.interests.HomeAppliances = user.interests.HomeAppliances + 1;
+    } else {
+      user.interests[category] = user.interests[category] + 1;
     }
 
-    await user.save()
+    await user.save();
 
-
+    const pointVariation = Math.round(
+      sellingProduct.point - buyingProduct.point
+    );
 
     const newExchangeProduct = new ExchangeProductModel({
       buyerId,
       sellerId,
       buyerProductId,
       sellerProductId,
+      pointVariation,
     });
     await newExchangeProduct.save();
-
 
     return res.status(201).json({ msg: "Exchange request sent successfully" });
   } catch (error) {
@@ -159,7 +163,7 @@ const getAllDeliveredRequestBySellerId = async (req, res) => {
     }
 
     const exchangeProducts = await ExchangeProductModel.find({
-      sellerId: id, 
+      sellerId: id,
       deliveryStatus: "delivered",
     })
       .populate("buyerProductId")

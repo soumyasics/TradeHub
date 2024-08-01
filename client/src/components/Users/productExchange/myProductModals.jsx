@@ -71,7 +71,7 @@ export const MyProductModals = ({ show, setShow, handleConfirmExchange }) => {
         >
           {myItems.length === 0 && (
             <div className="h-100 w-100 align-items-center d-flex justify-content-center">
-              <h5>No found any of your items for exchange.</h5>
+              <h5>You don't have any items for exchange.</h5>
             </div>
           )}
           {myItems.map((e) => {
@@ -107,6 +107,11 @@ export const MyProductModals = ({ show, setShow, handleConfirmExchange }) => {
                     <th>Category</th>
                     <th>:</th>
                     <td>{e?.category}</td>
+                  </tr>
+                  <tr>
+                    <th>Points</th>
+                    <th>:</th>
+                    <td>{e?.point}</td>
                   </tr>
                 </table>
               </div>
