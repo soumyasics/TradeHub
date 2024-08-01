@@ -125,13 +125,7 @@ export const UsereditProfileCard = ({ getNewData }) => {
       getNewData(userId);
     }
   };
-  // const handleImageUpload = (e) => {
-  //   setProfileImage(URL.createObjectURL(e.target.files[0]));
-  // };
-  // const handleFileChange = (e) => {
-  //   handleChange(e);
-  //   handleImageUpload(e);
-  // };
+  
 
   return (
     <div>
@@ -164,10 +158,7 @@ export const UsereditProfileCard = ({ getNewData }) => {
                 name="profile"
                 onChange={handleChange}
               />
-              {/* <FaRegEdit
-                className="userEditProfile-upload-icon"
-                // onChange={handleFileChange}
-              /> */}
+            
             </div>
           </div>
           <Modal.Body>
@@ -238,6 +229,25 @@ export const UsereditProfileCard = ({ getNewData }) => {
                   onChange={handleChange}
                 />
               </Form.Group>
+
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlTextarea1"
+              >
+                <Form.Label className="editProfileCard-Label">
+                  Photo
+                </Form.Label>
+                <Form.Control
+                  type="file"
+                  className="editProfileCard-input"
+                  placeholder="Enter your phone number"
+                  name="contact"
+                  onChange={handleChange}
+                />
+              </Form.Group>
+
+
+
               <Button type="submit" className="EditProfileCard-button">
                 Update
               </Button>
