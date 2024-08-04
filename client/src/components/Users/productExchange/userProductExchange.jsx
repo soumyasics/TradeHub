@@ -14,8 +14,9 @@ import { MyProductModals } from "./myProductModals.jsx";
 import { toast } from "react-hot-toast";
 
 export const UserProductExchange = () => {
-  const [product, setProduct] = useState(null);
-  const [ownerDetails, setOwnerDetails] = useState();
+  const [product, setProduct] = useState({});
+  const [activeUserData, setActiveUserData] = useState({});
+  const [ownerDetails, setOwnerDetails] = useState({});
   const [wishList, setWhishList] = useState(false);
   const [show, setShow] = useState(false);
   const [activeUserId, setActiveUserId] = useState("");
@@ -26,6 +27,21 @@ export const UserProductExchange = () => {
       getProductDetails(id);
     }
   }, []);
+
+  const getUserData = (id) => {
+    axiosInstance
+      .post(`viewUserById/${id}`)
+      .then((res) => {
+        console.log(res);
+        if (res.data?.status === 200) {
+          setActiveUserData(res.data.data);
+          console.log("user data", res.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const getProductDetails = async (id) => {
     try {
@@ -54,17 +70,23 @@ export const UserProductExchange = () => {
 
   useEffect(() => {
     const userId = localStorage.getItem("trade-hub-userId") || null;
-
     if (userId) {
       setActiveUserId(userId);
+      getUserData(userId);
     } else {
       toast.error("Please login again.");
       navigate("/user/login");
     }
   }, []);
 
-  const handleConfirmExchange = (buyerProductId) => {
+  const handleConfirmExchange = (
+    buyerProductId,
+    pointCreditBackToBuyer,
+    extraPointReqForBuyer
+  ) => {
     const data = {
+      pointCreditBackToBuyer,
+      extraPointReqForBuyer,
       buyerProductId,
       sellerProductId: product?._id,
       sellerId: product?.userId?._id,
@@ -78,7 +100,6 @@ export const UserProductExchange = () => {
     }
 
     sendDataToServer(data);
-    console.log("my data", data);
   };
 
   const sendDataToServer = async (data) => {
@@ -113,6 +134,8 @@ export const UserProductExchange = () => {
       <UserMainNav />
       <MyProductModals
         show={show}
+        walletBalance={activeUserData?.wallet || 0}
+        sellerProductPoint={product?.point || 0}
         handleConfirmExchange={handleConfirmExchange}
         setShow={setShow}
       />

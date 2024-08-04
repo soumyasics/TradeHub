@@ -51,6 +51,7 @@ export const DeliveryStatus = () => {
 
       <div className="userTransaction-main">
         <div
+          style={{ cursor: "pointer" }}
           className="userViewTransaction-heading-box"
           onClick={() => {
             Navigate("/user/exchange-product");
@@ -97,21 +98,19 @@ export const DeliveryStatus = () => {
                           <table>
                             <tbody>
                               <tr>
-                                <th style={{ fontWeight: "600" }}>item name</th>
+                                <th style={{ fontWeight: "600" }}>Item Name</th>
                                 <td>:</td>
                                 <td> {buyerProductId?.name}</td>
                               </tr>
                               <tr>
-                                <th style={{ fontWeight: "600" }}>category</th>
+                                <th style={{ fontWeight: "600" }}>Category</th>
                                 <td>:</td>
                                 <td>{buyerProductId?.category} </td>
                               </tr>
                               <tr>
-                                <th style={{ fontWeight: "600" }}>
-                                  Description
-                                </th>
+                                <th style={{ fontWeight: "600" }}>Point</th>
                                 <td>:</td>
-                                <td> {buyerProductId?.description}</td>
+                                <td>{buyerProductId?.point} </td>
                               </tr>
                             </tbody>
                           </table>
@@ -127,9 +126,6 @@ export const DeliveryStatus = () => {
                         <img src={buyerProductUrl} alt="" />
                       </div>
                     </div>
-                    {/* <div style={{ width: "30px", height: "30px" }} >
-                  <img src={img3} alt="icon" className="w-100" />
-                </div> */}
 
                     <div className="d-flex mt-5 justify-content-between d-flex">
                       <div className=" d-flex">
@@ -176,7 +172,7 @@ export const DeliveryStatus = () => {
                           <table>
                             <tbody>
                               <tr>
-                                <th style={{ fontWeight: "600" }}>item name</th>
+                                <th style={{ fontWeight: "600" }}>Item Name</th>
                                 <td>:</td>
                                 <td>{sellerProductId?.name} </td>
                               </tr>
@@ -186,17 +182,14 @@ export const DeliveryStatus = () => {
                                 <td>{sellerProductId?.category}</td>
                               </tr>
                               <tr>
-                                <th style={{ fontWeight: "600" }}>
-                                  Description
-                                </th>
+                                <th style={{ fontWeight: "600" }}>Point</th>
                                 <td>:</td>
-                                <td>{sellerProductId?.description}</td>
+                                <td>{sellerProductId?.point}</td>
                               </tr>
                             </tbody>
                           </table>
                         </div>
                       </div>
-                      {/* receiveditem */}
                       <div className="userTransaction-receiveditems "></div>{" "}
                       <div className="modTransaction-right-image">
                         <img src={sellerProductUrl} alt="" />

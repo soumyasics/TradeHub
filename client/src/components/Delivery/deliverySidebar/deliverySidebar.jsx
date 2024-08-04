@@ -79,7 +79,7 @@ export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
                 changeSelectedPage("deliveryPending");
               }}
             >
-              <MdOutlinePendingActions className="delivery-sidebar-icon" />
+              <MdOutlinePendingActions className="delivery-sidebar-icon" />{" "}
               Delivery pending
             </li>
 

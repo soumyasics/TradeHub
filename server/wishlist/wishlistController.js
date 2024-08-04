@@ -108,7 +108,6 @@ const getAllWishlistsByUserId = async (req, res) => {
       const removeDeltedItems = wishlists.filter((item) => {
         return item.isDeleted !== true
       })
-      console.log("remov dele", removeDeltedItems)
 
     return res
       .status(200)

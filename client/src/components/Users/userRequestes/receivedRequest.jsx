@@ -274,11 +274,11 @@ export const ReceivedRequest = () => {
                 className="d-flex justify-content-center  align-items-center"
                 style={{ paddingTop: "10px" }}
               >
-                <p style={{ fontSize: "14px" }} className="m-0 mb-3">
+                <p style={{ fontSize: "18px" }} className="m-0 mb-3">
                   {" "}
-                  Once the exchange has been completed, your remaining points
-                  that is {e.pointVariation}, will be credited to your Trade Hub
-                  wallet.
+                  When the product delivery is completed,{" "}
+                  <span className="fw-bold">{e?.extraPointReqForBuyer}</span> &nbsp;
+                  points will be credit on your wallet.
                 </p>
               </div>
             </div>

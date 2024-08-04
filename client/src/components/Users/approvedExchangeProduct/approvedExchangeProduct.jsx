@@ -22,8 +22,8 @@ export const ApprovedExchangeProduct = () => {
       );
       if (response.status == 200) {
         console.log(response);
-        const data = response.data.data
-        data.reverse()
+        const data = response.data.data;
+        data.reverse();
         setExchangeData(data);
       }
     } catch (error) {
@@ -51,14 +51,16 @@ export const ApprovedExchangeProduct = () => {
       <UserMainNav />
 
       <div className="userTransaction-main">
-        <div className="userViewTransaction-heading-box "
-        onClick={()=>{Navigate("/user/delivery-status")}}
+        <div
+          className="userViewTransaction-heading-box "
+          onClick={() => {
+            Navigate("/user/delivery-status");
+          }}
         >
-         <p           
-         > My requested exchanges{" "}</p>
+          <p style={{cursor: "pointer"}}> My requested exchanges </p>
         </div>
-        <h3 style={{textAlign:"center"}} className="mt-3">Status of accepted exchanges
-         
+        <h3 style={{ textAlign: "center" }} className="mt-3">
+          Status of accepted exchanges
         </h3>
 
         {exchangeData.map((e) => {
@@ -106,11 +108,9 @@ export const ApprovedExchangeProduct = () => {
                                 <td>{buyerProductId?.category} </td>
                               </tr>
                               <tr>
-                                <th style={{ fontWeight: "600" }}>
-                                  Description
-                                </th>
+                                <th style={{ fontWeight: "600" }}>Point </th>
                                 <td>:</td>
-                                <td> {buyerProductId?.description}</td>
+                                <td>{buyerProductId?.point} </td>
                               </tr>
                             </tbody>
                           </table>
@@ -154,7 +154,7 @@ export const ApprovedExchangeProduct = () => {
                           <p>
                             <p className="text-success">Delivered</p>
                           </p>
-                        ): (
+                        ) : (
                           <p className="text-danger">Rejected</p>
                         )}
                       </div>
@@ -185,11 +185,9 @@ export const ApprovedExchangeProduct = () => {
                                 <td>{sellerProductId?.category}</td>
                               </tr>
                               <tr>
-                                <th style={{ fontWeight: "600" }}>
-                                  Description
-                                </th>
+                                <th style={{ fontWeight: "600" }}>Point </th>
                                 <td>:</td>
-                                <td>{sellerProductId?.description}</td>
+                                <td>{sellerProductId?.point} </td>
                               </tr>
                             </tbody>
                           </table>

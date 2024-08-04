@@ -8,20 +8,19 @@ import axiosInstance from "../../apis/axiosInstance";
 import { BASE_URL } from "../../apis/baseURL";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { UsereditProfileCard } from "./userEditProfileCard/userEditProfileCard";
 
 function UserProfile() {
   const [data, setData] = useState({ profile: { filename: "" } });
   const [activeUserId, setActiveUserId] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const getUserData = (id) => {
     axiosInstance
       .post(`viewUserById/${id}`)
       .then((res) => {
         console.log(res);
         if (res.data?.status === 200) {
-
           setData(res.data.data);
           console.log(res.data.data);
         }
@@ -30,15 +29,15 @@ function UserProfile() {
         console.log(err);
       });
   };
-  
+
   useEffect(() => {
     let id = localStorage.getItem("trade-hub-userId") || null;
     if (id) {
-        setActiveUserId(id)
-        getUserData(id)
-    }else {
-        toast.error("Please login again.")
-        navigate('/user/login')
+      setActiveUserId(id);
+      getUserData(id);
+    } else {
+      toast.error("Please login again.");
+      navigate("/user/login");
     }
   }, []);
 
@@ -65,7 +64,10 @@ function UserProfile() {
                 />
               </div>
               <Card.Body>
-                <Card.Title className="userEdit-cardTitle"> {data.firstname} {data.lastname} </Card.Title>
+                <Card.Title className="userEdit-cardTitle">
+                  {" "}
+                  {data.firstname} {data.lastname}{" "}
+                </Card.Title>
                 <Card.Text className="mt-3">
                   <div className="row container">
                     <div className="col container ms-5">
@@ -102,7 +104,7 @@ function UserProfile() {
                         Edit
                       </Link>
                     </button> */}
-                    <UsereditProfileCard getNewData={getUserData}/>
+                    <UsereditProfileCard getNewData={getUserData} />
                   </div>
                 </Card.Text>
               </Card.Body>

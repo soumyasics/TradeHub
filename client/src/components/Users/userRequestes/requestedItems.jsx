@@ -51,7 +51,6 @@ export const RequestedItems = () => {
     }
   }, [activeUserId]);
 
-
   return (
     <div className="mt-5">
       <div className="text-center">
@@ -191,7 +190,7 @@ export const RequestedItems = () => {
                   className="exchangeProduct-order-pending align-items-center d-flex"
                   style={{ height: "30px" }}
                 >
-                  <input type="radio"  checked={true}/>
+                  <input type="radio" checked={true} />
                   &nbsp; &nbsp;
                   {e?.sellerResponseStatus === "pending" ? (
                     <p className="m-0 text-warning"> Pending </p>
@@ -213,6 +212,25 @@ export const RequestedItems = () => {
                     <BsChatText /> &nbsp; Chat
                   </button>
                 </div>
+              </div>
+
+              <div
+                className="d-flex justify-content-center  align-items-center"
+                style={{ paddingTop: "10px" }}
+              >
+                {e?.extraPointReqForBuyer > 0 ? (
+                  <p style={{ fontSize: "18px" }} className="m-0 mb-3">
+                    {" "}
+                    When the product delivery is completed,{" "}
+                    <span className="fw-bold">{e?.extraPointReqForBuyer}</span>
+                    &nbsp; points will be debit from your wallet.
+                  </p>
+                ) : (
+                  <p>
+                    {/* todo => handle */}
+                    transaction
+                  </p>
+                )}
               </div>
             </div>
           );

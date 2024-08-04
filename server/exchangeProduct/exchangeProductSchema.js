@@ -22,6 +22,14 @@ const ExchangeProductSchema = Schema(
       type: Number,
       default: 0,
     },
+    pointCreditBackToBuyer: {
+      type: Number,
+      default: 0
+    },
+    extraPointReqForBuyer: {
+      type: Number,
+      default: 0
+    }, 
     sellerProductId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "items",

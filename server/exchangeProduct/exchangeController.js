@@ -6,7 +6,14 @@ const { DeliveryModel } = require("../delivery/deliverySchema");
 const UserModel = require("../User/userModel");
 const sendExchangeRequest = async (req, res) => {
   try {
-    const { buyerId, sellerId, buyerProductId, sellerProductId } = req.body;
+    const {
+      buyerId,
+      sellerId,
+      buyerProductId,
+      sellerProductId,
+      extraPointReqForBuyer,
+      pointCreditBackToBuyer,
+    } = req.body;
     if (!buyerId || !sellerId || !buyerProductId || !sellerProductId) {
       return res.status(400).json({ msg: "Please fill all the fields" });
     }
@@ -77,6 +84,8 @@ const sendExchangeRequest = async (req, res) => {
       buyerProductId,
       sellerProductId,
       pointVariation,
+      extraPointReqForBuyer,
+      pointCreditBackToBuyer,
     });
     await newExchangeProduct.save();
 
