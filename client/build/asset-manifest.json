@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/tradehub/static/css/main.e869500a.css",
-    "main.js": "/tradehub/static/js/main.c18dd89d.js",
+    "main.css": "/tradehub/static/css/main.3399af68.css",
+    "main.js": "/tradehub/static/js/main.201ff543.js",
     "static/js/453.042b0da8.chunk.js": "/tradehub/static/js/453.042b0da8.chunk.js",
     "static/media/airpods.png": "/tradehub/static/media/airpods.c2e4a2a8a2aab1b3e5ea.png",
     "static/media/carousel-item1.png": "/tradehub/static/media/carousel-item1.c59c30a221df4dfc4365.png",
@@ -23,6 +23,7 @@
     "static/media/contactUsImage.png": "/tradehub/static/media/contactUsImage.08bcdfa1f8fac17cc3d9.png",
     "static/media/userforget.jpg": "/tradehub/static/media/userforget.0e10528d4fe80ec7886c.jpg",
     "static/media/moderatorforget.jpg": "/tradehub/static/media/moderatorforget.ade068b4a6153ce65fa4.jpg",
+    "static/media/no-product.png": "/tradehub/static/media/no-product.28c13585960d62b9afc2.png",
     "static/media/totoriaImage.jpeg": "/tradehub/static/media/totoriaImage.a8f1fb5e80d83ed79fdb.jpeg",
     "static/media/moderatorlogin.jpg": "/tradehub/static/media/moderatorlogin.0fba7a8d17c81bb1adce.jpg",
     "static/media/adminlogin.jpg": "/tradehub/static/media/adminlogin.6c2f39c440f458d04c4a.jpg",
@@ -45,12 +46,12 @@
     "static/media/tabler_exchange.svg": "/tradehub/static/media/tabler_exchange.96b4e9fe1d71f8435659833bd0abaafa.svg",
     "static/media/userViewItemsDelete.svg": "/tradehub/static/media/userViewItemsDelete.18ff35266dbf2ce2b86b18091d2c4cf7.svg",
     "static/media/product-icon.svg": "/tradehub/static/media/product-icon.53a58fd2c0308ee5c4938d16ddcb079a.svg",
-    "main.e869500a.css.map": "/tradehub/static/css/main.e869500a.css.map",
-    "main.c18dd89d.js.map": "/tradehub/static/js/main.c18dd89d.js.map",
+    "main.3399af68.css.map": "/tradehub/static/css/main.3399af68.css.map",
+    "main.201ff543.js.map": "/tradehub/static/js/main.201ff543.js.map",
     "453.042b0da8.chunk.js.map": "/tradehub/static/js/453.042b0da8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e869500a.css",
-    "static/js/main.c18dd89d.js"
+    "static/css/main.3399af68.css",
+    "static/js/main.201ff543.js"
   ]
 }
