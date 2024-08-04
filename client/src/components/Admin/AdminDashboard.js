@@ -14,15 +14,17 @@ import { AdminTransaction } from "./adminTransaction/adminTransaction";
 import { AdminUploadVideo } from "./adminUploadVideo/adminUploadVideo";
 import { ModVideoContainer } from "../Moderator/modViewTutorial/modTutorialCard/modContainer";
 import ModViewWebinar from "../Moderator/modViewWebinar/modViewWebinar";
+import { AdminViewNewGuideline } from "../Users/userViewGuideline/adminViewGuideline";
+import { useNavigate } from "react-router-dom";
 export const AdminDashboard = () => {
   const [selectedPage, setSelectedPage] = useState("overview");
-
+  const navigate =useNavigate()
   const changeSelectedPage = (value) => {
     setSelectedPage(value);
   };
 
   const redirectToGuideline = () => {
-    setSelectedPage("adminViewGuideline");
+    navigate('/admin/view-guideline')
   };
   const redirectToViewTutorial = () => {
     setSelectedPage("viewTutorial");
@@ -47,7 +49,7 @@ export const AdminDashboard = () => {
         {selectedPage === "adminGuideline" && (
           <AdminGuideline redirectToGuideline={redirectToGuideline} />
         )}
-        {selectedPage === "adminViewGuideline" && <AdmineViewGuideline />}
+        {/* {selectedPage === "adminViewGuideline" && <AdminViewNewGuideline />} */}
         {selectedPage === "transaction" && <AdminTransaction />}
         {selectedPage === "ExchangeItems" && <AdminViewExchange />}
         {selectedPage === "webinar" && (

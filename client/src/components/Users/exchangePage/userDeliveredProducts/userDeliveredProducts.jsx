@@ -65,9 +65,12 @@ export const UserDeliveredProducts = () => {
   return (
     <div className="productCard-body">
       <UserMainNav />
-      <div className="d-flex justify-content-center mt-5">
-        <h6 className="user-wishlist-heading3">Delivered items</h6>
-      </div>
+      {[...requestSentByMeExchanges, ...receivedRequestExchanges].length >
+        0 && (
+        <div className="d-flex justify-content-center mt-5">
+          <h6 className="user-wishlist-heading3">Delivered items</h6>
+        </div>
+      )}
       {[...requestSentByMeExchanges, ...receivedRequestExchanges].length > 0 ? (
         <>
           <div
@@ -110,7 +113,7 @@ export const UserDeliveredProducts = () => {
                   if (e.pointCreditBackToBuyer) {
                     deliveryStatement = ` ${e.pointCreditBackToBuyer} points credited to to your wallet.`;
                   }
-                }else {
+                } else {
                   if (e.extraPointReqForBuyer > 0) {
                     deliveryStatement = ` ${e.extraPointReqForBuyer} credited to your wallet.`;
                   }
@@ -240,8 +243,8 @@ export const UserDeliveredProducts = () => {
           </div>
         </>
       ) : (
-        <div>
-          <h1 className="text-center">No exchanges</h1>
+        <div style={{ minHeight: "400px" }} className="mt-5">
+          <h3 className="text-center">No exchanges</h3>
         </div>
       )}
       <div style={{ marginTop: "20px" }}>

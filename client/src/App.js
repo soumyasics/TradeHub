@@ -82,6 +82,7 @@ import { UserChatDashboardParams } from "./components/Users/usersChat/userChatDa
 import { UserDeliveredProducts } from "./components/Users/exchangePage/userDeliveredProducts/userDeliveredProducts";
 import { UserPersonalisedSuggestion } from "./components/Users/userPersonalised suggestion/userPersonalisedSuggestion";
 import { DeliveredProductsViewMore } from "./components/Users/deliveredproductsViewMore/deliveredProductsViewMore";
+import { AdminViewNewGuideline } from "./components/Users/userViewGuideline/adminViewGuideline";
 const App = () => {
   return (
     <div className="App">
@@ -212,6 +213,12 @@ const App = () => {
             path="/admine/view-guideline"
             element={<AdmineViewGuideline />}
           />
+          
+          <Route
+            path="/admin/view-guideline"
+            element={<AdminViewNewGuideline />}
+          />
+
           <Route
             path="/admin/update-guideline"
             element={<AdminUpdateGuideline />}

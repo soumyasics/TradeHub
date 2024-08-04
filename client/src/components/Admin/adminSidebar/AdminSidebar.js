@@ -155,7 +155,7 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
                 <li
                   className="text-dark admin-dd-item"
                   onClick={() => {
-                    changeSelectedPage("adminViewGuideline");
+                    navigate('/admin/view-guideline')
                   }}
                 >
                   {" "}

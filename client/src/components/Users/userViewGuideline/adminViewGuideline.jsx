@@ -3,7 +3,7 @@ import "./userViewGuideline.css";
 import axiosInstance from "../../../apis/axiosInstance";
 import toast from "react-hot-toast";
 import { UserChatNavbar } from "../usersChat/userChatNavbar/userChatNavbar";
-export const UserViewGuideline = () => {
+export const AdminViewNewGuideline = () => {
   const [state, setState] = useState({
     title: "Our terms and conditions",
     content:
