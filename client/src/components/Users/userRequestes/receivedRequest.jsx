@@ -54,7 +54,6 @@ export const ReceivedRequest = () => {
   }, [activeUserId]);
 
   const acceptRequest = async (id) => {
-    console.log("id => ", id);
     try {
       const res = await axiosInstance.patch(`acceptRequestById/${id}`);
       if (res.status === 200) {
@@ -107,7 +106,6 @@ export const ReceivedRequest = () => {
           if (buyerProductFilename) {
             buyProductPic = `${BASE_URL}${buyerProductFilename}`;
           }
-          console.log(e, "chatid");
 
           const sellerProduct = e?.sellerProductId;
           const sellerProductFilename =
@@ -233,9 +231,9 @@ export const ReceivedRequest = () => {
                     </span>
                   </div>
                 </div>
-                <div className="exchangeProduct-order-pending">
-                  <input type="radio" checked={true} />
-                  Pending
+                <div className="exchangeProduct-order-pending d-flex">
+                  {/* <input type="radio" checked={true} /> */}
+                  {/* <span className="fw-bold text-warning">Pending</span> */}
                 </div>
                 <div className="exchangeProduct-chat-btn">
                   <button
@@ -274,12 +272,16 @@ export const ReceivedRequest = () => {
                 className="d-flex justify-content-center  align-items-center"
                 style={{ paddingTop: "10px" }}
               >
-                <p style={{ fontSize: "18px" }} className="m-0 mb-3">
-                  {" "}
-                  When the product delivery is completed,{" "}
-                  <span className="fw-bold">{e?.extraPointReqForBuyer}</span> &nbsp;
-                  points will be credit on your wallet.
-                </p>
+                {e?.extraPointReqForBuyer > 0 && (
+                  <p style={{ fontSize: "18px" }} className="m-0 mb-3">
+                    {" "}
+                    When the product delivery is completed,{" "}
+                    <span className="fw-bold">
+                      {e?.extraPointReqForBuyer}
+                    </span>{" "}
+                    &nbsp; points will be credit on your wallet.
+                  </p>
+                )}
               </div>
             </div>
           );

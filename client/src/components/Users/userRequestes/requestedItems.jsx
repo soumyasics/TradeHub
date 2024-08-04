@@ -225,11 +225,15 @@ export const RequestedItems = () => {
                     <span className="fw-bold">{e?.extraPointReqForBuyer}</span>
                     &nbsp; points will be debit from your wallet.
                   </p>
-                ) : (
-                  <p>
-                    {/* todo => handle */}
-                    transaction
+                ) : e?.pointCreditBackToBuyer > 0 ? (
+                  <p className="text-center px-5">
+                    Your product has higher points. In this exchange, you only
+                    need {sellerProduct?.point} points. The remaining &nbsp;
+                    {e?.pointCreditBackToBuyer} points will be credited to your
+                    wallet once the delivery has been completed.
                   </p>
+                ) : (
+                  ""
                 )}
               </div>
             </div>

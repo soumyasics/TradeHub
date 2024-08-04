@@ -101,7 +101,7 @@ function ModeratorSidebar({ changeSelectedPage }) {
               <span className="contentIcons">
                 <GiCardExchange />
               </span>
-              Exchanged Items
+              Exchanges
             </li>
 
             <li

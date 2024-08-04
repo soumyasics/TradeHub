@@ -26,6 +26,7 @@ router.post("/registerItem", items.upload, items.registerItem);
 router.get("/viewItemById/:id", items.viewItemById);
 router.get("/viewAllPendingItems", items.viewAllPendingItems);
 router.get("/viewAllApproveItems", items.viewAllApproveItems);
+router.get("/viewAllApproveItemsForMod", items.viewAllApproveItemsForMod);
 router.get("/viewAllRejectItems", items.viewAllRejectItems);
 router.get("/itemApproveById/:id", items.itemApproveById);
 router.get("/itemRejectById/:id", items.itemRejectById);

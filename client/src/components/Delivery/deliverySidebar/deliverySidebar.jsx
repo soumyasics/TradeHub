@@ -13,7 +13,7 @@ import { TiDropbox } from "react-icons/ti";
 import { LiaDropbox } from "react-icons/lia";
 import { BsBoxArrowInRight } from "react-icons/bs";
 import { FaRegBell } from "react-icons/fa";
-
+import { FaUsers } from "react-icons/fa";
 export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
   const [dropdownDA, setdropdownDA] = useState(false);
   const [dropdownMod, setdropdownMod] = useState(false);
@@ -82,9 +82,17 @@ export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
               <MdOutlinePendingActions className="delivery-sidebar-icon" />{" "}
               Delivery pending
             </li>
+            <li
+              onClick={() => {
+                changeSelectedPage("view-users");
+              }}
+            >
+              <FaUsers className="delivery-sidebar-icon" />{" "}
+              View Users
+            </li>
 
             <li onClick={toggleOrders}>
-              <TiDropbox className="delivery-sidebar-icon" />
+              <TiDropbox className="delivery-sidebar-icon" /> {" "}
               Orders
               {dropDownOrders && (
                 <div
@@ -117,7 +125,7 @@ export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
                 changeSelectedPage("deliveredOrders");
               }}
             >
-              <BsBoxArrowInRight className="delivery-sidebar-icon" />
+              <BsBoxArrowInRight className="delivery-sidebar-icon" /> {" "}
               Delivered orders
             </li>
 

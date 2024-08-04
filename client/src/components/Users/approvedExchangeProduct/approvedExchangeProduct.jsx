@@ -89,7 +89,7 @@ export const ApprovedExchangeProduct = () => {
                       {/* myitems */}
                       <div className="userTransaction-myitems">
                         <div className="userTransaction-myitems-head">
-                          My items
+                          Received Item
                         </div>
                         <div className="userTransaction-myitems-photo">
                           {/* <img src={e.productPhoto} alt="Product Image" /> */}
@@ -166,7 +166,7 @@ export const ApprovedExchangeProduct = () => {
                       {/* myitems */}
                       <div className="userTransaction-myitems">
                         <div className="userTransaction-myitems-head">
-                          Received product
+                          My Item
                         </div>
                         <div className="userTransaction-myitems-photo">
                           {/* <img src={e.productPhoto} alt="Product Image" /> */}

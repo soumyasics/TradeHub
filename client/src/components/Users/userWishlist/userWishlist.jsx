@@ -68,7 +68,10 @@ export const UserWishlist = () => {
 
         <div className="container text-center">
           {wishlist.length == 0 && (
-            <div>
+            <div
+              className="d-flex justify-content-center"
+              style={{ minHeight: "400px" }}
+            >
               <h3 className="mt-5">You have not added any wishlist items</h3>
             </div>
           )}

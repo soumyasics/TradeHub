@@ -8,9 +8,11 @@ import { BASE_URL } from "../../../apis/baseURL";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import "./newArrivalproducts.css";
+import noProductIllus from "../../../assets/illus/no-product.png";
 export const NewArrivalProducts = () => {
   const [approvedItems, setApprovedItems] = useState([]);
   const [activeUserId, setActiveUserId] = useState(null);
+  const [countProduct, setCountProduct] = useState(0);
   const navigate = useNavigate();
   useEffect(() => {
     const userId = localStorage.getItem("trade-hub-userId") || null;
@@ -28,13 +30,17 @@ export const NewArrivalProducts = () => {
       const res = await axiosInstance.get("viewAllApproveItems");
       if (res.status === 200) {
         const rev = res.data.data.reverse();
+        const countOthersProduct = rev.reduce((count, e) => {
+          return e?.userId?._id !== activeUserId ? count + 1 : count;
+        }, 0);
+
+        setCountProduct(countOthersProduct);
         setApprovedItems(rev);
       }
     } catch (error) {
       console.log("Error in getAllApprovedItems", error);
     }
   };
-
 
   const addItemToWishlist = async (itemId) => {
     if (!activeUserId || !itemId) {
@@ -82,10 +88,22 @@ export const NewArrivalProducts = () => {
       getAllApprovedItems();
     }
   };
+  console.log('count', countProduct)
   return (
     <div className="productCard-body">
       <div className="d-flex justify-content-center mt-5">
-        <h6 className="user-wishlist-heading3">Products you might like</h6>
+        {countProduct > 0 ? (
+          <h6 className="user-wishlist-heading3">Products you might like</h6>
+        ) : (
+          <div className="d-flex flex-column align-items-center">
+            <img
+              src={noProductIllus}
+              alt="No product"
+              style={{ width: "250px", height: "250px" }}
+            />
+            <h6 className="user-wishlist-heading3">Nothing found. </h6>
+          </div>
+        )}
       </div>
       <div className="container text-center">
         <div className="row row-cols-4 gap-5 d-flex my-5">
@@ -168,13 +186,15 @@ export const NewArrivalProducts = () => {
           })}
         </div>
         <div className="user-view-more-btn">
-          <button
-            onClick={() => {
-              navigate("/user/view-all-items");
-            }}
-          >
-            View More{" "}
-          </button>
+          {countProduct > 0 && (
+            <button
+              onClick={() => {
+                navigate("/user/view-all-items");
+              }}
+            >
+              View More{" "}
+            </button>
+          )}
         </div>
       </div>
     </div>

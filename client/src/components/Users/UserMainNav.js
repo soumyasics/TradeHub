@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -10,13 +10,17 @@ import { Dropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import exchangeIcon from "../../assets/svg/exchange-icon.svg";
 import { IoSearch } from "react-icons/io5";
-import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import "./User.css";
+import coingImg from "../../assets/images/itemDetailsPoints.png";
+import { toast } from "react-hot-toast";
+import axiosInstance from "../../apis/axiosInstance";
 function UserMainNav() {
   const [searchValue, setSearchValue] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [show, setShow] = useState(false);
+  const [data, setData] = useState({ profile: { filename: "" } });
+
   const navigate = useNavigate();
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
@@ -51,6 +55,29 @@ function UserMainNav() {
     setSearchValue(value);
   };
 
+  const getUserData = (id) => {
+    axiosInstance
+      .post(`viewUserById/${id}`)
+      .then((res) => {
+        if (res.data?.status === 200) {
+          setData(res.data.data);
+          console.log(res.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    let id = localStorage.getItem("trade-hub-userId") || null;
+    if (id) {
+      getUserData(id);
+    } else {
+      toast.error("Please login again.");
+      navigate("/user/login");
+    }
+  }, []);
   return (
     <div>
       <div className="usermainnav-page-color ">
@@ -71,16 +98,6 @@ function UserMainNav() {
               <span className="usermainnav-page-hub">hub</span>
             </Navbar.Brand>
           </div>
-          {/* <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-5"
-              aria-label="Search"
-              onClick={handleCategory}
-            />
-            <IoSearch className="userNav-search-icons" />
-          </Form> */}
 
           <InputGroup className="mod-product-request-box2 ms-2 ps-3 ">
             <Form.Control
@@ -123,9 +140,18 @@ function UserMainNav() {
           <Link to="/user/add-product" className="">
             <p className="usermain-navbar-chat">Sell</p>
           </Link>
-          {/* <Nav.Link href="" className="">
-            <p className="usermain-navbar-chat">Points</p>
-          </Nav.Link> */}
+          <Nav.Link href="" className="">
+            {/* <div className="userTransaction-point-box d-flex">
+            </div> */}
+            <p className="usermain-navbar-chat2">
+              <img
+                src={coingImg}
+                alt="coin"
+                style={{ height: "20px", width: "20px" }}
+              />
+              <span>{data.wallet || 0}</span>
+            </p>
+          </Nav.Link>
           <div
             onClick={redirectToRequest}
             style={{
@@ -149,7 +175,7 @@ function UserMainNav() {
                 <IoMdContact className="usermain-navbar-iconloop mt-3" />
               </Nav.Link>
             </Dropdown.Toggle>
-            <Dropdown.Menu id="drop-down-basic" style={{left: "-75px"}}>
+            <Dropdown.Menu id="drop-down-basic" style={{ left: "-75px" }}>
               <Link className="dropdown-item" to="/user/user-profile" id="">
                 View Profile
               </Link>
@@ -157,8 +183,12 @@ function UserMainNav() {
               <Link className="dropdown-item" to="/user/wishlist" id="">
                 My wishlist
               </Link>
-              <Link className="dropdown-item" to="/user/personalised-sugggestion" id="">
-              Only for you
+              <Link
+                className="dropdown-item"
+                to="/user/personalised-sugggestion"
+                id=""
+              >
+                Only for you
               </Link>
               <Link className="dropdown-item" to="/user/exchange-product" id="">
                 Accepted Exchanges

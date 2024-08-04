@@ -7,6 +7,7 @@ import { TbTruckDelivery } from "react-icons/tb";
 import axiosInstance from "../../../apis/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import {toast} from "react-hot-toast";
+import { DeliveryRequest } from "../deliveryDeliveryPending/delveryDeliveryPending";
 export const DeliveryOverview = () => {
   const [users, setUsers] = useState([]);
   const [products, setProducts] = useState([]);
@@ -137,6 +138,7 @@ export const DeliveryOverview = () => {
           </section>
         </div>
       </div>
+      <DeliveryRequest />
     </div>
   );
 };

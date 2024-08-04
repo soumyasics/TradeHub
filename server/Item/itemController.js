@@ -132,6 +132,19 @@ const viewAllApproveItems = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+const viewAllApproveItemsForMod = async (req, res) => {
+  try {
+    const items = await Item.find({
+      isModApproved: "approve",
+      $or: [{ isDeleted: false }, { isDeleted: { $exists: false } }],
+    })
+      .populate("userId")
+      .exec();
+    return res.status(200).json({ msg: "View approved items", data: items });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
 
 const getApprovedItemsByCategory = async (req, res) => {
   try {
@@ -497,4 +510,5 @@ module.exports = {
   addPointToItem,
   getApprovedItemsByCategory,
   personalisedRecommendation,
+  viewAllApproveItemsForMod
 };

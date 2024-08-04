@@ -363,6 +363,26 @@
   box-shadow: 3px 3px 15px 3px #00000040;
   align-items: center;
 }
+.usermain-navbar-chat2 {
+  background-color: white;
+  color: #6d3698;
+  font-size: 14px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  min-width: 85px;
+  text-align: center;
+  border-radius: 16px;
+  box-shadow: 3px 3px 15px 3px #00000040;
+  align-items: center;
+}
+.usermain-navbar-chat2 span {
+  font-weight: 800;
+  margin-left: 5px;
+}
+.usermain-navbar-chat2 p {
+  margin: 0;
+}
 .usermain-navbar-iconloop {
   color: #6d3698;
   background-color: white;

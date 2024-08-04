@@ -16,7 +16,7 @@ export const ModApprovedProduct = ({ updateProductId }) => {
   }, []);
   const getRejectedItems = (id) => {
     axiosInstance
-      .get(`viewAllApproveItems`)
+      .get(`viewAllApproveItemsForMod`)
       .then((res) => {
         if (res.status === 200) {
           let data = res?.data?.data || [];
