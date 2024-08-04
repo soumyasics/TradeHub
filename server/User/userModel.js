@@ -42,7 +42,11 @@ const userSchema = mongoose.Schema(
     },
     wallet: {
       type: Number,
-      default: 0,
+      default: 500,
+    },
+    loginCount: {
+      type: Number,
+      default: 0
     },
     interests: {
       Books: {

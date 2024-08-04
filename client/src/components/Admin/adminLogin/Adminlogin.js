@@ -125,13 +125,15 @@ function Adminlogin() {
                     </InputGroup.Text>
                   </InputGroup>
                 </div>
-                <button
-                  type="submit"
-                  className="admin-login-btn mt-5"
-                  onClick={handleSubmit}
-                >
-                  Login
-                </button>
+                <div className="d-flex justify-content-center">
+                  <button
+                    type="submit"
+                    className="admin-login-btn2 mt-5"
+                    onClick={handleSubmit}
+                  >
+                    Login
+                  </button>
+                </div>
               </form>
             </Col>
           </Row>

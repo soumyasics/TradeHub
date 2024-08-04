@@ -57,11 +57,11 @@ export const MyProductModals = ({ show, setShow, handleConfirmExchange }) => {
       aria-labelledby="example-custom-modal-styling-title"
       className="userConfirmExchange-body"
     >
-      <Modal.Header
-        className="border-0 d-flex justify-content-center"
-        closeButton
-      >
-        <h6>Choose your product for exchange</h6>
+      <Modal.Header className="border-0 d-flex justify-content-center">
+        <div className="w-100 d-flex justify-content-between align-items-center">
+          <h6>Choose your product for exchange</h6>
+          <h6>Wallet Balance: 100</h6>
+        </div>
       </Modal.Header>
 
       <Modal.Body className="userConfirmExchange-main-body ">
@@ -99,17 +99,17 @@ export const MyProductModals = ({ show, setShow, handleConfirmExchange }) => {
                 </div>
                 <table className="userConfirmExchange-table">
                   <tr>
-                    <th>Item name</th>
+                    <th>Item Name</th>
                     <td>:</td>
                     <td>{e?.name}</td>
                   </tr>
-                  <tr>
+                  {/* <tr>
                     <th>Category</th>
                     <th>:</th>
                     <td>{e?.category}</td>
-                  </tr>
+                  </tr> */}
                   <tr>
-                    <th>Points</th>
+                    <th>Item Point</th>
                     <th>:</th>
                     <td>{e?.point}</td>
                   </tr>

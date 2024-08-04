@@ -68,10 +68,19 @@ function Userlogin() {
       .then((res) => {
         if (res?.data?.status === 200) {
           const userId = res?.data?.data?._id || null;
+          const isFirstTimeLoggingIn = res?.data?.loginFirstTime || false;
+
           if (userId) {
             localStorage.setItem("trade-hub-userId", userId);
           }
-          toast.success("Login Successfully");
+          if (isFirstTimeLoggingIn) {
+            toast.success(
+              "Congratulations! You have received 500 wallet points as a welcome bonus."
+            );
+          } else {
+            toast.success("Login Successful");
+          }
+
           console.log("respo", res);
           navigate("/user/home");
         } else if (res?.data?.status === 405) {
@@ -165,12 +174,12 @@ function Userlogin() {
                       Forgot password?
                     </Link>
                   </div>
-                  <div className="text-center">
-                    <button type="submit" className="user-login-btn mt-5">
+                  <div className="d-flex justify-content-center mt-5">
+                    <button type="submit" className="user-login-btn ">
                       Login
                     </button>
                   </div>
-                  <div className="mt-4 ms-5">
+                  <div className="mt-4">
                     <h6 className="text-center">
                       New to TradeHub?{" "}
                       <Link to="/user/register" className="">

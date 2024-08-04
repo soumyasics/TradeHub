@@ -40,7 +40,14 @@
   width: 150px;
   border-radius: 20px;
   border: none;
-  margin-left: 43%;
+}
+.admin-login-btn2 {
+  background: #6d3698;
+  color: white;
+  height: 45px;
+  width: 150px;
+  border-radius: 20px;
+  border: none;
 }
 .admin-login-label-box
 {

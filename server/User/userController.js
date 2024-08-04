@@ -295,7 +295,7 @@ const createToken = (user) => {
   return jwt.sign({ userId: user._id }, secret, { expiresIn: "1h" });
 };
 
-const login = (req, res) => {
+const login = async (req, res) => {
   const { email, password } = req.body;
 
   User.findOne({ email })
@@ -311,12 +311,28 @@ const login = (req, res) => {
       if (!user.isActive) {
         return res.json({ status: 405, msg: "Your account is deactivated" });
       }
+      let loginFirstTime = false;
+
+      if (user.loginCount == 0) {
+        loginFirstTime = true;
+      }
+      user.loginCount = ++user.loginCount;
+
+      user
+        .save()
+        .then((data) => {
+          // console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       const token = createToken(user);
 
       res.json({
         status: 200,
         data: user,
         token,
+        loginFirstTime,
       });
     })
     .catch((err) => {

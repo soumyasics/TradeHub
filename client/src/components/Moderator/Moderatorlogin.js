@@ -165,10 +165,12 @@ function Moderatorlogin() {
                       Forgot password?
                     </Link>
                   </div>
-                  <button type="submit" className="moderator-login-btn mt-5">
-                    Login
-                  </button>
-                  <div className="mt-4 ms-5">
+                  <div className="d-flex justify-content-center mt-5">
+                    <button type="submit" className="moderator-login-btn ">
+                      Login
+                    </button>
+                  </div>
+                  <div className="mt-4">
                     <h6 className="text-center">
                       New to TradeHub?{" "}
                       <Link to="/moderator/register" className="">

@@ -98,7 +98,10 @@ export const ViewItems = () => {
       <div className="user-viewItems-body">
         <h1 className="user-viewItems-heading text-center">My items</h1>
 
-        <div className="d-flex justify-content-evenly">
+        <div
+          className="d-flex justify-content-between align-items-center"
+          style={{ paddingLeft: "8%", paddingRight: "9%" }}
+        >
           <InputGroup className="mod-product-request-box1 ms-2 ps-3 ">
             <Form.Control
               className="mod-product-request-inp  "
@@ -121,6 +124,7 @@ export const ViewItems = () => {
             aria-label="Default select example "
             className=" admin-transaction-select"
             onChange={filterByCategory}
+            style={{ height: "40px" }}
           >
             <option value="">Filter</option>
             <option value="Books">Books</option>
@@ -196,14 +200,25 @@ export const ViewItems = () => {
                     </div>
                     <div className="col-2 user-viewItems-right-box">
                       <div className="userView-right-inner-box">
-                        <div className="userItemView-pending bg-danger"></div>
                         <p>
                           {e.isModApproved === "approve" ? (
-                            <span className="text-success">Approved </span>
+                            <div className="d-flex  align-items-center">
+                              <span className="userItemView-pending bg-success"></span>{" "}
+                              &nbsp;
+                              <span className="text-success">Approved </span>
+                            </div>
                           ) : e.isModApproved === "reject" ? (
-                            <span className="text-danger">Rejected </span>
+                            <div className="d-flex align-items-center">
+                              <span className="userItemView-pending bg-danger"></span>{" "}
+                              &nbsp;
+                              <span className="text-danger">Rejected </span>
+                            </div>
                           ) : (
-                            <span className="text-warning">Pending </span>
+                            <div className="d-flex  align-items-center">
+                              <span className="userItemView-pending bg-warning"></span>{" "}
+                              &nbsp;
+                              <span className="text-warning">Pending </span>
+                            </div>
                           )}
                         </p>
                       </div>

@@ -125,7 +125,9 @@ function DeliveryAgentLogin() {
                   </div>
                   <div className="d-flex">
                     <div className="del-login-label-box">
-                      <label className="deliveryagent-login mt-2 ">Password</label>
+                      <label className="deliveryagent-login mt-2 ">
+                        Password
+                      </label>
                     </div>
                     {/* <input
                       className="deliveryagent-login-textbox-pass ms-4 px-3"
@@ -169,13 +171,12 @@ function DeliveryAgentLogin() {
                       Forgot Password?
                     </Link>
                   </div>
-                  <button
-                    type="submit"
-                    className="deliveryagent-login-btn mt-5"
-                  >
-                    Login
-                  </button>
-                  <div className="mt-4 ms-5">
+                  <div className="d-flex justify-content-center mt-5">
+                    <button type="submit" className="deliveryagent-login-btn">
+                      Login
+                    </button>
+                  </div>
+                  <div className="mt-4 ">
                     <h6 className="text-center">
                       New to TradeHub Delivery?{" "}
                       <Link to="/delivery/signup" href="#">
