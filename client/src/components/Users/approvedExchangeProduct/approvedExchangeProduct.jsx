@@ -166,7 +166,7 @@ export const ApprovedExchangeProduct = () => {
                       {/* myitems */}
                       <div className="userTransaction-myitems">
                         <div className="userTransaction-myitems-head">
-                          Received request
+                          Received product
                         </div>
                         <div className="userTransaction-myitems-photo">
                           {/* <img src={e.productPhoto} alt="Product Image" /> */}

@@ -80,7 +80,7 @@ export const AdminTransaction = () => {
           className=" admin-transaction-select"
           onChange={filterByCategory}
         >
-          <option value="">Filter</option>
+          <option value="">Filter by category</option>
           <option value="Books">Books</option>
           <option value="Electronics">Electronics</option>
           <option value="Jewellery">Jewellery</option>
@@ -137,9 +137,14 @@ export const AdminTransaction = () => {
                               <td>{buyer?.contact}</td>
                             </tr>
                             <tr>
-                              <th style={{ fontWeight: "600" }}>Adress</th>
+                              <th style={{ fontWeight: "600" }}>Email</th>
                               <td>:</td>
-                              <td>{buyerProduct?.address}</td>
+                              <td>{buyer?.email}</td>
+                            </tr>
+                            <tr>
+                              <th style={{ fontWeight: "600" }}>Wallet</th>
+                              <td>:</td>
+                              <td>{buyer?.wallet}</td>
                             </tr>
                           </tbody>
                         </table>
@@ -174,7 +179,9 @@ export const AdminTransaction = () => {
                               <td> {buyerProduct?.condition}</td>
                             </tr>
                             <tr>
-                              <th style={{ fontWeight: "600" }}>Points</th>
+                              <th style={{ fontWeight: "600" }}>
+                                Product Points
+                              </th>
                               <td>:</td>
                               <td>
                                 <div className="userTransaction-point-box d-flex">
@@ -191,39 +198,36 @@ export const AdminTransaction = () => {
                       <img src={buyerProductPic} alt="" />
                     </div>
                   </div>
-
-                  <div className="d-flex mt-5 justify-content-between d-flex">
-                    <div className=" d-flex">
-                      Seller response status :
-                      {e?.sellerResponseStatus === "pending" ? (
-                        <p className="text-warning">Pending</p>
-                      ) : e?.sellerResponseStatus == "accepted" ? (
-                        <p className="text-success">Accepted</p>
-                      ) : (
-                        <p className="text-danger">Rejected</p>
-                      )}
-                    </div>
-                    <div style={{ width: "30px", height: "30px" }}>
-                      <img src={img3} alt="icon" className="w-100" />
-                    </div>
-                    <div className="d-flex">
-                      Delivery status :
-                      {e?.deliveryStatus === "pending" ? (
-                        <p className="text-warning">Pending</p>
-                      ) : e?.deliveryStatus == "accepted" ? (
-                        <p className="text-success">Accepted</p>
-                      ) : e?.deliveryStatus == "delivered" ? (
-                        <p>
-                          <p className="text-success">Delivered</p>
-                        </p>
-                      ) : (
-                        <p className="text-danger">Rejected</p>
-                      )}
-                    </div>
+                </div>
+                <div className="d-flex align-items-center justify-content-between m-3 mt-4">
+                  <div className=" d-flex ">
+                    Seller response status :
+                    {e?.sellerResponseStatus === "pending" ? (
+                      <p className="text-warning">Pending</p>
+                    ) : e?.sellerResponseStatus == "accepted" ? (
+                      <p className="text-success">Accepted</p>
+                    ) : (
+                      <p className="text-danger">Rejected</p>
+                    )}
+                  </div>
+                  <div style={{ width: "30px", height: "30px" }}>
+                    <img src={img3} alt="icon" className="w-100" />
+                  </div>
+                  <div className="d-flex">
+                    Delivery status :
+                    {e?.deliveryStatus === "pending" ? (
+                      <p className="text-warning">Pending</p>
+                    ) : e?.deliveryStatus == "accepted" ? (
+                      <p className="text-success">Accepted</p>
+                    ) : e?.deliveryStatus == "delivered" ? (
+                      <p className="text-success">Delivered</p>
+                    ) : (
+                      <p className="text-danger">Rejected</p>
+                    )}
                   </div>
                 </div>
 
-                <div className="modTransaction-box2">
+                <div className="modTransaction-box22">
                   <div className="userTransaction-boxcontent d-flex">
                     {/* myitems */}
                     <div className="userTransaction-myitems">
@@ -245,9 +249,14 @@ export const AdminTransaction = () => {
                               <td>{seller?.contact}</td>
                             </tr>
                             <tr>
-                              <th style={{ fontWeight: "600" }}>Adress</th>
+                              <th style={{ fontWeight: "600" }}>Email</th>
                               <td>:</td>
-                              <td>{sellerProduct?.address}</td>
+                              <td>{seller?.email}</td>
+                            </tr>
+                            <tr>
+                              <th style={{ fontWeight: "600" }}>Wallet</th>
+                              <td>:</td>
+                              <td>{seller?.wallet}</td>
                             </tr>
                           </tbody>
                         </table>
@@ -277,7 +286,9 @@ export const AdminTransaction = () => {
                               <td> {sellerProduct?.condition}</td>
                             </tr>
                             <tr>
-                              <th style={{ fontWeight: "600" }}>Points</th>
+                              <th style={{ fontWeight: "600" }}>
+                                Product Points
+                              </th>
                               <td>:</td>
                               <td>
                                 <div className="userTransaction-point-box d-flex">

@@ -147,9 +147,9 @@ export const ReceivedRequest = () => {
                           <td>{sellerProduct?.quantity}</td>
                         </tr>
                         <tr>
-                          <td style={{ fontWeight: "600" }}>Description</td>
+                          <td style={{ fontWeight: "600" }}>Condition</td>
                           <td>:</td>
-                          <td>{sellerProduct?.description} </td>
+                          <td>{sellerProduct?.condition} </td>
                         </tr>
                         <tr>
                           <td>
@@ -207,9 +207,9 @@ export const ReceivedRequest = () => {
                           <td>{buyerProduct?.quantity}</td>
                         </tr>
                         <tr>
-                          <td style={{ fontWeight: "600" }}>Description</td>
+                          <td style={{ fontWeight: "600" }}>Condition</td>
                           <td>:</td>
-                          <td>{buyerProduct?.description}</td>
+                          <td>{buyerProduct?.condition}</td>
                         </tr>
                         <tr>
                           <td>

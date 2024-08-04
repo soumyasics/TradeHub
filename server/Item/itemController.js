@@ -122,6 +122,7 @@ const viewAllApproveItems = async (req, res) => {
     const items = await Item.find({
       isModApproved: "approve",
       isExchanged: false,
+      isActive: true,
       $or: [{ isDeleted: false }, { isDeleted: { $exists: false } }],
     })
       .populate("userId")
@@ -450,6 +451,7 @@ const personalisedRecommendation = async (req, res) => {
     const items = await Item.find({
       isModApproved: "approve",
       isExchanged: false,
+      isActive: true,
       $or: [{ isDeleted: false }, { isDeleted: { $exists: false } }],
     })
       .populate("userId")

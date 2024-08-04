@@ -175,10 +175,10 @@ export const ViewItems = () => {
                             </td>
                           </tr>
                           <tr>
-                            <td>Item description</td>
+                            <td>Item condition</td>
                             <td>:</td>
                             <td className="user-view_Items-data">
-                              {e.description}
+                              {e.condition}
                             </td>
                           </tr>
                           <tr>

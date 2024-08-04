@@ -50,7 +50,6 @@ export const DeliveryRequest = () => {
       console.log("err on get my rejected orders", err);
     }
   };
-  console.log("my rjected deliveries", myRejectedDeliveries);
 
   const toApprove = async (id) => {
     try {

@@ -48,7 +48,6 @@ export const UsereditProfileCard = ({ getNewData }) => {
       .catch((err) => {
         console.log(err);
       });
-    console.log("photo", edit);
   };
 
   useEffect(() => {

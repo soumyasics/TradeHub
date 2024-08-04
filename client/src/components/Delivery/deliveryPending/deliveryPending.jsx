@@ -48,8 +48,6 @@ export const DeliveryPending = () => {
   const confirmDelivery = async (exchangeId) => {
     try {
       if (exchangeId && deliveryAgentId) {
-        console.log("product id", exchangeId);
-        console.log("agent id", deliveryAgentId);
 
         const response = await axiosInstance.patch(
           `/deliveredProduct/${exchangeId}`,

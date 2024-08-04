@@ -98,9 +98,9 @@ export const RequestedItems = () => {
                           <td>{buyerProduct?.category}</td>
                         </tr>
                         <tr>
-                          <td style={{ fontWeight: "600" }}>Description</td>
+                          <td style={{ fontWeight: "600" }}>Condition</td>
                           <td>:</td>
-                          <td>{buyerProduct?.description}</td>
+                          <td>{buyerProduct?.condition}</td>
                         </tr>
                         <tr>
                           <td style={{ fontWeight: "600" }}>Quantity</td>
@@ -156,9 +156,9 @@ export const RequestedItems = () => {
                           <td>{sellerProduct?.category}</td>
                         </tr>
                         <tr>
-                          <td style={{ fontWeight: "600" }}>Description</td>
+                          <td style={{ fontWeight: "600" }}>Condition</td>
                           <td>:</td>
-                          <td>{sellerProduct?.description} </td>
+                          <td>{sellerProduct?.condition} </td>
                         </tr>
                         <tr>
                           <td style={{ fontWeight: "600" }}>Quantity</td>

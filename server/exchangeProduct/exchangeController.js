@@ -104,6 +104,7 @@ const getAllRequestByBuyerId = async (req, res) => {
 
     const exchangeProducts = await ExchangeProductModel.find({
       buyerId: id,
+      deliveryStatus: "pending"
     })
       .populate("buyerProductId")
       .populate("sellerProductId")
@@ -126,6 +127,7 @@ const getAllRequestBySellerId = async (req, res) => {
 
     const exchangeProducts = await ExchangeProductModel.find({
       sellerId: id,
+      deliveryStatus: "pending"
     })
       .populate("buyerProductId")
       .populate("sellerProductId")
@@ -566,6 +568,45 @@ const acceptDeliveryReqById = async (req, res) => {
     if (!deliveryAgent) {
       return res.status(400).json({ msg: "Delivery agent not found" });
     }
+
+    const exchangeReq = await ExchangeProductModel.findById(id);
+
+    if (!exchangeReq) {
+      return res.status(400).json({ msg: "Exchange request not found" });
+    }
+
+    const buyer = await UserModel.findById(exchangeReq.buyerId);
+    if (!buyer) {
+      return res.status(400).json({ msg: "Buyer not found" });
+    }
+    const seller = await UserModel.findById(exchangeReq.sellerId);
+    if (!seller) {
+      return res.status(400).json({ msg: "Seller not found" });
+    }
+
+    const extraPointReqForBuyer = exchangeReq.extraPointReqForBuyer;
+    const pointCreditBackToBuyer = exchangeReq.pointCreditBackToBuyer;
+
+    if (pointCreditBackToBuyer > 0) {
+      buyer.wallet = buyer.wallet + pointCreditBackToBuyer;
+      await buyer.save();
+    }
+    if (extraPointReqForBuyer > 0) {
+      
+      const buyerWalletBalance = buyer.wallet;
+      if (extraPointReqForBuyer > buyerWalletBalance) {
+        return res
+          .status(400)
+          .json({ msg: "Insufficient balance"});
+      } 
+
+      buyer.wallet = buyer.wallet - extraPointReqForBuyer;
+      await buyer.save();
+
+      seller.wallet = seller.wallet + extraPointReqForBuyer;
+      await seller.save();
+    }
+
     const newRequest = await ExchangeProductModel.findByIdAndUpdate(
       id,
       {
@@ -609,6 +650,7 @@ const deliveredProduct = async (req, res) => {
     if (!deliveryAgent) {
       return res.status(400).json({ msg: "Delivery agent not found" });
     }
+
     const newRequest = await ExchangeProductModel.findByIdAndUpdate(
       id,
       {

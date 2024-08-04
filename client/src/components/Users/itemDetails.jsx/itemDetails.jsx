@@ -70,7 +70,7 @@ export const ItemDetails = () => {
                   <td>{productDetails.description}</td>
                 </tr>
                 <tr>
-                  <th>Adress</th>
+                  <th>Address</th>
                   <td>:</td>
                   <td>{productDetails.Adress}</td>
                 </tr>

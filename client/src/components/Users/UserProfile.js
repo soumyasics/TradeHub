@@ -19,7 +19,6 @@ function UserProfile() {
     axiosInstance
       .post(`viewUserById/${id}`)
       .then((res) => {
-        console.log(res);
         if (res.data?.status === 200) {
           setData(res.data.data);
           console.log(res.data.data);

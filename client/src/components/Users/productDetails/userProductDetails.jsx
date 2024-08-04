@@ -77,7 +77,7 @@ export const UserProductDetails = () => {
             <div className="col-md-6 itemDetails-right-box2 mt-5">
               <h5>{product?.category}</h5>
               <h3>{product?.name}</h3>
-              <div className="container ">
+              <div className="container mb-5">
                 <div className="row itemDetails-right-inner-box">
                   <div className="col-6">
                     <h6>Quantity</h6>
@@ -108,6 +108,12 @@ export const UserProductDetails = () => {
                     <td>{product?.location}</td>
                   </tr>
                 </table>
+
+                <div className="mt-2">
+                  {product?.isActive === false && (
+                    <h2 className="text-success fw-bold text-center">Exchange completed.</h2>
+                  )}
+                </div>
               </div>
             </div>
           </div>
