@@ -32,9 +32,7 @@ export const UserProductExchange = () => {
       const res = await axiosInstance.get(`viewItemById/${id}`);
       if (res.data.status === 200) {
         setProduct(res.data.data);
-        console.log("data", res.data.data);
         setOwnerDetails(res.data.data.userId);
-        console.log("owner details", ownerDetails);
       } else {
         console.log("!get product details", res);
       }

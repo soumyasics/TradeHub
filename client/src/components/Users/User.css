@@ -233,10 +233,11 @@
   margin-bottom: 50px;
   border-radius: 30px;
 }
-.userlanding-carouselitem1 {
-  height: 50vh;
+.userlanding-carouselitem12 {
+  height: 200px;
   width: 100%;
-  margin-top: 180px;
+  position: absolute;
+  bottom: 0;
 }
 .userlanding-carouselitem2 {
   height: 50vh;
@@ -278,10 +279,9 @@
 .user-landing-button2 {
   background-color: white;
   border: none;
-  height: 70px;
-  width: 350px;
-  font-size: 35px;
-  font-weight: 500px;
+  height: 47px;
+  width: 255px;
+  font-size: 27px;
   border-radius: 8px;
   font-weight: 600;
   color: #6e3799;

@@ -173,20 +173,27 @@
   width: 80%;
 }
 .user-landing-para {
-  font-size: 50px;
+  font-size: 30px;
+  text-align: left;
   color: white;
+  margin-left: 20px;
+}
+.user-landing-para-home {
+  font-size: 30px;
+  text-align: left;
+  color: white;
+  margin-left: 20px;
 }
 .user-landing-para1 {
-  font-size: 30px;
+  font-size: 25px;
   color: white;
-  margin-left: 80px;
 }
 .user-landing-button {
   background-color: white;
   border: none;
-  height: 80px;
-  width: 350px;
-  font-size: 40px;
+  height: 60px;
+  width: 300px;
+  font-size: 25px;
   font-weight: 500px;
   border-radius: 8px;
   font-weight: 600;
@@ -203,10 +210,9 @@
 .user-landing-button2 {
   background-color: white;
   border: none;
-  height: 70px;
-  width: 350px;
-  font-size: 35px;
-  font-weight: 500px;
+  height: 47px;
+  width: 255px;
+  font-size: 27px;
   border-radius: 8px;
   font-weight: 600;
   color: #6e3799;

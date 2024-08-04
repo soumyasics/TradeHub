@@ -114,7 +114,6 @@ export const ModEditProfileCard = ({ getNewData }) => {
 
   const sendDataToServer = async () => {
     try {
-      console.log("edit wor", edit);
       const res = await axiosMultipartInstance.post(`/editModeratorById/${modId}`, edit);
       if (res.status === 200) {
         toast.success("Update successfull");

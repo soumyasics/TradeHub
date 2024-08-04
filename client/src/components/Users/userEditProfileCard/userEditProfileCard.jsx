@@ -134,7 +134,6 @@ export const UsereditProfileCard = ({ getNewData }) => {
     }
   };
   
-console.log("edit", edit)
   return (
     <div>
       <div className="d-flex w-100 justify-content-center">

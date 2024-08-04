@@ -275,9 +275,10 @@ export const ReceivedRequest = () => {
                 style={{ paddingTop: "10px" }}
               >
                 <p style={{ fontSize: "14px" }} className="m-0 mb-3">
-                  You can gain{" "}
-                  <span className="fw-bold"> {e?.pointVariation}</span> points
-                  from this this exchange.{" "}
+                  {" "}
+                  Once the exchange has been completed, your remaining points
+                  that is {e.pointVariation}, will be credited to your Trade Hub
+                  wallet.
                 </p>
               </div>
             </div>
