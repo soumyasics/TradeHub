@@ -40,6 +40,18 @@ const sendExchangeRequest = async (req, res) => {
         .status(400)
         .json({ msg: "Same product exchange request already exists" });
     }
+    const isSameExchangeRequestExist2 = await ExchangeProductModel.findOne({
+      buyerId: sellerId,
+      sellerId: buyerId,
+      buyerProductId: sellerProductId,
+      sellerProductId: buyerProductId,
+    });
+
+    if (isSameExchangeRequestExist2) {
+      return res
+        .status(400)
+        .json({ msg: "Same product exchange request already exists" });
+    }
 
     const sellingProduct = await ItemModel.findById(sellerProductId);
     const category = sellingProduct.category;
