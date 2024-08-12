@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./User.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -13,6 +13,7 @@ import Footer from "../Footer/Footer";
 import axiosInstance from "../../apis/axiosInstance";
 import { toast } from "react-hot-toast";
 import UserNavbar from "../homeComponents/Navbar/UserNavbar";
+
 function Userlogin() {
   const [show, setShow] = useState(true);
   const [data, setData] = useState({
@@ -23,6 +24,13 @@ function Userlogin() {
   const handleShow = () => {
     setShow(!show);
   };
+
+  useEffect(() => {
+    let isUserLoggedin = localStorage.getItem("trade-hub-userId") || null;
+    if (isUserLoggedin) {
+      navigate("/user/home");
+    }
+  }, [])
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -26,8 +26,17 @@ function UserMainNav() {
     setShowDropdown(!showDropdown);
   };
 
+  useEffect(() => {
+    let isUserLoggedin = localStorage.getItem("trade-hub-userId") || null;
+    if (!isUserLoggedin) {
+      navigate("/user/login");
+    }
+  }, []);
+
   const handleUserLogout = () => {
-    console.log("work");
+    if (localStorage.getItem("trade-hub-userId")) {
+      localStorage.removeItem("trade-hub-userId");
+    }
     navigate("/user/login");
   };
   const navigateUserHome = () => {

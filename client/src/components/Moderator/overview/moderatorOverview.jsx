@@ -109,7 +109,7 @@ export const ModeratorOverview = ({ updateProductId, modData }) => {
                     <div className="col-7">
                       <span>
                         <p className="admin-dash-span">
-                          Total number<br></br>of products
+                          Total active<br></br> products
                         </p>
                       </span>
                       <span className="admin-dash-length">

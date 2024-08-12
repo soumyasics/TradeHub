@@ -662,6 +662,18 @@ const deliveredProduct = async (req, res) => {
     if (!deliveryAgent) {
       return res.status(400).json({ msg: "Delivery agent not found" });
     }
+    const exchangeReq = await ExchangeProductModel.findById(id);
+    if (!exchangeReq) {
+      return res.status(400).json({ msg: "Exchange request not found" });
+    }
+
+    const buyerProd = await ItemModel.findById(exchangeReq.buyerProductId);
+    buyerProd.isExchanged = true;
+    
+    const sellerProd = await ItemModel.findById(exchangeReq.sellerProductId);
+    sellerProd.isExchanged = true;
+    await buyerProd.save();
+    await sellerProd.save();
 
     const newRequest = await ExchangeProductModel.findByIdAndUpdate(
       id,
@@ -670,7 +682,7 @@ const deliveredProduct = async (req, res) => {
       },
       { new: true }
     );
-
+    
     if (
       deliveryAgent.acceptedOrders &&
       deliveryAgent.acceptedOrders.length > 0
