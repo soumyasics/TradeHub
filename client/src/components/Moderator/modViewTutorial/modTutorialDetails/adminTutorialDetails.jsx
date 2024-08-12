@@ -6,10 +6,9 @@ import { FaArrowLeft } from "react-icons/fa";
 import { Button } from "react-bootstrap";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-export const ModTutorialDetails = ({ selectedVideoId, changeSelected }) => {
+export const AdminTutorialDetails = ({ selectedVideoId, changeSelected }) => {
   const [data, setData] = useState(null); // Initialize with null
   const [videoUrl, setVideoUrl] = useState();
-  const navigate = useNavigate();
 
   useEffect(() => {
     getData();
@@ -104,7 +103,13 @@ export const ModTutorialDetails = ({ selectedVideoId, changeSelected }) => {
       <div className="text-justify">
         <p className="modTutorial-description">{data?.description}</p>
       </div>
-
+      <div className="d-flex justify-content-center">
+        <Button variant="danger" onClick={deleteVideo}>
+          {" "}
+          Delete Video{" "}
+        </Button>
+      </div>
     </div>
+    
   );
 };

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { ModTutorialDetails } from "../modTutorialDetails/modTutorialDetails";
 import { ModTutorialCard } from "./modTutorialCard";
+import { AdminTutorialDetails } from "../modTutorialDetails/adminTutorialDetails";
 
-export const ModVideoContainer = ({id}) => {
+export const AdminVideoContainer = ({id}) => {
   const [selectedVideoId, setSelectedVideoId] = useState("");
   function changeSelected (value)  {
     if (value) {
@@ -19,9 +20,10 @@ export const ModVideoContainer = ({id}) => {
   return (
     <div>
       {selectedVideoId ? (
-        <ModTutorialDetails changeSelected={changeSelected} selectedVideoId={selectedVideoId} />
+        <AdminTutorialDetails changeSelected={changeSelected} selectedVideoId={selectedVideoId} />
       ) : (
         <ModTutorialCard changeSelected={changeSelected}/>
+        
       )}
     </div>
   );

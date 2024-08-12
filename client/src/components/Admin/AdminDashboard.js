@@ -16,6 +16,7 @@ import { ModVideoContainer } from "../Moderator/modViewTutorial/modTutorialCard/
 import ModViewWebinar from "../Moderator/modViewWebinar/modViewWebinar";
 import { AdminViewNewGuideline } from "../Users/userViewGuideline/adminViewGuideline";
 import { useNavigate } from "react-router-dom";
+import { AdminVideoContainer } from "../Moderator/modViewTutorial/modTutorialCard/adminContainer";
 export const AdminDashboard = () => {
   const [selectedPage, setSelectedPage] = useState("overview");
   const navigate =useNavigate()
@@ -59,7 +60,7 @@ export const AdminDashboard = () => {
         {selectedPage === "uploadTutorial" && (
           <AdminUploadVideo redirectToViewTutorial={redirectToViewTutorial} />
         )}
-        {selectedPage === "viewTutorial" && <ModVideoContainer />}
+        {selectedPage === "viewTutorial" && <AdminVideoContainer />}
       </div>
     </div>
   );

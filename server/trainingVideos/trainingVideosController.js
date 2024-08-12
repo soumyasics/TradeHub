@@ -76,9 +76,29 @@ const getTutorialById = async (req, res) => {
   }
 };
 
+const deleteTutorialById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const videoTutorial = await TrainingVideoModel.findByIdAndDelete(id);
+    if (!videoTutorial) {
+      return res.status(404).json({ message: "Video tutorial not found" });
+    }
+    return res.status(200).json({
+      data: videoTutorial,
+      message: "Video Tutorial deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to delete video tutorial by id.",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   addTutorial,
   uploadVideo,
   getAllTutorials,
   getTutorialById,
+  deleteTutorialById
 };

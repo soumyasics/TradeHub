@@ -28,7 +28,7 @@ export const ModTutorialCard = ({ changeSelected }) => {
   return (
     <div className="tutorial-card-body">
       <h2 className="py-5" style={{ textAlign: "center" }}>
-        View Tutorial
+        View Tutorials
       </h2>
       <div className="d-flex flex-wrap gap-5 justify-content-evenly px-5">
         {data.map((e) => {

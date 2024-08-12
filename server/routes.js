@@ -228,5 +228,6 @@ router.post(
 );
 router.get("/allVideoTutorials", videoTutorialController.getAllTutorials);
 router.get("/getTutorialById/:id", videoTutorialController.getTutorialById);
+router.delete("/deleteTutorialById/:id", videoTutorialController.deleteTutorialById);
 
 module.exports = router;
