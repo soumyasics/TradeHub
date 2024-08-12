@@ -12,6 +12,7 @@ import { BiImageAdd } from "react-icons/bi";
 import { FiEdit2 } from "react-icons/fi";
 import { toast } from "react-hot-toast";
 import UserNavbar from "../homeComponents/Navbar/UserNavbar";
+import { onlyAlphabets, onlyNumbers, validatePhoneNumber } from "../../validation/validation";
 
 function UserRegister() {
   const navigate = useNavigate();
@@ -51,8 +52,16 @@ function UserRegister() {
         [name]: e.target.checked,
       }));
     } else {
+      if (name === "firstname" || name === "lastname") {
+        if (!onlyAlphabets(value)){
+          return;
+        }
+      }
+
+     
+
       setData((prevData) => ({
-        ...prevData,
+      ...prevData,
         [name]: value,
       }));
     }
@@ -106,6 +115,12 @@ function UserRegister() {
       return false;
     }
 
+    
+    if (!validatePhoneNumber(contact)) {
+      toast.error("Please enter a valid phone number");
+      return false;
+    }
+
     if (contact.length !== 10) {
       toast.error("Phone number must be 10 digits");
       return false;
@@ -150,6 +165,7 @@ function UserRegister() {
       toast.error("Passwords do not match");
       return false;
     }
+
 
     if (!profile) {
       toast.error("Profile photo is required");
@@ -267,11 +283,14 @@ function UserRegister() {
                     </label>
                     <input
                       type="text"
-                      placeholder="Phone number"
+                      placeholder="Phone number (10 digits)"
                       className="user-register-textbox mt-2"
                       value={data.contact}
                       name="contact"
                       onChange={handleChange}
+                      maxLength="10"
+                      minLength="10"
+                      pattern="[0-9]{10}"
                     />
                   </div>
                 </div>

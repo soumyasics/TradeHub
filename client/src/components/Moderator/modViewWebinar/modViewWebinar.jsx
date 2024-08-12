@@ -2,7 +2,9 @@ import Table from "react-bootstrap/Table";
 import "./modviewWebinar.css";
 import axiosInstance from "../../../apis/axiosInstance";
 import { useEffect, useState } from "react";
-function ModViewWebinar() {
+import { Button } from "react-bootstrap";
+import { toast } from "react-hot-toast";
+function ModViewWebinar({ user }) {
   const [data, setData] = useState([]);
   const getData = async () => {
     try {
@@ -14,15 +16,29 @@ function ModViewWebinar() {
       console.log(error);
     }
   };
-  console.log(data);
 
   useEffect(() => {
     getData();
   }, []);
+
+  const deleteWebinar = async (id) => {
+    if (!id) {
+      return;
+    }
+    try {
+      const res = await axiosInstance.delete(`/deleteWebinar/${id}`);
+      if (res.status === 200) {
+        toast.success("Webinar deleted successfully");
+        getData();
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div>
-      <h2 className="modViewWebinar-heading">WEBINAR</h2>
-      <Table striped bordered hover  className="modViewWWebinar">
+      <h2 className="modViewWebinar-heading">Webinar</h2>
+      <Table striped bordered hover className="modViewWWebinar">
         <thead>
           <tr>
             <th>#</th>
@@ -33,6 +49,7 @@ function ModViewWebinar() {
             <th>Duration</th>
             <th>Description</th>
             <th>Webinar Link</th>
+            {user === "admin" && <th>Delete</th>}
           </tr>
         </thead>
         {data.map((e, index) => {
@@ -47,6 +64,19 @@ function ModViewWebinar() {
                 <td>{e.duration}</td>
                 <td>{e.description}</td>
                 <td>{e.webinarLink}</td>
+                {user === "admin" && (
+                  <td>
+                    <Button
+                      variant="danger"
+                      onClick={() => {
+                        deleteWebinar(e._id);
+                      }}
+                    >
+                      {" "}
+                      Delete{" "}
+                    </Button>
+                  </td>
+                )}
               </tr>
             </tbody>
           );

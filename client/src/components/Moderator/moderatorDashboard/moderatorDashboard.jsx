@@ -115,7 +115,7 @@ export const ModeratorDashboard = () => {
         {selectpage == "test" && (
           <ModTestContainer navigateToOverview={navigateToOverview} />
         )}
-        {selectpage == "webinar" && <ModViewWebinar />}
+        {selectpage == "webinar" && <ModViewWebinar user="moderator" />}
         {selectpage == "tutorial" && <ModVideoContainer id="" />}
         {/* {selectpage == "viewTutorialDetails" && <ModVideoContainer />}  */}
       </div>

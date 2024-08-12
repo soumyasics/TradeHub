@@ -129,7 +129,7 @@ const App = () => {
           <Route path="user/chat/footer" element={<UserChatFooter />} />
           <Route path="/view-category/:category" element={<ViewByCategory />} />
           <Route path="/user/requests" element={<UserRequestes />} />
-          <Route path="/user/view-guideline" element={<UserViewGuideline />} />
+          <Route path="/user/view-guideline" element={<UserViewGuideline  />} />
           <Route
             path="/user/exchange-product"
             element={<ApprovedExchangeProduct />}
@@ -216,14 +216,14 @@ const App = () => {
           
           <Route
             path="/admin/view-guideline"
-            element={<AdminViewNewGuideline />}
+            element={<AdminViewNewGuideline user="admin"/>}
           />
 
           <Route
             path="/admin/update-guideline"
             element={<AdminUpdateGuideline />}
           />
-          <Route path="admin/view-exchange" element={<AdminViewExchange />} />
+          <Route path="/admin/view-exchange" element={<AdminViewExchange />} />
           <Route path="/admin/webinar" element={<AdminWebinar />} />
           <Route path="/admin/upload-video" element={<AdminUploadVideo />} />
           {/* admin components  */}

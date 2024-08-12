@@ -1,7 +1,6 @@
 .userViewGuideline-body {
   width: 73%;
-  position: absolute;
-  left: 15%; 
+  margin: auto;
 }
 
 .userViewGuideline-heading {

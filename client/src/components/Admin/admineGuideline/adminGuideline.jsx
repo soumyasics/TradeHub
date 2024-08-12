@@ -5,8 +5,8 @@ import toast from "react-hot-toast";
 import axiosInstance from "../../../apis/axiosInstance";
 import { useNavigate } from "react-router-dom";
 
-export const AdminGuideline = ({redirectToGuideline}) => {
-  const navigate = useNavigate()
+export const AdminGuideline = ({ redirectToGuideline }) => {
+  const navigate = useNavigate();
   const [data, setData] = useState({
     title: "",
     content: "",
@@ -14,7 +14,6 @@ export const AdminGuideline = ({redirectToGuideline}) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
-    
   };
   console.log(data);
   const checkValidite = () => {
@@ -42,9 +41,8 @@ export const AdminGuideline = ({redirectToGuideline}) => {
     try {
       const res = await axiosInstance.post("/createGuideline", data);
       if (res.status === 200) {
-        toast.success(res.data.msg)
-        redirectToGuideline()
-        
+        toast.success(res.data.msg);
+        redirectToGuideline();
       } else {
         toast.error(res.data.msg);
       }
@@ -83,9 +81,11 @@ export const AdminGuideline = ({redirectToGuideline}) => {
               value={data.content}
             />
           </Form.Group>
-          <button className="adminGuideline-submit" type="submit">
-            Submit
-          </button>
+          <div className="d-flex justify-content-center ">
+            <button className="adminGuideline-submit my-3" type="submit">
+              Submit
+            </button>
+          </div>
         </Form>
       </div>
     </div>

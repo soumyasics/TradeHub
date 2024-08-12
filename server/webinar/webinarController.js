@@ -36,4 +36,13 @@ const allWebinars = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
-module.exports = { createWebinar, allWebinars };
+const deleteWebinar = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await WebinarModel.findByIdAndDelete(id);
+    return res.status(200).json({ message: "Webinar deleted successfully" });
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+}
+module.exports = { createWebinar, allWebinars , deleteWebinar};

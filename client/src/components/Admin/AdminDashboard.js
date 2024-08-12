@@ -56,7 +56,7 @@ export const AdminDashboard = () => {
         {selectedPage === "webinar" && (
           <AdminWebinar redirectToViewWebinar={redirectToViewWebinar} />
         )}
-        {selectedPage == "view-webinar" && <ModViewWebinar />}
+        {selectedPage == "view-webinar" && <ModViewWebinar user="admin" />}
         {selectedPage === "uploadTutorial" && (
           <AdminUploadVideo redirectToViewTutorial={redirectToViewTutorial} />
         )}

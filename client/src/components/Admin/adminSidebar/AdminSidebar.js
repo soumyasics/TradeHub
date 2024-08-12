@@ -84,7 +84,7 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
                   Delivery agent request
                 </li>
                 <li
-                  className="text-dark admin-dd-item "
+                  className="text-dark admin-dd-item mt-2"
                   onClick={() => {
                     changeSelectedPage("view-active-DA");
                   }}
@@ -121,7 +121,7 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
                   Moderator requests
                 </li>
                 <li
-                  className="text-dark admin-dd-item"
+                  className="text-dark admin-dd-item mt-2"
                   onClick={() => {
                     changeSelectedPage("view-active-mod");
                   }}
@@ -153,7 +153,7 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
                   Add Guidelines
                 </li>
                 <li
-                  className="text-dark admin-dd-item"
+                  className="text-dark admin-dd-item mt-2"
                   onClick={() => {
                     navigate('/admin/view-guideline')
                   }}

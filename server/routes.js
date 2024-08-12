@@ -109,7 +109,7 @@ router.get(
 
 router.post("/createGuideline", GuidelineRoute.createGuideline);
 router.get("/viewGuideline", GuidelineRoute.viewGuideline);
-router.patch("/editGuidelines", GuidelineRoute.editGuidelines);
+router.patch("/editGuidelines/:id", GuidelineRoute.editGuidelines);
 
 // chat with users
 router.post("/sendMessageToUser", UserChatRoute.sendMessage);
@@ -219,6 +219,7 @@ router.get(
 // rotues
 router.post("/createWebinar", webinarController.createWebinar);
 router.get("/allWebinars", webinarController.allWebinars);
+router.delete("/deleteWebinar/:id", webinarController.deleteWebinar);
 
 // video tutorials
 router.post(

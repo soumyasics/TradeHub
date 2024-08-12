@@ -109,7 +109,7 @@ export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
                     Accepted orders{" "}
                   </li>
                   <li
-                    className="text-dark admin-dd-item"
+                    className="text-dark admin-dd-item mt-1"
                     onClick={() => {
                       changeSelectedPage("rejectedOrders");
                     }}

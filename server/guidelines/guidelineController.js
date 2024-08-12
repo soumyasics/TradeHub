@@ -1,4 +1,4 @@
-const {GuidelineModel} = require("./guidelinesSchema");
+const { GuidelineModel } = require("./guidelinesSchema");
 const createGuideline = async (req, res) => {
   try {
     const { title, content } = req.body;
@@ -23,9 +23,9 @@ const createGuideline = async (req, res) => {
 const viewGuideline = async (req, res) => {
   try {
     const guideline = await GuidelineModel.find();
-    const finalGuideline = guideline[guideline.length -1]
+    const finalGuideline = guideline[guideline.length - 1];
     if (!finalGuideline) {
-      return res.status(201).json({status: 201})
+      return res.status(201).json({ status: 201 });
     }
     return res.json({
       status: 200,
@@ -41,7 +41,13 @@ const viewGuideline = async (req, res) => {
 
 const editGuidelines = async (req, res) => {
   try {
+    const id = req.params.id;
     const { title, content } = req.body;
+    const guideline = await GuidelineModel.findById(id);
+
+    if (!guideline) {
+      return res.status(404).json({ message: "Guideline not found." });
+    }
     let updateValue = {};
     if (title) {
       updateValue.title = title;
@@ -49,15 +55,11 @@ const editGuidelines = async (req, res) => {
     if (content) {
       updateValue.content = content;
     }
-    const guideline = await GuidelineModel.find();
-
-    if (guideline.length === 0) {
-      return res.status(404).json({ msg: "Guideline not found" });
-    }
 
     const newGuideline = await GuidelineModel.findByIdAndUpdate(
-      guideline[0]._id,
-      updateValue
+      id,
+      updateValue,
+      { new: true }
     );
     return res.json({
       status: 200,
