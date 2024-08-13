@@ -158,7 +158,7 @@ function UserMainNav() {
                 alt="coin"
                 style={{ height: "20px", width: "20px" }}
               />
-              <span>{data.wallet || 0}</span>
+              <span>{data?.wallet || 0}</span>
             </p>
           </Nav.Link>
           <div
