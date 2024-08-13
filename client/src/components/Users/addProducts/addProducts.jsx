@@ -325,7 +325,7 @@ export const AddProducts = () => {
                     <h3 className="addproducts-review-head">
                       Review your details :
                     </h3>
-                    <div className="container text-center">
+                    <div className="container text-center" style={{cursor: "none"}} >
                       <div className="row">
                         <div className="col-5">
                           <img
@@ -339,7 +339,7 @@ export const AddProducts = () => {
                             className="my-5"
                           />
                         </div>
-                        <div className="col-7">
+                        <div className="col-7 ">
                           <Form.Group
                             as={Col}
                             md="4"
@@ -357,6 +357,7 @@ export const AddProducts = () => {
                             <Form.Control
                               required
                               type="text"
+                              style={{cursor: "none"}} 
                               value={userData?.firstname || ""}
                               placeholder="First name"
                               className="userProduct-right-last-inp"
@@ -386,6 +387,7 @@ export const AddProducts = () => {
                             <Form.Control
                               required
                               type="number"
+                              style={{cursor: "none"}} 
                               name="contact"
                               placeholder="Phone Number"
                               className="userProduct-right-last-inp"
