@@ -6,7 +6,7 @@ import logos from "../../././../assets/images/logo.png";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-function UserNavbar({ goToAboutSection = null}) {
+function UserNavbar() {
   const navigate = useNavigate();
   const navigateToLanding = () => {
     navigate("/");
@@ -15,7 +15,7 @@ function UserNavbar({ goToAboutSection = null}) {
     <div>
       <div className="usernav-page-color">
         <Navbar collapseOnSelect expand="lg" className="" id="navfixed">
-          <div className={`${goToAboutSection ? `col-6` : `col-7  `}`}>
+          <div className="col-7">
             <Navbar.Brand className="toggleimg">
               <div onClick={navigateToLanding} style={{ cursor: "pointer" }}>
                 <img
@@ -34,21 +34,24 @@ function UserNavbar({ goToAboutSection = null}) {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
                 <div
-                  className="me-5 navlink"
+                  className="me-3 navlink"
                   style={{ cursor: "pointer" }}
                   onClick={navigateToLanding}
                 >
                   <p className="usernav-about">Home</p>
                 </div>
-                {goToAboutSection && (
-                  <div className="me-5 navlink" style={{ cursor: "pointer" }}>
-                    <p className="usernav-about" onClick={goToAboutSection}>
-                      About
-                    </p>
-                  </div>
-                )}
+                <div className="me-3 navlink" style={{ cursor: "pointer" }}>
+                  <p
+                    className="usernav-about"
+                    onClick={() => {
+                      navigate("/about");
+                    }}
+                  >
+                    About
+                  </p>
+                </div>
 
-                <div className="me-5 navlink" style={{ cursor: "pointer" }}>
+                <div className="me-3 navlink" style={{ cursor: "pointer" }}>
                   <p
                     className="usernav-about"
                     onClick={() => {
@@ -62,7 +65,7 @@ function UserNavbar({ goToAboutSection = null}) {
                 <Dropdown>
                   <Dropdown.Toggle
                     id="usernav-button"
-                    className="ms-5 me-5"
+                    className="ms-5 me-3"
                     style={{ fontSize: "16px" }}
                   >
                     Login

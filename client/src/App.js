@@ -83,6 +83,7 @@ import { UserDeliveredProducts } from "./components/Users/exchangePage/userDeliv
 import { UserPersonalisedSuggestion } from "./components/Users/userPersonalised suggestion/userPersonalisedSuggestion";
 import { DeliveredProductsViewMore } from "./components/Users/deliveredproductsViewMore/deliveredProductsViewMore";
 import { AdminViewNewGuideline } from "./components/Users/userViewGuideline/adminViewGuideline";
+import { AboutPage } from "./components/Users/aboutus";
 const App = () => {
   return (
     <div className="App">
@@ -92,6 +93,7 @@ const App = () => {
           {/* common  */}
           <Route path="/" element={<Userlanding />} />
           <Route path="/contactUs" element={<ContactUs />} />
+          <Route path="/about" element={<AboutPage />} />
 
           {/* users  */}
           <Route path="/user/login" element={<Userlogin />} />
