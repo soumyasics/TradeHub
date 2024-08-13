@@ -9,6 +9,7 @@ import Footer from "../Footer/Footer";
 import { toast } from "react-hot-toast";
 import { axiosMultipartInstance } from "../../apis/axiosMultipartInstance";
 import UserNavbar from "../homeComponents/Navbar/UserNavbar";
+import { onlyAlphabets } from "../../validation/validation";
 
 function ModeratorRegister() {
   const navigate = useNavigate();
@@ -53,13 +54,18 @@ function ModeratorRegister() {
         [name]: e.target.checked,
       }));
     } else {
+
+      if (name === "firstname" || name === "lastname") {
+        if (!onlyAlphabets(value)){
+          return;
+        }
+      }
       setData((prevData) => ({
         ...prevData,
         [name]: value,
       }));
     }
   };
-  console.log("mod data", data);
   const checkValidity = () => {
     const {
       firstname,
@@ -239,11 +245,14 @@ function ModeratorRegister() {
                   </label>
                   <input
                     type="text"
-                    placeholder="Phone number"
                     className="moderator-register-textbox mt-2"
                     value={data.contact}
                     name="contact"
                     onChange={handleChange}
+                    placeholder="Phone number (10 Digits)"
+                    maxLength="10"
+                    minLength="10"
+                    pattern="[0-9]{10}"
                   />
                 </div>
                 <div className="form-check">

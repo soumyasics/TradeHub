@@ -10,6 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Footer from "../../Footer/Footer";
 import UserNavbar from "../../homeComponents/Navbar/UserNavbar";
+import { onlyAlphabets } from "../../../validation/validation";
 
 function DeliveryAgentSignup() {
   const navigate = useNavigate();
@@ -41,6 +42,11 @@ function DeliveryAgentSignup() {
         [name]: e.target.checked,
       }));
     } else {
+      if (name === "firstname" || name === "lastname") {
+        if (!onlyAlphabets(value)){
+          return;
+        }
+      }
       setData((prevData) => ({ ...prevData, [name]: value }));
     }
   };
@@ -190,7 +196,7 @@ function DeliveryAgentSignup() {
                     placeholder="Last Name"
                     className="deliverysignup-textbox mt-5"
                     name="lastname"
-                    value={data.secondname}
+                    value={data.lastname}
                     onChange={handlechange}
                   />
                 </div>
@@ -231,11 +237,14 @@ function DeliveryAgentSignup() {
                   </label>
                   <input
                     type="text"
-                    placeholder="Phone number"
                     className="deliverysignup-textbox mt-2"
                     name="contact"
                     onChange={handlechange}
                     value={data.contact}
+                    placeholder="Phone number (10 Digits)"
+                    maxLength="10"
+                    minLength="10"
+                    pattern="[0-9]{10}"
                   />
                 </div>
                 <div className="form-check">
