@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./deliveryLogin.css";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
@@ -19,6 +19,13 @@ function DeliveryAgentLogin() {
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    let isUserLoggedin = localStorage.getItem("trade-hub-DAId") || null;
+    if (isUserLoggedin) {
+      navigate("/delivery/dashboard");
+    }
+  }, [])
   const handleShow = () => {
     setShow(!show);
   };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Moderator.css";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
@@ -41,6 +41,12 @@ function Moderatorlogin() {
     }
     return true;
   };
+  useEffect(() => {
+    let isUserLoggedin = localStorage.getItem("trade-hub-modId") || null;
+    if (isUserLoggedin) {
+      navigate("/moderator/dashboard");
+    }
+  }, [])
 
   const handleChange = (e) => {
     const { name, value } = e.target;

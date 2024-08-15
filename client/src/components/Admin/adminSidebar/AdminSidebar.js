@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../Admin.css";
 import { useState } from "react";
 import adminsidebarimg from "../../../assets/images/adminsidebarimg.png";
@@ -22,9 +22,18 @@ export const AdminSidebar = ({ changeSelectedPage }) => {
 
   const navigate = useNavigate();
   const handleAdminLogout = () => {
-    toast.success("Admin Logout Successfully");
+    if (localStorage.getItem("trade-hub-adminId")) {
+      localStorage.removeItem("trade-hub-adminId");
+    }
     navigate("/admin/login");
   };
+
+  useEffect(() => {
+    let isUserLoggedin = localStorage.getItem("trade-hub-adminId") || null;
+    if (!isUserLoggedin) {
+      navigate("/admin/login");
+    }
+  }, [])
   const toggleDA = () => {
     setdropdownMod(false);
     setdropdownDA(!dropdownDA);

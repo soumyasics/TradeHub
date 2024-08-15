@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../delivery.css";
 import { useState } from "react";
 import deliveryImg from "../../../assets/images/adminsidebarimg.png";
@@ -21,9 +21,18 @@ export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
 
   const navigate = useNavigate();
   const handleDeliveryLogout = () => {
-    toast.success("Logout Successfully");
+    if (localStorage.getItem("trade-hub-DAId")) {
+      localStorage.removeItem("trade-hub-DAId");
+    }
     navigate("/delivery/login");
   };
+
+  useEffect(() => {
+    let isUserLoggedin = localStorage.getItem("trade-hub-DAId") || null;
+    if (!isUserLoggedin) {
+      navigate("/delivery/login");
+    }
+  }, [])
   const toggleDA = () => {
     setdropdownMod(false);
     setdropdownDA(!dropdownDA);

@@ -18,7 +18,10 @@ import { MdOndemandVideo } from "react-icons/md";
 function ModeratorSidebar({ changeSelectedPage }) {
   const navigate = useNavigate();
   const handleLogout = () => {
-    return navigate("/moderator/login");
+    if (localStorage.getItem("trade-hub-modId")) {
+      localStorage.removeItem("trade-hub-modId");
+    }
+    navigate("/moderator/login");
   };
   return (
     <div>
@@ -128,7 +131,7 @@ function ModeratorSidebar({ changeSelectedPage }) {
               <span className="contentIcons">
                 <MdLogout />
               </span>
-              <span className="ms-1">Logout</span>
+              <span className="ms-1" >Logout</span>
             </li>
           </ol>
         </div>

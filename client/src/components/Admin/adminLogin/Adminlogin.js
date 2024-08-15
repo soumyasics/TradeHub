@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Admin.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -35,8 +35,13 @@ function Adminlogin() {
       [name]: value,
     });
   };
-
-  console.log("data", data);
+ 
+  useEffect(() => {
+    let isUserLoggedin = localStorage.getItem("trade-hub-adminId") || null;
+    if (isUserLoggedin) {
+      navigate("/admin/dashboard");
+    }
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,6 +57,7 @@ function Adminlogin() {
     }
     if (email === realEmail && password === realPassword) {
       toast.success("Login Successfull");
+      localStorage.setItem("trade-hub-adminId", email);
       navigate("/admin/dashboard");
     } else {
       toast.error("Please check your email id and password.");
