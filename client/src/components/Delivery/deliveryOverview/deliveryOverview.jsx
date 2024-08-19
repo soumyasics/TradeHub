@@ -62,7 +62,6 @@ export const DeliveryOverview = () => {
   useEffect(() => {
     const DelId = localStorage.getItem("trade-hub-DAId") || null;
     if (!DelId) {
-      toast.error("Please login again.");
       navigate("/delivery/login");
       return;
     }
@@ -104,7 +103,7 @@ export const DeliveryOverview = () => {
                     <div className="col-7">
                       <span>
                         <p className="admin-dash-span">
-                          Total number<br></br>of products
+                          Total active<br></br> products
                         </p>
                       </span>
                       <span className="admin-dash-length">

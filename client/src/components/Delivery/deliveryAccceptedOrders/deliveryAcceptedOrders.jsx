@@ -17,7 +17,6 @@ export const DeliveryAcceptedOrders = () => {
     if (id) {
       setDeliveryAgentId(id);
     } else {
-      toast.error("Please login again.");
       navigate("/delivery/login");
     }
   }, []);

@@ -13,7 +13,7 @@ import { IoSearch } from "react-icons/io5";
 import InputGroup from "react-bootstrap/InputGroup";
 import "./User.css";
 import coingImg from "../../assets/images/itemDetailsPoints.png";
-import { toast } from "react-hot-toast";
+// import { toast } from "react-hot-toast";
 import axiosInstance from "../../apis/axiosInstance";
 function UserMainNav() {
   const [searchValue, setSearchValue] = useState("");
@@ -83,7 +83,7 @@ function UserMainNav() {
     if (id) {
       getUserData(id);
     } else {
-      toast.error("Please login again.");
+      // toast.error("Please login again.");
       navigate("/user/login");
     }
   }, []);

@@ -27,7 +27,6 @@ export const DeliveryProfile = () => {
   useEffect(() => {
     const DelId = localStorage.getItem("trade-hub-DAId") || null;
     if (!DelId) {
-      toast.error("Please login again.");
       navigate("/delivery/login");
       return;
     }

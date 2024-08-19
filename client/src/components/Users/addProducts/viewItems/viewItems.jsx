@@ -2,7 +2,7 @@ import "./viewItems.css";
 import img2 from "../../../../assets/images/userViewItemsDelete.svg";
 import UserMainNav from "../../UserMainNav";
 import Footer from "../../../Footer/Footer";
-import { toast } from "react-hot-toast";
+// import { toast } from "react-hot-toast";
 import axiosInstance from "../../../../apis/axiosInstance";
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../../../../apis/baseURL";
@@ -29,7 +29,7 @@ export const ViewItems = () => {
     if (id) {
       getItems(id);
     } else {
-      toast.error("Please login again.");
+      // toast.error("Please login again.");
       navigate("/user/login");
     }
   }, [countDelete]);

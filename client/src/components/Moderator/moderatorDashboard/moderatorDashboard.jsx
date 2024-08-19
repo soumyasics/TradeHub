@@ -71,7 +71,7 @@ export const ModeratorDashboard = () => {
   useEffect(() => {
     const modId = localStorage.getItem("trade-hub-modId") || null;
     if (!modId) {
-      toast.error("Please login again.");
+      // toast.error("Please login again.");
       navigate("/moderator/login");
       return;
     }

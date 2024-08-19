@@ -89,7 +89,7 @@ function Userlanding() {
                 <div
                   className="text-center mt-5"
                   onClick={() => {
-                    navigate("user/view-all-items");
+                    navigate("/user/login");
                   }}
                 >
                   <button type="button" className="user-landing-button2">
@@ -120,7 +120,7 @@ function Userlanding() {
                 <div
                   className="text-center mt-5"
                   onClick={() => {
-                    navigate("user/view-all-items");
+                    navigate("/user/login");
                   }}
                 >
                   <button type="button" className="user-landing-button2">
