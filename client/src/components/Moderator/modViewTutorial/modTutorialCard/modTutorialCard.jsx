@@ -11,7 +11,9 @@ export const ModTutorialCard = ({ changeSelected }) => {
     const response = await axiosInstance.get("/allVideoTutorials");
     try {
       if (response.status == 200) {
-        setData(response.data.data);
+        let vid = response.data.data;
+        vid = vid.reverse();
+        setData(vid);
       }
     } catch (error) {
       console.log(error);

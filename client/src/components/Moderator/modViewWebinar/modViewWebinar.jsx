@@ -10,7 +10,9 @@ function ModViewWebinar({ user }) {
     try {
       const response = await axiosInstance.get("/allWebinars");
       if (response.status === 200) {
-        setData(response.data.webinars);
+        let webinars = response.data.webinars;
+        webinars = webinars.reverse();
+        setData(webinars);
       }
     } catch (error) {
       console.log(error);

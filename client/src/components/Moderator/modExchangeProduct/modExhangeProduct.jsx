@@ -16,7 +16,7 @@ export const ModExchangeProduct = () => {
     try {
       const response = await axiosInstance.get("getAllExchangeRequests");
       if (response.status == 200) {
-        const data = response.data.data;
+        let data = response.data.data;
         data = data.reverse();
         setRequestData(data);
         setfixedData(data);
