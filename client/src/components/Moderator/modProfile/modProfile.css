@@ -71,7 +71,7 @@
   border-radius: 10px;
   border-color: black;
   color: grey;
-  padding-left: 25px;
+  padding-left: .75rem;
 }
 .user-forget-btn {
   background-color: #6d3698;

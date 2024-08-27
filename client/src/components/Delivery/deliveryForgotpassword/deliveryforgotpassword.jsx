@@ -76,7 +76,6 @@ function Deliveryforgotpassword() {
       axiosInstance
         .post("/deliveryForgotPassword", data)
         .then((res) => {
-          console.log(res);
           if (res.data.status == 200) {
             toast.success(res.data.msg);
             Navigate("/delivery/login");

@@ -82,6 +82,8 @@ function Moderatorforget() {
             console.log(res);
             toast.success(res.data.msg);
             Navigate("/moderator/login");
+          } else {
+            toast.error(res.data?.msg || "Please check your email id.");
           }
         })
         .catch((err) => {
