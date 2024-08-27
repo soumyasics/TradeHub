@@ -14,6 +14,7 @@ import { IoChevronBackSharp } from "react-icons/io5";
 import { MdOutlineQuiz } from "react-icons/md";
 import { IoLogoWebComponent } from "react-icons/io5";
 import { MdOndemandVideo } from "react-icons/md";
+import { FaRegNoteSticky } from "react-icons/fa6"
 
 function ModeratorSidebar({ changeSelectedPage }) {
   const navigate = useNavigate();
@@ -23,10 +24,12 @@ function ModeratorSidebar({ changeSelectedPage }) {
     }
     navigate("/moderator/login");
   };
+  const navigateToGuidelines = () => {
+    navigate("/user/view-guideline");
+  }
   return (
     <div>
       <div className="moderator-sidebar-color">
-       
         <div className="moderator-sidebar-logotext d-flex  align-items-center">
           <img
             className="moderator-sidebar-img"
@@ -121,9 +124,12 @@ function ModeratorSidebar({ changeSelectedPage }) {
               <IoLogoWebComponent style={{ marginRight: "9px" }} />
               Webinar
             </li>
+            <li onClick={navigateToGuidelines}>
+              <FaRegNoteSticky style={{ marginRight: "9px" }} />
+              Guideline
+            </li>
             <li onClick={() => changeSelectedPage("tutorial")}>
-            <MdOndemandVideo 
-            style={{ marginRight: "9px" }} />
+              <MdOndemandVideo style={{ marginRight: "9px" }} />
               Tutorial
             </li>
 
@@ -131,7 +137,7 @@ function ModeratorSidebar({ changeSelectedPage }) {
               <span className="contentIcons">
                 <MdLogout />
               </span>
-              <span className="ms-1" >Logout</span>
+              <span className="ms-1">Logout</span>
             </li>
           </ol>
         </div>

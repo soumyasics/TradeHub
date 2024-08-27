@@ -14,6 +14,8 @@ import { LiaDropbox } from "react-icons/lia";
 import { BsBoxArrowInRight } from "react-icons/bs";
 import { FaRegBell } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
+import { FaRegNoteSticky } from "react-icons/fa6"
+
 export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
   const [dropdownDA, setdropdownDA] = useState(false);
   const [dropdownMod, setdropdownMod] = useState(false);
@@ -46,6 +48,9 @@ export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
     setdropDownOrders(!dropDownOrders);
   };
 
+  const navigateToGuidelines = () => {
+    navigate("/user/view-guideline");
+  }
   return (
     <div>
       <div style={{ height: "120vh" }} className="admin-sidebar-color2">
@@ -136,6 +141,10 @@ export const DeliveryAgentSidebar = ({ changeSelectedPage }) => {
             >
               <BsBoxArrowInRight className="delivery-sidebar-icon" /> {" "}
               Delivered orders
+            </li>
+            <li onClick={navigateToGuidelines}>
+              <FaRegNoteSticky style={{fontSize: "20px"}} className="delivery-sidebar-icon"  /> {" "}
+              Guideline
             </li>
 
             <li onClick={handleDeliveryLogout} className="text-danger fw-bold ">
