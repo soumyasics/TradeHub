@@ -258,7 +258,7 @@ function DeliveryAgentSignup() {
                   <label
                     className="form-check-label mt-5 label-deliverysignup text-primary"
                     for="flexCheckChecked"
-                    onClick={() => navigate("/user/view-guideline")}
+                    onClick={() => navigate("/user/terms-and-conditions")}
                   >
                     Agree to Terms and Condition
                   </label>

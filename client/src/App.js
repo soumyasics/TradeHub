@@ -84,6 +84,7 @@ import { UserPersonalisedSuggestion } from "./components/Users/userPersonalised 
 import { DeliveredProductsViewMore } from "./components/Users/deliveredproductsViewMore/deliveredProductsViewMore";
 import { AdminViewNewGuideline } from "./components/Users/userViewGuideline/adminViewGuideline";
 import { AboutPage } from "./components/Users/aboutus";
+import { UserTermsAndConditions } from "./components/Users/userViewGuideline/userTermsCondiations";
 const App = () => {
   return (
     <div className="App">
@@ -132,6 +133,7 @@ const App = () => {
           <Route path="/view-category/:category" element={<ViewByCategory />} />
           <Route path="/user/requests" element={<UserRequestes />} />
           <Route path="/user/view-guideline" element={<UserViewGuideline  />} />
+          <Route path="/user/terms-and-conditions" element={<UserTermsAndConditions  />} />
           <Route
             path="/user/exchange-product"
             element={<ApprovedExchangeProduct />}

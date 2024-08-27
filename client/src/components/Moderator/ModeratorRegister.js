@@ -267,7 +267,7 @@ function ModeratorRegister() {
                   <label
                     className="form-check-label mt-5 label-moderator-register text-primary"
                     for="flexCheckChecked"
-                    onClick={() => navigate("/user/view-guideline")}
+                    onClick={() => navigate("/user/terms-and-conditions")}
                   >
                     Agree to Terms and Condition
                   </label>

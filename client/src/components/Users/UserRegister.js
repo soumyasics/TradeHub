@@ -421,7 +421,7 @@ function UserRegister() {
                       className="form-check-label label-user-register"
                       for="flexCheckChecked"
                       onClick={() => {
-                        navigate("/user/view-guideline");
+                        navigate("/user/terms-and-conditions");
                       }}
                     >
                       Agree to Terms and Condition
