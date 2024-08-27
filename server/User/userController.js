@@ -1,4 +1,5 @@
 const User = require("./userModel");
+const Moderator = require("../Moderator/modSchema")
 const secret = "User"; // Replace this with your own secret key
 const jwt = require("jsonwebtoken");
 const multer = require("multer");
@@ -51,6 +52,25 @@ const registerUser = async (req, res) => {
       return res.json({
         status: 409,
         msg: "contact Number Already Registered With Us !!",
+        data: null,
+      });
+    }
+
+    // check mods
+    let existingModerator = await Moderator.findOne({ email });
+    if (existingModerator) {
+      return res.json({
+        status: 409,
+        msg: "Email already registered with us!",
+        data: null,
+      });
+    }
+
+    existingModerator = await Moderator.findOne({ contact });
+    if (existingModerator) {
+      return res.json({
+        status: 409,
+        msg: "Contact number already registered with us!",
         data: null,
       });
     }
