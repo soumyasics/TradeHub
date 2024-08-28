@@ -19,7 +19,9 @@ export const UserWishlist = () => {
         `getAllWishlistsByUserId/${activeUserId}`
       );
       if (res.status == 200) {
-        setWishlist(res.data.data);
+        let data = res?.data?.data || [];
+        data.reverse();
+        setWishlist(data);
       }
     } catch (error) {
       console.log(error);

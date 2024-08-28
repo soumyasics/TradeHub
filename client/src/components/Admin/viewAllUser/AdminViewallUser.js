@@ -65,7 +65,8 @@ const [fixedData,setFixedData] = useState([])
       .then((res) => {
         if (res.data.status === 200) {
           console.log(res);
-          const data = res?.data?.data || []
+          let data = res?.data?.data || []
+          data.reverse()
           setData(data);
           setFixedData(data)
         } else {

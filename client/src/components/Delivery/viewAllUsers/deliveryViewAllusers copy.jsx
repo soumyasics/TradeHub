@@ -13,12 +13,13 @@ export const DeliveryViewallUser2 = () => {
       .then((res) => {
         console.log("respo, handle acti", res);
         if (res.data.status === 200) {
-          const updatedData = data.map((users) => {
+          let updatedData = data.map((users) => {
             if (users._id === id) {
               users.isActive = true;
             }
             return users;
           });
+          updatedData.reverse()
           setData(updatedData);
         }
       })

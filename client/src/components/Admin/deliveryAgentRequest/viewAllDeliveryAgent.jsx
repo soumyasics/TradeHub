@@ -51,7 +51,8 @@ export const AdminViewAllActiveDeliveryAgent = () => {
       .get("/allAcceptDelivery")
       .then((res) => {
         if (res.status === 200) {
-          const data = res?.data?.data || [];
+          let data = res?.data?.data || [];
+          data.reverse();
           setData(data);
           setFixedData(data);
         } else {

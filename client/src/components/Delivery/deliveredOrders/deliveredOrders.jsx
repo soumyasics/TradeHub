@@ -30,7 +30,9 @@ export const DeliveredOrders = () => {
         `/getAllDeliveredOrdersByDeliveryAgentId/${deliveryAgentId}`
       );
       if (response.status == 200) {
-        setDeliveredData(response.data.data);
+        let myData = response.data.data;
+        myData.reverse();
+        setDeliveredData(myData);
       }
     } catch (error) {}
   };
