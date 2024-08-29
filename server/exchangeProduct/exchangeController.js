@@ -263,6 +263,16 @@ const acceptRequestById = async (req, res) => {
         msg: "Your proudct is not available right now. It might be already accepted another offer",
       });
     }
+    if (sellerProduct.isDeleted) {
+      return res.status(400).json({
+        msg: "Sorry. Product is deleted. You can't accept this offer",
+      });
+    }
+    if (buyerProduct.isDeleted) {
+      return res.status(400).json({
+        msg: "Sorry. Product is deleted. You can't accept this offer",
+      });
+    }
     buyerProduct.isActive = false;
     sellerProduct.isActive = false;
 

@@ -19,6 +19,11 @@ export const DeleteModal = ({ show, setShow, updateCount, id }) => {
         toast.error("Something went wrong");
       }
     } catch (error) {
+      const status = error?.response?.status;
+      if (status === 400) {
+        toast.error(error?.response?.data?.message || "Something went wrong");
+        return;
+      }
       console.log("Error on deleting item", error);
     } finally {
         updateCount()

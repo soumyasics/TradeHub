@@ -3,7 +3,7 @@ const multer = require("multer");
 const mongoose = require("mongoose");
 const ModeratorModal = require("../Moderator/modSchema");
 const UserModel = require("../User/userModel");
-const {WishlistModel} = require("../wishlist/wishlistSchema")
+const { WishlistModel } = require("../wishlist/wishlistSchema");
 // Multer storage configuration
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -90,6 +90,21 @@ const deleteItemById = async (req, res) => {
     if (!item) {
       return res.status(404).json({ message: "Item not found", id });
     }
+    if (item.isExchanged) {
+      return res.status(400).json({ message: "Item already exchanged" });
+    }
+
+    if (item.isDeleted) {
+      return res.status(400).json({ message: "Item already deleted" });
+    }
+    if (!item.isActive) {
+      return res
+        .status(400)
+        .json({
+          message:
+            "You already accepted the exchange offer. You can't delete this item",
+        });
+    }
 
     const newData = await Item.findByIdAndUpdate(
       id,
@@ -98,7 +113,7 @@ const deleteItemById = async (req, res) => {
       },
       { new: true }
     );
-    await WishlistModel.deleteMany({itemId: id});
+    await WishlistModel.deleteMany({ itemId: id });
 
     return res
       .status(200)
@@ -109,7 +124,10 @@ const deleteItemById = async (req, res) => {
 };
 const viewAllPendingItems = async (req, res) => {
   try {
-    const items = await Item.find({ isModApproved: "pending" })
+    const items = await Item.find({
+      isModApproved: "pending",
+      isDeleted: false,
+    })
       .populate("userId")
       .exec();
     return res.status(200).json({ msg: "View all pending items", data: items });
@@ -267,7 +285,7 @@ const viewAllActiveitemsByUserId = async (req, res) => {
       userId: id,
       isActive: true,
       isModApproved: "approve",
-      isDeleted: false
+      isDeleted: false,
     });
     return res
       .status(200)
@@ -510,5 +528,5 @@ module.exports = {
   addPointToItem,
   getApprovedItemsByCategory,
   personalisedRecommendation,
-  viewAllApproveItemsForMod
+  viewAllApproveItemsForMod,
 };
