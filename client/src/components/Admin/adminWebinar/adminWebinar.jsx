@@ -120,6 +120,7 @@ export const AdminWebinar = ({redirectToViewWebinar}) => {
               <Form.Label>Date</Form.Label>
               <Form.Control
                 type="date"
+                min={new Date().toISOString().split("T")[0]}
                 name="date"
                 value={data.date}
                 onChange={handleChange}

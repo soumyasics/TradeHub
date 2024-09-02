@@ -40,7 +40,13 @@ function ModViewWebinar({ user }) {
   return (
     <div>
       <h2 className="modViewWebinar-heading">Webinar</h2>
-      <Table striped bordered hover className="modViewWWebinar">
+      <Table
+        striped
+        bordered
+        hover
+        style={{ width: "90%" }}
+        className="mx-auto"
+      >
         <thead>
           <tr>
             <th>#</th>
@@ -54,17 +60,17 @@ function ModViewWebinar({ user }) {
             {user === "admin" && <th>Delete</th>}
           </tr>
         </thead>
-        {data.map((e, index) => {
-          return (
-            <tbody key={index}>
-              <tr>
+        <tbody >
+          {data.map((e, index) => {
+            return (
+              <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{e.topic}</td>
                 <td>{e.speakers}</td>
                 <td>{e.date}</td>
                 <td>{e.time}</td>
                 <td>{e.duration}</td>
-                <td>{e.description}</td>
+                <td>{e.description?.substring(0, 200)}</td>
                 <td>{e.webinarLink}</td>
                 {user === "admin" && (
                   <td>
@@ -80,9 +86,9 @@ function ModViewWebinar({ user }) {
                   </td>
                 )}
               </tr>
-            </tbody>
-          );
-        })}
+            );
+          })}
+        </tbody>
       </Table>
     </div>
   );
